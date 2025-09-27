@@ -1,0 +1,364 @@
+﻿namespace sistema.Expediente
+{
+    partial class frmExpediente
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpediente));
+            this.sataEllipseControl1 = new SATAUiFramework.Controls.SATAEllipseControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.sataPanel1 = new SATAUiFramework.SATAPanel();
+            this.lbCedula = new System.Windows.Forms.Label();
+            this.lbNombre = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnAlergias = new FrameworkTest.SATAButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCuadros = new FrameworkTest.SATAButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnHistoria = new FrameworkTest.SATAButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnRegistro = new FrameworkTest.SATAButton();
+            this.panelContenedor = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.sataPanel1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // sataEllipseControl1
+            // 
+            this.sataEllipseControl1.CornerRadius = 20;
+            this.sataEllipseControl1.TargetControl = this;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
+            this.panel1.Controls.Add(this.sataPanel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1200, 160);
+            this.panel1.TabIndex = 0;
+            // 
+            // sataPanel1
+            // 
+            this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.sataPanel1.BorderColor = System.Drawing.Color.Black;
+            borderRadius1.BottomLeft = 10;
+            borderRadius1.BottomRight = 10;
+            borderRadius1.TopLeft = 10;
+            borderRadius1.TopRight = 10;
+            this.sataPanel1.BorderRadius = borderRadius1;
+            this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.Controls.Add(this.lbCedula);
+            this.sataPanel1.Controls.Add(this.lbNombre);
+            this.sataPanel1.Controls.Add(this.panel5);
+            this.sataPanel1.Controls.Add(this.panel4);
+            this.sataPanel1.Controls.Add(this.panel3);
+            this.sataPanel1.Controls.Add(this.panel2);
+            this.sataPanel1.Location = new System.Drawing.Point(3, 3);
+            this.sataPanel1.Name = "sataPanel1";
+            this.sataPanel1.Size = new System.Drawing.Size(1191, 150);
+            this.sataPanel1.TabIndex = 0;
+            // 
+            // lbCedula
+            // 
+            this.lbCedula.AutoSize = true;
+            this.lbCedula.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCedula.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbCedula.Location = new System.Drawing.Point(88, 57);
+            this.lbCedula.Name = "lbCedula";
+            this.lbCedula.Size = new System.Drawing.Size(63, 18);
+            this.lbCedula.TabIndex = 4;
+            this.lbCedula.Text = "Cedula";
+            // 
+            // lbNombre
+            // 
+            this.lbNombre.AutoSize = true;
+            this.lbNombre.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombre.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbNombre.Location = new System.Drawing.Point(66, 29);
+            this.lbNombre.Name = "lbNombre";
+            this.lbNombre.Size = new System.Drawing.Size(106, 23);
+            this.lbNombre.TabIndex = 3;
+            this.lbNombre.Text = "UserName";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
+            this.panel5.Controls.Add(this.btnAlergias);
+            this.panel5.Location = new System.Drawing.Point(506, 93);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(3);
+            this.panel5.Size = new System.Drawing.Size(167, 57);
+            this.panel5.TabIndex = 1;
+            // 
+            // btnAlergias
+            // 
+            this.btnAlergias.ButtonText = "Alergias";
+            this.btnAlergias.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnAlergias.CheckedForeColor = System.Drawing.Color.White;
+            this.btnAlergias.CheckedImageTint = System.Drawing.Color.White;
+            this.btnAlergias.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnAlergias.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAlergias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAlergias.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlergias.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnAlergias.HoverForeColor = System.Drawing.Color.White;
+            this.btnAlergias.HoverImage = null;
+            this.btnAlergias.HoverImageTint = System.Drawing.Color.White;
+            this.btnAlergias.HoverOutline = System.Drawing.Color.Empty;
+            this.btnAlergias.Image = null;
+            this.btnAlergias.ImageAutoCenter = true;
+            this.btnAlergias.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnAlergias.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAlergias.ImageTint = System.Drawing.Color.White;
+            this.btnAlergias.IsToggleButton = false;
+            this.btnAlergias.IsToggled = false;
+            this.btnAlergias.Location = new System.Drawing.Point(3, 3);
+            this.btnAlergias.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAlergias.Name = "btnAlergias";
+            this.btnAlergias.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnAlergias.NormalForeColor = System.Drawing.Color.White;
+            this.btnAlergias.NormalOutline = System.Drawing.Color.Empty;
+            this.btnAlergias.OutlineThickness = 2F;
+            this.btnAlergias.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnAlergias.PressedForeColor = System.Drawing.Color.White;
+            this.btnAlergias.PressedImageTint = System.Drawing.Color.White;
+            this.btnAlergias.PressedOutline = System.Drawing.Color.Empty;
+            this.btnAlergias.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnAlergias.Size = new System.Drawing.Size(161, 51);
+            this.btnAlergias.TabIndex = 0;
+            this.btnAlergias.TextAutoCenter = true;
+            this.btnAlergias.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnAlergias.Click += new System.EventHandler(this.btnAlergias_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
+            this.panel4.Controls.Add(this.btnCuadros);
+            this.panel4.Location = new System.Drawing.Point(337, 93);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(3);
+            this.panel4.Size = new System.Drawing.Size(167, 57);
+            this.panel4.TabIndex = 2;
+            // 
+            // btnCuadros
+            // 
+            this.btnCuadros.ButtonText = "Cuadros";
+            this.btnCuadros.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnCuadros.CheckedForeColor = System.Drawing.Color.White;
+            this.btnCuadros.CheckedImageTint = System.Drawing.Color.White;
+            this.btnCuadros.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnCuadros.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCuadros.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuadros.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnCuadros.HoverForeColor = System.Drawing.Color.White;
+            this.btnCuadros.HoverImage = null;
+            this.btnCuadros.HoverImageTint = System.Drawing.Color.White;
+            this.btnCuadros.HoverOutline = System.Drawing.Color.Empty;
+            this.btnCuadros.Image = null;
+            this.btnCuadros.ImageAutoCenter = true;
+            this.btnCuadros.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnCuadros.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnCuadros.ImageTint = System.Drawing.Color.White;
+            this.btnCuadros.IsToggleButton = false;
+            this.btnCuadros.IsToggled = false;
+            this.btnCuadros.Location = new System.Drawing.Point(3, 3);
+            this.btnCuadros.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCuadros.Name = "btnCuadros";
+            this.btnCuadros.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnCuadros.NormalForeColor = System.Drawing.Color.White;
+            this.btnCuadros.NormalOutline = System.Drawing.Color.Empty;
+            this.btnCuadros.OutlineThickness = 2F;
+            this.btnCuadros.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnCuadros.PressedForeColor = System.Drawing.Color.White;
+            this.btnCuadros.PressedImageTint = System.Drawing.Color.White;
+            this.btnCuadros.PressedOutline = System.Drawing.Color.Empty;
+            this.btnCuadros.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnCuadros.Size = new System.Drawing.Size(161, 51);
+            this.btnCuadros.TabIndex = 0;
+            this.btnCuadros.TextAutoCenter = true;
+            this.btnCuadros.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnCuadros.Click += new System.EventHandler(this.btnCuadros_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
+            this.panel3.Controls.Add(this.btnHistoria);
+            this.panel3.Location = new System.Drawing.Point(168, 93);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(3);
+            this.panel3.Size = new System.Drawing.Size(167, 57);
+            this.panel3.TabIndex = 1;
+            // 
+            // btnHistoria
+            // 
+            this.btnHistoria.ButtonText = "Historia";
+            this.btnHistoria.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnHistoria.CheckedForeColor = System.Drawing.Color.White;
+            this.btnHistoria.CheckedImageTint = System.Drawing.Color.White;
+            this.btnHistoria.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnHistoria.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHistoria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHistoria.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistoria.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnHistoria.HoverForeColor = System.Drawing.Color.White;
+            this.btnHistoria.HoverImage = null;
+            this.btnHistoria.HoverImageTint = System.Drawing.Color.White;
+            this.btnHistoria.HoverOutline = System.Drawing.Color.Empty;
+            this.btnHistoria.Image = null;
+            this.btnHistoria.ImageAutoCenter = true;
+            this.btnHistoria.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnHistoria.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnHistoria.ImageTint = System.Drawing.Color.White;
+            this.btnHistoria.IsToggleButton = false;
+            this.btnHistoria.IsToggled = false;
+            this.btnHistoria.Location = new System.Drawing.Point(3, 3);
+            this.btnHistoria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnHistoria.Name = "btnHistoria";
+            this.btnHistoria.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnHistoria.NormalForeColor = System.Drawing.Color.White;
+            this.btnHistoria.NormalOutline = System.Drawing.Color.Empty;
+            this.btnHistoria.OutlineThickness = 2F;
+            this.btnHistoria.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnHistoria.PressedForeColor = System.Drawing.Color.White;
+            this.btnHistoria.PressedImageTint = System.Drawing.Color.White;
+            this.btnHistoria.PressedOutline = System.Drawing.Color.Empty;
+            this.btnHistoria.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnHistoria.Size = new System.Drawing.Size(161, 51);
+            this.btnHistoria.TabIndex = 0;
+            this.btnHistoria.TextAutoCenter = true;
+            this.btnHistoria.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnHistoria.Click += new System.EventHandler(this.btnHistoria_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
+            this.panel2.Controls.Add(this.btnRegistro);
+            this.panel2.Location = new System.Drawing.Point(0, 93);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(3);
+            this.panel2.Size = new System.Drawing.Size(167, 57);
+            this.panel2.TabIndex = 0;
+            // 
+            // btnRegistro
+            // 
+            this.btnRegistro.ButtonText = "Registro";
+            this.btnRegistro.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnRegistro.CheckedForeColor = System.Drawing.Color.White;
+            this.btnRegistro.CheckedImageTint = System.Drawing.Color.White;
+            this.btnRegistro.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnRegistro.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRegistro.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnRegistro.HoverForeColor = System.Drawing.Color.White;
+            this.btnRegistro.HoverImage = null;
+            this.btnRegistro.HoverImageTint = System.Drawing.Color.White;
+            this.btnRegistro.HoverOutline = System.Drawing.Color.Empty;
+            this.btnRegistro.Image = null;
+            this.btnRegistro.ImageAutoCenter = true;
+            this.btnRegistro.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnRegistro.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnRegistro.ImageTint = System.Drawing.Color.White;
+            this.btnRegistro.IsToggleButton = false;
+            this.btnRegistro.IsToggled = false;
+            this.btnRegistro.Location = new System.Drawing.Point(3, 3);
+            this.btnRegistro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnRegistro.Name = "btnRegistro";
+            this.btnRegistro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnRegistro.NormalForeColor = System.Drawing.Color.White;
+            this.btnRegistro.NormalOutline = System.Drawing.Color.Empty;
+            this.btnRegistro.OutlineThickness = 2F;
+            this.btnRegistro.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnRegistro.PressedForeColor = System.Drawing.Color.White;
+            this.btnRegistro.PressedImageTint = System.Drawing.Color.White;
+            this.btnRegistro.PressedOutline = System.Drawing.Color.Empty;
+            this.btnRegistro.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnRegistro.Size = new System.Drawing.Size(161, 51);
+            this.btnRegistro.TabIndex = 0;
+            this.btnRegistro.TextAutoCenter = true;
+            this.btnRegistro.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnRegistro.Click += new System.EventHandler(this.btnRegistro_Click);
+            // 
+            // panelContenedor
+            // 
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(0, 160);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1200, 540);
+            this.panelContenedor.TabIndex = 1;
+            // 
+            // frmExpediente
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.panelContenedor);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmExpediente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Expediente ";
+            this.Load += new System.EventHandler(this.frmExpediente_Load);
+            this.panel1.ResumeLayout(false);
+            this.sataPanel1.ResumeLayout(false);
+            this.sataPanel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private SATAUiFramework.Controls.SATAEllipseControl sataEllipseControl1;
+        private System.Windows.Forms.Panel panel1;
+        private SATAUiFramework.SATAPanel sataPanel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private FrameworkTest.SATAButton btnAlergias;
+        private System.Windows.Forms.Panel panel4;
+        private FrameworkTest.SATAButton btnCuadros;
+        private System.Windows.Forms.Panel panel3;
+        private FrameworkTest.SATAButton btnHistoria;
+        private FrameworkTest.SATAButton btnRegistro;
+        private System.Windows.Forms.Label lbNombre;
+        private System.Windows.Forms.Label lbCedula;
+        private System.Windows.Forms.Panel panelContenedor;
+    }
+}
