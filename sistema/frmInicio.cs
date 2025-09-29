@@ -36,7 +36,7 @@ namespace sistema
             SELECT 
                 COUNT(*) AS Total,
                 SUM(CASE WHEN Genero = '1' THEN 1 ELSE 0 END) AS Masculinos,
-                SUM(CASE WHEN Genero = '3' THEN 1 ELSE 0 END) AS Femeninos
+                SUM(CASE WHEN Genero = '2' THEN 1 ELSE 0 END) AS Femeninos
             FROM Paciente";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -74,6 +74,11 @@ namespace sistema
             _mainForm.abrirFormHijo(new frmAgenda());
             _mainForm.labelTitulo.Text = "Agenda";
             _mainForm.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\agenda.png");
+        }
+
+        private void lbPacientesFemeninos_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

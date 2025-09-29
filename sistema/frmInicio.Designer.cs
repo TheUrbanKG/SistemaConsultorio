@@ -261,6 +261,7 @@
             this.lbPacientesFemeninos.Size = new System.Drawing.Size(31, 36);
             this.lbPacientesFemeninos.TabIndex = 4;
             this.lbPacientesFemeninos.Text = "0";
+            this.lbPacientesFemeninos.Click += new System.EventHandler(this.lbPacientesFemeninos_Click);
             // 
             // panel5
             // 

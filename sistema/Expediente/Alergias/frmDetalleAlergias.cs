@@ -56,7 +56,8 @@ namespace sistema.Expediente.Alergias
                     // Actualizar
                     string updateQuery = @"
                 UPDATE Alergia
-                SET Nombre = @Nombre, EstadoClinico = @EstadoClinico, Tipo = @Tipo, Severidad = @Severidad
+                SET Nombre = @Nombre, EstadoClinico = @EstadoClinico, Tipo = @Tipo, Severidad = @Severidad,
+                    FechaUltimaModificacion = @FechaUltimaModificacion
                 WHERE Id = @Id";
                     using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
                     {
@@ -64,6 +65,7 @@ namespace sistema.Expediente.Alergias
                         cmd.Parameters.AddWithValue("@EstadoClinico", cbEstado.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Tipo", cbTipo.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Severidad", cbSeveridad.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@FechaUltimaModificacion", DateTime.Now);
                         cmd.Parameters.AddWithValue("@Id", AlergiaID.Value);
                         cmd.ExecuteNonQuery();
                     }
@@ -73,8 +75,8 @@ namespace sistema.Expediente.Alergias
                 {
                     // Insertar 
                     string query = @"
-            INSERT INTO Alergia (PacienteID, Nombre, EstadoClinico, Tipo, Severidad)
-            VALUES (@PacienteID, @Nombre, @EstadoClinico, @Tipo, @Severidad)";
+            INSERT INTO Alergia (PacienteID, Nombre, EstadoClinico, Tipo, Severidad, FechaUltimaModificacion)
+            VALUES (@PacienteID, @Nombre, @EstadoClinico, @Tipo, @Severidad, @FechaUltimaModificacion)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -83,6 +85,7 @@ namespace sistema.Expediente.Alergias
                         cmd.Parameters.AddWithValue("@EstadoClinico", cbEstado.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Tipo", cbTipo.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Severidad", cbSeveridad.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@FechaUltimaModificacion", DateTime.Now);
 
                         cmd.ExecuteNonQuery();
                     }
