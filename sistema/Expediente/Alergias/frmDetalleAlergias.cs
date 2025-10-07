@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -13,7 +14,7 @@ namespace sistema.Expediente.Alergias
 {
     public partial class frmDetalleAlergias : MetroFramework.Forms.MetroForm
     {
-        private readonly string connectionString = "Server=DESKTOP-GR08655;Database=tesis;Trusted_Connection=True;";
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
 
         public int PacienteID { get; set; }
         public int? AlergiaID { get; set; }
@@ -56,7 +57,8 @@ namespace sistema.Expediente.Alergias
                     // Actualizar
                     string updateQuery = @"
                 UPDATE Alergia
-                SET Nombre = @Nombre, EstadoClinico = @EstadoClinico, Tipo = @Tipo, Severidad = @Severidad
+                SET Nombre = @Nombre, EstadoClinico = @EstadoClinico, Tipo = @Tipo, Severidad = @Severidad,
+                    FechaUltimaModificacion = @FechaUltimaModificacion
                 WHERE Id = @Id";
                     using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
                     {
@@ -64,6 +66,7 @@ namespace sistema.Expediente.Alergias
                         cmd.Parameters.AddWithValue("@EstadoClinico", cbEstado.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Tipo", cbTipo.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Severidad", cbSeveridad.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@FechaUltimaModificacion", DateTime.Now);
                         cmd.Parameters.AddWithValue("@Id", AlergiaID.Value);
                         cmd.ExecuteNonQuery();
                     }
@@ -73,8 +76,8 @@ namespace sistema.Expediente.Alergias
                 {
                     // Insertar 
                     string query = @"
-            INSERT INTO Alergia (PacienteID, Nombre, EstadoClinico, Tipo, Severidad)
-            VALUES (@PacienteID, @Nombre, @EstadoClinico, @Tipo, @Severidad)";
+            INSERT INTO Alergia (PacienteID, Nombre, EstadoClinico, Tipo, Severidad, FechaUltimaModificacion)
+            VALUES (@PacienteID, @Nombre, @EstadoClinico, @Tipo, @Severidad, @FechaUltimaModificacion)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -83,6 +86,7 @@ namespace sistema.Expediente.Alergias
                         cmd.Parameters.AddWithValue("@EstadoClinico", cbEstado.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Tipo", cbTipo.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Severidad", cbSeveridad.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@FechaUltimaModificacion", DateTime.Now);
 
                         cmd.ExecuteNonQuery();
                     }

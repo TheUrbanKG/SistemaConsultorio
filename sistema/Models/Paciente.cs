@@ -54,6 +54,10 @@ namespace sistema.Models
 
         [StringLength(20)]
         public string Cedula { get; set; }
+
+        public decimal? Peso { get; set; }
+        public decimal? Altura { get; set; }
+        public decimal? IMC { get; set; }
     }
 
     [Table("Datos")]

@@ -44,9 +44,9 @@
             // contenedorDias
             // 
             this.contenedorDias.AutoScroll = true;
-            this.contenedorDias.Location = new System.Drawing.Point(28, 173);
+            this.contenedorDias.Location = new System.Drawing.Point(35, 162);
             this.contenedorDias.Name = "contenedorDias";
-            this.contenedorDias.Size = new System.Drawing.Size(1104, 711);
+            this.contenedorDias.Size = new System.Drawing.Size(1081, 560);
             this.contenedorDias.TabIndex = 0;
             this.contenedorDias.Paint += new System.Windows.Forms.PaintEventHandler(this.contenedorDias_Paint);
             // 
@@ -164,7 +164,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1149, 961);
+            this.ClientSize = new System.Drawing.Size(1149, 768);
             this.Controls.Add(this.labelFecha);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);

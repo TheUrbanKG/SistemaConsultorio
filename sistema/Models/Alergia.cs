@@ -14,5 +14,6 @@ namespace sistema.Models
         public string EstadoClinico { get; set; }  // Estado clínico
         public string Tipo { get; set; }           // Tipo de alergia
         public string Severidad { get; set; }
+        public DateTime FechaUltimaModificacion { get; set; }
     }
 }

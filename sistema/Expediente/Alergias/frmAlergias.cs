@@ -1,21 +1,22 @@
-﻿using System;
+﻿using sistema.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using sistema.Models;
 
 
 namespace sistema.Expediente
 {
     public partial class frmAlergias : Form
     {
-        private readonly string connectionString = "Server=DESKTOP-GR08655;Database=tesis;Trusted_Connection=True;";
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
         public int PacienteID { get; set; }
         public frmAlergias()
         {
@@ -29,9 +30,9 @@ namespace sistema.Expediente
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = @"
-            SELECT Id, PacienteID, Nombre, EstadoClinico, Tipo, Severidad
-            FROM Alergia
-            WHERE PacienteID = @PacienteID";
+    SELECT Id, PacienteID, Nombre, EstadoClinico, Tipo, Severidad, FechaUltimaModificacion
+    FROM Alergia
+    WHERE PacienteID = @PacienteID";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@PacienteID", pacienteId);
@@ -48,7 +49,8 @@ namespace sistema.Expediente
                             Nombre = reader["Nombre"]?.ToString(),
                             EstadoClinico = reader["EstadoClinico"]?.ToString(),
                             Tipo = reader["Tipo"]?.ToString(),
-                            Severidad = reader["Severidad"]?.ToString()
+                            Severidad = reader["Severidad"]?.ToString(),
+                            FechaUltimaModificacion = reader.GetDateTime(6)
                         });
                     }
                 }
@@ -130,6 +132,16 @@ namespace sistema.Expediente
                 btnTipo.FlatAppearance.BorderSize = 2;
                 panel.Controls.Add(btnTipo);
 
+                Label lblFecha = new Label
+                {
+                    Text = "Última modificación: " + alergia.FechaUltimaModificacion.ToString("dd/MM/yyyy HH:mm"),
+                    ForeColor = Color.FromArgb(0, 220, 100),
+                    Location = new Point(280, 75),
+                    AutoSize = true,
+                    Font = new Font("Century Gothic", 10, FontStyle.Italic)
+                };
+                panel.Controls.Add(lblFecha);
+
                 Button btnSeveridad = new Button
                 {
                     Text = alergia.Severidad?.ToUpper(),
@@ -149,9 +161,9 @@ namespace sistema.Expediente
 
                 Panel panelBotones = new Panel
                 {
-                    Width = 220, // Suficiente para ambos botones y separación
+                    Width = 100, // Solo un botón, menos ancho
                     Height = 40,
-                    Location = new Point(panel.Width - 230, 65), // Ajusta el valor según el ancho de tu panel
+                    Location = new Point(panel.Width - 120, 65), // Ajusta la posición para centrar el botón
                     Anchor = AnchorStyles.Top | AnchorStyles.Right
                 };
 
@@ -178,40 +190,6 @@ namespace sistema.Expediente
                     CargarAlergias(alergia.PacienteID);
                 };
                 panelBotones.Controls.Add(btnModificar);
-
-                // Botón Eliminar
-                Button btnEliminar = new Button
-                {
-                    Text = "Eliminar",
-                    BackColor = Color.FromArgb(255, 71, 87),
-                    ForeColor = Color.White,
-                    FlatStyle = FlatStyle.Flat,
-                    Height = 32,
-                    Width = 100,
-                    Font = new Font("Century Gothic", 10, FontStyle.Bold),
-                    Location = new Point(110, 0)
-                };
-                btnEliminar.FlatAppearance.BorderColor = Color.FromArgb(255, 71, 87);
-                btnEliminar.FlatAppearance.BorderSize = 2;
-                btnEliminar.Click += (s, e) =>
-                {
-                    var confirm = MessageBox.Show("¿Seguro que deseas eliminar esta alergia?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (confirm == DialogResult.Yes)
-                    {
-                        using (SqlConnection conn = new SqlConnection(connectionString))
-                        {
-                            conn.Open();
-                            string query = "DELETE FROM Alergia WHERE Id = @Id";
-                            using (SqlCommand cmd = new SqlCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@Id", alergia.Id);
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                        CargarAlergias(alergia.PacienteID);
-                    }
-                };
-                panelBotones.Controls.Add(btnEliminar);
 
                 // Agrega el panel de botones al panel principal
                 panel.Controls.Add(panelBotones);
