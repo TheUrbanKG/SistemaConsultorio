@@ -8,17 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration; // Agrega este using
 
 namespace sistema
 {
     public partial class Login : MetroFramework.Forms.MetroForm
     {
+        SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString);
+
         public Login()
         {
             InitializeComponent();
         }
 
-        SqlConnection conexion = new SqlConnection("server=DESKTOP-GR08655; database=tesis; integrated security=true");
 
 
         private void btnIngresar_Click(object sender, EventArgs e)

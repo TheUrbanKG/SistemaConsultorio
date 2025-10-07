@@ -51,6 +51,9 @@
             // 
             // sataPanel1
             // 
+            this.sataPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(157)))), ((int)(((byte)(69)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
@@ -64,7 +67,7 @@
             this.sataPanel1.Location = new System.Drawing.Point(55, 101);
             this.sataPanel1.Name = "sataPanel1";
             this.sataPanel1.Padding = new System.Windows.Forms.Padding(5, 1, 5, 15);
-            this.sataPanel1.Size = new System.Drawing.Size(833, 488);
+            this.sataPanel1.Size = new System.Drawing.Size(833, 449);
             this.sataPanel1.TabIndex = 1;
             // 
             // dgvPacientes
@@ -73,6 +76,9 @@
             this.dgvPacientes.AllowUserToDeleteRows = false;
             this.dgvPacientes.AllowUserToResizeColumns = false;
             this.dgvPacientes.AllowUserToResizeRows = false;
+            this.dgvPacientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPacientes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvPacientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPacientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -101,7 +107,6 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPacientes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPacientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPacientes.EnableHeadersVisualStyles = false;
             this.dgvPacientes.Location = new System.Drawing.Point(5, 1);
             this.dgvPacientes.MultiSelect = false;
@@ -119,7 +124,7 @@
             this.dgvPacientes.RowHeadersWidth = 30;
             this.dgvPacientes.RowTemplate.Height = 30;
             this.dgvPacientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPacientes.Size = new System.Drawing.Size(823, 472);
+            this.dgvPacientes.Size = new System.Drawing.Size(823, 433);
             this.dgvPacientes.TabIndex = 0;
             this.dgvPacientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPacientes_CellDoubleClick);
             // 
@@ -167,6 +172,7 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.ButtonText = "Editar Paciente";
             this.btnModificar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
             this.btnModificar.CheckedForeColor = System.Drawing.Color.White;
@@ -206,6 +212,7 @@
             // 
             // btnAñadir
             // 
+            this.btnAñadir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAñadir.ButtonText = "Añadir Nuevo Paciente";
             this.btnAñadir.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
             this.btnAñadir.CheckedForeColor = System.Drawing.Color.White;
@@ -260,7 +267,7 @@
             this.txtBuscar.PasswordChar = false;
             this.txtBuscar.PlaceholderColor = System.Drawing.Color.Silver;
             this.txtBuscar.PlaceholderText = "Buscar Paciente";
-            this.txtBuscar.Size = new System.Drawing.Size(311, 36);
+            this.txtBuscar.Size = new System.Drawing.Size(579, 36);
             this.txtBuscar.TabIndex = 0;
             this.txtBuscar.Text = "sataTextBox1";
             this.txtBuscar.Texts = "";

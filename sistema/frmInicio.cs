@@ -14,7 +14,7 @@ namespace sistema
     public partial class frmInicio : Form
     {
         private frmMain _mainForm;
-        private readonly string connectionString = "Server=DESKTOP-GR08655;Database=tesis;Trusted_Connection=True;";
+        private readonly string connectionString = "Server=2MO1473SMR\\SQLEXPRESS;Database=tesis;Trusted_Connection=True;";
 
 
         public frmInicio(frmMain mainForm)

@@ -59,7 +59,9 @@ namespace sistema.Expediente
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmRegistro());
+            frmRegistro registro = new frmRegistro();
+            registro.PacienteID = this.PacienteID;
+            abrirFormHijo(registro);
             this.Refresh();
         }
 
@@ -102,7 +104,10 @@ namespace sistema.Expediente
 
         private void frmExpediente_Load(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmRegistro());
+            frmRegistro registro = new frmRegistro();
+            registro.PacienteID = this.PacienteID;
+            abrirFormHijo(registro);
+            this.Refresh();
         }
     }
 }
