@@ -52,9 +52,9 @@
             // 
             // btnAnterior
             // 
-            this.btnAnterior.Location = new System.Drawing.Point(933, 906);
+            this.btnAnterior.Location = new System.Drawing.Point(944, 746);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(81, 29);
+            this.btnAnterior.Size = new System.Drawing.Size(81, 34);
             this.btnAnterior.TabIndex = 1;
             this.btnAnterior.Text = "Anterior";
             this.btnAnterior.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(1046, 903);
+            this.btnSiguiente.Location = new System.Drawing.Point(1031, 746);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(85, 34);
             this.btnSiguiente.TabIndex = 2;
@@ -164,7 +164,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1149, 768);
+            this.ClientSize = new System.Drawing.Size(1149, 841);
             this.Controls.Add(this.labelFecha);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
