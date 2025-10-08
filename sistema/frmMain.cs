@@ -21,7 +21,9 @@ namespace sistema
         {
             abrirFormHijo(new frmInicio(this));
             labelTitulo.Text = "Inicio";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\hogar.png");
+            this.pbTitulo.Image = Properties.Resources.hogar;
+            // Así accedes al recurso correctamente
+
 
         }
 
@@ -44,7 +46,7 @@ namespace sistema
         {
             abrirFormHijo(new frmInicio(this));
             labelTitulo.Text = "Inicio";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\hogar.png");
+            this.pbTitulo.Image = Properties.Resources.hogar;
             this.Refresh();
         }
 
@@ -52,7 +54,7 @@ namespace sistema
         {
             abrirFormHijo(new frmCitas());
             labelTitulo.Text = "Citas";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\calendario.png");
+            this.pbTitulo.Image = Properties.Resources.calendario;
             this.Refresh();
         }
 
@@ -60,7 +62,7 @@ namespace sistema
         {
             abrirFormHijo(new frmPacientes());
             labelTitulo.Text = "Pacientes";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\paciente.png");
+            this.pbTitulo.Image = Properties.Resources.paciente;
             this.Refresh();
         }
 
@@ -68,7 +70,7 @@ namespace sistema
         {
             abrirFormHijo(new frmAgenda());
             labelTitulo.Text = "Agenda";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\agenda.png");
+            this.pbTitulo.Image = Properties.Resources.agenda;
             this.Refresh();
         }
 
@@ -76,7 +78,7 @@ namespace sistema
         {
             abrirFormHijo(new frmNotas());
             labelTitulo.Text = "Notas";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\notas.png");
+            this.pbTitulo.Image = Properties.Resources.notas;
             this.Refresh();
         }
 
@@ -93,7 +95,7 @@ namespace sistema
         {
             abrirFormHijo(new frmCuentas());
             labelTitulo.Text = "Gestion De Cuentas";
-            this.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\usuario.png");
+            this.pbTitulo.Image = Properties.Resources.usuario;
             this.Refresh();
         }
     }

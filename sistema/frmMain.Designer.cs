@@ -54,8 +54,8 @@
             this.BTNCitas = new FrameworkTest.SATAButton();
             this.pbTitulo = new System.Windows.Forms.PictureBox();
             this.labelTitulo = new System.Windows.Forms.Label();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.panelSuperior = new SATAUiFramework.SATAPanel();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.panelLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).BeginInit();
             this.sataPanel1.SuspendLayout();
@@ -507,14 +507,6 @@
             this.labelTitulo.TabIndex = 1;
             this.labelTitulo.Text = "Title";
             // 
-            // panelContenedor
-            // 
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelContenedor.Location = new System.Drawing.Point(204, 102);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(920, 685);
-            this.panelContenedor.TabIndex = 17;
-            // 
             // panelSuperior
             // 
             this.panelSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
@@ -531,17 +523,25 @@
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(204, 0);
             this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(920, 103);
+            this.panelSuperior.Size = new System.Drawing.Size(1045, 103);
             this.panelSuperior.TabIndex = 16;
+            // 
+            // panelContenedor
+            // 
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(204, 103);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1045, 684);
+            this.panelContenedor.TabIndex = 18;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ClientSize = new System.Drawing.Size(1124, 787);
-            this.Controls.Add(this.panelSuperior);
+            this.ClientSize = new System.Drawing.Size(1249, 787);
             this.Controls.Add(this.panelContenedor);
+            this.Controls.Add(this.panelSuperior);
             this.Controls.Add(this.panelLateral);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -582,9 +582,9 @@
         private FrameworkTest.SATAButton BTNNotas;
         private SATAUiFramework.SATAPanel sataPanel3;
         private FrameworkTest.SATAButton BTNCitas;
-        private System.Windows.Forms.Panel panelContenedor;
         private SATAUiFramework.SATAPanel panelSuperior;
         private SATAUiFramework.Controls.SATAPictureBox sataPictureBox1;
+        private System.Windows.Forms.Panel panelContenedor;
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -9,11 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace sistema.Expediente.Historia
 {
     public partial class frmHistoria : Form
     {
-        private string connectionString = "server=DESKTOP-GR08655; database=tesis; integrated security=true";
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
 
         public int PacienteID { get; set; }
         public frmHistoria()

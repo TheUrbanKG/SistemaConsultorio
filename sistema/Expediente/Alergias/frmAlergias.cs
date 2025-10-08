@@ -1,21 +1,22 @@
-﻿using System;
+﻿using sistema.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using sistema.Models;
 
 
 namespace sistema.Expediente
 {
     public partial class frmAlergias : Form
     {
-        private readonly string connectionString = "Server=DESKTOP-GR08655;Database=tesis;Trusted_Connection=True;";
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
         public int PacienteID { get; set; }
         public frmAlergias()
         {
