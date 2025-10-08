@@ -47,7 +47,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1180, 100);
+            this.panel1.Size = new System.Drawing.Size(1180, 87);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -57,7 +57,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1180, 97);
+            this.panel2.Size = new System.Drawing.Size(1180, 84);
             this.panel2.TabIndex = 0;
             // 
             // btnNuevoCuadro
@@ -82,7 +82,7 @@
             this.btnNuevoCuadro.ImageTint = System.Drawing.Color.White;
             this.btnNuevoCuadro.IsToggleButton = false;
             this.btnNuevoCuadro.IsToggled = false;
-            this.btnNuevoCuadro.Location = new System.Drawing.Point(13, 31);
+            this.btnNuevoCuadro.Location = new System.Drawing.Point(26, 24);
             this.btnNuevoCuadro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevoCuadro.Name = "btnNuevoCuadro";
             this.btnNuevoCuadro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
@@ -103,9 +103,9 @@
             // flpCuadros
             // 
             this.flpCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpCuadros.Location = new System.Drawing.Point(0, 100);
+            this.flpCuadros.Location = new System.Drawing.Point(0, 87);
             this.flpCuadros.Name = "flpCuadros";
-            this.flpCuadros.Size = new System.Drawing.Size(1180, 413);
+            this.flpCuadros.Size = new System.Drawing.Size(1180, 426);
             this.flpCuadros.TabIndex = 1;
             // 
             // lbCuadros

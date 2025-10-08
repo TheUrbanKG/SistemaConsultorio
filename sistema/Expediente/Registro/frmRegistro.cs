@@ -25,6 +25,7 @@ namespace sistema.Expediente.Registro
         private void btnModificar_Click(object sender, EventArgs e)
         {
             frmDetalleRegistro frmDetalle = new frmDetalleRegistro();
+            frmDetalle.PacienteID = this.PacienteID; // Asigna el ID del paciente actual
             frmDetalle.ShowDialog();
         }
 
@@ -33,7 +34,7 @@ namespace sistema.Expediente.Registro
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"SELECT Peso, Altura, IMC FROM Paciente WHERE PacienteID = @PacienteID";
+                string query = @"SELECT Peso, Altura, IMC, FechaNacimiento FROM Paciente WHERE PacienteID = @PacienteID";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
@@ -46,14 +47,28 @@ namespace sistema.Expediente.Registro
                             decimal imc = reader["IMC"] != DBNull.Value ? Convert.ToDecimal(reader["IMC"]) : 0;
 
                             lbPeso.Text = peso > 0 ? $"{peso} kg." : "";
-                            lbAltura.Text = altura > 0 ? $"{altura} cm" : "";
+                            lbAltura.Text = altura > 0 ? $"{Convert.ToInt32(altura)} cm" : "";
                             lbIMC.Text = imc > 0 ? $"{Math.Round(imc, 2)}" : "";
+
+                            // Calcular edad
+                            if (reader["FechaNacimiento"] != DBNull.Value)
+                            {
+                                DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                                int edad = DateTime.Today.Year - fechaNacimiento.Year;
+                                if (fechaNacimiento > DateTime.Today.AddYears(-edad)) edad--;
+                                lbEdad.Text = edad == 1 ? "1 año" : $"{edad} años";;
+                            }
+                            else
+                            {
+                                lbEdad.Text = "0 año";
+                            }
                         }
                         else
                         {
                             lbPeso.Text = "0 kg.";
                             lbAltura.Text = "0 cm";
                             lbIMC.Text = "0.00";
+                            lbEdad.Text = "0";
                         }
                     }
                 }

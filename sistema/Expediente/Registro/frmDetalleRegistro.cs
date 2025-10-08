@@ -40,7 +40,8 @@ namespace sistema.Expediente.Registro
             }
 
             // Calcular IMC
-            imc = peso / (altura * altura);
+            decimal alturaMetros = altura / 100;
+            imc = peso / (alturaMetros * alturaMetros);
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -55,12 +56,18 @@ namespace sistema.Expediente.Registro
                     cmd.Parameters.AddWithValue("@Altura", altura);
                     cmd.Parameters.AddWithValue("@IMC", imc);
                     cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
-                    cmd.ExecuteNonQuery();
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    if (filasAfectadas == 0)
+                    {
+                        MessageBox.Show("No se encontró el paciente para actualizar.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos guardados correctamente.");
+                        this.Close();
+                    }
                 }
             }
-
-            MessageBox.Show("Datos guardados correctamente.");
-            this.Close();
         }
     }
 }
