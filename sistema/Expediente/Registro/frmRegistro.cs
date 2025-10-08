@@ -46,22 +46,25 @@ namespace sistema.Expediente.Registro
                             decimal altura = reader["Altura"] != DBNull.Value ? Convert.ToDecimal(reader["Altura"]) : 0;
                             decimal imc = reader["IMC"] != DBNull.Value ? Convert.ToDecimal(reader["IMC"]) : 0;
 
-                            lbPeso.Text = peso > 0 ? $"{peso} kg." : "";
-                            lbAltura.Text = altura > 0 ? $"{Convert.ToInt32(altura)} cm" : "";
-                            lbIMC.Text = imc > 0 ? $"{Math.Round(imc, 2)}" : "";
+                            if (peso > 0)
+                                lbPeso.Text = $"{peso} kg.";
+                            // Si no hay peso, no se asigna nada y se mantiene el valor por defecto
 
-                            // Calcular edad
+                            if (altura > 0)
+                                lbAltura.Text = $"{Convert.ToInt32(altura)} cm";
+
+                            if (imc > 0)
+                                lbIMC.Text = $"{Math.Round(imc, 2)}";
+
+                            // Edad
                             if (reader["FechaNacimiento"] != DBNull.Value)
                             {
                                 DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
                                 int edad = DateTime.Today.Year - fechaNacimiento.Year;
                                 if (fechaNacimiento > DateTime.Today.AddYears(-edad)) edad--;
-                                lbEdad.Text = edad == 1 ? "1 año" : $"{edad} años";;
+                                lbEdad.Text = edad == 1 ? "1 año" : $"{edad} años";
                             }
-                            else
-                            {
-                                lbEdad.Text = "0 año";
-                            }
+                            // Si no hay fecha de nacimiento, no se asigna nada y se mantiene el valor por defecto
                         }
                         else
                         {
