@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius9 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro));
-            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius10 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius11 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius12 = new SATAUiFramework.BorderRadius();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.lbEdad = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,11 +76,11 @@
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 15;
-            borderRadius1.BottomRight = 15;
-            borderRadius1.TopLeft = 15;
-            borderRadius1.TopRight = 15;
-            this.sataPanel1.BorderRadius = borderRadius1;
+            borderRadius9.BottomLeft = 15;
+            borderRadius9.BottomRight = 15;
+            borderRadius9.TopLeft = 15;
+            borderRadius9.TopRight = 15;
+            this.sataPanel1.BorderRadius = borderRadius9;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.lbEdad);
             this.sataPanel1.Controls.Add(this.label1);
@@ -139,11 +139,11 @@
             this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel2.BorderColor = System.Drawing.Color.Black;
-            borderRadius2.BottomLeft = 15;
-            borderRadius2.BottomRight = 15;
-            borderRadius2.TopLeft = 15;
-            borderRadius2.TopRight = 15;
-            this.sataPanel2.BorderRadius = borderRadius2;
+            borderRadius10.BottomLeft = 15;
+            borderRadius10.BottomRight = 15;
+            borderRadius10.TopLeft = 15;
+            borderRadius10.TopRight = 15;
+            this.sataPanel2.BorderRadius = borderRadius10;
             this.sataPanel2.BorderThickness = 0;
             this.sataPanel2.Controls.Add(this.lbPeso);
             this.sataPanel2.Controls.Add(this.label4);
@@ -202,11 +202,11 @@
             this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel3.BorderColor = System.Drawing.Color.Black;
-            borderRadius3.BottomLeft = 15;
-            borderRadius3.BottomRight = 15;
-            borderRadius3.TopLeft = 15;
-            borderRadius3.TopRight = 15;
-            this.sataPanel3.BorderRadius = borderRadius3;
+            borderRadius11.BottomLeft = 15;
+            borderRadius11.BottomRight = 15;
+            borderRadius11.TopLeft = 15;
+            borderRadius11.TopRight = 15;
+            this.sataPanel3.BorderRadius = borderRadius11;
             this.sataPanel3.BorderThickness = 0;
             this.sataPanel3.Controls.Add(this.lbIMC);
             this.sataPanel3.Controls.Add(this.label2);
@@ -265,11 +265,11 @@
             this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel4.BorderColor = System.Drawing.Color.Black;
-            borderRadius4.BottomLeft = 15;
-            borderRadius4.BottomRight = 15;
-            borderRadius4.TopLeft = 15;
-            borderRadius4.TopRight = 15;
-            this.sataPanel4.BorderRadius = borderRadius4;
+            borderRadius12.BottomLeft = 15;
+            borderRadius12.BottomRight = 15;
+            borderRadius12.TopLeft = 15;
+            borderRadius12.TopRight = 15;
+            this.sataPanel4.BorderRadius = borderRadius12;
             this.sataPanel4.BorderThickness = 0;
             this.sataPanel4.Controls.Add(this.lbAltura);
             this.sataPanel4.Controls.Add(this.label3);
@@ -326,13 +326,13 @@
             // btnNueva
             // 
             this.btnNueva.ButtonText = "Añadir Cita";
-            this.btnNueva.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnNueva.CheckedBackground = System.Drawing.Color.CornflowerBlue;
             this.btnNueva.CheckedForeColor = System.Drawing.Color.White;
             this.btnNueva.CheckedImageTint = System.Drawing.Color.White;
-            this.btnNueva.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnNueva.CheckedOutline = System.Drawing.Color.CornflowerBlue;
             this.btnNueva.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNueva.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNueva.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnNueva.HoverBackground = System.Drawing.Color.Empty;
             this.btnNueva.HoverForeColor = System.Drawing.Color.White;
             this.btnNueva.HoverImage = null;
             this.btnNueva.HoverImageTint = System.Drawing.Color.White;
@@ -351,7 +351,7 @@
             this.btnNueva.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNueva.NormalOutline = System.Drawing.Color.Empty;
             this.btnNueva.OutlineThickness = 2F;
-            this.btnNueva.PressedBackground = System.Drawing.Color.SaddleBrown;
+            this.btnNueva.PressedBackground = System.Drawing.Color.RoyalBlue;
             this.btnNueva.PressedForeColor = System.Drawing.Color.White;
             this.btnNueva.PressedImageTint = System.Drawing.Color.White;
             this.btnNueva.PressedOutline = System.Drawing.Color.Empty;
@@ -367,10 +367,10 @@
             this.btnModificar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
             this.btnModificar.CheckedForeColor = System.Drawing.Color.White;
             this.btnModificar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnModificar.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnModificar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
             this.btnModificar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnModificar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(99)))));
             this.btnModificar.HoverForeColor = System.Drawing.Color.White;
             this.btnModificar.HoverImage = null;
             this.btnModificar.HoverImageTint = System.Drawing.Color.White;
@@ -389,7 +389,7 @@
             this.btnModificar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnModificar.NormalOutline = System.Drawing.Color.Empty;
             this.btnModificar.OutlineThickness = 2F;
-            this.btnModificar.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnModificar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
             this.btnModificar.PressedForeColor = System.Drawing.Color.White;
             this.btnModificar.PressedImageTint = System.Drawing.Color.White;
             this.btnModificar.PressedOutline = System.Drawing.Color.Empty;
