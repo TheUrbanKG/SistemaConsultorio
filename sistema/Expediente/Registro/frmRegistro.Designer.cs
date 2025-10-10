@@ -28,46 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius5 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius6 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius7 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius8 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro));
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.lbEdad = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.sataPanel2 = new SATAUiFramework.SATAPanel();
             this.lbPeso = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.sataPanel3 = new SATAUiFramework.SATAPanel();
             this.lbIMC = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.sataPanel4 = new SATAUiFramework.SATAPanel();
             this.lbAltura = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnNueva = new FrameworkTest.SATAButton();
             this.btnModificar = new FrameworkTest.SATAButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sataPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.sataPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.sataPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.sataPanel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +76,11 @@
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius5.BottomLeft = 15;
-            borderRadius5.BottomRight = 15;
-            borderRadius5.TopLeft = 15;
-            borderRadius5.TopRight = 15;
-            this.sataPanel1.BorderRadius = borderRadius5;
+            borderRadius1.BottomLeft = 15;
+            borderRadius1.BottomRight = 15;
+            borderRadius1.TopLeft = 15;
+            borderRadius1.TopRight = 15;
+            this.sataPanel1.BorderRadius = borderRadius1;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.lbEdad);
             this.sataPanel1.Controls.Add(this.label1);
@@ -96,7 +96,7 @@
             this.lbEdad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lbEdad.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEdad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
-            this.lbEdad.Location = new System.Drawing.Point(187, 56);
+            this.lbEdad.Location = new System.Drawing.Point(127, 56);
             this.lbEdad.Name = "lbEdad";
             this.lbEdad.Size = new System.Drawing.Size(68, 36);
             this.lbEdad.TabIndex = 4;
@@ -124,16 +124,26 @@
             this.panel1.Size = new System.Drawing.Size(112, 128);
             this.panel1.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(29, 37);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(56, 55);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // sataPanel2
             // 
             this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel2.BorderColor = System.Drawing.Color.Black;
-            borderRadius6.BottomLeft = 15;
-            borderRadius6.BottomRight = 15;
-            borderRadius6.TopLeft = 15;
-            borderRadius6.TopRight = 15;
-            this.sataPanel2.BorderRadius = borderRadius6;
+            borderRadius2.BottomLeft = 15;
+            borderRadius2.BottomRight = 15;
+            borderRadius2.TopLeft = 15;
+            borderRadius2.TopRight = 15;
+            this.sataPanel2.BorderRadius = borderRadius2;
             this.sataPanel2.BorderThickness = 0;
             this.sataPanel2.Controls.Add(this.lbPeso);
             this.sataPanel2.Controls.Add(this.label4);
@@ -149,7 +159,7 @@
             this.lbPeso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lbPeso.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPeso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
-            this.lbPeso.Location = new System.Drawing.Point(187, 56);
+            this.lbPeso.Location = new System.Drawing.Point(121, 56);
             this.lbPeso.Name = "lbPeso";
             this.lbPeso.Size = new System.Drawing.Size(83, 36);
             this.lbPeso.TabIndex = 5;
@@ -177,16 +187,26 @@
             this.panel4.Size = new System.Drawing.Size(113, 128);
             this.panel4.TabIndex = 0;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(34, 37);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(56, 55);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
             // sataPanel3
             // 
             this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel3.BorderColor = System.Drawing.Color.Black;
-            borderRadius7.BottomLeft = 15;
-            borderRadius7.BottomRight = 15;
-            borderRadius7.TopLeft = 15;
-            borderRadius7.TopRight = 15;
-            this.sataPanel3.BorderRadius = borderRadius7;
+            borderRadius3.BottomLeft = 15;
+            borderRadius3.BottomRight = 15;
+            borderRadius3.TopLeft = 15;
+            borderRadius3.TopRight = 15;
+            this.sataPanel3.BorderRadius = borderRadius3;
             this.sataPanel3.BorderThickness = 0;
             this.sataPanel3.Controls.Add(this.lbIMC);
             this.sataPanel3.Controls.Add(this.label2);
@@ -202,7 +222,7 @@
             this.lbIMC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lbIMC.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbIMC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
-            this.lbIMC.Location = new System.Drawing.Point(187, 60);
+            this.lbIMC.Location = new System.Drawing.Point(118, 60);
             this.lbIMC.Name = "lbIMC";
             this.lbIMC.Size = new System.Drawing.Size(71, 36);
             this.lbIMC.TabIndex = 3;
@@ -230,16 +250,26 @@
             this.panel2.Size = new System.Drawing.Size(112, 128);
             this.panel2.TabIndex = 0;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(29, 29);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(65, 74);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 46;
+            this.pictureBox5.TabStop = false;
+            // 
             // sataPanel4
             // 
             this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel4.BorderColor = System.Drawing.Color.Black;
-            borderRadius8.BottomLeft = 15;
-            borderRadius8.BottomRight = 15;
-            borderRadius8.TopLeft = 15;
-            borderRadius8.TopRight = 15;
-            this.sataPanel4.BorderRadius = borderRadius8;
+            borderRadius4.BottomLeft = 15;
+            borderRadius4.BottomRight = 15;
+            borderRadius4.TopLeft = 15;
+            borderRadius4.TopRight = 15;
+            this.sataPanel4.BorderRadius = borderRadius4;
             this.sataPanel4.BorderThickness = 0;
             this.sataPanel4.Controls.Add(this.lbAltura);
             this.sataPanel4.Controls.Add(this.label3);
@@ -255,7 +285,7 @@
             this.lbAltura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lbAltura.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAltura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
-            this.lbAltura.Location = new System.Drawing.Point(187, 67);
+            this.lbAltura.Location = new System.Drawing.Point(119, 67);
             this.lbAltura.Name = "lbAltura";
             this.lbAltura.Size = new System.Drawing.Size(85, 36);
             this.lbAltura.TabIndex = 6;
@@ -292,36 +322,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 46;
             this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(29, 29);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(65, 74);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 46;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(34, 37);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(56, 55);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(29, 37);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(56, 55);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // btnNueva
             // 
@@ -430,19 +430,19 @@
             this.sataPanel1.ResumeLayout(false);
             this.sataPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.sataPanel2.ResumeLayout(false);
             this.sataPanel2.PerformLayout();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.sataPanel3.ResumeLayout(false);
             this.sataPanel3.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.sataPanel4.ResumeLayout(false);
             this.sataPanel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

@@ -28,31 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius6 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius7 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius8 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius9 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius10 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius5 = new SATAUiFramework.BorderRadius();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.lbCitasAgendadas = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sataPanel2 = new SATAUiFramework.SATAPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.lbPacientesRegistrados = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.sataPanel3 = new SATAUiFramework.SATAPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.lbPacientesMasculinos = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.sataPanel4 = new SATAUiFramework.SATAPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.lbPacientesFemeninos = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnBuscarCita = new FrameworkTest.SATAButton();
             this.btnBuscarPaciente = new FrameworkTest.SATAButton();
@@ -60,25 +64,21 @@
             this.panelBotones = new System.Windows.Forms.Panel();
             this.PanelFoto = new SATAUiFramework.SATAPanel();
             this.pbFotoInicio = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.sataPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.sataPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sataPanel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.sataPanel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelBotones.SuspendLayout();
             this.PanelFoto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoInicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // sataPanel1
@@ -86,16 +86,16 @@
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius6.BottomLeft = 15;
-            borderRadius6.BottomRight = 15;
-            borderRadius6.TopLeft = 15;
-            borderRadius6.TopRight = 15;
-            this.sataPanel1.BorderRadius = borderRadius6;
+            borderRadius1.BottomLeft = 15;
+            borderRadius1.BottomRight = 15;
+            borderRadius1.TopLeft = 15;
+            borderRadius1.TopRight = 15;
+            this.sataPanel1.BorderRadius = borderRadius1;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.label5);
             this.sataPanel1.Controls.Add(this.lbCitasAgendadas);
             this.sataPanel1.Controls.Add(this.panel2);
-            this.sataPanel1.Location = new System.Drawing.Point(25, 20);
+            this.sataPanel1.Location = new System.Drawing.Point(52, 20);
             this.sataPanel1.Name = "sataPanel1";
             this.sataPanel1.Size = new System.Drawing.Size(313, 128);
             this.sataPanel1.TabIndex = 43;
@@ -135,6 +135,16 @@
             this.panel2.Size = new System.Drawing.Size(112, 128);
             this.panel2.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(27, 56);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(56, 55);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -152,11 +162,11 @@
             this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel2.BorderColor = System.Drawing.Color.Black;
-            borderRadius7.BottomLeft = 15;
-            borderRadius7.BottomRight = 15;
-            borderRadius7.TopLeft = 15;
-            borderRadius7.TopRight = 15;
-            this.sataPanel2.BorderRadius = borderRadius7;
+            borderRadius2.BottomLeft = 15;
+            borderRadius2.BottomRight = 15;
+            borderRadius2.TopLeft = 15;
+            borderRadius2.TopRight = 15;
+            this.sataPanel2.BorderRadius = borderRadius2;
             this.sataPanel2.BorderThickness = 0;
             this.sataPanel2.Controls.Add(this.label4);
             this.sataPanel2.Controls.Add(this.lbPacientesRegistrados);
@@ -201,6 +211,16 @@
             this.panel3.Size = new System.Drawing.Size(112, 128);
             this.panel3.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(30, 56);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(56, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -218,16 +238,16 @@
             this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel3.BorderColor = System.Drawing.Color.Black;
-            borderRadius8.BottomLeft = 15;
-            borderRadius8.BottomRight = 15;
-            borderRadius8.TopLeft = 15;
-            borderRadius8.TopRight = 15;
-            this.sataPanel3.BorderRadius = borderRadius8;
+            borderRadius3.BottomLeft = 15;
+            borderRadius3.BottomRight = 15;
+            borderRadius3.TopLeft = 15;
+            borderRadius3.TopRight = 15;
+            this.sataPanel3.BorderRadius = borderRadius3;
             this.sataPanel3.BorderThickness = 0;
             this.sataPanel3.Controls.Add(this.label7);
             this.sataPanel3.Controls.Add(this.lbPacientesMasculinos);
             this.sataPanel3.Controls.Add(this.panel4);
-            this.sataPanel3.Location = new System.Drawing.Point(52, 171);
+            this.sataPanel3.Location = new System.Drawing.Point(52, 190);
             this.sataPanel3.Name = "sataPanel3";
             this.sataPanel3.Size = new System.Drawing.Size(313, 128);
             this.sataPanel3.TabIndex = 44;
@@ -267,6 +287,16 @@
             this.panel4.Size = new System.Drawing.Size(112, 128);
             this.panel4.TabIndex = 0;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(30, 56);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(56, 55);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -284,16 +314,16 @@
             this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel4.BorderColor = System.Drawing.Color.Black;
-            borderRadius9.BottomLeft = 15;
-            borderRadius9.BottomRight = 15;
-            borderRadius9.TopLeft = 15;
-            borderRadius9.TopRight = 15;
-            this.sataPanel4.BorderRadius = borderRadius9;
+            borderRadius4.BottomLeft = 15;
+            borderRadius4.BottomRight = 15;
+            borderRadius4.TopLeft = 15;
+            borderRadius4.TopRight = 15;
+            this.sataPanel4.BorderRadius = borderRadius4;
             this.sataPanel4.BorderThickness = 0;
             this.sataPanel4.Controls.Add(this.label6);
             this.sataPanel4.Controls.Add(this.lbPacientesFemeninos);
             this.sataPanel4.Controls.Add(this.panel5);
-            this.sataPanel4.Location = new System.Drawing.Point(586, 171);
+            this.sataPanel4.Location = new System.Drawing.Point(586, 190);
             this.sataPanel4.Name = "sataPanel4";
             this.sataPanel4.Size = new System.Drawing.Size(313, 128);
             this.sataPanel4.TabIndex = 45;
@@ -334,6 +364,16 @@
             this.panel5.Size = new System.Drawing.Size(112, 128);
             this.panel5.TabIndex = 0;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(30, 52);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(56, 59);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -368,7 +408,7 @@
             this.btnBuscarCita.ImageTint = System.Drawing.Color.White;
             this.btnBuscarCita.IsToggleButton = false;
             this.btnBuscarCita.IsToggled = false;
-            this.btnBuscarCita.Location = new System.Drawing.Point(1052, 106);
+            this.btnBuscarCita.Location = new System.Drawing.Point(1052, 144);
             this.btnBuscarCita.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarCita.Name = "btnBuscarCita";
             this.btnBuscarCita.NormalBackground = System.Drawing.Color.PaleVioletRed;
@@ -408,7 +448,7 @@
             this.btnBuscarPaciente.ImageTint = System.Drawing.Color.White;
             this.btnBuscarPaciente.IsToggleButton = false;
             this.btnBuscarPaciente.IsToggled = false;
-            this.btnBuscarPaciente.Location = new System.Drawing.Point(1052, 180);
+            this.btnBuscarPaciente.Location = new System.Drawing.Point(1052, 242);
             this.btnBuscarPaciente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarPaciente.Name = "btnBuscarPaciente";
             this.btnBuscarPaciente.NormalBackground = System.Drawing.Color.RoyalBlue;
@@ -468,6 +508,8 @@
             // 
             // panelBotones
             // 
+            this.panelBotones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.panelBotones.Controls.Add(this.btnAgendarCita);
             this.panelBotones.Controls.Add(this.btnBuscarPaciente);
@@ -476,77 +518,41 @@
             this.panelBotones.Controls.Add(this.sataPanel3);
             this.panelBotones.Controls.Add(this.sataPanel2);
             this.panelBotones.Controls.Add(this.sataPanel1);
-            this.panelBotones.Location = new System.Drawing.Point(38, 344);
+            this.panelBotones.Location = new System.Drawing.Point(38, 306);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Size = new System.Drawing.Size(1321, 319);
+            this.panelBotones.Size = new System.Drawing.Size(1321, 357);
             this.panelBotones.TabIndex = 0;
             // 
             // PanelFoto
             // 
+            this.PanelFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.PanelFoto.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.PanelFoto.BorderColor = System.Drawing.Color.Black;
-            borderRadius10.BottomLeft = 10;
-            borderRadius10.BottomRight = 10;
-            borderRadius10.TopLeft = 10;
-            borderRadius10.TopRight = 10;
-            this.PanelFoto.BorderRadius = borderRadius10;
+            borderRadius5.BottomLeft = 10;
+            borderRadius5.BottomRight = 10;
+            borderRadius5.TopLeft = 10;
+            borderRadius5.TopRight = 10;
+            this.PanelFoto.BorderRadius = borderRadius5;
             this.PanelFoto.BorderThickness = 0;
             this.PanelFoto.Controls.Add(this.pbFotoInicio);
             this.PanelFoto.Location = new System.Drawing.Point(38, 22);
             this.PanelFoto.Name = "PanelFoto";
-            this.PanelFoto.Size = new System.Drawing.Size(1123, 307);
+            this.PanelFoto.Size = new System.Drawing.Size(1123, 250);
             this.PanelFoto.TabIndex = 1;
             // 
             // pbFotoInicio
             // 
+            this.pbFotoInicio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbFotoInicio.Image = ((System.Drawing.Image)(resources.GetObject("pbFotoInicio.Image")));
             this.pbFotoInicio.Location = new System.Drawing.Point(0, 0);
             this.pbFotoInicio.Name = "pbFotoInicio";
-            this.pbFotoInicio.Size = new System.Drawing.Size(1321, 307);
+            this.pbFotoInicio.Size = new System.Drawing.Size(1123, 250);
             this.pbFotoInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFotoInicio.TabIndex = 0;
             this.pbFotoInicio.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(30, 52);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(56, 59);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(30, 56);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(56, 55);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(30, 56);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 55);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(27, 56);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(56, 55);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // frmInicio
             // 
@@ -564,25 +570,25 @@
             this.sataPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.sataPanel2.ResumeLayout(false);
             this.sataPanel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.sataPanel3.ResumeLayout(false);
             this.sataPanel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.sataPanel4.ResumeLayout(false);
             this.sataPanel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panelBotones.ResumeLayout(false);
             this.PanelFoto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoInicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

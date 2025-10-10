@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +16,8 @@ namespace sistema
     {
         private frmMain _mainForm;
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+
 
         public frmInicio(frmMain mainForm)
         {
