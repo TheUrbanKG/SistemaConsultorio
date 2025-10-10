@@ -34,12 +34,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.flpPacientes = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.btnNuevoPaciente);
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
@@ -89,6 +92,24 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // flpPacientes
+            // 
+            this.flpPacientes.Location = new System.Drawing.Point(0, 106);
+            this.flpPacientes.Name = "flpPacientes";
+            this.flpPacientes.Size = new System.Drawing.Size(391, 616);
+            this.flpPacientes.TabIndex = 1;
+            // 
+            // btnNuevoPaciente
+            // 
+            this.btnNuevoPaciente.Location = new System.Drawing.Point(155, 29);
+            this.btnNuevoPaciente.Name = "btnNuevoPaciente";
+            this.btnNuevoPaciente.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevoPaciente.TabIndex = 2;
+            this.btnNuevoPaciente.Tag = "";
+            this.btnNuevoPaciente.Text = "Nuevo";
+            this.btnNuevoPaciente.UseVisualStyleBackColor = true;
+            this.btnNuevoPaciente.Click += new System.EventHandler(this.btnNuevoPaciente_Click);
+            // 
             // AgregarCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,6 +117,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(390, 744);
+            this.Controls.Add(this.flpPacientes);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AgregarCitas";
@@ -115,5 +137,7 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.FlowLayoutPanel flpPacientes;
+        private System.Windows.Forms.Button btnNuevoPaciente;
     }
 }

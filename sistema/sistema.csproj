@@ -198,6 +198,7 @@
     <Compile Include="PacienteCita.Designer.cs">
       <DependentUpon>PacienteCita.cs</DependentUpon>
     </Compile>
+    <Compile Include="PacientePreview.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\UserControlBlank.cs">

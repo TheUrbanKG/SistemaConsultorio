@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,8 @@ namespace sistema
 {
     public partial class PacienteCita : Form
     {
+        public PacientePreview PreviewPaciente { get; private set; }
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
         private const string PlaceholderCedula = "Ingrese cédula";
         private const string PlaceholderNombre = "Ingrese Nombre";
         private const string PlaceholderApellidoPa = "Ingrese Apellido";
@@ -27,6 +31,9 @@ namespace sistema
             // Inicializar las fuentes una sola vez
             fuentePlaceholder = new Font("Segoe UI", 13, FontStyle.Italic);
             fuenteNormal = new Font("Segoe UI", 12, FontStyle.Regular);
+
+            panelConocido.Visible = false;
+            panelDesconocido.Visible = false;
 
             InicializarCampos();
             dtpFechaNacimiento.Visible = false;
@@ -62,6 +69,9 @@ namespace sistema
             {
                 panelSi.BackColor = Color.LightGreen;
                 panelNo.BackColor = Color.WhiteSmoke;
+
+                panelConocido.Visible = true;
+                panelDesconocido.Visible = false;
             }
         }
 
@@ -71,6 +81,9 @@ namespace sistema
             {
                 panelNo.BackColor = Color.LightCoral;
                 panelSi.BackColor = Color.WhiteSmoke;
+
+                panelConocido.Visible = false;
+                panelDesconocido.Visible = true;
             }
         }
 
@@ -202,6 +215,85 @@ namespace sistema
 
         private void picCalendario_MouseLeave(object sender, EventArgs e)
         {
+        }
+
+        private void panelConocido_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (panelConocido.Visible)
+            {
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    string query = @"INSERT INTO dbo.PacienteConocido
+                                    (Cedula, Nombre, ApellidoPaterno, ApellidoMaterno, FechaNacimiento, Edad, Genero, Telefono, TelefonoCelular, Ocupacion, Domicilio, Ciudad, CorreoElectronico, GrupoSanguineo, Religion, Detalles, FechaRegistro)
+                                    VALUES (@Cedula, @Nombre, @ApellidoPaterno, @ApellidoMaterno, @FechaNacimiento, @Edad, @Genero, @Telefono, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @CorreoElectronico, @GrupoSanguineo, @Religion, @Detalles, @FechaRegistro)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("@Cedula", txtCedula.Text);
+                    cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                    cmd.Parameters.AddWithValue("@ApellidoPaterno", txtApellidoPa.Text);
+                    cmd.Parameters.AddWithValue("@ApellidoMaterno", txtApellidoMa.Text);
+                    cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
+                    cmd.Parameters.AddWithValue("@Edad", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@Genero", radioButton2.Checked ? "Masculino" : "Femenino");
+                    cmd.Parameters.AddWithValue("@Telefono", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@TelefonoCelular", textBox3.Text);
+                    cmd.Parameters.AddWithValue("@Ocupacion", textBox4.Text);
+                    cmd.Parameters.AddWithValue("@Domicilio", textBox6.Text);
+                    cmd.Parameters.AddWithValue("@Ciudad", textBox5.Text);
+                    cmd.Parameters.AddWithValue("@CorreoElectronico", textBox8.Text);
+                    cmd.Parameters.AddWithValue("@GrupoSanguineo", comboBox1.Text);
+                    cmd.Parameters.AddWithValue("@Religion", textBox7.Text);
+                    cmd.Parameters.AddWithValue("@Detalles", richTextBox1.Text);
+                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            else if (panelDesconocido.Visible)
+            {
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    string query = @"INSERT INTO PacienteDesconocido 
+                (FechaRegistro, Edad, Genero, TelefonoCelular, Ocupacion, Domicilio, Ciudad, GrupoSanguineo, Religion, Detalles)
+                VALUES (@FechaRegistro, @Edad, @Genero, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @GrupoSanguineo, @Religion, @Detalles)";
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("@Edad", textBox9.Text);
+                    cmd.Parameters.AddWithValue("@Genero", radioButton4.Checked ? "Masculino" : "Femenino");
+                    cmd.Parameters.AddWithValue("@TelefonoCelular", textBox12.Text);
+                    cmd.Parameters.AddWithValue("@Ocupacion", textBox11.Text);
+                    cmd.Parameters.AddWithValue("@Domicilio", textBox13.Text);
+                    cmd.Parameters.AddWithValue("@Ciudad", textBox18.Text);
+                    cmd.Parameters.AddWithValue("@GrupoSanguineo", comboBox2.Text);
+                    cmd.Parameters.AddWithValue("@Religion", textBox17.Text);
+                    cmd.Parameters.AddWithValue("@Detalles", richTextBox2.Text);
+                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+             
+                }
+            }
+            string nombre = txtNombre.Text == PlaceholderNombre ? "" : txtNombre.Text;
+            string apellidoPaterno = txtApellidoPa.Text == PlaceholderApellidoPa ? "" : txtApellidoPa.Text;
+            MessageBox.Show("Paciente guardado correctamente.");
+
+            var preview = new PacientePreview
+            {
+                Tipo = panelConocido.Visible ? "Conocido" : "Desconocido",
+                Nombre = panelConocido.Visible ? txtNombre.Text : "Desconocido",
+                Genero = panelConocido.Visible ? (radioButton2.Checked ? "Masculino" : "Femenino") : (radioButton4.Checked ? "Masculino" : "Femenino"),
+                GrupoSanguineo = panelConocido.Visible ? comboBox1.Text : comboBox2.Text,
+                Edad = panelConocido.Visible ? textBox1.Text : textBox9.Text
+            };
+
+            // Abrir AgregarCitas con la vista previa del paciente
+            var agregarCitas = new AgregarCitas(preview);
+            agregarCitas.ShowDialog();
+
         }
     }
 }

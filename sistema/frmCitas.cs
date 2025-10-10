@@ -67,7 +67,7 @@ namespace sistema
 
         private void labelFecha_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void contenedorDias_Paint(object sender, PaintEventArgs e)
