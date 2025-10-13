@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(197)))), ((int)(((byte)(121)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -85,7 +85,7 @@
             this.btnNuevoCuadro.Location = new System.Drawing.Point(26, 24);
             this.btnNuevoCuadro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevoCuadro.Name = "btnNuevoCuadro";
-            this.btnNuevoCuadro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnNuevoCuadro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.btnNuevoCuadro.NormalForeColor = System.Drawing.Color.Black;
             this.btnNuevoCuadro.NormalOutline = System.Drawing.Color.Empty;
             this.btnNuevoCuadro.OutlineThickness = 2F;
@@ -102,6 +102,7 @@
             // 
             // flpCuadros
             // 
+            this.flpCuadros.AutoScroll = true;
             this.flpCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpCuadros.Location = new System.Drawing.Point(0, 87);
             this.flpCuadros.Name = "flpCuadros";

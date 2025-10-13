@@ -171,7 +171,7 @@
             this.sataPanel2.Controls.Add(this.label4);
             this.sataPanel2.Controls.Add(this.lbPacientesRegistrados);
             this.sataPanel2.Controls.Add(this.panel3);
-            this.sataPanel2.Location = new System.Drawing.Point(586, 20);
+            this.sataPanel2.Location = new System.Drawing.Point(624, 39);
             this.sataPanel2.Name = "sataPanel2";
             this.sataPanel2.Size = new System.Drawing.Size(313, 128);
             this.sataPanel2.TabIndex = 43;
@@ -323,7 +323,7 @@
             this.sataPanel4.Controls.Add(this.label6);
             this.sataPanel4.Controls.Add(this.lbPacientesFemeninos);
             this.sataPanel4.Controls.Add(this.panel5);
-            this.sataPanel4.Location = new System.Drawing.Point(586, 190);
+            this.sataPanel4.Location = new System.Drawing.Point(624, 190);
             this.sataPanel4.Name = "sataPanel4";
             this.sataPanel4.Size = new System.Drawing.Size(313, 128);
             this.sataPanel4.TabIndex = 45;
@@ -388,6 +388,8 @@
             // 
             // btnBuscarCita
             // 
+            this.btnBuscarCita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscarCita.ButtonText = "Buscar Citas Pendientes";
             this.btnBuscarCita.CheckedBackground = System.Drawing.Color.Pink;
             this.btnBuscarCita.CheckedForeColor = System.Drawing.Color.Black;
@@ -408,7 +410,7 @@
             this.btnBuscarCita.ImageTint = System.Drawing.Color.White;
             this.btnBuscarCita.IsToggleButton = false;
             this.btnBuscarCita.IsToggled = false;
-            this.btnBuscarCita.Location = new System.Drawing.Point(1052, 144);
+            this.btnBuscarCita.Location = new System.Drawing.Point(1003, 166);
             this.btnBuscarCita.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarCita.Name = "btnBuscarCita";
             this.btnBuscarCita.NormalBackground = System.Drawing.Color.PaleVioletRed;
@@ -428,6 +430,8 @@
             // 
             // btnBuscarPaciente
             // 
+            this.btnBuscarPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscarPaciente.ButtonText = "Buscar Paciente";
             this.btnBuscarPaciente.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnBuscarPaciente.CheckedForeColor = System.Drawing.Color.Black;
@@ -448,7 +452,7 @@
             this.btnBuscarPaciente.ImageTint = System.Drawing.Color.White;
             this.btnBuscarPaciente.IsToggleButton = false;
             this.btnBuscarPaciente.IsToggled = false;
-            this.btnBuscarPaciente.Location = new System.Drawing.Point(1052, 242);
+            this.btnBuscarPaciente.Location = new System.Drawing.Point(1003, 259);
             this.btnBuscarPaciente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarPaciente.Name = "btnBuscarPaciente";
             this.btnBuscarPaciente.NormalBackground = System.Drawing.Color.RoyalBlue;
@@ -468,6 +472,8 @@
             // 
             // btnAgendarCita
             // 
+            this.btnAgendarCita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgendarCita.ButtonText = "Agendar Nueva Cita";
             this.btnAgendarCita.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(89)))));
             this.btnAgendarCita.CheckedForeColor = System.Drawing.Color.Black;
@@ -488,7 +494,7 @@
             this.btnAgendarCita.ImageTint = System.Drawing.Color.White;
             this.btnAgendarCita.IsToggleButton = false;
             this.btnAgendarCita.IsToggled = false;
-            this.btnAgendarCita.Location = new System.Drawing.Point(1052, 39);
+            this.btnAgendarCita.Location = new System.Drawing.Point(1003, 58);
             this.btnAgendarCita.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAgendarCita.Name = "btnAgendarCita";
             this.btnAgendarCita.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(89)))));
@@ -520,7 +526,7 @@
             this.panelBotones.Controls.Add(this.sataPanel1);
             this.panelBotones.Location = new System.Drawing.Point(38, 306);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Size = new System.Drawing.Size(1321, 357);
+            this.panelBotones.Size = new System.Drawing.Size(1283, 357);
             this.panelBotones.TabIndex = 0;
             // 
             // PanelFoto
@@ -538,9 +544,9 @@
             this.PanelFoto.BorderRadius = borderRadius5;
             this.PanelFoto.BorderThickness = 0;
             this.PanelFoto.Controls.Add(this.pbFotoInicio);
-            this.PanelFoto.Location = new System.Drawing.Point(38, 22);
+            this.PanelFoto.Location = new System.Drawing.Point(115, 27);
             this.PanelFoto.Name = "PanelFoto";
-            this.PanelFoto.Size = new System.Drawing.Size(1123, 250);
+            this.PanelFoto.Size = new System.Drawing.Size(1106, 250);
             this.PanelFoto.TabIndex = 1;
             // 
             // pbFotoInicio
@@ -549,7 +555,7 @@
             this.pbFotoInicio.Image = ((System.Drawing.Image)(resources.GetObject("pbFotoInicio.Image")));
             this.pbFotoInicio.Location = new System.Drawing.Point(0, 0);
             this.pbFotoInicio.Name = "pbFotoInicio";
-            this.pbFotoInicio.Size = new System.Drawing.Size(1123, 250);
+            this.pbFotoInicio.Size = new System.Drawing.Size(1106, 250);
             this.pbFotoInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFotoInicio.TabIndex = 0;
             this.pbFotoInicio.TabStop = false;
@@ -559,7 +565,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ClientSize = new System.Drawing.Size(1382, 692);
+            this.ClientSize = new System.Drawing.Size(1365, 692);
             this.Controls.Add(this.PanelFoto);
             this.Controls.Add(this.panelBotones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

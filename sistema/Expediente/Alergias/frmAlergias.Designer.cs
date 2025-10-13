@@ -56,7 +56,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(197)))), ((int)(((byte)(121)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -96,10 +96,10 @@
             this.btnNuevaAlergia.ImageTint = System.Drawing.Color.White;
             this.btnNuevaAlergia.IsToggleButton = false;
             this.btnNuevaAlergia.IsToggled = false;
-            this.btnNuevaAlergia.Location = new System.Drawing.Point(25, 28);
+            this.btnNuevaAlergia.Location = new System.Drawing.Point(26, 24);
             this.btnNuevaAlergia.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevaAlergia.Name = "btnNuevaAlergia";
-            this.btnNuevaAlergia.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnNuevaAlergia.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.btnNuevaAlergia.NormalForeColor = System.Drawing.Color.Black;
             this.btnNuevaAlergia.NormalOutline = System.Drawing.Color.Empty;
             this.btnNuevaAlergia.OutlineThickness = 2F;

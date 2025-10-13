@@ -40,14 +40,19 @@
             // 
             // txtDescripcion
             // 
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescripcion.Location = new System.Drawing.Point(23, 187);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(622, 100);
+            this.txtDescripcion.Size = new System.Drawing.Size(584, 100);
             this.txtDescripcion.TabIndex = 1;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
@@ -59,6 +64,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
@@ -70,12 +78,13 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnAgregarArticulo);
-            this.panel1.Location = new System.Drawing.Point(-2, 320);
+            this.panel1.Location = new System.Drawing.Point(16, 320);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(827, 53);
+            this.panel1.Size = new System.Drawing.Size(809, 53);
             this.panel1.TabIndex = 4;
             // 
             // label3
@@ -111,7 +120,7 @@
             this.btnAgregarArticulo.ImageTint = System.Drawing.Color.White;
             this.btnAgregarArticulo.IsToggleButton = false;
             this.btnAgregarArticulo.IsToggled = false;
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(668, 8);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(650, 8);
             this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -130,6 +139,7 @@
             // 
             // cbCuadro
             // 
+            this.cbCuadro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCuadro.FormattingEnabled = true;
             this.cbCuadro.Location = new System.Drawing.Point(448, 114);
             this.cbCuadro.Name = "cbCuadro";
@@ -138,6 +148,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
@@ -149,19 +162,21 @@
             // 
             // flpArticulos
             // 
+            this.flpArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flpArticulos.AutoScroll = true;
             this.flpArticulos.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpArticulos.Location = new System.Drawing.Point(16, 385);
             this.flpArticulos.Name = "flpArticulos";
             this.flpArticulos.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.flpArticulos.Size = new System.Drawing.Size(808, 200);
+            this.flpArticulos.Size = new System.Drawing.Size(809, 200);
             this.flpArticulos.TabIndex = 8;
             this.flpArticulos.WrapContents = false;
             // 
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.ButtonText = "Guardar";
+            this.btnGuardar.ButtonText = "";
             this.btnGuardar.CheckedBackground = System.Drawing.Color.DodgerBlue;
             this.btnGuardar.CheckedForeColor = System.Drawing.Color.White;
             this.btnGuardar.CheckedImageTint = System.Drawing.Color.White;
@@ -176,11 +191,11 @@
             this.btnGuardar.Image = global::sistema.Properties.Resources.Guardar;
             this.btnGuardar.ImageAutoCenter = true;
             this.btnGuardar.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnGuardar.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnGuardar.ImageOffset = new System.Drawing.Point(6, 0);
             this.btnGuardar.ImageTint = System.Drawing.Color.White;
             this.btnGuardar.IsToggleButton = false;
             this.btnGuardar.IsToggled = false;
-            this.btnGuardar.Location = new System.Drawing.Point(681, 250);
+            this.btnGuardar.Location = new System.Drawing.Point(727, 243);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
@@ -192,7 +207,7 @@
             this.btnGuardar.PressedImageTint = System.Drawing.Color.White;
             this.btnGuardar.PressedOutline = System.Drawing.Color.Empty;
             this.btnGuardar.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnGuardar.Size = new System.Drawing.Size(121, 37);
+            this.btnGuardar.Size = new System.Drawing.Size(60, 44);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.TextAutoCenter = true;
             this.btnGuardar.TextOffset = new System.Drawing.Point(0, 0);
@@ -202,7 +217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(826, 586);
+            this.ClientSize = new System.Drawing.Size(825, 586);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.flpArticulos);
             this.Controls.Add(this.label4);

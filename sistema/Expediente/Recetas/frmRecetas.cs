@@ -60,11 +60,11 @@ namespace sistema.Expediente.Recetas
 
             using (var conn = new SqlConnection(connectionString))
             using (var cmd = new SqlCommand(@"
-SELECT p.Id, p.PacienteID, p.Titulo, p.Descripcion, p.FechaCreacion, c.Nombre as Cuadro
-FROM PlanTerapeutico p
-LEFT JOIN CuadroClinico c ON c.Id = p.CuadroClinicoId
-WHERE p.PacienteID = @PacienteID
-ORDER BY p.FechaCreacion DESC;", conn))
+            SELECT p.Id, p.PacienteID, p.Titulo, p.Descripcion, p.FechaCreacion, c.Nombre as Cuadro
+            FROM PlanTerapeutico p
+            LEFT JOIN CuadroClinico c ON c.Id = p.CuadroClinicoId
+            WHERE p.PacienteID = @PacienteID
+            ORDER BY p.FechaCreacion DESC;", conn))
             {
                 cmd.Parameters.AddWithValue("@PacienteID", pacienteId);
                 conn.Open();

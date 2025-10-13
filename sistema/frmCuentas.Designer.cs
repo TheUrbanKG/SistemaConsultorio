@@ -43,6 +43,7 @@
             this.btnAñadirUsuario = new FrameworkTest.SATAButton();
             this.btnModificarUsuario = new FrameworkTest.SATAButton();
             this.btnDesabilitar = new FrameworkTest.SATAButton();
+            this.txtBuscar = new SATATextBox();
             this.sataPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +63,7 @@
             this.sataPanel1.BorderRadius = borderRadius1;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.dgvUsuarios);
-            this.sataPanel1.Location = new System.Drawing.Point(65, 73);
+            this.sataPanel1.Location = new System.Drawing.Point(69, 129);
             this.sataPanel1.Name = "sataPanel1";
             this.sataPanel1.Padding = new System.Windows.Forms.Padding(5, 1, 5, 15);
             this.sataPanel1.Size = new System.Drawing.Size(765, 488);
@@ -272,12 +273,36 @@
             this.btnDesabilitar.TextAutoCenter = true;
             this.btnDesabilitar.TextOffset = new System.Drawing.Point(0, 0);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.txtBuscar.BorderColor = System.Drawing.Color.LightSalmon;
+            this.txtBuscar.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.txtBuscar.BorderRadius = 15;
+            this.txtBuscar.BorderSize = 1;
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtBuscar.Icon = ((System.Drawing.Image)(resources.GetObject("txtBuscar.Icon")));
+            this.txtBuscar.IconSize = new System.Drawing.Size(20, 20);
+            this.txtBuscar.Location = new System.Drawing.Point(69, 70);
+            this.txtBuscar.Multiline = false;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.PasswordChar = false;
+            this.txtBuscar.PlaceholderColor = System.Drawing.Color.Silver;
+            this.txtBuscar.PlaceholderText = "Buscar Usuario";
+            this.txtBuscar.Size = new System.Drawing.Size(574, 36);
+            this.txtBuscar.TabIndex = 45;
+            this.txtBuscar.Text = "sataTextBox1";
+            this.txtBuscar.Texts = "";
+            this.txtBuscar.UnderlinedStyle = false;
+            // 
             // frmCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1173, 692);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnDesabilitar);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnAñadirUsuario);
@@ -304,5 +329,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private SATATextBox txtBuscar;
     }
 }
