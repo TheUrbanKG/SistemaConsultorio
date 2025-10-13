@@ -35,14 +35,14 @@
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnRecetas = new FrameworkTest.SATAButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnFisico = new FrameworkTest.SATAButton();
-            this.lbCedula = new System.Windows.Forms.Label();
-            this.lbNombre = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnAlergias = new FrameworkTest.SATAButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCuadros = new FrameworkTest.SATAButton();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnFisico = new FrameworkTest.SATAButton();
+            this.lbCedula = new System.Windows.Forms.Label();
+            this.lbNombre = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnHistoria = new FrameworkTest.SATAButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -51,9 +51,9 @@
             this.panel1.SuspendLayout();
             this.sataPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -117,7 +117,7 @@
             this.btnRecetas.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRecetas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRecetas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecetas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnRecetas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnRecetas.HoverForeColor = System.Drawing.Color.White;
             this.btnRecetas.HoverImage = null;
             this.btnRecetas.HoverImageTint = System.Drawing.Color.White;
@@ -136,7 +136,7 @@
             this.btnRecetas.NormalForeColor = System.Drawing.Color.White;
             this.btnRecetas.NormalOutline = System.Drawing.Color.Empty;
             this.btnRecetas.OutlineThickness = 2F;
-            this.btnRecetas.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnRecetas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnRecetas.PressedForeColor = System.Drawing.Color.White;
             this.btnRecetas.PressedImageTint = System.Drawing.Color.White;
             this.btnRecetas.PressedOutline = System.Drawing.Color.Empty;
@@ -146,6 +146,106 @@
             this.btnRecetas.TextAutoCenter = true;
             this.btnRecetas.TextOffset = new System.Drawing.Point(0, 0);
             this.btnRecetas.Click += new System.EventHandler(this.btnRecetas_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panel5.Controls.Add(this.btnAlergias);
+            this.panel5.Location = new System.Drawing.Point(669, 100);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(3);
+            this.panel5.Size = new System.Drawing.Size(167, 57);
+            this.panel5.TabIndex = 1;
+            // 
+            // btnAlergias
+            // 
+            this.btnAlergias.ButtonText = "Alergias";
+            this.btnAlergias.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnAlergias.CheckedForeColor = System.Drawing.Color.White;
+            this.btnAlergias.CheckedImageTint = System.Drawing.Color.White;
+            this.btnAlergias.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnAlergias.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAlergias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAlergias.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlergias.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnAlergias.HoverForeColor = System.Drawing.Color.White;
+            this.btnAlergias.HoverImage = null;
+            this.btnAlergias.HoverImageTint = System.Drawing.Color.White;
+            this.btnAlergias.HoverOutline = System.Drawing.Color.Empty;
+            this.btnAlergias.Image = null;
+            this.btnAlergias.ImageAutoCenter = true;
+            this.btnAlergias.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnAlergias.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAlergias.ImageTint = System.Drawing.Color.White;
+            this.btnAlergias.IsToggleButton = false;
+            this.btnAlergias.IsToggled = false;
+            this.btnAlergias.Location = new System.Drawing.Point(3, 3);
+            this.btnAlergias.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAlergias.Name = "btnAlergias";
+            this.btnAlergias.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnAlergias.NormalForeColor = System.Drawing.Color.White;
+            this.btnAlergias.NormalOutline = System.Drawing.Color.Empty;
+            this.btnAlergias.OutlineThickness = 2F;
+            this.btnAlergias.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnAlergias.PressedForeColor = System.Drawing.Color.White;
+            this.btnAlergias.PressedImageTint = System.Drawing.Color.White;
+            this.btnAlergias.PressedOutline = System.Drawing.Color.Empty;
+            this.btnAlergias.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnAlergias.Size = new System.Drawing.Size(161, 51);
+            this.btnAlergias.TabIndex = 0;
+            this.btnAlergias.TextAutoCenter = true;
+            this.btnAlergias.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnAlergias.Click += new System.EventHandler(this.btnAlergias_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panel4.Controls.Add(this.btnCuadros);
+            this.panel4.Location = new System.Drawing.Point(503, 100);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(3);
+            this.panel4.Size = new System.Drawing.Size(167, 57);
+            this.panel4.TabIndex = 2;
+            // 
+            // btnCuadros
+            // 
+            this.btnCuadros.ButtonText = "Cuadros";
+            this.btnCuadros.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnCuadros.CheckedForeColor = System.Drawing.Color.White;
+            this.btnCuadros.CheckedImageTint = System.Drawing.Color.White;
+            this.btnCuadros.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnCuadros.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCuadros.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuadros.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnCuadros.HoverForeColor = System.Drawing.Color.White;
+            this.btnCuadros.HoverImage = null;
+            this.btnCuadros.HoverImageTint = System.Drawing.Color.White;
+            this.btnCuadros.HoverOutline = System.Drawing.Color.Empty;
+            this.btnCuadros.Image = null;
+            this.btnCuadros.ImageAutoCenter = true;
+            this.btnCuadros.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnCuadros.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnCuadros.ImageTint = System.Drawing.Color.White;
+            this.btnCuadros.IsToggleButton = false;
+            this.btnCuadros.IsToggled = false;
+            this.btnCuadros.Location = new System.Drawing.Point(3, 3);
+            this.btnCuadros.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCuadros.Name = "btnCuadros";
+            this.btnCuadros.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnCuadros.NormalForeColor = System.Drawing.Color.White;
+            this.btnCuadros.NormalOutline = System.Drawing.Color.Empty;
+            this.btnCuadros.OutlineThickness = 2F;
+            this.btnCuadros.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnCuadros.PressedForeColor = System.Drawing.Color.White;
+            this.btnCuadros.PressedImageTint = System.Drawing.Color.White;
+            this.btnCuadros.PressedOutline = System.Drawing.Color.Empty;
+            this.btnCuadros.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnCuadros.Size = new System.Drawing.Size(161, 51);
+            this.btnCuadros.TabIndex = 0;
+            this.btnCuadros.TextAutoCenter = true;
+            this.btnCuadros.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnCuadros.Click += new System.EventHandler(this.btnCuadros_Click);
             // 
             // panel6
             // 
@@ -168,7 +268,7 @@
             this.btnFisico.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFisico.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFisico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFisico.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnFisico.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnFisico.HoverForeColor = System.Drawing.Color.White;
             this.btnFisico.HoverImage = null;
             this.btnFisico.HoverImageTint = System.Drawing.Color.White;
@@ -187,7 +287,7 @@
             this.btnFisico.NormalForeColor = System.Drawing.Color.White;
             this.btnFisico.NormalOutline = System.Drawing.Color.Empty;
             this.btnFisico.OutlineThickness = 2F;
-            this.btnFisico.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnFisico.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnFisico.PressedForeColor = System.Drawing.Color.White;
             this.btnFisico.PressedImageTint = System.Drawing.Color.White;
             this.btnFisico.PressedOutline = System.Drawing.Color.Empty;
@@ -220,106 +320,6 @@
             this.lbNombre.TabIndex = 3;
             this.lbNombre.Text = "UserName";
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.panel5.Controls.Add(this.btnAlergias);
-            this.panel5.Location = new System.Drawing.Point(669, 100);
-            this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(3);
-            this.panel5.Size = new System.Drawing.Size(167, 57);
-            this.panel5.TabIndex = 1;
-            // 
-            // btnAlergias
-            // 
-            this.btnAlergias.ButtonText = "Alergias";
-            this.btnAlergias.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnAlergias.CheckedForeColor = System.Drawing.Color.White;
-            this.btnAlergias.CheckedImageTint = System.Drawing.Color.White;
-            this.btnAlergias.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnAlergias.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAlergias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAlergias.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlergias.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnAlergias.HoverForeColor = System.Drawing.Color.White;
-            this.btnAlergias.HoverImage = null;
-            this.btnAlergias.HoverImageTint = System.Drawing.Color.White;
-            this.btnAlergias.HoverOutline = System.Drawing.Color.Empty;
-            this.btnAlergias.Image = null;
-            this.btnAlergias.ImageAutoCenter = true;
-            this.btnAlergias.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnAlergias.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAlergias.ImageTint = System.Drawing.Color.White;
-            this.btnAlergias.IsToggleButton = false;
-            this.btnAlergias.IsToggled = false;
-            this.btnAlergias.Location = new System.Drawing.Point(3, 3);
-            this.btnAlergias.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnAlergias.Name = "btnAlergias";
-            this.btnAlergias.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnAlergias.NormalForeColor = System.Drawing.Color.White;
-            this.btnAlergias.NormalOutline = System.Drawing.Color.Empty;
-            this.btnAlergias.OutlineThickness = 2F;
-            this.btnAlergias.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnAlergias.PressedForeColor = System.Drawing.Color.White;
-            this.btnAlergias.PressedImageTint = System.Drawing.Color.White;
-            this.btnAlergias.PressedOutline = System.Drawing.Color.Empty;
-            this.btnAlergias.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnAlergias.Size = new System.Drawing.Size(161, 51);
-            this.btnAlergias.TabIndex = 0;
-            this.btnAlergias.TextAutoCenter = true;
-            this.btnAlergias.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnAlergias.Click += new System.EventHandler(this.btnAlergias_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.panel4.Controls.Add(this.btnCuadros);
-            this.panel4.Location = new System.Drawing.Point(503, 100);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(3);
-            this.panel4.Size = new System.Drawing.Size(167, 57);
-            this.panel4.TabIndex = 2;
-            // 
-            // btnCuadros
-            // 
-            this.btnCuadros.ButtonText = "Cuadros";
-            this.btnCuadros.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnCuadros.CheckedForeColor = System.Drawing.Color.White;
-            this.btnCuadros.CheckedImageTint = System.Drawing.Color.White;
-            this.btnCuadros.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnCuadros.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCuadros.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCuadros.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnCuadros.HoverForeColor = System.Drawing.Color.White;
-            this.btnCuadros.HoverImage = null;
-            this.btnCuadros.HoverImageTint = System.Drawing.Color.White;
-            this.btnCuadros.HoverOutline = System.Drawing.Color.Empty;
-            this.btnCuadros.Image = null;
-            this.btnCuadros.ImageAutoCenter = true;
-            this.btnCuadros.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnCuadros.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnCuadros.ImageTint = System.Drawing.Color.White;
-            this.btnCuadros.IsToggleButton = false;
-            this.btnCuadros.IsToggled = false;
-            this.btnCuadros.Location = new System.Drawing.Point(3, 3);
-            this.btnCuadros.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCuadros.Name = "btnCuadros";
-            this.btnCuadros.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnCuadros.NormalForeColor = System.Drawing.Color.White;
-            this.btnCuadros.NormalOutline = System.Drawing.Color.Empty;
-            this.btnCuadros.OutlineThickness = 2F;
-            this.btnCuadros.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnCuadros.PressedForeColor = System.Drawing.Color.White;
-            this.btnCuadros.PressedImageTint = System.Drawing.Color.White;
-            this.btnCuadros.PressedOutline = System.Drawing.Color.Empty;
-            this.btnCuadros.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnCuadros.Size = new System.Drawing.Size(161, 51);
-            this.btnCuadros.TabIndex = 0;
-            this.btnCuadros.TextAutoCenter = true;
-            this.btnCuadros.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnCuadros.Click += new System.EventHandler(this.btnCuadros_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
@@ -340,7 +340,7 @@
             this.btnHistoria.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnHistoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHistoria.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistoria.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnHistoria.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnHistoria.HoverForeColor = System.Drawing.Color.White;
             this.btnHistoria.HoverImage = null;
             this.btnHistoria.HoverImageTint = System.Drawing.Color.White;
@@ -359,7 +359,7 @@
             this.btnHistoria.NormalForeColor = System.Drawing.Color.White;
             this.btnHistoria.NormalOutline = System.Drawing.Color.Empty;
             this.btnHistoria.OutlineThickness = 2F;
-            this.btnHistoria.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnHistoria.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnHistoria.PressedForeColor = System.Drawing.Color.White;
             this.btnHistoria.PressedImageTint = System.Drawing.Color.White;
             this.btnHistoria.PressedOutline = System.Drawing.Color.Empty;
@@ -383,14 +383,14 @@
             // btnRegistro
             // 
             this.btnRegistro.ButtonText = "Registro";
-            this.btnRegistro.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnRegistro.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(58)))));
             this.btnRegistro.CheckedForeColor = System.Drawing.Color.White;
             this.btnRegistro.CheckedImageTint = System.Drawing.Color.White;
-            this.btnRegistro.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnRegistro.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(108)))), ((int)(((byte)(58)))));
             this.btnRegistro.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRegistro.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnRegistro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnRegistro.HoverForeColor = System.Drawing.Color.White;
             this.btnRegistro.HoverImage = null;
             this.btnRegistro.HoverImageTint = System.Drawing.Color.White;
@@ -409,7 +409,7 @@
             this.btnRegistro.NormalForeColor = System.Drawing.Color.White;
             this.btnRegistro.NormalOutline = System.Drawing.Color.Empty;
             this.btnRegistro.OutlineThickness = 2F;
-            this.btnRegistro.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnRegistro.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnRegistro.PressedForeColor = System.Drawing.Color.White;
             this.btnRegistro.PressedImageTint = System.Drawing.Color.White;
             this.btnRegistro.PressedOutline = System.Drawing.Color.Empty;
@@ -446,9 +446,9 @@
             this.sataPanel1.ResumeLayout(false);
             this.sataPanel1.PerformLayout();
             this.panel7.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
