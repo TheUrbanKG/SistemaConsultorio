@@ -427,6 +427,7 @@
             this.txtTemperatura.CustomButton.UseSelectable = true;
             this.txtTemperatura.CustomButton.Visible = false;
             this.txtTemperatura.DisplayIcon = true;
+            this.txtTemperatura.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtTemperatura.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtTemperatura.Icon = ((System.Drawing.Image)(resources.GetObject("txtTemperatura.Icon")));
             this.txtTemperatura.IconRight = true;
@@ -468,6 +469,7 @@
             this.txtAltura.CustomButton.UseSelectable = true;
             this.txtAltura.CustomButton.Visible = false;
             this.txtAltura.DisplayIcon = true;
+            this.txtAltura.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtAltura.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtAltura.Icon = ((System.Drawing.Image)(resources.GetObject("txtAltura.Icon")));
             this.txtAltura.IconRight = true;
@@ -510,6 +512,7 @@
             this.txtTensionSistolica.CustomButton.UseSelectable = true;
             this.txtTensionSistolica.CustomButton.Visible = false;
             this.txtTensionSistolica.DisplayIcon = true;
+            this.txtTensionSistolica.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtTensionSistolica.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtTensionSistolica.Icon = ((System.Drawing.Image)(resources.GetObject("txtTensionSistolica.Icon")));
             this.txtTensionSistolica.IconRight = true;
@@ -552,6 +555,7 @@
             this.txtFrecuenciaRespiratoria.CustomButton.UseSelectable = true;
             this.txtFrecuenciaRespiratoria.CustomButton.Visible = false;
             this.txtFrecuenciaRespiratoria.DisplayIcon = true;
+            this.txtFrecuenciaRespiratoria.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtFrecuenciaRespiratoria.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtFrecuenciaRespiratoria.Icon = ((System.Drawing.Image)(resources.GetObject("txtFrecuenciaRespiratoria.Icon")));
             this.txtFrecuenciaRespiratoria.IconRight = true;
@@ -588,6 +592,7 @@
             this.txtOxigeno.CustomButton.UseSelectable = true;
             this.txtOxigeno.CustomButton.Visible = false;
             this.txtOxigeno.DisplayIcon = true;
+            this.txtOxigeno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtOxigeno.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtOxigeno.Icon = ((System.Drawing.Image)(resources.GetObject("txtOxigeno.Icon")));
             this.txtOxigeno.IconRight = true;
@@ -630,6 +635,7 @@
             this.txtFrecuenciaCardiaca.CustomButton.UseSelectable = true;
             this.txtFrecuenciaCardiaca.CustomButton.Visible = false;
             this.txtFrecuenciaCardiaca.DisplayIcon = true;
+            this.txtFrecuenciaCardiaca.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtFrecuenciaCardiaca.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtFrecuenciaCardiaca.Icon = ((System.Drawing.Image)(resources.GetObject("txtFrecuenciaCardiaca.Icon")));
             this.txtFrecuenciaCardiaca.IconRight = true;
@@ -666,6 +672,7 @@
             this.txtTensionDiastolica.CustomButton.UseSelectable = true;
             this.txtTensionDiastolica.CustomButton.Visible = false;
             this.txtTensionDiastolica.DisplayIcon = true;
+            this.txtTensionDiastolica.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtTensionDiastolica.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtTensionDiastolica.Icon = ((System.Drawing.Image)(resources.GetObject("txtTensionDiastolica.Icon")));
             this.txtTensionDiastolica.IconRight = true;
@@ -708,6 +715,7 @@
             this.txtPeso.CustomButton.UseSelectable = true;
             this.txtPeso.CustomButton.Visible = false;
             this.txtPeso.DisplayIcon = true;
+            this.txtPeso.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtPeso.FontWeight = MetroFramework.MetroTextBoxWeight.Light;
             this.txtPeso.Icon = ((System.Drawing.Image)(resources.GetObject("txtPeso.Icon")));
             this.txtPeso.IconRight = true;
