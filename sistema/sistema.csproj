@@ -106,6 +106,18 @@
     <Compile Include="Expediente\Cuadros\frmDetalleCuadros.Designer.cs">
       <DependentUpon>frmDetalleCuadros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Expediente\Documentos\frmDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Documentos\frmDocumentos.Designer.cs">
+      <DependentUpon>frmDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expediente\ExploracionFisica\frmExploracionFisica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\ExploracionFisica\frmExploracionFisica.Designer.cs">
+      <DependentUpon>frmExploracionFisica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expediente\frmExpediente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +129,18 @@
     </Compile>
     <Compile Include="Expediente\Historia\frmHistoria.Designer.cs">
       <DependentUpon>frmHistoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expediente\Recetas\frmDetalleRecetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Recetas\frmDetalleRecetas.Designer.cs">
+      <DependentUpon>frmDetalleRecetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expediente\Recetas\frmRecetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Recetas\frmRecetas.Designer.cs">
+      <DependentUpon>frmRecetas.cs</DependentUpon>
     </Compile>
     <Compile Include="Expediente\Registro\frmDetalleRegistro.cs">
       <SubType>Form</SubType>
@@ -228,11 +252,23 @@
     <EmbeddedResource Include="Expediente\Cuadros\frmDetalleCuadros.resx">
       <DependentUpon>frmDetalleCuadros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Expediente\Documentos\frmDocumentos.resx">
+      <DependentUpon>frmDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Expediente\ExploracionFisica\frmExploracionFisica.resx">
+      <DependentUpon>frmExploracionFisica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Expediente\frmExpediente.resx">
       <DependentUpon>frmExpediente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente\Historia\frmHistoria.resx">
       <DependentUpon>frmHistoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Expediente\Recetas\frmDetalleRecetas.resx">
+      <DependentUpon>frmDetalleRecetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Expediente\Recetas\frmRecetas.resx">
+      <DependentUpon>frmRecetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente\Registro\frmDetalleRegistro.resx">
       <DependentUpon>frmDetalleRegistro.cs</DependentUpon>
