@@ -102,6 +102,7 @@
             // 
             // flpCuadros
             // 
+            this.flpCuadros.AutoScroll = true;
             this.flpCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpCuadros.Location = new System.Drawing.Point(0, 87);
             this.flpCuadros.Name = "flpCuadros";
