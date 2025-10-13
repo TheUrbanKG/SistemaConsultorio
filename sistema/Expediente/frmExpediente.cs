@@ -1,4 +1,6 @@
-﻿using sistema.Expediente.Historia;
+﻿using sistema.Expediente.ExploracionFisica;
+using sistema.Expediente.Historia;
+using sistema.Expediente.Recetas;
 using sistema.Expediente.Registro;
 using sistema.Models;
 using System;
@@ -108,6 +110,32 @@ namespace sistema.Expediente
             registro.PacienteID = this.PacienteID;
             abrirFormHijo(registro);
             this.Refresh();
+        }
+
+        private void btnRecetas_Click(object sender, EventArgs e)
+        {
+            if (PacienteID <= 0)
+            {
+                MessageBox.Show("No se ha recibido un ID de paciente válido");
+                return;
+            }
+
+            frmRecetas recetas = new frmRecetas();
+            recetas.PacienteID = this.PacienteID;
+            abrirFormHijo(recetas);
+        }
+
+        private void btnFisico_Click(object sender, EventArgs e)
+        {
+            if (PacienteID <= 0)
+            {
+                MessageBox.Show("No se ha recibido un ID de paciente válido");
+                return;
+            }
+
+            frmExploracionFisica fisica = new frmExploracionFisica();
+            fisica.PacienteID = this.PacienteID;
+            abrirFormHijo(fisica);
         }
     }
 }

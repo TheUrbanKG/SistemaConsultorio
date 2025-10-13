@@ -81,7 +81,7 @@ namespace sistema.Expediente
                     Height = 110,
                     BackColor = Color.FromArgb(62, 62, 62),
                     BorderStyle = BorderStyle.None,
-                    Margin = new Padding(0, 0, 0, 1)
+                    Margin = new Padding(0, 0, 0, 0)
                 };
 
                 // Línea superior verde
@@ -89,7 +89,7 @@ namespace sistema.Expediente
                 {
                     Height = 3,
                     Dock = DockStyle.Top,
-                    BackColor = Color.FromArgb(100, 197, 121)
+                    BackColor = Color.FromArgb(0, 167, 110)
                 };
                 panel.Controls.Add(topLine);
 
@@ -191,15 +191,6 @@ namespace sistema.Expediente
                 panelBotones.Controls.Add(btnEliminar);
 
                 panel.Controls.Add(panelBotones);
-
-                // Sombra inferior (opcional)
-                Panel bottomShadow = new Panel
-                {
-                    Height = 4,
-                    Dock = DockStyle.Bottom,
-                    BackColor = Color.FromArgb(30, 30, 30)
-                };
-                panel.Controls.Add(bottomShadow);
 
                 flpCuadros.Controls.Add(panel);
             }
