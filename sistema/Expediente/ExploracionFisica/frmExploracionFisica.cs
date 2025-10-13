@@ -12,6 +12,7 @@ namespace sistema.Expediente.ExploracionFisica
 {
     public partial class frmExploracionFisica : Form
     {
+        public int PacienteID { get; set; }
         public frmExploracionFisica()
         {
             InitializeComponent();
