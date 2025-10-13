@@ -397,10 +397,10 @@
             this.sataButton1.ImageTint = System.Drawing.Color.White;
             this.sataButton1.IsToggleButton = false;
             this.sataButton1.IsToggled = false;
-            this.sataButton1.Location = new System.Drawing.Point(892, 595);
+            this.sataButton1.Location = new System.Drawing.Point(855, 595);
             this.sataButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.sataButton1.Name = "sataButton1";
-            this.sataButton1.NormalBackground = System.Drawing.Color.Coral;
+            this.sataButton1.NormalBackground = System.Drawing.Color.DarkSalmon;
             this.sataButton1.NormalForeColor = System.Drawing.Color.White;
             this.sataButton1.NormalOutline = System.Drawing.Color.Empty;
             this.sataButton1.OutlineThickness = 2F;
