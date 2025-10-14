@@ -43,7 +43,6 @@
             this.btnAñadirUsuario = new FrameworkTest.SATAButton();
             this.btnModificarUsuario = new FrameworkTest.SATAButton();
             this.btnDesabilitar = new FrameworkTest.SATAButton();
-            this.txtBuscar = new SATATextBox();
             this.sataPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -204,7 +203,7 @@
             this.btnModificarUsuario.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnModificarUsuario.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnModificarUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarUsuario.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnModificarUsuario.HoverBackground = System.Drawing.Color.DodgerBlue;
             this.btnModificarUsuario.HoverForeColor = System.Drawing.Color.White;
             this.btnModificarUsuario.HoverImage = null;
             this.btnModificarUsuario.HoverImageTint = System.Drawing.Color.White;
@@ -223,7 +222,7 @@
             this.btnModificarUsuario.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnModificarUsuario.NormalOutline = System.Drawing.Color.Empty;
             this.btnModificarUsuario.OutlineThickness = 2F;
-            this.btnModificarUsuario.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnModificarUsuario.PressedBackground = System.Drawing.Color.DarkBlue;
             this.btnModificarUsuario.PressedForeColor = System.Drawing.Color.White;
             this.btnModificarUsuario.PressedImageTint = System.Drawing.Color.White;
             this.btnModificarUsuario.PressedOutline = System.Drawing.Color.Empty;
@@ -244,7 +243,7 @@
             this.btnDesabilitar.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnDesabilitar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDesabilitar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesabilitar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnDesabilitar.HoverBackground = System.Drawing.Color.Firebrick;
             this.btnDesabilitar.HoverForeColor = System.Drawing.Color.White;
             this.btnDesabilitar.HoverImage = null;
             this.btnDesabilitar.HoverImageTint = System.Drawing.Color.White;
@@ -263,7 +262,7 @@
             this.btnDesabilitar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDesabilitar.NormalOutline = System.Drawing.Color.Empty;
             this.btnDesabilitar.OutlineThickness = 2F;
-            this.btnDesabilitar.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnDesabilitar.PressedBackground = System.Drawing.Color.Firebrick;
             this.btnDesabilitar.PressedForeColor = System.Drawing.Color.White;
             this.btnDesabilitar.PressedImageTint = System.Drawing.Color.White;
             this.btnDesabilitar.PressedOutline = System.Drawing.Color.Empty;
@@ -273,36 +272,12 @@
             this.btnDesabilitar.TextAutoCenter = true;
             this.btnDesabilitar.TextOffset = new System.Drawing.Point(0, 0);
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.txtBuscar.BorderColor = System.Drawing.Color.LightSalmon;
-            this.txtBuscar.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.txtBuscar.BorderRadius = 15;
-            this.txtBuscar.BorderSize = 1;
-            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtBuscar.Icon = ((System.Drawing.Image)(resources.GetObject("txtBuscar.Icon")));
-            this.txtBuscar.IconSize = new System.Drawing.Size(20, 20);
-            this.txtBuscar.Location = new System.Drawing.Point(69, 70);
-            this.txtBuscar.Multiline = false;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.PasswordChar = false;
-            this.txtBuscar.PlaceholderColor = System.Drawing.Color.Silver;
-            this.txtBuscar.PlaceholderText = "Buscar Usuario";
-            this.txtBuscar.Size = new System.Drawing.Size(574, 36);
-            this.txtBuscar.TabIndex = 45;
-            this.txtBuscar.Text = "sataTextBox1";
-            this.txtBuscar.Texts = "";
-            this.txtBuscar.UnderlinedStyle = false;
-            // 
             // frmCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1173, 692);
-            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnDesabilitar);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnAñadirUsuario);
@@ -329,6 +304,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private SATATextBox txtBuscar;
     }
 }
