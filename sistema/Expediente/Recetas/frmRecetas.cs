@@ -123,7 +123,7 @@ namespace sistema.Expediente.Recetas
                 {
                     Height = 3,
                     Dock = DockStyle.Top,
-                    BackColor = Color.FromArgb(100, 197, 121)
+                    BackColor = Color.FromArgb(0, 167, 110)
                 };
                 panel.Controls.Add(topLine);
 
@@ -195,15 +195,6 @@ namespace sistema.Expediente.Recetas
                 panelBotones.Controls.Add(btnConsultar);
 
                 panel.Controls.Add(panelBotones);
-
-                // Sombra inferior
-                var bottomShadow = new Panel
-                {
-                    Height = 4,
-                    Dock = DockStyle.Bottom,
-                    BackColor = Color.FromArgb(30, 30, 30)
-                };
-                panel.Controls.Add(bottomShadow);
 
                 flpRecetas.Controls.Add(panel);
             }

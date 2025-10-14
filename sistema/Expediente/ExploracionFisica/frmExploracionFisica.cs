@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows.Forms;
+using sistema.Infrastructure.Sql;
+using sistema.Infrastructure.Security;
 
 namespace sistema.Expediente.ExploracionFisica
 {
@@ -151,6 +153,8 @@ ORDER BY FechaRegistro DESC;";
                 using (var conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
+                    SqlSessionContext.SetAppUser(conn, Sesion.UsuarioActual);
+
                     const string sql = @"
 INSERT INTO ExploracionFisica
     (PacienteID, Temperatura, Peso, Altura, TensionSistolica, TensionDiastolica,

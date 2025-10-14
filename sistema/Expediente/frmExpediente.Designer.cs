@@ -41,7 +41,7 @@
             this.btnCuadros = new FrameworkTest.SATAButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnFisico = new FrameworkTest.SATAButton();
-            this.lbCedula = new System.Windows.Forms.Label();
+            this.lbCedulayGenero = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnHistoria = new FrameworkTest.SATAButton();
@@ -88,7 +88,7 @@
             this.sataPanel1.Controls.Add(this.panel5);
             this.sataPanel1.Controls.Add(this.panel4);
             this.sataPanel1.Controls.Add(this.panel6);
-            this.sataPanel1.Controls.Add(this.lbCedula);
+            this.sataPanel1.Controls.Add(this.lbCedulayGenero);
             this.sataPanel1.Controls.Add(this.lbNombre);
             this.sataPanel1.Controls.Add(this.panel3);
             this.sataPanel1.Controls.Add(this.panel2);
@@ -298,25 +298,25 @@
             this.btnFisico.TextOffset = new System.Drawing.Point(0, 0);
             this.btnFisico.Click += new System.EventHandler(this.btnFisico_Click);
             // 
-            // lbCedula
+            // lbCedulayGenero
             // 
-            this.lbCedula.AutoSize = true;
-            this.lbCedula.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCedula.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbCedula.Location = new System.Drawing.Point(88, 57);
-            this.lbCedula.Name = "lbCedula";
-            this.lbCedula.Size = new System.Drawing.Size(63, 18);
-            this.lbCedula.TabIndex = 4;
-            this.lbCedula.Text = "Cedula";
+            this.lbCedulayGenero.AutoSize = true;
+            this.lbCedulayGenero.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCedulayGenero.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbCedulayGenero.Location = new System.Drawing.Point(68, 64);
+            this.lbCedulayGenero.Name = "lbCedulayGenero";
+            this.lbCedulayGenero.Size = new System.Drawing.Size(137, 18);
+            this.lbCedulayGenero.TabIndex = 4;
+            this.lbCedulayGenero.Text = "Cedula + Genero";
             // 
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
-            this.lbNombre.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombre.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNombre.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbNombre.Location = new System.Drawing.Point(66, 29);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(106, 23);
+            this.lbNombre.Size = new System.Drawing.Size(118, 25);
             this.lbNombre.TabIndex = 3;
             this.lbNombre.Text = "UserName";
             // 
@@ -469,7 +469,7 @@
         private FrameworkTest.SATAButton btnHistoria;
         private FrameworkTest.SATAButton btnRegistro;
         private System.Windows.Forms.Label lbNombre;
-        private System.Windows.Forms.Label lbCedula;
+        private System.Windows.Forms.Label lbCedulayGenero;
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Panel panel7;
         private FrameworkTest.SATAButton btnRecetas;
