@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlTypes; // arriba si no lo tienes
 
 namespace sistema
 {
@@ -49,7 +50,28 @@ namespace sistema
                     existente.Nombre = _paciente.Nombre;
                     existente.Apellido = _paciente.Apellido;
 
+                    var minSql = System.Data.SqlTypes.SqlDateTime.MinValue.Value;
+                    if (existente.FechaNacimiento < minSql)
+                    {
+                        MessageBox.Show("La fecha de nacimiento es inválida.");
+                        return;
+                    }
+                    if (existente.FechaRegistro < minSql)
+                        existente.FechaRegistro = DateTime.Now;
+
+                    var conn = context.Database.Connection;
+                    var wasClosed = conn.State == System.Data.ConnectionState.Closed;
+                    if (wasClosed) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "EXEC sp_set_session_context @key, @val;";
+                        var pKey = cmd.CreateParameter(); pKey.ParameterName = "@key"; pKey.Value = "AppUser"; cmd.Parameters.Add(pKey);
+                        var pVal = cmd.CreateParameter(); pVal.ParameterName = "@val"; pVal.Value = (object)(sistema.Infrastructure.Security.Sesion.UsuarioActual ?? "desconocido"); cmd.Parameters.Add(pVal);
+                        cmd.ExecuteNonQuery();
+                    }
+
                     context.SaveChanges();
+                    if (wasClosed) conn.Close();
                     MessageBox.Show("Paciente editado correctamente.");
                 }
                 else
@@ -60,8 +82,30 @@ namespace sistema
                     _paciente.Telefono = txtTelefono.Text;
                     _paciente.Ocupacion = txtOcupacion.Text;
 
+                    var minSql = System.Data.SqlTypes.SqlDateTime.MinValue.Value;
+                    if (_paciente.FechaNacimiento < minSql)
+                    {
+                        MessageBox.Show("La fecha de nacimiento es inválida o no fue seleccionada.");
+                        return;
+                    }
+                    if (_paciente.FechaRegistro < minSql)
+                        _paciente.FechaRegistro = DateTime.Now;
+
                     context.Paciente.Add(_paciente);
+
+                    var conn = context.Database.Connection;
+                    var wasClosed = conn.State == System.Data.ConnectionState.Closed;
+                    if (wasClosed) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "EXEC sp_set_session_context @key, @val;";
+                        var pKey = cmd.CreateParameter(); pKey.ParameterName = "@key"; pKey.Value = "AppUser"; cmd.Parameters.Add(pKey);
+                        var pVal = cmd.CreateParameter(); pVal.ParameterName = "@val"; pVal.Value = (object)(sistema.Infrastructure.Security.Sesion.UsuarioActual ?? "desconocido"); cmd.Parameters.Add(pVal);
+                        cmd.ExecuteNonQuery();
+                    }
+
                     context.SaveChanges();
+                    if (wasClosed) conn.Close();
                     MessageBox.Show("Paciente guardado exitosamente.");
                 }
             }
@@ -86,6 +130,25 @@ namespace sistema
             txtTelefono.Text = paciente.Telefono ?? "";
             txtOcupacion.Text = paciente.Ocupacion ?? "";
             // Si tienes otros campos, agrégalos aquí
+        }
+
+        // Función auxiliar local
+        DateTime MinSqlDate = SqlDateTime.MinValue.Value;
+
+        private void AsegurarFechas()
+        {
+            // Asegurar FechaNacimiento válida
+            if (_paciente.FechaNacimiento < MinSqlDate)
+            {
+                MessageBox.Show("La fecha de nacimiento es inválida o no fue seleccionada.");
+                return;
+            }
+
+            // Asegurar FechaRegistro (si no estaba seteada)
+            if (_paciente.FechaRegistro < MinSqlDate)
+            {
+                _paciente.FechaRegistro = DateTime.Now;
+            }
         }
     }
 }

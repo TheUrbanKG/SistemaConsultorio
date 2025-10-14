@@ -55,11 +55,6 @@ namespace sistema.Models
         [StringLength(20)]
         public string Cedula { get; set; }
 
-        // Si aún existen en tu BD, mantenlos; si ya los quitaste, elimínalos también del modelo.
-        public decimal? Peso { get; set; }
-        public decimal? Altura { get; set; }
-        public decimal? IMC { get; set; }
-
         // NUEVO: fecha de registro del paciente
         public DateTime FechaRegistro { get; set; }
     }

@@ -40,6 +40,8 @@ namespace sistema.Expediente.Registro
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+
                 string insert = @"
                     INSERT INTO ExploracionFisica
                         (PacienteID, FechaRegistro, Peso, Altura)

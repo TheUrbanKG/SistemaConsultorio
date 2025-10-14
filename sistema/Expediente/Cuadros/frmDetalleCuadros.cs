@@ -35,10 +35,10 @@ namespace sistema.Expediente.Cuadros
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
 
                 if (CuadroID.HasValue)
                 {
-                    // Actualizar registro existente
                     string updateQuery = @"
                 UPDATE CuadroClinico
                 SET Nombre = @Nombre, Impresiones = @Impresiones, FechaInicio = @FechaInicio, FechaFin = @FechaFin
@@ -56,7 +56,6 @@ namespace sistema.Expediente.Cuadros
                 }
                 else
                 {
-                    // Insertar nuevo registro
                     string insertQuery = @"
                 INSERT INTO CuadroClinico (PacienteID, Nombre, Impresiones, FechaInicio, FechaFin)
                 VALUES (@PacienteID, @Nombre, @Impresiones, @FechaInicio, @FechaFin)";

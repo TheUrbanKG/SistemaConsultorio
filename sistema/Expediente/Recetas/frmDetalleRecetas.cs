@@ -299,6 +299,8 @@ ORDER BY Orden;", conn))
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+
                 using (var tx = conn.BeginTransaction())
                 {
                     try
@@ -308,9 +310,9 @@ ORDER BY Orden;", conn))
                         if (RecetaID.HasValue)
                         {
                             var up = new SqlCommand(@"
-                            UPDATE PlanTerapeutico
-                            SET Titulo=@Titulo, Descripcion=@Descripcion, CuadroClinicoId=@CuadroClinicoId, FechaUltimaModificacion=GETDATE()
-                            WHERE Id=@Id;", conn, tx);
+UPDATE PlanTerapeutico
+SET Titulo=@Titulo, Descripcion=@Descripcion, CuadroClinicoId=@CuadroClinicoId, FechaUltimaModificacion=GETDATE()
+WHERE Id=@Id;", conn, tx);
                             up.Parameters.AddWithValue("@Titulo", txtTitulo.Text.Trim());
                             up.Parameters.AddWithValue("@Descripcion", (object)txtDescripcion.Text.Trim() ?? DBNull.Value);
                             up.Parameters.AddWithValue("@CuadroClinicoId", (object)(cbCuadro.SelectedValue ?? DBNull.Value));
@@ -326,9 +328,9 @@ ORDER BY Orden;", conn))
                         else
                         {
                             var ins = new SqlCommand(@"
-                            INSERT INTO PlanTerapeutico (PacienteID, CuadroClinicoId, Titulo, Descripcion)
-                            VALUES (@PacienteID, @CuadroClinicoId, @Titulo, @Descripcion);
-                            SELECT CAST(SCOPE_IDENTITY() AS INT);", conn, tx);
+INSERT INTO PlanTerapeutico (PacienteID, CuadroClinicoId, Titulo, Descripcion)
+VALUES (@PacienteID, @CuadroClinicoId, @Titulo, @Descripcion);
+SELECT CAST(SCOPE_IDENTITY() AS INT);", conn, tx);
                             ins.Parameters.AddWithValue("@PacienteID", PacienteID);
                             ins.Parameters.AddWithValue("@CuadroClinicoId", (object)(cbCuadro.SelectedValue ?? DBNull.Value));
                             ins.Parameters.AddWithValue("@Titulo", txtTitulo.Text.Trim());
@@ -346,8 +348,8 @@ ORDER BY Orden;", conn))
                             if (tNombre != null && !string.IsNullOrWhiteSpace(tNombre.Text))
                             {
                                 var insA = new SqlCommand(@"
-            INSERT INTO PlanArticulo (PlanId, Nombre, Indicaciones, Orden)
-            VALUES (@PlanId, @Nombre, @Indicaciones, @Orden);", conn, tx);
+INSERT INTO PlanArticulo (PlanId, Nombre, Indicaciones, Orden)
+VALUES (@PlanId, @Nombre, @Indicaciones, @Orden);", conn, tx);
                                 insA.Parameters.AddWithValue("@PlanId", planId);
                                 insA.Parameters.AddWithValue("@Nombre", tNombre.Text.Trim());
 
