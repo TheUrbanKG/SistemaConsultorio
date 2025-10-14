@@ -178,8 +178,8 @@ namespace sistema.Expediente
                         using (SqlConnection conn = new SqlConnection(connectionString))
                         {
                             conn.Open();
-                            string query = "DELETE FROM CuadroClinico WHERE Id = @Id";
-                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+                            using (SqlCommand cmd = new SqlCommand("DELETE FROM CuadroClinico WHERE Id=@Id", conn))
                             {
                                 cmd.Parameters.AddWithValue("@Id", cuadro.Id);
                                 cmd.ExecuteNonQuery();

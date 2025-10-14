@@ -50,31 +50,31 @@ namespace sistema.Expediente.Historia
             using (var connection = new SqlConnection(connectionString))
             {
                 string query = @"
-        IF EXISTS (SELECT 1 FROM AntecedentePatologico WHERE PacienteID = @PacienteID)
-            UPDATE AntecedentePatologico
-            SET Hipertension = @Hipertension,
-                Tuberculosis = @Tuberculosis,
-                Diabetes = @Diabetes,
-                Obesidad = @Obesidad,
-                Tiroides = @Tiroides,
-                Dislipidemia = @Dislipidemia,
-                Sarampion = @Sarampion,
-                Rubeola = @Rubeola,
-                Tosferina = @Tosferina,
-                Varicela = @Varicela,
-                Artritis = @Artritis,
-                Osteoporosis = @Osteoporosis,
-                OtroPadecimiento = @OtroPadecimiento,
-                Padecimiento = @Padecimiento
-            WHERE PacienteID = @PacienteID
-        ELSE
-            INSERT INTO AntecedentePatologico (
-                PacienteID, Hipertension, Tuberculosis, Diabetes, Obesidad, Tiroides, Dislipidemia,
-                Sarampion, Rubeola, Tosferina, Varicela, Artritis, Osteoporosis, OtroPadecimiento, Padecimiento
-            ) VALUES (
-                @PacienteID, @Hipertension, @Tuberculosis, @Diabetes, @Obesidad, @Tiroides, @Dislipidemia,
-                @Sarampion, @Rubeola, @Tosferina, @Varicela, @Artritis, @Osteoporosis, @OtroPadecimiento, @Padecimiento
-            )";
+IF EXISTS (SELECT 1 FROM AntecedentePatologico WHERE PacienteID = @PacienteID)
+    UPDATE AntecedentePatologico
+    SET Hipertension = @Hipertension,
+        Tuberculosis = @Tuberculosis,
+        Diabetes = @Diabetes,
+        Obesidad = @Obesidad,
+        Tiroides = @Tiroides,
+        Dislipidemia = @Dislipidemia,
+        Sarampion = @Sarampion,
+        Rubeola = @Rubeola,
+        Tosferina = @Tosferina,
+        Varicela = @Varicela,
+        Artritis = @Artritis,
+        Osteoporosis = @Osteoporosis,
+        OtroPadecimiento = @OtroPadecimiento,
+        Padecimiento = @Padecimiento
+    WHERE PacienteID = @PacienteID
+ELSE
+    INSERT INTO AntecedentePatologico (
+        PacienteID, Hipertension, Tuberculosis, Diabetes, Obesidad, Tiroides, Dislipidemia,
+        Sarampion, Rubeola, Tosferina, Varicela, Artritis, Osteoporosis, OtroPadecimiento, Padecimiento
+    ) VALUES (
+        @PacienteID, @Hipertension, @Tuberculosis, @Diabetes, @Obesidad, @Tiroides, @Dislipidemia,
+        @Sarampion, @Rubeola, @Tosferina, @Varicela, @Artritis, @Osteoporosis, @OtroPadecimiento, @Padecimiento
+    )";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@PacienteID", pacienteId);
@@ -92,7 +92,10 @@ namespace sistema.Expediente.Historia
                     command.Parameters.AddWithValue("@Osteoporosis", toggleOsteoporosis.Checked);
                     command.Parameters.AddWithValue("@OtroPadecimiento", toggleOtroPadecimiento.Checked);
                     command.Parameters.AddWithValue("@Padecimiento", txtPadecimiento.Text ?? "");
+
                     connection.Open();
+                    sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(connection, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+
                     command.ExecuteNonQuery();
                 }
             }
@@ -105,13 +108,13 @@ namespace sistema.Expediente.Historia
             using (var connection = new SqlConnection(connectionString))
             {
                 string query = @"
-            IF EXISTS (SELECT 1 FROM AntecedentePersonal WHERE PacienteID = @PacienteID)
-                UPDATE AntecedentePersonal
-                SET Tabaco = @Tabaco, Alcohol = @Alcohol, Mascotas = @Mascotas, Servicios = @Servicios, Vivienda = @Vivienda, FechaActualizacion = GETDATE()
-                WHERE PacienteID = @PacienteID
-            ELSE
-                INSERT INTO AntecedentePersonal (PacienteID, Tabaco, Alcohol, Mascotas, Servicios, Vivienda)
-                VALUES (@PacienteID, @Tabaco, @Alcohol, @Mascotas, @Servicios, @Vivienda)";
+IF EXISTS (SELECT 1 FROM AntecedentePersonal WHERE PacienteID = @PacienteID)
+    UPDATE AntecedentePersonal
+    SET Tabaco = @Tabaco, Alcohol = @Alcohol, Mascotas = @Mascotas, Servicios = @Servicios, Vivienda = @Vivienda, FechaActualizacion = GETDATE()
+    WHERE PacienteID = @PacienteID
+else
+    INSERT INTO AntecedentePersonal (PacienteID, Tabaco, Alcohol, Mascotas, Servicios, Vivienda)
+    VALUES (@PacienteID, @Tabaco, @Alcohol, @Mascotas, @Servicios, @Vivienda)";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@PacienteID", pacienteId);
@@ -119,21 +122,21 @@ namespace sistema.Expediente.Historia
                     command.Parameters.AddWithValue("@Alcohol", cbAlcohol.Text ?? "");
                     command.Parameters.AddWithValue("@Vivienda", cbVivienda.Text ?? "");
 
-                    // Servicios: concatena los toggles activos separados por coma
-                    var servicios = new List<string>();
+                    var servicios = new System.Collections.Generic.List<string>();
                     if (toggleAgua.Checked) servicios.Add("Agua Potable");
                     if (toggleLuz.Checked) servicios.Add("Luz");
                     if (toggleDrenaje.Checked) servicios.Add("Drenaje");
                     command.Parameters.AddWithValue("@Servicios", string.Join(",", servicios));
 
-                    // Mascotas: concatena los toggles activos separados por coma
-                    var mascotas = new List<string>();
+                    var mascotas = new System.Collections.Generic.List<string>();
                     if (togglePerros.Checked) mascotas.Add("Perros");
                     if (toggleGatos.Checked) mascotas.Add("Gatos");
                     if (toggleOtraMascota.Checked) mascotas.Add("Otro");
                     command.Parameters.AddWithValue("@Mascotas", string.Join(",", mascotas));
-    
+
                     connection.Open();
+                    sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(connection, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+
                     command.ExecuteNonQuery();
                 }
             }

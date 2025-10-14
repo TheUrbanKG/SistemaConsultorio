@@ -25,7 +25,6 @@ namespace sistema.Expediente.Alergias
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Validación básica 
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 cbEstado.SelectedItem == null ||
                 cbTipo.SelectedItem == null ||
@@ -38,14 +37,14 @@ namespace sistema.Expediente.Alergias
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
 
-                // Verificar si el paciente existe 
-                string checkQuery = "SELECT COUNT(1) FROM Paciente WHERE PacienteID = @PacienteID";
+                // Verificar paciente
+                const string checkQuery = "SELECT COUNT(1) FROM Paciente WHERE PacienteID = @PacienteID";
                 using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                 {
                     checkCmd.Parameters.AddWithValue("@PacienteID", PacienteID);
-                    int exists = (int)checkCmd.ExecuteScalar();
-                    if (exists == 0)
+                    if ((int)checkCmd.ExecuteScalar() == 0)
                     {
                         MessageBox.Show("El paciente no existe. No se puede guardar la alergia.");
                         return;
@@ -54,12 +53,14 @@ namespace sistema.Expediente.Alergias
 
                 if (AlergiaID.HasValue)
                 {
-                    // Actualizar
-                    string updateQuery = @"
-                UPDATE Alergia
-                SET Nombre = @Nombre, EstadoClinico = @EstadoClinico, Tipo = @Tipo, Severidad = @Severidad,
-                    FechaUltimaModificacion = @FechaUltimaModificacion
-                WHERE Id = @Id";
+                    const string updateQuery = @"
+UPDATE Alergia
+SET Nombre = @Nombre,
+    EstadoClinico = @EstadoClinico,
+    Tipo = @Tipo,
+    Severidad = @Severidad,
+    FechaUltimaModificacion = @FechaUltimaModificacion
+WHERE Id = @Id;";
                     using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text.Trim());
@@ -74,12 +75,10 @@ namespace sistema.Expediente.Alergias
                 }
                 else
                 {
-                    // Insertar 
-                    string query = @"
-            INSERT INTO Alergia (PacienteID, Nombre, EstadoClinico, Tipo, Severidad, FechaUltimaModificacion)
-            VALUES (@PacienteID, @Nombre, @EstadoClinico, @Tipo, @Severidad, @FechaUltimaModificacion)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    const string insertQuery = @"
+INSERT INTO Alergia (PacienteID, Nombre, EstadoClinico, Tipo, Severidad, FechaUltimaModificacion)
+VALUES (@PacienteID, @Nombre, @EstadoClinico, @Tipo, @Severidad, @FechaUltimaModificacion);";
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@PacienteID", PacienteID);
                         cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text.Trim());
@@ -87,7 +86,6 @@ namespace sistema.Expediente.Alergias
                         cmd.Parameters.AddWithValue("@Tipo", cbTipo.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@Severidad", cbSeveridad.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@FechaUltimaModificacion", DateTime.Now);
-
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Alergia guardada correctamente.");

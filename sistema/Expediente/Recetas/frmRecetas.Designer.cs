@@ -48,10 +48,10 @@
             // 
             this.btnNuevaReceta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevaReceta.ButtonText = "Nueva Receta";
-            this.btnNuevaReceta.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnNuevaReceta.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.btnNuevaReceta.CheckedForeColor = System.Drawing.Color.White;
             this.btnNuevaReceta.CheckedImageTint = System.Drawing.Color.White;
-            this.btnNuevaReceta.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnNuevaReceta.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.btnNuevaReceta.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNuevaReceta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevaReceta.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
@@ -73,7 +73,7 @@
             this.btnNuevaReceta.NormalForeColor = System.Drawing.Color.Black;
             this.btnNuevaReceta.NormalOutline = System.Drawing.Color.Empty;
             this.btnNuevaReceta.OutlineThickness = 2F;
-            this.btnNuevaReceta.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnNuevaReceta.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.btnNuevaReceta.PressedForeColor = System.Drawing.Color.White;
             this.btnNuevaReceta.PressedImageTint = System.Drawing.Color.White;
             this.btnNuevaReceta.PressedOutline = System.Drawing.Color.Empty;
