@@ -154,7 +154,7 @@
             this.BTNInicio.NormalForeColor = System.Drawing.Color.White;
             this.BTNInicio.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNInicio.OutlineThickness = 2F;
-            this.BTNInicio.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNInicio.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNInicio.PressedForeColor = System.Drawing.Color.White;
             this.BTNInicio.PressedImageTint = System.Drawing.Color.White;
             this.BTNInicio.PressedOutline = System.Drawing.Color.Empty;
@@ -212,7 +212,7 @@
             this.btnCuentas.NormalForeColor = System.Drawing.Color.White;
             this.btnCuentas.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.btnCuentas.OutlineThickness = 2F;
-            this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.btnCuentas.PressedForeColor = System.Drawing.Color.White;
             this.btnCuentas.PressedImageTint = System.Drawing.Color.White;
             this.btnCuentas.PressedOutline = System.Drawing.Color.Empty;
@@ -309,7 +309,7 @@
             this.BTNPacientes.NormalForeColor = System.Drawing.Color.White;
             this.BTNPacientes.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNPacientes.OutlineThickness = 2F;
-            this.BTNPacientes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNPacientes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNPacientes.PressedForeColor = System.Drawing.Color.White;
             this.BTNPacientes.PressedImageTint = System.Drawing.Color.White;
             this.BTNPacientes.PressedOutline = System.Drawing.Color.Empty;
@@ -365,7 +365,7 @@
             this.BTNAgenda.NormalForeColor = System.Drawing.Color.White;
             this.BTNAgenda.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNAgenda.OutlineThickness = 2F;
-            this.BTNAgenda.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNAgenda.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNAgenda.PressedForeColor = System.Drawing.Color.White;
             this.BTNAgenda.PressedImageTint = System.Drawing.Color.White;
             this.BTNAgenda.PressedOutline = System.Drawing.Color.Empty;
@@ -421,7 +421,7 @@
             this.BTNNotas.NormalForeColor = System.Drawing.Color.White;
             this.BTNNotas.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNNotas.OutlineThickness = 2F;
-            this.BTNNotas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNNotas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNNotas.PressedForeColor = System.Drawing.Color.White;
             this.BTNNotas.PressedImageTint = System.Drawing.Color.White;
             this.BTNNotas.PressedOutline = System.Drawing.Color.Empty;
@@ -477,7 +477,7 @@
             this.BTNCitas.NormalForeColor = System.Drawing.Color.White;
             this.BTNCitas.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNCitas.OutlineThickness = 2F;
-            this.BTNCitas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNCitas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNCitas.PressedForeColor = System.Drawing.Color.White;
             this.BTNCitas.PressedImageTint = System.Drawing.Color.White;
             this.BTNCitas.PressedOutline = System.Drawing.Color.Empty;

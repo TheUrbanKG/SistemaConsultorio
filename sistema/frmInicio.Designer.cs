@@ -171,7 +171,7 @@
             this.sataPanel2.Controls.Add(this.label4);
             this.sataPanel2.Controls.Add(this.lbPacientesRegistrados);
             this.sataPanel2.Controls.Add(this.panel3);
-            this.sataPanel2.Location = new System.Drawing.Point(624, 39);
+            this.sataPanel2.Location = new System.Drawing.Point(466, 20);
             this.sataPanel2.Name = "sataPanel2";
             this.sataPanel2.Size = new System.Drawing.Size(313, 128);
             this.sataPanel2.TabIndex = 43;
@@ -323,7 +323,7 @@
             this.sataPanel4.Controls.Add(this.label6);
             this.sataPanel4.Controls.Add(this.lbPacientesFemeninos);
             this.sataPanel4.Controls.Add(this.panel5);
-            this.sataPanel4.Location = new System.Drawing.Point(624, 190);
+            this.sataPanel4.Location = new System.Drawing.Point(466, 190);
             this.sataPanel4.Name = "sataPanel4";
             this.sataPanel4.Size = new System.Drawing.Size(313, 128);
             this.sataPanel4.TabIndex = 45;

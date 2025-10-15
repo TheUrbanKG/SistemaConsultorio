@@ -33,6 +33,8 @@
             this.sataEllipseControl1 = new SATAUiFramework.Controls.SATAEllipseControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnPDF = new FrameworkTest.SATAButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnRecetas = new FrameworkTest.SATAButton();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -50,6 +52,7 @@
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.sataPanel1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -84,6 +87,7 @@
             borderRadius1.TopRight = 10;
             this.sataPanel1.BorderRadius = borderRadius1;
             this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.Controls.Add(this.panel8);
             this.sataPanel1.Controls.Add(this.panel7);
             this.sataPanel1.Controls.Add(this.panel5);
             this.sataPanel1.Controls.Add(this.panel4);
@@ -96,6 +100,56 @@
             this.sataPanel1.Name = "sataPanel1";
             this.sataPanel1.Size = new System.Drawing.Size(1191, 150);
             this.sataPanel1.TabIndex = 0;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panel8.Controls.Add(this.btnPDF);
+            this.panel8.Location = new System.Drawing.Point(1116, 93);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(3);
+            this.panel8.Size = new System.Drawing.Size(75, 57);
+            this.panel8.TabIndex = 4;
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.ButtonText = "";
+            this.btnPDF.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnPDF.CheckedForeColor = System.Drawing.Color.White;
+            this.btnPDF.CheckedImageTint = System.Drawing.Color.White;
+            this.btnPDF.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnPDF.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPDF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPDF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnPDF.HoverForeColor = System.Drawing.Color.White;
+            this.btnPDF.HoverImage = null;
+            this.btnPDF.HoverImageTint = System.Drawing.Color.White;
+            this.btnPDF.HoverOutline = System.Drawing.Color.Empty;
+            this.btnPDF.Image = ((System.Drawing.Image)(resources.GetObject("btnPDF.Image")));
+            this.btnPDF.ImageAutoCenter = true;
+            this.btnPDF.ImageExpand = new System.Drawing.Point(7, 7);
+            this.btnPDF.ImageOffset = new System.Drawing.Point(6, 0);
+            this.btnPDF.ImageTint = System.Drawing.Color.White;
+            this.btnPDF.IsToggleButton = false;
+            this.btnPDF.IsToggled = false;
+            this.btnPDF.Location = new System.Drawing.Point(3, 3);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnPDF.NormalForeColor = System.Drawing.Color.White;
+            this.btnPDF.NormalOutline = System.Drawing.Color.Empty;
+            this.btnPDF.OutlineThickness = 2F;
+            this.btnPDF.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnPDF.PressedForeColor = System.Drawing.Color.White;
+            this.btnPDF.PressedImageTint = System.Drawing.Color.White;
+            this.btnPDF.PressedOutline = System.Drawing.Color.Empty;
+            this.btnPDF.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnPDF.Size = new System.Drawing.Size(69, 51);
+            this.btnPDF.TabIndex = 0;
+            this.btnPDF.TextAutoCenter = true;
+            this.btnPDF.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
             // panel7
             // 
@@ -117,7 +171,7 @@
             this.btnRecetas.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRecetas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRecetas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecetas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnRecetas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnRecetas.HoverForeColor = System.Drawing.Color.White;
             this.btnRecetas.HoverImage = null;
             this.btnRecetas.HoverImageTint = System.Drawing.Color.White;
@@ -136,7 +190,7 @@
             this.btnRecetas.NormalForeColor = System.Drawing.Color.White;
             this.btnRecetas.NormalOutline = System.Drawing.Color.Empty;
             this.btnRecetas.OutlineThickness = 2F;
-            this.btnRecetas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnRecetas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(78)))), ((int)(((byte)(68)))));
             this.btnRecetas.PressedForeColor = System.Drawing.Color.White;
             this.btnRecetas.PressedImageTint = System.Drawing.Color.White;
             this.btnRecetas.PressedOutline = System.Drawing.Color.Empty;
@@ -167,7 +221,7 @@
             this.btnAlergias.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAlergias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAlergias.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlergias.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnAlergias.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnAlergias.HoverForeColor = System.Drawing.Color.White;
             this.btnAlergias.HoverImage = null;
             this.btnAlergias.HoverImageTint = System.Drawing.Color.White;
@@ -186,7 +240,7 @@
             this.btnAlergias.NormalForeColor = System.Drawing.Color.White;
             this.btnAlergias.NormalOutline = System.Drawing.Color.Empty;
             this.btnAlergias.OutlineThickness = 2F;
-            this.btnAlergias.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnAlergias.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(78)))), ((int)(((byte)(68)))));
             this.btnAlergias.PressedForeColor = System.Drawing.Color.White;
             this.btnAlergias.PressedImageTint = System.Drawing.Color.White;
             this.btnAlergias.PressedOutline = System.Drawing.Color.Empty;
@@ -217,7 +271,7 @@
             this.btnCuadros.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCuadros.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCuadros.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnCuadros.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnCuadros.HoverForeColor = System.Drawing.Color.White;
             this.btnCuadros.HoverImage = null;
             this.btnCuadros.HoverImageTint = System.Drawing.Color.White;
@@ -236,7 +290,7 @@
             this.btnCuadros.NormalForeColor = System.Drawing.Color.White;
             this.btnCuadros.NormalOutline = System.Drawing.Color.Empty;
             this.btnCuadros.OutlineThickness = 2F;
-            this.btnCuadros.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnCuadros.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(78)))), ((int)(((byte)(68)))));
             this.btnCuadros.PressedForeColor = System.Drawing.Color.White;
             this.btnCuadros.PressedImageTint = System.Drawing.Color.White;
             this.btnCuadros.PressedOutline = System.Drawing.Color.Empty;
@@ -268,7 +322,7 @@
             this.btnFisico.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFisico.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFisico.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFisico.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnFisico.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnFisico.HoverForeColor = System.Drawing.Color.White;
             this.btnFisico.HoverImage = null;
             this.btnFisico.HoverImageTint = System.Drawing.Color.White;
@@ -287,7 +341,7 @@
             this.btnFisico.NormalForeColor = System.Drawing.Color.White;
             this.btnFisico.NormalOutline = System.Drawing.Color.Empty;
             this.btnFisico.OutlineThickness = 2F;
-            this.btnFisico.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnFisico.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(78)))), ((int)(((byte)(68)))));
             this.btnFisico.PressedForeColor = System.Drawing.Color.White;
             this.btnFisico.PressedImageTint = System.Drawing.Color.White;
             this.btnFisico.PressedOutline = System.Drawing.Color.Empty;
@@ -301,11 +355,11 @@
             // lbCedulayGenero
             // 
             this.lbCedulayGenero.AutoSize = true;
-            this.lbCedulayGenero.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCedulayGenero.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCedulayGenero.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbCedulayGenero.Location = new System.Drawing.Point(68, 64);
             this.lbCedulayGenero.Name = "lbCedulayGenero";
-            this.lbCedulayGenero.Size = new System.Drawing.Size(137, 18);
+            this.lbCedulayGenero.Size = new System.Drawing.Size(137, 20);
             this.lbCedulayGenero.TabIndex = 4;
             this.lbCedulayGenero.Text = "Cedula + Genero";
             // 
@@ -340,7 +394,7 @@
             this.btnHistoria.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnHistoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHistoria.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistoria.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnHistoria.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnHistoria.HoverForeColor = System.Drawing.Color.White;
             this.btnHistoria.HoverImage = null;
             this.btnHistoria.HoverImageTint = System.Drawing.Color.White;
@@ -359,7 +413,7 @@
             this.btnHistoria.NormalForeColor = System.Drawing.Color.White;
             this.btnHistoria.NormalOutline = System.Drawing.Color.Empty;
             this.btnHistoria.OutlineThickness = 2F;
-            this.btnHistoria.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnHistoria.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(78)))), ((int)(((byte)(68)))));
             this.btnHistoria.PressedForeColor = System.Drawing.Color.White;
             this.btnHistoria.PressedImageTint = System.Drawing.Color.White;
             this.btnHistoria.PressedOutline = System.Drawing.Color.Empty;
@@ -390,7 +444,7 @@
             this.btnRegistro.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRegistro.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnRegistro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
             this.btnRegistro.HoverForeColor = System.Drawing.Color.White;
             this.btnRegistro.HoverImage = null;
             this.btnRegistro.HoverImageTint = System.Drawing.Color.White;
@@ -409,7 +463,7 @@
             this.btnRegistro.NormalForeColor = System.Drawing.Color.White;
             this.btnRegistro.NormalOutline = System.Drawing.Color.Empty;
             this.btnRegistro.OutlineThickness = 2F;
-            this.btnRegistro.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnRegistro.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(78)))), ((int)(((byte)(68)))));
             this.btnRegistro.PressedForeColor = System.Drawing.Color.White;
             this.btnRegistro.PressedImageTint = System.Drawing.Color.White;
             this.btnRegistro.PressedOutline = System.Drawing.Color.Empty;
@@ -445,6 +499,7 @@
             this.panel1.ResumeLayout(false);
             this.sataPanel1.ResumeLayout(false);
             this.sataPanel1.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -475,5 +530,7 @@
         private FrameworkTest.SATAButton btnRecetas;
         private System.Windows.Forms.Panel panel6;
         private FrameworkTest.SATAButton btnFisico;
+        private System.Windows.Forms.Panel panel8;
+        private FrameworkTest.SATAButton btnPDF;
     }
 }

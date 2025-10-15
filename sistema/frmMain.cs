@@ -12,9 +12,13 @@ namespace sistema
 {
     public partial class frmMain : Form
     {
+        // Resaltar Botones de Navegación
+        private FrameworkTest.SATAButton[] _navMainButtons;
+
         public frmMain()
         {
             InitializeComponent();
+            InicializarNavegacionLateral();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -22,11 +26,10 @@ namespace sistema
             abrirFormHijo(new frmInicio(this));
             labelTitulo.Text = "Inicio";
             this.pbTitulo.Image = Properties.Resources.hogar;
-            // Así accedes al recurso correctamente
 
-
+            // Resaltar Inicio al cargar
+            SetActiveNavButton(BTNInicio);
         }
-
 
         public void abrirFormHijo(object formHijo)
         {
@@ -47,6 +50,7 @@ namespace sistema
             abrirFormHijo(new frmInicio(this));
             labelTitulo.Text = "Inicio";
             this.pbTitulo.Image = Properties.Resources.hogar;
+            SetActiveNavButton(BTNInicio);
             this.Refresh();
         }
 
@@ -55,6 +59,7 @@ namespace sistema
             abrirFormHijo(new frmCitas());
             labelTitulo.Text = "Citas";
             this.pbTitulo.Image = Properties.Resources.calendario;
+            SetActiveNavButton(BTNCitas);
             this.Refresh();
         }
 
@@ -63,6 +68,7 @@ namespace sistema
             abrirFormHijo(new frmPacientes());
             labelTitulo.Text = "Pacientes";
             this.pbTitulo.Image = Properties.Resources.paciente;
+            SetActiveNavButton(BTNPacientes);
             this.Refresh();
         }
 
@@ -71,6 +77,7 @@ namespace sistema
             abrirFormHijo(new frmAgenda());
             labelTitulo.Text = "Agenda";
             this.pbTitulo.Image = Properties.Resources.agenda;
+            SetActiveNavButton(BTNAgenda);
             this.Refresh();
         }
 
@@ -79,6 +86,7 @@ namespace sistema
             abrirFormHijo(new frmNotas());
             labelTitulo.Text = "Notas";
             this.pbTitulo.Image = Properties.Resources.notas;
+            SetActiveNavButton(BTNNotas);
             this.Refresh();
         }
 
@@ -96,7 +104,66 @@ namespace sistema
             abrirFormHijo(new frmCuentas());
             labelTitulo.Text = "Gestion De Cuentas";
             this.pbTitulo.Image = Properties.Resources.usuario;
+            SetActiveNavButton(btnCuentas);
             this.Refresh();
+        }
+
+        // -------------------- Navegación/Resaltado --------------------
+
+        private void InicializarNavegacionLateral()
+        {
+            // Excluyo BTNSalir para que no quede “activo”
+            _navMainButtons = new[]
+            {
+                BTNInicio, BTNCitas, BTNPacientes, BTNAgenda, BTNNotas, btnCuentas
+            };
+
+            foreach (var sb in _navMainButtons)
+            {
+                if (sb == null) continue;
+
+                // Guarda el color normal original en Tag
+                if (sb.Tag == null) sb.Tag = sb.NormalBackground;
+
+                // Si no hay Hover definido, calcula uno a partir del Normal
+                if (sb.HoverBackground.IsEmpty)
+                {
+                    var normal = (Color)sb.Tag;
+                    sb.HoverBackground = ControlPaint.Light(normal);
+                }
+            }
+        }
+
+        // Deja el botón activo con el color Hover y el resto vuelve a Normal
+        private void SetActiveNavButton(FrameworkTest.SATAButton active)
+        {
+            if (_navMainButtons == null) return;
+
+            foreach (var sb in _navMainButtons)
+            {
+                if (sb == null) continue;
+
+                var normal = (Color)(sb.Tag ?? sb.NormalBackground);
+
+                if (sb == active)
+                {
+                    // Forzamos el color del “activo” usando el Hover como Normal para que se vea fijo
+                    var hover = sb.HoverBackground.IsEmpty ? ControlPaint.Light(normal) : sb.HoverBackground;
+                    sb.NormalBackground = hover;
+
+                    // Si definiste HoverForeColor, úsalo; si no, deja el actual
+                    if (!sb.HoverForeColor.IsEmpty)
+                        sb.NormalForeColor = sb.HoverForeColor;
+                }
+                else
+                {
+                    // Restaurar color normal original
+                    sb.NormalBackground = normal;
+                }
+
+                sb.Invalidate();
+                sb.Refresh();
+            }
         }
     }
 }
