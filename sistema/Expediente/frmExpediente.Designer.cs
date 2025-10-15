@@ -48,6 +48,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnRegistro = new FrameworkTest.SATAButton();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnPDF = new FrameworkTest.SATAButton();
             this.panel1.SuspendLayout();
             this.sataPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -56,6 +58,7 @@
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // sataEllipseControl1
@@ -84,6 +87,7 @@
             borderRadius1.TopRight = 10;
             this.sataPanel1.BorderRadius = borderRadius1;
             this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.Controls.Add(this.panel8);
             this.sataPanel1.Controls.Add(this.panel7);
             this.sataPanel1.Controls.Add(this.panel5);
             this.sataPanel1.Controls.Add(this.panel4);
@@ -428,6 +432,56 @@
             this.panelContenedor.Size = new System.Drawing.Size(1200, 540);
             this.panelContenedor.TabIndex = 1;
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panel8.Controls.Add(this.btnPDF);
+            this.panel8.Location = new System.Drawing.Point(1116, 93);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(3);
+            this.panel8.Size = new System.Drawing.Size(75, 57);
+            this.panel8.TabIndex = 4;
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.ButtonText = "";
+            this.btnPDF.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnPDF.CheckedForeColor = System.Drawing.Color.White;
+            this.btnPDF.CheckedImageTint = System.Drawing.Color.White;
+            this.btnPDF.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnPDF.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPDF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPDF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnPDF.HoverForeColor = System.Drawing.Color.White;
+            this.btnPDF.HoverImage = null;
+            this.btnPDF.HoverImageTint = System.Drawing.Color.White;
+            this.btnPDF.HoverOutline = System.Drawing.Color.Empty;
+            this.btnPDF.Image = ((System.Drawing.Image)(resources.GetObject("btnPDF.Image")));
+            this.btnPDF.ImageAutoCenter = true;
+            this.btnPDF.ImageExpand = new System.Drawing.Point(7, 7);
+            this.btnPDF.ImageOffset = new System.Drawing.Point(6, 0);
+            this.btnPDF.ImageTint = System.Drawing.Color.White;
+            this.btnPDF.IsToggleButton = false;
+            this.btnPDF.IsToggled = false;
+            this.btnPDF.Location = new System.Drawing.Point(3, 3);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnPDF.NormalForeColor = System.Drawing.Color.White;
+            this.btnPDF.NormalOutline = System.Drawing.Color.Empty;
+            this.btnPDF.OutlineThickness = 2F;
+            this.btnPDF.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(78)))));
+            this.btnPDF.PressedForeColor = System.Drawing.Color.White;
+            this.btnPDF.PressedImageTint = System.Drawing.Color.White;
+            this.btnPDF.PressedOutline = System.Drawing.Color.Empty;
+            this.btnPDF.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnPDF.Size = new System.Drawing.Size(69, 51);
+            this.btnPDF.TabIndex = 0;
+            this.btnPDF.TextAutoCenter = true;
+            this.btnPDF.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
             // frmExpediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,6 +505,7 @@
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -475,5 +530,7 @@
         private FrameworkTest.SATAButton btnRecetas;
         private System.Windows.Forms.Panel panel6;
         private FrameworkTest.SATAButton btnFisico;
+        private System.Windows.Forms.Panel panel8;
+        private FrameworkTest.SATAButton btnPDF;
     }
 }

@@ -70,7 +70,7 @@ namespace sistema.Expediente
                 if (string.IsNullOrWhiteSpace(cedula) && genero == "N/D")
                     lbCedulayGenero.Text = "Datos de identificación no disponibles.";
                 else
-                    lbCedulayGenero.Text = $"V - {cedula}. / Género: {genero}.";
+                    lbCedulayGenero.Text = $"V - {cedula} / Género: {genero}.";
             }
             catch
             {
@@ -150,6 +150,11 @@ namespace sistema.Expediente
             if (PacienteID <= 0) { MessageBox.Show("No se ha recibido un ID de paciente válido"); return; }
             var fisica = new frmExploracionFisica { PacienteID = this.PacienteID };
             abrirFormHijo(fisica);
+        }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            this.ExportarExpedienteAPdf();
         }
     }
 }
