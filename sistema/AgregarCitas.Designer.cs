@@ -31,9 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFecha = new System.Windows.Forms.Label();
+            this.lblFechaActual = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.flpPacientes = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,25 +43,36 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Controls.Add(this.lblFecha);
+            this.panel1.Controls.Add(this.lblFechaActual);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Controls.Add(this.btnNuevoPaciente);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(391, 100);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblFecha.Location = new System.Drawing.Point(13, 61);
+            this.lblFecha.Location = new System.Drawing.Point(153, 19);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(54, 21);
-            this.lblFecha.TabIndex = 1;
-            this.lblFecha.Text = "Fecha";
-            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFecha.Size = new System.Drawing.Size(52, 18);
+            this.lblFecha.TabIndex = 0;
+            this.lblFecha.Text = "label2";
+            // 
+            // lblFechaActual
+            // 
+            this.lblFechaActual.AutoSize = true;
+            this.lblFechaActual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaActual.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblFechaActual.Location = new System.Drawing.Point(13, 61);
+            this.lblFechaActual.Name = "lblFechaActual";
+            this.lblFechaActual.Size = new System.Drawing.Size(54, 21);
+            this.lblFechaActual.TabIndex = 1;
+            this.lblFechaActual.Text = "Fecha";
+            this.lblFechaActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -72,35 +85,42 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nueva Cita";
             // 
-            // button1
+            // btnNuevoPaciente
             // 
-            this.button1.BackColor = System.Drawing.Color.ForestGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(281, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Nuevo Paciente";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnNuevoPaciente.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnNuevoPaciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoPaciente.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNuevoPaciente.Location = new System.Drawing.Point(281, 17);
+            this.btnNuevoPaciente.Name = "btnNuevoPaciente";
+            this.btnNuevoPaciente.Size = new System.Drawing.Size(97, 36);
+            this.btnNuevoPaciente.TabIndex = 0;
+            this.btnNuevoPaciente.Text = "Nuevo Paciente";
+            this.btnNuevoPaciente.UseVisualStyleBackColor = false;
+            this.btnNuevoPaciente.Click += new System.EventHandler(this.button1_Click);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // flpPacientes
+            // 
+            this.flpPacientes.Location = new System.Drawing.Point(0, 131);
+            this.flpPacientes.Name = "flpPacientes";
+            this.flpPacientes.Size = new System.Drawing.Size(391, 591);
+            this.flpPacientes.TabIndex = 1;
+            this.flpPacientes.Paint += new System.Windows.Forms.PaintEventHandler(this.flpPacientes_Paint);
             // 
             // AgregarCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(390, 744);
+            this.ClientSize = new System.Drawing.Size(390, 778);
+            this.Controls.Add(this.flpPacientes);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AgregarCitas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AgregarCitas";
+            this.Style = MetroFramework.MetroColorStyle.Black;
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.AgregarCitas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -111,9 +131,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblFechaActual;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.FlowLayoutPanel flpPacientes;
+        private System.Windows.Forms.Button btnNuevoPaciente;
+        private System.Windows.Forms.Label lblFecha;
     }
 }
