@@ -200,7 +200,12 @@ namespace sistema
 
         private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
+            DateTime fechaNacimiento = dtpFechaNacimiento.Value;
+            DateTime hoy = DateTime.Today;
+            int edad = hoy.Year - fechaNacimiento.Year;
+            if(fechaNacimiento > hoy.AddYears(-edad)) edad--;
 
+            TextBoxEdadDesconocido.Text = edad.ToString();
         }
 
         private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
@@ -228,7 +233,7 @@ namespace sistema
             {
                 using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
-                    string query = @"INSERT INTO dbo.PacienteConocido
+                    string query = @"INSERT INTO dbo.PacienteDesconocido
                                     (Cedula, Nombre, ApellidoPaterno, ApellidoMaterno, FechaNacimiento, Edad, Genero, Telefono, TelefonoCelular, Ocupacion, Domicilio, Ciudad, CorreoElectronico, GrupoSanguineo, Religion, Detalles, FechaRegistro)
                                     VALUES (@Cedula, @Nombre, @ApellidoPaterno, @ApellidoMaterno, @FechaNacimiento, @Edad, @Genero, @Telefono, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @CorreoElectronico, @GrupoSanguineo, @Religion, @Detalles, @FechaRegistro)";
 
@@ -238,7 +243,7 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@ApellidoPaterno", txtApellidoPa.Text);
                     cmd.Parameters.AddWithValue("@ApellidoMaterno", txtApellidoMa.Text);
                     cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
-                    cmd.Parameters.AddWithValue("@Edad", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@Edad", TextBoxEdadDesconocido.Text);
                     cmd.Parameters.AddWithValue("@Genero", radioButton2.Checked ? "Masculino" : "Femenino");
                     cmd.Parameters.AddWithValue("@Telefono", textBox2.Text);
                     cmd.Parameters.AddWithValue("@TelefonoCelular", textBox3.Text);
@@ -258,11 +263,12 @@ namespace sistema
             {
                 using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
-                    string query = @"INSERT INTO PacienteDesconocido 
-                (FechaRegistro, Edad, Genero, TelefonoCelular, Ocupacion, Domicilio, Ciudad, GrupoSanguineo, Religion, Detalles)
-                VALUES (@FechaRegistro, @Edad, @Genero, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @GrupoSanguineo, @Religion, @Detalles)";
+                    string query = @"INSERT INTO PacienteConocido
+                (FechaRegistro, Nombre, Edad, Genero, TelefonoCelular, Ocupacion, Domicilio, Ciudad, GrupoSanguineo, Religion, Detalles)
+                VALUES (@FechaRegistro,@Nombre, @Edad, @Genero, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @GrupoSanguineo, @Religion, @Detalles)";
                     SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@Edad", textBox9.Text);
+                    cmd.Parameters.AddWithValue("@Nombre", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@Edad", txtBoxEdad.Text);
                     cmd.Parameters.AddWithValue("@Genero", radioButton4.Checked ? "Masculino" : "Femenino");
                     cmd.Parameters.AddWithValue("@TelefonoCelular", textBox12.Text);
                     cmd.Parameters.AddWithValue("@Ocupacion", textBox11.Text);
@@ -274,12 +280,13 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
                     conexion.Open();
                     cmd.ExecuteNonQuery();
-             
+
                 }
             }
             string nombre = txtNombre.Text == PlaceholderNombre ? "" : txtNombre.Text;
             string apellidoPaterno = txtApellidoPa.Text == PlaceholderApellidoPa ? "" : txtApellidoPa.Text;
             MessageBox.Show("Paciente guardado correctamente.");
+            this.Close();
 
             var preview = new PacientePreview
             {
@@ -287,7 +294,7 @@ namespace sistema
                 Nombre = panelConocido.Visible ? txtNombre.Text : "Desconocido",
                 Genero = panelConocido.Visible ? (radioButton2.Checked ? "Masculino" : "Femenino") : (radioButton4.Checked ? "Masculino" : "Femenino"),
                 GrupoSanguineo = panelConocido.Visible ? comboBox1.Text : comboBox2.Text,
-                Edad = panelConocido.Visible ? textBox1.Text : textBox9.Text
+                Edad = panelConocido.Visible ? TextBoxEdadDesconocido.Text : txtBoxEdad.Text
             };
 
             // Abrir AgregarCitas con la vista previa del paciente

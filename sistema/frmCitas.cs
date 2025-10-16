@@ -13,6 +13,7 @@ namespace sistema
 {
     public partial class frmCitas : Form
     {
+        public DateTime FechaSeleccionada { get; set; }
         int mes, año;
         public frmCitas()
         {
@@ -48,7 +49,20 @@ namespace sistema
             {
                 UserControlDias ucdias = new UserControlDias();
                 ucdias.dias(i);
+                ucdias.Fecha = new DateTime(año, mes, i); // Asigna la fecha correspondiente
+                ucdias.Click += UserControlDias_Click;    // Asocia el evento click
                 contenedorDias.Controls.Add(ucdias);
+            }
+        }
+
+        private void UserControlDias_Click(object sender, EventArgs e)
+        {
+            var diaControl = sender as UserControlDias;
+            if (diaControl != null)
+            {
+                DateTime fechaSeleccionada = diaControl.Fecha;
+                AgregarCitas agregarCitas = new AgregarCitas(fechaSeleccionada);
+                agregarCitas.ShowDialog();
             }
         }
 
@@ -67,7 +81,7 @@ namespace sistema
 
         private void labelFecha_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void contenedorDias_Paint(object sender, PaintEventArgs e)
@@ -90,11 +104,12 @@ namespace sistema
             {
                 contenedorDias.Controls.Add(new UserControlBlank());
             }
-
             for (int i = 1; i <= dias; i++)
             {
                 UserControlDias ucdias = new UserControlDias();
                 ucdias.dias(i);
+                ucdias.Fecha = new DateTime(año, mes, i); // Asigna la fecha correspondiente
+                ucdias.Click += UserControlDias_Click;    // Asocia el evento click
                 contenedorDias.Controls.Add(ucdias);
             }
         }
