@@ -159,6 +159,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\DBContext.cs" />
+    <Compile Include="Data\HistorialRepository.cs" />
     <Compile Include="Data\NotasRepository.cs" />
     <Compile Include="Expediente\Alergias\frmAlergias.cs">
       <SubType>Form</SubType>
@@ -268,6 +269,12 @@
     <Compile Include="frmDetallePaciente2.Designer.cs">
       <DependentUpon>frmDetallePaciente2.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHistorialUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistorialUsuario.Designer.cs">
+      <DependentUpon>frmHistorialUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +315,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Alergia.cs" />
+    <Compile Include="Models\HistorialUsuario.cs" />
     <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Paciente.cs" />
     <Compile Include="PacienteCita.cs">
@@ -388,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetallePaciente2.resx">
       <DependentUpon>frmDetallePaciente2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorialUsuario.resx">
+      <DependentUpon>frmHistorialUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
