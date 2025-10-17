@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sistema
 {
     public partial class frmMain : Form
     {
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+        // Resaltado de navegación (SATAButtons)
+        private FrameworkTest.SATAButton[] _navMainButtons;
+
         public frmMain()
         {
             InitializeComponent();
+            InicializarNavegacionLateral();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -22,11 +24,12 @@ namespace sistema
             abrirFormHijo(new frmInicio(this));
             labelTitulo.Text = "Inicio";
             this.pbTitulo.Image = Properties.Resources.hogar;
-            // Así accedes al recurso correctamente
 
+            AplicarPermisosCuentasPorRol();
 
+            // Dejar “Inicio” resaltado
+            SetActiveNavButton(BTNInicio);
         }
-
 
         public void abrirFormHijo(object formHijo)
         {
@@ -47,6 +50,7 @@ namespace sistema
             abrirFormHijo(new frmInicio(this));
             labelTitulo.Text = "Inicio";
             this.pbTitulo.Image = Properties.Resources.hogar;
+            SetActiveNavButton(BTNInicio);
             this.Refresh();
         }
 
@@ -55,6 +59,7 @@ namespace sistema
             abrirFormHijo(new frmCitas());
             labelTitulo.Text = "Citas";
             this.pbTitulo.Image = Properties.Resources.calendario;
+            SetActiveNavButton(BTNCitas);
             this.Refresh();
         }
 
@@ -63,6 +68,7 @@ namespace sistema
             abrirFormHijo(new frmPacientes());
             labelTitulo.Text = "Pacientes";
             this.pbTitulo.Image = Properties.Resources.paciente;
+            SetActiveNavButton(BTNPacientes);
             this.Refresh();
         }
 
@@ -71,6 +77,7 @@ namespace sistema
             abrirFormHijo(new frmAgenda());
             labelTitulo.Text = "Agenda";
             this.pbTitulo.Image = Properties.Resources.agenda;
+            SetActiveNavButton(BTNAgenda);
             this.Refresh();
         }
 
@@ -79,6 +86,7 @@ namespace sistema
             abrirFormHijo(new frmNotas());
             labelTitulo.Text = "Notas";
             this.pbTitulo.Image = Properties.Resources.notas;
+            SetActiveNavButton(BTNNotas);
             this.Refresh();
         }
 
@@ -96,7 +104,101 @@ namespace sistema
             abrirFormHijo(new frmCuentas());
             labelTitulo.Text = "Gestion De Cuentas";
             this.pbTitulo.Image = Properties.Resources.usuario;
+            SetActiveNavButton(btnCuentas);
             this.Refresh();
+        }
+
+        // Aplica visibilidad/habilitación de panelCuentas según rol del usuario logueado
+        private void AplicarPermisosCuentasPorRol()
+        {
+            try
+            {
+                bool esAdmin = false;
+                string usuario = sistema.Infrastructure.Security.Sesion.UsuarioActual;
+
+                if (!string.IsNullOrWhiteSpace(usuario))
+                {
+                    using (var conn = new SqlConnection(connectionString))
+                    using (var cmd = new SqlCommand("SELECT TOP (1) Rol FROM login WHERE Usuario = @Usuario", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Usuario", usuario);
+                        conn.Open();
+                        var rolObj = cmd.ExecuteScalar();
+                        var rol = rolObj?.ToString();
+                        esAdmin = string.Equals(rol, "Administrador", StringComparison.OrdinalIgnoreCase);
+                    }
+                }
+
+                if (panelCuentas != null)
+                {
+                    panelCuentas.Visible = esAdmin;
+                    panelCuentas.Enabled = esAdmin;
+                }
+
+                if (btnCuentas != null)
+                    btnCuentas.Enabled = esAdmin;
+            }
+            catch
+            {
+                if (panelCuentas != null)
+                {
+                    panelCuentas.Visible = false;
+                    panelCuentas.Enabled = false;
+                }
+                if (btnCuentas != null)
+                    btnCuentas.Enabled = false;
+            }
+        }
+
+        // -------------------- Resaltado de navegación (hover fijo) --------------------
+
+        private void InicializarNavegacionLateral()
+        {
+            // Ajusta esta lista a los SATAButtons reales del menú
+            _navMainButtons = new[] { BTNInicio, BTNCitas, BTNPacientes, BTNAgenda, BTNNotas, btnCuentas };
+
+            foreach (var sb in _navMainButtons)
+            {
+                if (sb == null) continue;
+
+                // Guarda el color normal original en Tag
+                if (sb.Tag == null) sb.Tag = sb.NormalBackground;
+
+                // Si no hay Hover definido, calcula uno a partir del Normal
+                if (sb.HoverBackground.IsEmpty)
+                {
+                    var normal = (Color)sb.Tag;
+                    sb.HoverBackground = ControlPaint.Light(normal);
+                }
+            }
+        }
+
+        // Deja el botón activo con el color Hover y el resto vuelve a Normal
+        private void SetActiveNavButton(FrameworkTest.SATAButton active)
+        {
+            if (_navMainButtons == null) return;
+
+            foreach (var sb in _navMainButtons)
+            {
+                if (sb == null) continue;
+
+                var normal = (Color)(sb.Tag ?? sb.NormalBackground);
+
+                if (sb == active)
+                {
+                    var hover = sb.HoverBackground.IsEmpty ? ControlPaint.Light(normal) : sb.HoverBackground;
+                    sb.NormalBackground = hover;
+                    if (!sb.HoverForeColor.IsEmpty)
+                        sb.NormalForeColor = sb.HoverForeColor;
+                }
+                else
+                {
+                    sb.NormalBackground = normal;
+                }
+
+                sb.Invalidate();
+                sb.Refresh();
+            }
         }
     }
 }

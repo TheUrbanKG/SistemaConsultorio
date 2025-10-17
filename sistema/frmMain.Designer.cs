@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius9 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            SATAUiFramework.BorderRadius borderRadius10 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius11 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius12 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius13 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius14 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius15 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius16 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius5 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius6 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius7 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius8 = new SATAUiFramework.BorderRadius();
             this.panelLateral = new SATAUiFramework.SATAPanel();
             this.sataPictureBox1 = new SATAUiFramework.Controls.SATAPictureBox();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.BTNInicio = new FrameworkTest.SATAButton();
-            this.sataPanel6 = new SATAUiFramework.SATAPanel();
+            this.panelCuentas = new SATAUiFramework.SATAPanel();
             this.btnCuentas = new FrameworkTest.SATAButton();
             this.BTNSalir = new FrameworkTest.SATAButton();
             this.sataPanel2 = new SATAUiFramework.SATAPanel();
@@ -59,7 +59,7 @@
             this.panelLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).BeginInit();
             this.sataPanel1.SuspendLayout();
-            this.sataPanel6.SuspendLayout();
+            this.panelCuentas.SuspendLayout();
             this.sataPanel2.SuspendLayout();
             this.sataPanel4.SuspendLayout();
             this.sataPanel5.SuspendLayout();
@@ -73,15 +73,15 @@
             this.panelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.panelLateral.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.panelLateral.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            borderRadius9.BottomLeft = 1;
-            borderRadius9.BottomRight = 15;
-            borderRadius9.TopLeft = 1;
-            borderRadius9.TopRight = 1;
-            this.panelLateral.BorderRadius = borderRadius9;
+            borderRadius1.BottomLeft = 1;
+            borderRadius1.BottomRight = 15;
+            borderRadius1.TopLeft = 1;
+            borderRadius1.TopRight = 1;
+            this.panelLateral.BorderRadius = borderRadius1;
             this.panelLateral.BorderThickness = 0;
             this.panelLateral.Controls.Add(this.sataPictureBox1);
             this.panelLateral.Controls.Add(this.sataPanel1);
-            this.panelLateral.Controls.Add(this.sataPanel6);
+            this.panelLateral.Controls.Add(this.panelCuentas);
             this.panelLateral.Controls.Add(this.BTNSalir);
             this.panelLateral.Controls.Add(this.sataPanel2);
             this.panelLateral.Controls.Add(this.sataPanel4);
@@ -114,11 +114,11 @@
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius10.BottomLeft = 1;
-            borderRadius10.BottomRight = 1;
-            borderRadius10.TopLeft = 1;
-            borderRadius10.TopRight = 1;
-            this.sataPanel1.BorderRadius = borderRadius10;
+            borderRadius2.BottomLeft = 1;
+            borderRadius2.BottomRight = 1;
+            borderRadius2.TopLeft = 1;
+            borderRadius2.TopRight = 1;
+            this.sataPanel1.BorderRadius = borderRadius2;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.BTNInicio);
             this.sataPanel1.Location = new System.Drawing.Point(4, 135);
@@ -154,7 +154,7 @@
             this.BTNInicio.NormalForeColor = System.Drawing.Color.White;
             this.BTNInicio.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNInicio.OutlineThickness = 2F;
-            this.BTNInicio.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNInicio.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNInicio.PressedForeColor = System.Drawing.Color.White;
             this.BTNInicio.PressedImageTint = System.Drawing.Color.White;
             this.BTNInicio.PressedOutline = System.Drawing.Color.Empty;
@@ -165,25 +165,27 @@
             this.BTNInicio.TextOffset = new System.Drawing.Point(0, 0);
             this.BTNInicio.Click += new System.EventHandler(this.BTNInicio_Click);
             // 
-            // sataPanel6
+            // panelCuentas
             // 
-            this.sataPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.sataPanel6.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.sataPanel6.BorderColor = System.Drawing.Color.Black;
-            borderRadius11.BottomLeft = 1;
-            borderRadius11.BottomRight = 1;
-            borderRadius11.TopLeft = 1;
-            borderRadius11.TopRight = 1;
-            this.sataPanel6.BorderRadius = borderRadius11;
-            this.sataPanel6.BorderThickness = 0;
-            this.sataPanel6.Controls.Add(this.btnCuentas);
-            this.sataPanel6.Location = new System.Drawing.Point(3, 564);
-            this.sataPanel6.Name = "sataPanel6";
-            this.sataPanel6.Size = new System.Drawing.Size(201, 59);
-            this.sataPanel6.TabIndex = 6;
+            this.panelCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelCuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panelCuentas.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panelCuentas.BorderColor = System.Drawing.Color.Black;
+            borderRadius3.BottomLeft = 1;
+            borderRadius3.BottomRight = 1;
+            borderRadius3.TopLeft = 1;
+            borderRadius3.TopRight = 1;
+            this.panelCuentas.BorderRadius = borderRadius3;
+            this.panelCuentas.BorderThickness = 0;
+            this.panelCuentas.Controls.Add(this.btnCuentas);
+            this.panelCuentas.Location = new System.Drawing.Point(5, 551);
+            this.panelCuentas.Name = "panelCuentas";
+            this.panelCuentas.Size = new System.Drawing.Size(201, 59);
+            this.panelCuentas.TabIndex = 6;
             // 
             // btnCuentas
             // 
+            this.btnCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCuentas.ButtonText = "Gestion de Cuentas";
             this.btnCuentas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCuentas.CheckedForeColor = System.Drawing.Color.White;
@@ -210,7 +212,7 @@
             this.btnCuentas.NormalForeColor = System.Drawing.Color.White;
             this.btnCuentas.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.btnCuentas.OutlineThickness = 2F;
-            this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.btnCuentas.PressedForeColor = System.Drawing.Color.White;
             this.btnCuentas.PressedImageTint = System.Drawing.Color.White;
             this.btnCuentas.PressedOutline = System.Drawing.Color.Empty;
@@ -223,6 +225,7 @@
             // 
             // BTNSalir
             // 
+            this.BTNSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BTNSalir.BackColor = System.Drawing.Color.Black;
             this.BTNSalir.ButtonText = "Salir";
             this.BTNSalir.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -266,14 +269,14 @@
             this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
             this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
             this.sataPanel2.BorderColor = System.Drawing.Color.Black;
-            borderRadius12.BottomLeft = 1;
-            borderRadius12.BottomRight = 1;
-            borderRadius12.TopLeft = 1;
-            borderRadius12.TopRight = 1;
-            this.sataPanel2.BorderRadius = borderRadius12;
+            borderRadius4.BottomLeft = 1;
+            borderRadius4.BottomRight = 1;
+            borderRadius4.TopLeft = 1;
+            borderRadius4.TopRight = 1;
+            this.sataPanel2.BorderRadius = borderRadius4;
             this.sataPanel2.BorderThickness = 0;
             this.sataPanel2.Controls.Add(this.BTNPacientes);
-            this.sataPanel2.Location = new System.Drawing.Point(4, 200);
+            this.sataPanel2.Location = new System.Drawing.Point(4, 216);
             this.sataPanel2.Name = "sataPanel2";
             this.sataPanel2.Size = new System.Drawing.Size(200, 59);
             this.sataPanel2.TabIndex = 2;
@@ -306,7 +309,7 @@
             this.BTNPacientes.NormalForeColor = System.Drawing.Color.White;
             this.BTNPacientes.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNPacientes.OutlineThickness = 2F;
-            this.BTNPacientes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNPacientes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNPacientes.PressedForeColor = System.Drawing.Color.White;
             this.BTNPacientes.PressedImageTint = System.Drawing.Color.White;
             this.BTNPacientes.PressedOutline = System.Drawing.Color.Empty;
@@ -322,14 +325,14 @@
             this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
             this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
             this.sataPanel4.BorderColor = System.Drawing.Color.Black;
-            borderRadius13.BottomLeft = 1;
-            borderRadius13.BottomRight = 1;
-            borderRadius13.TopLeft = 1;
-            borderRadius13.TopRight = 1;
-            this.sataPanel4.BorderRadius = borderRadius13;
+            borderRadius5.BottomLeft = 1;
+            borderRadius5.BottomRight = 1;
+            borderRadius5.TopLeft = 1;
+            borderRadius5.TopRight = 1;
+            this.sataPanel4.BorderRadius = borderRadius5;
             this.sataPanel4.BorderThickness = 0;
             this.sataPanel4.Controls.Add(this.BTNAgenda);
-            this.sataPanel4.Location = new System.Drawing.Point(4, 330);
+            this.sataPanel4.Location = new System.Drawing.Point(3, 377);
             this.sataPanel4.Name = "sataPanel4";
             this.sataPanel4.Size = new System.Drawing.Size(200, 59);
             this.sataPanel4.TabIndex = 4;
@@ -362,7 +365,7 @@
             this.BTNAgenda.NormalForeColor = System.Drawing.Color.White;
             this.BTNAgenda.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNAgenda.OutlineThickness = 2F;
-            this.BTNAgenda.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNAgenda.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNAgenda.PressedForeColor = System.Drawing.Color.White;
             this.BTNAgenda.PressedImageTint = System.Drawing.Color.White;
             this.BTNAgenda.PressedOutline = System.Drawing.Color.Empty;
@@ -378,14 +381,14 @@
             this.sataPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
             this.sataPanel5.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
             this.sataPanel5.BorderColor = System.Drawing.Color.Black;
-            borderRadius14.BottomLeft = 1;
-            borderRadius14.BottomRight = 1;
-            borderRadius14.TopLeft = 1;
-            borderRadius14.TopRight = 1;
-            this.sataPanel5.BorderRadius = borderRadius14;
+            borderRadius6.BottomLeft = 1;
+            borderRadius6.BottomRight = 1;
+            borderRadius6.TopLeft = 1;
+            borderRadius6.TopRight = 1;
+            this.sataPanel5.BorderRadius = borderRadius6;
             this.sataPanel5.BorderThickness = 0;
             this.sataPanel5.Controls.Add(this.BTNNotas);
-            this.sataPanel5.Location = new System.Drawing.Point(4, 395);
+            this.sataPanel5.Location = new System.Drawing.Point(3, 461);
             this.sataPanel5.Name = "sataPanel5";
             this.sataPanel5.Size = new System.Drawing.Size(201, 59);
             this.sataPanel5.TabIndex = 5;
@@ -418,7 +421,7 @@
             this.BTNNotas.NormalForeColor = System.Drawing.Color.White;
             this.BTNNotas.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNNotas.OutlineThickness = 2F;
-            this.BTNNotas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNNotas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNNotas.PressedForeColor = System.Drawing.Color.White;
             this.BTNNotas.PressedImageTint = System.Drawing.Color.White;
             this.BTNNotas.PressedOutline = System.Drawing.Color.Empty;
@@ -434,14 +437,14 @@
             this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
             this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
             this.sataPanel3.BorderColor = System.Drawing.Color.Black;
-            borderRadius15.BottomLeft = 1;
-            borderRadius15.BottomRight = 1;
-            borderRadius15.TopLeft = 1;
-            borderRadius15.TopRight = 1;
-            this.sataPanel3.BorderRadius = borderRadius15;
+            borderRadius7.BottomLeft = 1;
+            borderRadius7.BottomRight = 1;
+            borderRadius7.TopLeft = 1;
+            borderRadius7.TopRight = 1;
+            this.sataPanel3.BorderRadius = borderRadius7;
             this.sataPanel3.BorderThickness = 0;
             this.sataPanel3.Controls.Add(this.BTNCitas);
-            this.sataPanel3.Location = new System.Drawing.Point(4, 265);
+            this.sataPanel3.Location = new System.Drawing.Point(4, 296);
             this.sataPanel3.Name = "sataPanel3";
             this.sataPanel3.Size = new System.Drawing.Size(200, 59);
             this.sataPanel3.TabIndex = 3;
@@ -474,7 +477,7 @@
             this.BTNCitas.NormalForeColor = System.Drawing.Color.White;
             this.BTNCitas.NormalOutline = System.Drawing.Color.DarkSlateGray;
             this.BTNCitas.OutlineThickness = 2F;
-            this.BTNCitas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(170)))), ((int)(((byte)(97)))));
+            this.BTNCitas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BTNCitas.PressedForeColor = System.Drawing.Color.White;
             this.BTNCitas.PressedImageTint = System.Drawing.Color.White;
             this.BTNCitas.PressedOutline = System.Drawing.Color.Empty;
@@ -512,11 +515,11 @@
             this.panelSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.panelSuperior.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panelSuperior.BorderColor = System.Drawing.Color.Black;
-            borderRadius16.BottomLeft = 1;
-            borderRadius16.BottomRight = 1;
-            borderRadius16.TopLeft = 1;
-            borderRadius16.TopRight = 1;
-            this.panelSuperior.BorderRadius = borderRadius16;
+            borderRadius8.BottomLeft = 1;
+            borderRadius8.BottomRight = 1;
+            borderRadius8.TopLeft = 1;
+            borderRadius8.TopRight = 1;
+            this.panelSuperior.BorderRadius = borderRadius8;
             this.panelSuperior.BorderThickness = 0;
             this.panelSuperior.Controls.Add(this.pbTitulo);
             this.panelSuperior.Controls.Add(this.labelTitulo);
@@ -553,7 +556,7 @@
             this.panelLateral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).EndInit();
             this.sataPanel1.ResumeLayout(false);
-            this.sataPanel6.ResumeLayout(false);
+            this.panelCuentas.ResumeLayout(false);
             this.sataPanel2.ResumeLayout(false);
             this.sataPanel4.ResumeLayout(false);
             this.sataPanel5.ResumeLayout(false);
@@ -571,7 +574,7 @@
         private SATAUiFramework.SATAPanel panelLateral;
         private SATAUiFramework.SATAPanel sataPanel1;
         private FrameworkTest.SATAButton BTNInicio;
-        private SATAUiFramework.SATAPanel sataPanel6;
+        private SATAUiFramework.SATAPanel panelCuentas;
         private FrameworkTest.SATAButton btnCuentas;
         private FrameworkTest.SATAButton BTNSalir;
         private SATAUiFramework.SATAPanel sataPanel2;

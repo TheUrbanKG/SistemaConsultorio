@@ -36,12 +36,14 @@
             this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flpPacientes = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.btnNuevoPaciente);
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.lblFechaActual);
             this.panel1.Controls.Add(this.label1);

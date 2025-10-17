@@ -63,6 +63,16 @@ namespace sistema
                 }
             }
 
+            var preview = new PacientePreview
+            {
+                Tipo = "Conocido",
+                Nombre = "Prueba",
+                Genero = "Masculino",
+                GrupoSanguineo = "A+",
+                Edad = "30"
+            };
+            AgregarPacientePreview(preview);
+
             timer1.Interval = 1000; // 1 segundo
             timer1.Tick += timer1_Tick;
             timer1.Start();
@@ -127,6 +137,16 @@ namespace sistema
         private void flpPacientes_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnNuevoPaciente_Click(object sender, EventArgs e)
+        {
+            PacienteCita pacienteCita = new PacienteCita();
+            if (pacienteCita.ShowDialog() == DialogResult.OK)
+            {
+                // Recibe el objeto PacientePreview desde PacienteCita
+                AgregarPacientePreview(pacienteCita.PreviewPaciente);
+            }
         }
     }
 }

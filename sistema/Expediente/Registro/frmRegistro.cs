@@ -25,6 +25,7 @@ namespace sistema.Expediente.Registro
         private void btnModificar_Click(object sender, EventArgs e)
         {
             frmDetalleRegistro frmDetalle = new frmDetalleRegistro();
+            frmDetalle.PacienteID = this.PacienteID; // Asigna el ID del paciente actual
             frmDetalle.ShowDialog();
         }
 
@@ -33,7 +34,26 @@ namespace sistema.Expediente.Registro
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"SELECT Peso, Altura, IMC FROM Paciente WHERE PacienteID = @PacienteID";
+                string query = @"
+                    SELECT TOP(1)
+                        ef.Peso,
+                        ef.Altura,
+                        ef.IMC,
+                        ef.FechaRegistro,
+                        p.FechaNacimiento,
+                        p.FechaRegistro AS FechaRegistroPaciente
+                    FROM Paciente p
+                    OUTER APPLY (
+                        SELECT TOP(1)
+                            CAST(Peso   AS DECIMAL(9,2)) AS Peso,
+                            CAST(Altura AS DECIMAL(9,2)) AS Altura,
+                            CAST(IMC    AS DECIMAL(9,2)) AS IMC,
+                            FechaRegistro
+                        FROM ExploracionFisica
+                        WHERE PacienteID = p.PacienteID
+                        ORDER BY FechaRegistro DESC
+                    ) ef
+                    WHERE p.PacienteID = @PacienteID;";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
@@ -41,20 +61,49 @@ namespace sistema.Expediente.Registro
                     {
                         if (reader.Read())
                         {
-                            decimal peso = reader["Peso"] != DBNull.Value ? Convert.ToDecimal(reader["Peso"]) : 0;
-                            decimal altura = reader["Altura"] != DBNull.Value ? Convert.ToDecimal(reader["Altura"]) : 0;
-                            decimal imc = reader["IMC"] != DBNull.Value ? Convert.ToDecimal(reader["IMC"]) : 0;
+                            int iPeso   = reader.GetOrdinal("Peso");
+                            int iAltura = reader.GetOrdinal("Altura");
+                            int iIMC    = reader.GetOrdinal("IMC");
+                            int iFN     = reader.GetOrdinal("FechaNacimiento");
+                            int iFRPac  = reader.GetOrdinal("FechaRegistroPaciente");
 
-                            lbPeso.Text = peso > 0 ? $"{peso} kg." : "";
-                            lbAltura.Text = altura > 0 ? $"{altura} cm" : "";
-                            lbIMC.Text = imc > 0 ? $"{Math.Round(imc, 2)}" : "";
+                            decimal peso   = reader.IsDBNull(iPeso)   ? 0m : reader.GetDecimal(iPeso);
+                            decimal altura = reader.IsDBNull(iAltura) ? 0m : reader.GetDecimal(iAltura);
+                            decimal imc    = reader.IsDBNull(iIMC)    ? 0m : reader.GetDecimal(iIMC);
+
+                            // Si IMC no viene, intenta calcularlo con peso/altura
+                            if (imc <= 0 && altura > 0 && peso > 0)
+                                imc = Math.Round(peso / (decimal)Math.Pow((double)(altura / 100m), 2), 2);
+
+                            // Solo actualiza cuando haya dato válido; si no, deja el label como estaba
+                            if (peso > 0)
+                                lbPeso.Text = $"{peso} kg.";
+
+                            if (altura > 0)
+                                lbAltura.Text = $"{Convert.ToInt32(altura)} cm";
+
+                            if (imc > 0)
+                                lbIMC.Text = $"{Math.Round(imc, 2)}";
+
+                            // Edad desde FechaNacimiento 
+                            if (!reader.IsDBNull(iFN))
+                            {
+                                DateTime fn = reader.GetDateTime(iFN).Date;
+                                DateTime hoy = DateTime.Today;
+                                int edad = hoy.Year - fn.Year;
+                                if (new DateTime(hoy.Year, fn.Month, fn.Day) > hoy) edad--;
+                                if (edad >= 0)
+                                    lbEdad.Text = (edad == 1) ? "1 año" : $"{edad} años";
+                            }
+
+                            // Fecha de registro del paciente s
+                            if (!reader.IsDBNull(iFRPac))
+                            {
+                                DateTime frp = reader.GetDateTime(iFRPac);
+                                lbFechaRegistro.Text = frp.ToString("dd/MM/yyyy");
+                            }
                         }
-                        else
-                        {
-                            lbPeso.Text = "0 kg.";
-                            lbAltura.Text = "0 cm";
-                            lbIMC.Text = "0.00";
-                        }
+                        // Si no hay filas, no hacemos nada: los labels permanecen con su valor anterior
                     }
                 }
             }

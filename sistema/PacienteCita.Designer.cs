@@ -166,6 +166,14 @@
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCalendario)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panelDesconocido.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1351,7 +1359,7 @@
             this.label29.TabIndex = 37;
             this.label29.Text = "Ciudad";
             // 
-            // picCalendario
+            // richTextBox2
             // 
             this.picCalendario.Image = ((System.Drawing.Image)(resources.GetObject("picCalendario.Image")));
             this.picCalendario.InitialImage = ((System.Drawing.Image)(resources.GetObject("picCalendario.InitialImage")));
@@ -1422,6 +1430,22 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCalendario)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panelDesconocido.ResumeLayout(false);
+            this.panelDesconocido.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }

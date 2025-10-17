@@ -25,9 +25,7 @@ namespace sistema.Expediente.Registro
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            decimal peso, altura, imc = 0;
-
-            // Validación de entrada
+            decimal peso, altura;
             if (!decimal.TryParse(txtPeso.Text, out peso) || peso <= 0)
             {
                 MessageBox.Show("Por favor, ingresa un peso válido.");
@@ -39,28 +37,26 @@ namespace sistema.Expediente.Registro
                 return;
             }
 
-            // Calcular IMC
-            imc = peso / (altura * altura);
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"
-                    UPDATE Paciente
-                    SET Peso = @Peso, Altura = @Altura, IMC = @IMC
-                    WHERE PacienteID = @PacienteID";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+
+                string insert = @"
+                    INSERT INTO ExploracionFisica
+                        (PacienteID, FechaRegistro, Peso, Altura)
+                    VALUES
+                        (@PacienteID, GETDATE(), @Peso, @Altura);";
+                using (SqlCommand cmd = new SqlCommand(insert, conn))
                 {
+                    cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
                     cmd.Parameters.AddWithValue("@Peso", peso);
                     cmd.Parameters.AddWithValue("@Altura", altura);
-                    cmd.Parameters.AddWithValue("@IMC", imc);
-                    cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Datos guardados correctamente.");
+                    this.Close();
                 }
             }
-
-            MessageBox.Show("Datos guardados correctamente.");
-            this.Close();
         }
     }
 }

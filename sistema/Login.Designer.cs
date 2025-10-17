@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cajaUsuario = new MetroFramework.Controls.MetroTextBox();
+            this.txtUsuario = new MetroFramework.Controls.MetroTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cajaContrasena = new MetroFramework.Controls.MetroTextBox();
+            this.txtPassword = new MetroFramework.Controls.MetroTextBox();
             this.btnIngresar = new FrameworkTest.SATAButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,36 +48,36 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // cajaUsuario
+            // txtUsuario
             // 
             // 
             // 
             // 
-            this.cajaUsuario.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cajaUsuario.CustomButton.Image = null;
-            this.cajaUsuario.CustomButton.Location = new System.Drawing.Point(166, 1);
-            this.cajaUsuario.CustomButton.Name = "";
-            this.cajaUsuario.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.cajaUsuario.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.cajaUsuario.CustomButton.TabIndex = 1;
-            this.cajaUsuario.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.cajaUsuario.CustomButton.UseSelectable = true;
-            this.cajaUsuario.CustomButton.Visible = false;
-            this.cajaUsuario.Lines = new string[0];
-            this.cajaUsuario.Location = new System.Drawing.Point(297, 97);
-            this.cajaUsuario.MaxLength = 32767;
-            this.cajaUsuario.Name = "cajaUsuario";
-            this.cajaUsuario.PasswordChar = '\0';
-            this.cajaUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.cajaUsuario.SelectedText = "";
-            this.cajaUsuario.SelectionLength = 0;
-            this.cajaUsuario.SelectionStart = 0;
-            this.cajaUsuario.ShortcutsEnabled = true;
-            this.cajaUsuario.Size = new System.Drawing.Size(188, 23);
-            this.cajaUsuario.TabIndex = 1;
-            this.cajaUsuario.UseSelectable = true;
-            this.cajaUsuario.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.cajaUsuario.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtUsuario.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtUsuario.CustomButton.Image = null;
+            this.txtUsuario.CustomButton.Location = new System.Drawing.Point(166, 1);
+            this.txtUsuario.CustomButton.Name = "";
+            this.txtUsuario.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtUsuario.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtUsuario.CustomButton.TabIndex = 1;
+            this.txtUsuario.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtUsuario.CustomButton.UseSelectable = true;
+            this.txtUsuario.CustomButton.Visible = false;
+            this.txtUsuario.Lines = new string[0];
+            this.txtUsuario.Location = new System.Drawing.Point(297, 97);
+            this.txtUsuario.MaxLength = 32767;
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.PasswordChar = '\0';
+            this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtUsuario.SelectedText = "";
+            this.txtUsuario.SelectionLength = 0;
+            this.txtUsuario.SelectionStart = 0;
+            this.txtUsuario.ShortcutsEnabled = true;
+            this.txtUsuario.Size = new System.Drawing.Size(188, 23);
+            this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.UseSelectable = true;
+            this.txtUsuario.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtUsuario.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label1
             // 
@@ -101,36 +101,36 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Ingrese la Contraseña";
             // 
-            // cajaContrasena
+            // txtPassword
             // 
             // 
             // 
             // 
-            this.cajaContrasena.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cajaContrasena.CustomButton.Image = null;
-            this.cajaContrasena.CustomButton.Location = new System.Drawing.Point(166, 1);
-            this.cajaContrasena.CustomButton.Name = "";
-            this.cajaContrasena.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.cajaContrasena.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.cajaContrasena.CustomButton.TabIndex = 1;
-            this.cajaContrasena.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.cajaContrasena.CustomButton.UseSelectable = true;
-            this.cajaContrasena.CustomButton.Visible = false;
-            this.cajaContrasena.Lines = new string[0];
-            this.cajaContrasena.Location = new System.Drawing.Point(297, 188);
-            this.cajaContrasena.MaxLength = 32767;
-            this.cajaContrasena.Name = "cajaContrasena";
-            this.cajaContrasena.PasswordChar = '*';
-            this.cajaContrasena.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.cajaContrasena.SelectedText = "";
-            this.cajaContrasena.SelectionLength = 0;
-            this.cajaContrasena.SelectionStart = 0;
-            this.cajaContrasena.ShortcutsEnabled = true;
-            this.cajaContrasena.Size = new System.Drawing.Size(188, 23);
-            this.cajaContrasena.TabIndex = 4;
-            this.cajaContrasena.UseSelectable = true;
-            this.cajaContrasena.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.cajaContrasena.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPassword.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtPassword.CustomButton.Image = null;
+            this.txtPassword.CustomButton.Location = new System.Drawing.Point(166, 1);
+            this.txtPassword.CustomButton.Name = "";
+            this.txtPassword.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPassword.CustomButton.TabIndex = 1;
+            this.txtPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPassword.CustomButton.UseSelectable = true;
+            this.txtPassword.CustomButton.Visible = false;
+            this.txtPassword.Lines = new string[0];
+            this.txtPassword.Location = new System.Drawing.Point(297, 188);
+            this.txtPassword.MaxLength = 32767;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.SelectionLength = 0;
+            this.txtPassword.SelectionStart = 0;
+            this.txtPassword.ShortcutsEnabled = true;
+            this.txtPassword.Size = new System.Drawing.Size(188, 23);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.UseSelectable = true;
+            this.txtPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // btnIngresar
             // 
@@ -177,10 +177,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 315);
             this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.cajaContrasena);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cajaUsuario);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
@@ -197,10 +197,10 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private MetroFramework.Controls.MetroTextBox cajaUsuario;
+        private MetroFramework.Controls.MetroTextBox txtUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private MetroFramework.Controls.MetroTextBox cajaContrasena;
+        private MetroFramework.Controls.MetroTextBox txtPassword;
         private FrameworkTest.SATAButton btnIngresar;
     }
 }
