@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbGrupoSanguineo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cbCivil
@@ -205,7 +207,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(353, 103);
+            this.label4.Location = new System.Drawing.Point(372, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 16);
             this.label4.TabIndex = 10;
@@ -216,17 +218,48 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(353, 180);
+            this.label5.Location = new System.Drawing.Point(356, 174);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 16);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ocupacion";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(321, 237);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 16);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Grupo Sanguineo";
+            // 
+            // cbGrupoSanguineo
+            // 
+            this.cbGrupoSanguineo.FormattingEnabled = true;
+            this.cbGrupoSanguineo.Items.AddRange(new object[] {
+            "",
+            "O+",
+            "A+",
+            "B+",
+            "AB+",
+            "O-",
+            "A-",
+            "B-",
+            "AB-"});
+            this.cbGrupoSanguineo.Location = new System.Drawing.Point(449, 232);
+            this.cbGrupoSanguineo.Name = "cbGrupoSanguineo";
+            this.cbGrupoSanguineo.Size = new System.Drawing.Size(171, 21);
+            this.cbGrupoSanguineo.TabIndex = 14;
             // 
             // frmDetallePaciente2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 378);
+            this.Controls.Add(this.cbGrupoSanguineo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -263,5 +296,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbGrupoSanguineo;
     }
 }

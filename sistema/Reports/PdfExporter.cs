@@ -67,7 +67,7 @@ namespace sistema.Reports
         private static void AgregarResumenPaciente(Section sec, SqlConnection conn, int pacienteId)
         {
             using (var cmd = new SqlCommand(@"
-SELECT Cedula, Nombre, Apellido, Genero, FechaNacimiento, Telefono, Direccion, FechaRegistro
+SELECT Cedula, Nombre, Apellido, Genero, FechaNacimiento, Telefono, Direccion, FechaRegistro, GrupoSanguineo
 FROM Paciente WHERE PacienteID = @Id;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
@@ -101,10 +101,12 @@ FROM Paciente WHERE PacienteID = @Id;", conn))
                     var nombreCompleto = $"{r["Nombre"]} {r["Apellido"]}".Trim();
                     var fechaNac = r["FechaNacimiento"] != DBNull.Value ? ((DateTime)r["FechaNacimiento"]).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) : "";
                     var fechaReg = r["FechaRegistro"] != DBNull.Value ? ((DateTime)r["FechaRegistro"]).ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture) : "";
+                    var grupo = r["GrupoSanguineo"]?.ToString();
 
                     fila("Nombre", nombreCompleto);
                     fila("Cédula", r["Cedula"]?.ToString());
                     fila("Género", NormalizarGenero(r["Genero"]?.ToString()));
+                    fila("Grupo sanguíneo", string.IsNullOrWhiteSpace(grupo) ? "N/D" : grupo);
                     fila("Fecha de Nacimiento", fechaNac);
                     fila("Teléfono", r["Telefono"]?.ToString());
                     fila("Dirección", r["Direccion"]?.ToString());
@@ -278,11 +280,11 @@ ORDER BY FechaUltimaModificacion DESC;", conn))
 
             // 2) Fallback: cuadros usados en planes terapéuticos del paciente
             using (var cmd2 = new SqlCommand(@"
-SELECT c.Id, c.Nombre, c.Descripcion, MAX(p.FechaCreacion) AS UltimaFecha
+SELECT c.Id, c.Nombre, c.Impresiones AS Descripcion, MAX(p.FechaCreacion) AS UltimaFecha
 FROM PlanTerapeutico p
 INNER JOIN CuadroClinico c ON c.Id = p.CuadroClinicoId
 WHERE p.PacienteID = @Id
-GROUP BY c.Id, c.Nombre, c.Descripcion
+GROUP BY c.Id, c.Nombre, c.Impresiones
 ORDER BY UltimaFecha DESC;", conn))
             {
                 cmd2.Parameters.AddWithValue("@Id", pacienteId);
@@ -306,40 +308,65 @@ ORDER BY UltimaFecha DESC;", conn))
             var tabla = sec.AddTable();
             tabla.Borders.Width = 0.5;
             tabla.AddColumn("6.0cm"); // Nombre
-            tabla.AddColumn("6.5cm"); // Descripción
-            tabla.AddColumn("3.0cm"); // Estado / UltimaFecha / FechaDiagnostico
+            tabla.AddColumn("6.5cm"); // Descripción / Impresiones
+            tabla.AddColumn("3.0cm"); // Estado / Fecha(s)
 
             // Encabezados dinámicos
             string colNombre = "Nombre";
-            string colDesc = dt.Columns.Contains("Descripcion") ? "Descripcion" : (dt.Columns.Contains("Descripción") ? "Descripción" : null);
+
+            // Prioriza Impresiones como descripción; si no, usa Descripcion/Descripción
+            string colDesc =
+                dt.Columns.Contains("Impresiones") ? "Impresiones" :
+                dt.Columns.Contains("Descripcion") ? "Descripcion" :
+                dt.Columns.Contains("Descripción") ? "Descripción" : null;
+
             string colEstado = dt.Columns.Contains("Estado") ? "Estado" : null;
+
+            bool hasInicioFin = dt.Columns.Contains("FechaInicio") && dt.Columns.Contains("FechaFin");
             string colFecha =
                 dt.Columns.Contains("UltimaFecha") ? "UltimaFecha" :
                 dt.Columns.Contains("FechaUltimaModificacion") ? "FechaUltimaModificacion" :
                 dt.Columns.Contains("FechaDiagnostico") ? "FechaDiagnostico" : null;
 
+            var header3 = colEstado != null ? "Estado" : ((hasInicioFin || colFecha != null) ? "Fecha" : "");
+
             var header = tabla.AddRow();
-            AddHeader(header, "Nombre", "Descripción", colEstado != null ? "Estado" : (colFecha != null ? "Fecha" : ""));
+            AddHeader(header, "Nombre", colDesc != null ? "Descripción" : "", header3);
 
             foreach (DataRow r in dt.Rows)
             {
                 var row = tabla.AddRow();
                 row.Cells[0].AddParagraph(r[colNombre]?.ToString());
 
-                // Descripción si existe
+                // Descripción si existe (Impresiones/Descripcion/Descripción)
                 row.Cells[1].AddParagraph(colDesc != null ? (r[colDesc]?.ToString() ?? "") : "");
 
-                // Tercera columna: Estado o Fecha si no hay Estado
+                // Tercera columna: Estado o Fechas
                 string valorTercera = "";
                 if (colEstado != null)
                 {
                     valorTercera = r[colEstado]?.ToString();
+                }
+                else if (hasInicioFin)
+                {
+                    var inicio = r["FechaInicio"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(r["FechaInicio"]);
+                    var fin = r["FechaFin"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(r["FechaFin"]);
+                    if (inicio.HasValue || fin.HasValue)
+                    {
+                        if (inicio.HasValue && fin.HasValue)
+                            valorTercera = $"Inicio: {inicio.Value:dd/MM/yyyy}  Fin: {fin.Value:dd/MM/yyyy}";
+                        else if (inicio.HasValue)
+                            valorTercera = $"Inicio: {inicio.Value:dd/MM/yyyy}";
+                        else
+                            valorTercera = $"Fin: {fin.Value:dd/MM/yyyy}";
+                    }
                 }
                 else if (colFecha != null && r[colFecha] != DBNull.Value)
                 {
                     var fecha = Convert.ToDateTime(r[colFecha]);
                     valorTercera = fecha.ToString("dd/MM/yyyy HH:mm");
                 }
+
                 row.Cells[2].AddParagraph(valorTercera);
             }
         }

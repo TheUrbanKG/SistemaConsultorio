@@ -55,6 +55,10 @@ namespace sistema.Models
         [StringLength(20)]
         public string Cedula { get; set; }
 
+        // NUEVO
+        [StringLength(3)]
+        public string GrupoSanguineo { get; set; }
+
         // NUEVO: fecha de registro del paciente
         public DateTime FechaRegistro { get; set; }
     }
