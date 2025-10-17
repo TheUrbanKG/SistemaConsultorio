@@ -36,7 +36,6 @@
             this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flpPacientes = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 

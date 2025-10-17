@@ -143,6 +143,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendarCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgendarCita.Designer.cs">
+      <DependentUpon>AgendarCita.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarCitas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +330,9 @@
       <DependentUpon>UserControlDias.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PdfExporter.cs" />
+    <EmbeddedResource Include="AgendarCita.resx">
+      <DependentUpon>AgendarCita.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarCitas.resx">
       <DependentUpon>AgregarCitas.cs</DependentUpon>
     </EmbeddedResource>

@@ -63,15 +63,20 @@ namespace sistema
                 }
             }
 
-            var preview = new PacientePreview
-            {
-                Tipo = "Conocido",
-                Nombre = "Prueba",
-                Genero = "Masculino",
-                GrupoSanguineo = "A+",
-                Edad = "30"
-            };
-            AgregarPacientePreview(preview);
+            // Pintar los pacientes obtenidos de BD
+            foreach (var p in pacientes)
+                AgregarPacientePreview(p);
+
+            // Si aún quieres un registro de prueba, usa otro nombre para evitar CS0136.
+            // var previewPrueba = new PacientePreview
+            // {
+            //     Tipo = "Conocido",
+            //     Nombre = "Prueba",
+            //     Genero = "Masculino",
+            //     GrupoSanguineo = "A+",
+            //     Edad = "30"
+            // };
+            // AgregarPacientePreview(previewPrueba);
 
             timer1.Interval = 1000; // 1 segundo
             timer1.Tick += timer1_Tick;
@@ -86,7 +91,7 @@ namespace sistema
                 Height = 90,
                 Margin = new Padding(10),
                 Tag = paciente,
-                BackColor = Color.FromArgb(44, 62, 80) // Azul claro moderno
+                BackColor = Color.FromArgb(44, 62, 80)
             };
 
             Font labelFont = new Font("Segoe UI", 12, FontStyle.Bold);
@@ -104,7 +109,8 @@ namespace sistema
             panel.Controls.Add(lblEdad);
 
             panel.Click += PanelPaciente_Click;
-            flpPacientes.Controls.Add(panel);
+
+            // Agregar SOLO una vez
             flpPacientes.Controls.Add(panel);
         }
 
