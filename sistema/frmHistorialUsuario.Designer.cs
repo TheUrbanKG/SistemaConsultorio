@@ -89,7 +89,7 @@
             this.cboUsuario.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboUsuario.ForeColor = System.Drawing.Color.White;
+            this.cboUsuario.ForeColor = System.Drawing.Color.Black;
             this.cboUsuario.Location = new System.Drawing.Point(57, 16);
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.Size = new System.Drawing.Size(121, 21);
@@ -110,7 +110,7 @@
             this.cboAccion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cboAccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboAccion.ForeColor = System.Drawing.Color.White;
+            this.cboAccion.ForeColor = System.Drawing.Color.Black;
             this.cboAccion.Location = new System.Drawing.Point(228, 16);
             this.cboAccion.Name = "cboAccion";
             this.cboAccion.Size = new System.Drawing.Size(121, 21);
@@ -170,7 +170,7 @@
             // 
             this.txtBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.ForeColor = System.Drawing.Color.White;
+            this.txtBuscar.ForeColor = System.Drawing.Color.Black;
             this.txtBuscar.Location = new System.Drawing.Point(768, 16);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(124, 20);
