@@ -36,14 +36,12 @@
             this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flpPacientes = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.btnNuevoPaciente);
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.lblFechaActual);
             this.panel1.Controls.Add(this.label1);
@@ -57,7 +55,7 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblFecha.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblFecha.Location = new System.Drawing.Point(153, 19);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(52, 18);
