@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgendarCita));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,13 +40,13 @@
             this.lblNombrePaciente = new System.Windows.Forms.Label();
             this.lblFechaCita = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioPM = new System.Windows.Forms.RadioButton();
-            this.radioAM = new System.Windows.Forms.RadioButton();
             this.dtpHora = new System.Windows.Forms.DateTimePicker();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txtMotivoCita = new System.Windows.Forms.RichTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.radioAM = new System.Windows.Forms.RadioButton();
+            this.radioPM = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -194,32 +193,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // radioPM
-            // 
-            this.radioPM.AutoSize = true;
-            this.radioPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioPM.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioPM.Location = new System.Drawing.Point(334, 41);
-            this.radioPM.Name = "radioPM";
-            this.radioPM.Size = new System.Drawing.Size(47, 20);
-            this.radioPM.TabIndex = 7;
-            this.radioPM.TabStop = true;
-            this.radioPM.Text = "PM";
-            this.radioPM.UseVisualStyleBackColor = true;
-            // 
-            // radioAM
-            // 
-            this.radioAM.AutoSize = true;
-            this.radioAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioAM.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioAM.Location = new System.Drawing.Point(333, 19);
-            this.radioAM.Name = "radioAM";
-            this.radioAM.Size = new System.Drawing.Size(47, 20);
-            this.radioAM.TabIndex = 6;
-            this.radioAM.TabStop = true;
-            this.radioAM.Text = "AM";
-            this.radioAM.UseVisualStyleBackColor = true;
-            // 
             // dtpHora
             // 
             this.dtpHora.Location = new System.Drawing.Point(123, 22);
@@ -268,6 +241,32 @@
             this.metroLabel2.Text = "Hora de la Cita:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
+            // radioAM
+            // 
+            this.radioAM.AutoSize = true;
+            this.radioAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioAM.ForeColor = System.Drawing.SystemColors.Control;
+            this.radioAM.Location = new System.Drawing.Point(333, 19);
+            this.radioAM.Name = "radioAM";
+            this.radioAM.Size = new System.Drawing.Size(47, 20);
+            this.radioAM.TabIndex = 6;
+            this.radioAM.TabStop = true;
+            this.radioAM.Text = "AM";
+            this.radioAM.UseVisualStyleBackColor = true;
+            // 
+            // radioPM
+            // 
+            this.radioPM.AutoSize = true;
+            this.radioPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioPM.ForeColor = System.Drawing.SystemColors.Control;
+            this.radioPM.Location = new System.Drawing.Point(334, 41);
+            this.radioPM.Name = "radioPM";
+            this.radioPM.Size = new System.Drawing.Size(47, 20);
+            this.radioPM.TabIndex = 7;
+            this.radioPM.TabStop = true;
+            this.radioPM.Text = "PM";
+            this.radioPM.UseVisualStyleBackColor = true;
+            // 
             // AgendarCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,7 +275,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblFechaCita);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AgendarCita";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Agendar Cita";

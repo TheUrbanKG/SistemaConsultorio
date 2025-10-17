@@ -1,9 +1,11 @@
-﻿using System;
+﻿using sistema.Infrastructure.Security; // <-- agregar
+using sistema.Models; // <-- agregar
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
-using sistema.Infrastructure.Security; // <-- agregar
 
 namespace sistema
 {
@@ -170,6 +172,21 @@ WHERE Usuario = @Usuario;";
             catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar usuario: " + ex.Message);
+            }
+        }
+
+        private void sataButton1_Click(object sender, EventArgs e)
+        {
+            // Si se está ejecutando dentro de frmMain, abre como hijo en su panel
+            var main = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+            if (main != null)
+            {
+                main.abrirFormHijo(new frmHistorialUsuario());
+            }
+            else
+            {
+                var f = new frmHistorialUsuario { StartPosition = FormStartPosition.CenterScreen };
+                f.Show();
             }
         }
     }
