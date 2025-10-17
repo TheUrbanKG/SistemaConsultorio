@@ -66,9 +66,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextBoxEdadDesconocido = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.picCalendario = new System.Windows.Forms.PictureBox();
             this.txtFechaNacimiento = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtApellidoMa = new System.Windows.Forms.TextBox();
@@ -84,7 +83,7 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtBoxEdad = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -151,10 +150,21 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.picCalendario = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelConocido.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panelDesconocido.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCalendario)).BeginInit();
             this.panel6.SuspendLayout();
             this.panelDesconocido.SuspendLayout();
@@ -315,7 +325,7 @@
             this.panelConocido.Controls.Add(this.textBox2);
             this.panelConocido.Controls.Add(this.label8);
             this.panelConocido.Controls.Add(this.panel3);
-            this.panelConocido.Controls.Add(this.textBox1);
+            this.panelConocido.Controls.Add(this.TextBoxEdadDesconocido);
             this.panelConocido.Controls.Add(this.label5);
             this.panelConocido.Controls.Add(this.picCalendario);
             this.panelConocido.Controls.Add(this.txtFechaNacimiento);
@@ -554,13 +564,13 @@
             this.radioButton2.Text = "Masculino";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // TextBoxEdadDesconocido
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 450);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 39);
-            this.textBox1.TabIndex = 13;
+            this.TextBoxEdadDesconocido.Location = new System.Drawing.Point(7, 450);
+            this.TextBoxEdadDesconocido.Multiline = true;
+            this.TextBoxEdadDesconocido.Name = "TextBoxEdadDesconocido";
+            this.TextBoxEdadDesconocido.Size = new System.Drawing.Size(161, 39);
+            this.TextBoxEdadDesconocido.TabIndex = 13;
             // 
             // label5
             // 
@@ -570,20 +580,6 @@
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Edad";
-            // 
-            // picCalendario
-            // 
-            this.picCalendario.Image = ((System.Drawing.Image)(resources.GetObject("picCalendario.Image")));
-            this.picCalendario.InitialImage = ((System.Drawing.Image)(resources.GetObject("picCalendario.InitialImage")));
-            this.picCalendario.Location = new System.Drawing.Point(141, 343);
-            this.picCalendario.Name = "picCalendario";
-            this.picCalendario.Size = new System.Drawing.Size(32, 32);
-            this.picCalendario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picCalendario.TabIndex = 0;
-            this.picCalendario.TabStop = false;
-            this.picCalendario.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.picCalendario.MouseEnter += new System.EventHandler(this.picCalendario_MouseEnter);
-            this.picCalendario.MouseLeave += new System.EventHandler(this.picCalendario_MouseLeave);
             // 
             // txtFechaNacimiento
             // 
@@ -660,7 +656,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(4, 198);
+            this.label22.Location = new System.Drawing.Point(2, 295);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(59, 13);
             this.label22.TabIndex = 29;
@@ -669,7 +665,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(5, 353);
+            this.label21.Location = new System.Drawing.Point(3, 450);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 13);
             this.label21.TabIndex = 31;
@@ -677,7 +673,7 @@
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(10, 300);
+            this.textBox13.Location = new System.Drawing.Point(8, 397);
             this.textBox13.Multiline = true;
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(161, 39);
@@ -686,7 +682,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 276);
+            this.label23.Location = new System.Drawing.Point(4, 373);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(84, 13);
             this.label23.TabIndex = 27;
@@ -694,7 +690,7 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(8, 222);
+            this.textBox12.Location = new System.Drawing.Point(6, 319);
             this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(161, 39);
@@ -703,7 +699,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 33);
+            this.label17.Location = new System.Drawing.Point(1, 130);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 13);
             this.label17.TabIndex = 32;
@@ -711,19 +707,19 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(8, 376);
+            this.textBox11.Location = new System.Drawing.Point(7, 469);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(161, 39);
             this.textBox11.TabIndex = 30;
             // 
-            // textBox9
+            // txtBoxEdad
             // 
-            this.textBox9.Location = new System.Drawing.Point(7, 57);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(161, 39);
-            this.textBox9.TabIndex = 31;
+            this.txtBoxEdad.Location = new System.Drawing.Point(5, 154);
+            this.txtBoxEdad.Multiline = true;
+            this.txtBoxEdad.Name = "txtBoxEdad";
+            this.txtBoxEdad.Size = new System.Drawing.Size(161, 39);
+            this.txtBoxEdad.TabIndex = 31;
             // 
             // panel6
             // 
@@ -733,7 +729,7 @@
             this.panel6.Controls.Add(this.label18);
             this.panel6.Controls.Add(this.radioButton3);
             this.panel6.Controls.Add(this.radioButton4);
-            this.panel6.Location = new System.Drawing.Point(8, 115);
+            this.panel6.Location = new System.Drawing.Point(6, 212);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(227, 68);
             this.panel6.TabIndex = 6;
@@ -785,6 +781,8 @@
             // 
             // panelDesconocido
             // 
+            this.panelDesconocido.Controls.Add(this.label44);
+            this.panelDesconocido.Controls.Add(this.textBox1);
             this.panelDesconocido.Controls.Add(this.label30);
             this.panelDesconocido.Controls.Add(this.richTextBox2);
             this.panelDesconocido.Controls.Add(this.panel13);
@@ -796,7 +794,7 @@
             this.panelDesconocido.Controls.Add(this.textBox18);
             this.panelDesconocido.Controls.Add(this.label29);
             this.panelDesconocido.Controls.Add(this.panel6);
-            this.panelDesconocido.Controls.Add(this.textBox9);
+            this.panelDesconocido.Controls.Add(this.txtBoxEdad);
             this.panelDesconocido.Controls.Add(this.textBox11);
             this.panelDesconocido.Controls.Add(this.label17);
             this.panelDesconocido.Controls.Add(this.textBox12);
@@ -804,15 +802,15 @@
             this.panelDesconocido.Controls.Add(this.textBox13);
             this.panelDesconocido.Controls.Add(this.label21);
             this.panelDesconocido.Controls.Add(this.label22);
-            this.panelDesconocido.Location = new System.Drawing.Point(16, 210);
+            this.panelDesconocido.Location = new System.Drawing.Point(14, 210);
             this.panelDesconocido.Name = "panelDesconocido";
-            this.panelDesconocido.Size = new System.Drawing.Size(238, 1333);
+            this.panelDesconocido.Size = new System.Drawing.Size(238, 1334);
             this.panelDesconocido.TabIndex = 7;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(6, 646);
+            this.label30.Location = new System.Drawing.Point(5, 739);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(45, 13);
             this.label30.TabIndex = 42;
@@ -820,7 +818,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(4, 664);
+            this.richTextBox2.Location = new System.Drawing.Point(3, 757);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(170, 126);
             this.richTextBox2.TabIndex = 41;
@@ -1312,7 +1310,7 @@
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(7, 588);
+            this.textBox17.Location = new System.Drawing.Point(6, 681);
             this.textBox17.Multiline = true;
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(161, 39);
@@ -1321,7 +1319,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 564);
+            this.label27.Location = new System.Drawing.Point(2, 657);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(45, 13);
             this.label27.TabIndex = 39;
@@ -1330,7 +1328,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 505);
+            this.label28.Location = new System.Drawing.Point(5, 598);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(90, 13);
             this.label28.TabIndex = 34;
@@ -1339,14 +1337,14 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(9, 526);
+            this.comboBox2.Location = new System.Drawing.Point(8, 619);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(161, 21);
             this.comboBox2.TabIndex = 35;
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(9, 448);
+            this.textBox18.Location = new System.Drawing.Point(8, 541);
             this.textBox18.Multiline = true;
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(161, 39);
@@ -1355,11 +1353,42 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(5, 424);
+            this.label29.Location = new System.Drawing.Point(4, 517);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(40, 13);
             this.label29.TabIndex = 37;
             this.label29.Text = "Ciudad";
+            // 
+            // richTextBox2
+            // 
+            this.picCalendario.Image = ((System.Drawing.Image)(resources.GetObject("picCalendario.Image")));
+            this.picCalendario.InitialImage = ((System.Drawing.Image)(resources.GetObject("picCalendario.InitialImage")));
+            this.picCalendario.Location = new System.Drawing.Point(141, 343);
+            this.picCalendario.Name = "picCalendario";
+            this.picCalendario.Size = new System.Drawing.Size(32, 32);
+            this.picCalendario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picCalendario.TabIndex = 0;
+            this.picCalendario.TabStop = false;
+            this.picCalendario.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picCalendario.MouseEnter += new System.EventHandler(this.picCalendario_MouseEnter);
+            this.picCalendario.MouseLeave += new System.EventHandler(this.picCalendario_MouseLeave);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(5, 45);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(161, 39);
+            this.textBox1.TabIndex = 43;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(4, 22);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(44, 13);
+            this.label44.TabIndex = 44;
+            this.label44.Text = "Nombre";
             // 
             // PacienteCita
             // 
@@ -1384,6 +1413,22 @@
             this.panelConocido.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panelDesconocido.ResumeLayout(false);
+            this.panelDesconocido.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCalendario)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -1430,7 +1475,7 @@
         private System.Windows.Forms.PictureBox picCalendario;
         private System.Windows.Forms.TextBox txtFechaNacimiento;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextBoxEdadDesconocido;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
@@ -1463,7 +1508,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtBoxEdad;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
@@ -1530,5 +1575,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

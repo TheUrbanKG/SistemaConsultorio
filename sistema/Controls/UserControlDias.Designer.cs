@@ -41,7 +41,6 @@
             this.lblDias.Size = new System.Drawing.Size(36, 25);
             this.lblDias.TabIndex = 0;
             this.lblDias.Text = "00";
-            this.lblDias.Click += new System.EventHandler(this.lblDias_Click);
             // 
             // UserControlDias
             // 
