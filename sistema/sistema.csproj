@@ -159,6 +159,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\DBContext.cs" />
+    <Compile Include="Data\NotasRepository.cs" />
     <Compile Include="Expediente\Alergias\frmAlergias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +308,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Alergia.cs" />
+    <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Paciente.cs" />
     <Compile Include="PacienteCita.cs">
       <SubType>Form</SubType>
