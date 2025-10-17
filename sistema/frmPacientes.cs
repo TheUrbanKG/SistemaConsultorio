@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace sistema
 {
@@ -17,7 +18,25 @@ namespace sistema
             InitializeComponent();
         }
 
-        public void CargarPacientes()
+        private void frmPacientes_Load(object sender, EventArgs e)
+        {
+            // Asegura autogeneración por si el diseñador no quedó en True
+            dgvPacientes.AutoGenerateColumns = true;
+            dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPacientes.ReadOnly = true;
+            dgvPacientes.RowHeadersVisible = false;
+            dgvPacientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            AplicarTemaGrid();
+
+            CargarPacientes(); // carga inicial
+
+            // Búsqueda en vivo (igual que frmNotas)
+            txtBuscar.TextChanged += (s, ev) => CargarPacientes(txtBuscar.Text);
+        }
+
+        // Carga con filtro opcional (servidor) y enlaza por DataSource
+        public void CargarPacientes(string search = null)
         {
             try
             {
@@ -33,29 +52,24 @@ SELECT
         CASE WHEN MONTH(FechaNacimiento) > MONTH(GETDATE())
                OR (MONTH(FechaNacimiento) = MONTH(GETDATE()) AND DAY(FechaNacimiento) > DAY(GETDATE()))
              THEN 1 ELSE 0 END AS EdadActual,
-    Genero,
+    ISNULL(NULLIF(LTRIM(RTRIM(Genero)), ''), 'N/D') AS Genero,
     Telefono
-FROM Paciente;";
+FROM Paciente
+WHERE (@q IS NULL
+    OR Nombre  LIKE @q
+    OR Apellido LIKE @q
+    OR Cedula   LIKE @q
+    OR Telefono LIKE @q)
+ORDER BY Nombre, Apellido;";
+
+                    var da = new SqlDataAdapter(query, conn);
+                    da.SelectCommand.Parameters.AddWithValue("@q",
+                        string.IsNullOrWhiteSpace(search) ? (object)DBNull.Value : $"%{search.Trim()}%");
 
                     var dt = new DataTable();
-                    new SqlDataAdapter(query, conn).Fill(dt);
+                    da.Fill(dt);
 
-                    dgvPacientes.Rows.Clear();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string genero = row["Genero"]?.ToString();
-                        if (string.IsNullOrWhiteSpace(genero)) genero = "N/D";
-
-                        dgvPacientes.Rows.Add(
-                            row["ID"],
-                            row["Cedula"],
-                            row["Nombre"],
-                            row["Apellido"],
-                            row["EdadActual"],
-                            genero,
-                            row["Telefono"]
-                        );
-                    }
+                    dgvPacientes.DataSource = dt; // binding directo
                 }
             }
             catch (Exception ex)
@@ -64,10 +78,34 @@ FROM Paciente;";
             }
         }
 
-        private void frmPacientes_Load(object sender, EventArgs e)
+        // Tema oscuro consistente con tus formularios (verde de acento)
+        private void AplicarTemaGrid()
         {
-            CargarPacientes();
-            dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            var fondo = Color.FromArgb(45, 48, 53);
+            var fila = Color.FromArgb(54, 57, 63);
+            var alterna = Color.FromArgb(60, 63, 70);
+            var header = Color.FromArgb(62, 62, 62);
+            var acento = Color.FromArgb(0, 167, 110);
+
+            dgvPacientes.BackgroundColor = fondo;
+            dgvPacientes.BorderStyle = BorderStyle.None;
+            dgvPacientes.GridColor = header;
+
+            dgvPacientes.EnableHeadersVisualStyles = false;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.BackColor = acento;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9f, FontStyle.Bold);
+            dgvPacientes.ColumnHeadersHeight = 28;
+
+            dgvPacientes.DefaultCellStyle.BackColor = fila;
+            dgvPacientes.DefaultCellStyle.ForeColor = Color.White;
+            dgvPacientes.DefaultCellStyle.SelectionBackColor = acento;
+            dgvPacientes.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            dgvPacientes.AlternatingRowsDefaultCellStyle.BackColor = alterna;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.SelectionBackColor = acento;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -107,16 +145,9 @@ FROM Paciente;";
             try
             {
                 var fila = dgvPacientes.Rows[e.RowIndex];
+                if (fila.Cells["ID"].Value == null) { MessageBox.Show("Fila sin ID válido."); return; }
 
-                // Validaciones defensivas
-                if (fila.Cells["ID"].Value == null)
-                {
-                    MessageBox.Show("Fila sin ID válido.");
-                    return;
-                }
-
-                int pacienteId;
-                if (!int.TryParse(fila.Cells["ID"].Value.ToString(), out pacienteId) || pacienteId <= 0)
+                if (!int.TryParse(fila.Cells["ID"].Value.ToString(), out var pacienteId) || pacienteId <= 0)
                 {
                     MessageBox.Show("ID de paciente inválido.");
                     return;
@@ -126,16 +157,12 @@ FROM Paciente;";
                 string apellido = fila.Cells["Apellido"].Value?.ToString() ?? "";
                 string cedula = fila.Cells["Cedula"].Value?.ToString() ?? "";
 
-                // Crear y configurar el expediente
                 var expediente = new sistema.Expediente.frmExpediente
                 {
                     PacienteID = pacienteId,
-                    NombreCompleto = (nombre + " " + apellido).Trim()
+                    NombreCompleto = (nombre + " " + apellido).Trim(),
+                    Cedula = cedula
                 };
-
-                // Solo asignamos la cédula aquí si quieres mostrar algo inmediato;
-                // el formulario luego la reemplazará con el formato completo al cargar.
-                expediente.Cedula = cedula;
 
                 expediente.StartPosition = FormStartPosition.CenterScreen;
                 expediente.Show();
