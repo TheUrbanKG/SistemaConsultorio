@@ -254,5 +254,15 @@ namespace sistema.Expediente
         {
             this.ExportarExpedienteAPdf();
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

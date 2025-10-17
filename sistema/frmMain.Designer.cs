@@ -41,7 +41,7 @@
             this.sataPictureBox1 = new SATAUiFramework.Controls.SATAPictureBox();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.BTNInicio = new FrameworkTest.SATAButton();
-            this.sataPanel6 = new SATAUiFramework.SATAPanel();
+            this.panelCuentas = new SATAUiFramework.SATAPanel();
             this.btnCuentas = new FrameworkTest.SATAButton();
             this.BTNSalir = new FrameworkTest.SATAButton();
             this.sataPanel2 = new SATAUiFramework.SATAPanel();
@@ -59,7 +59,7 @@
             this.panelLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).BeginInit();
             this.sataPanel1.SuspendLayout();
-            this.sataPanel6.SuspendLayout();
+            this.panelCuentas.SuspendLayout();
             this.sataPanel2.SuspendLayout();
             this.sataPanel4.SuspendLayout();
             this.sataPanel5.SuspendLayout();
@@ -81,7 +81,7 @@
             this.panelLateral.BorderThickness = 0;
             this.panelLateral.Controls.Add(this.sataPictureBox1);
             this.panelLateral.Controls.Add(this.sataPanel1);
-            this.panelLateral.Controls.Add(this.sataPanel6);
+            this.panelLateral.Controls.Add(this.panelCuentas);
             this.panelLateral.Controls.Add(this.BTNSalir);
             this.panelLateral.Controls.Add(this.sataPanel2);
             this.panelLateral.Controls.Add(this.sataPanel4);
@@ -165,23 +165,23 @@
             this.BTNInicio.TextOffset = new System.Drawing.Point(0, 0);
             this.BTNInicio.Click += new System.EventHandler(this.BTNInicio_Click);
             // 
-            // sataPanel6
+            // panelCuentas
             // 
-            this.sataPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sataPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.sataPanel6.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.sataPanel6.BorderColor = System.Drawing.Color.Black;
+            this.panelCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelCuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panelCuentas.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panelCuentas.BorderColor = System.Drawing.Color.Black;
             borderRadius3.BottomLeft = 1;
             borderRadius3.BottomRight = 1;
             borderRadius3.TopLeft = 1;
             borderRadius3.TopRight = 1;
-            this.sataPanel6.BorderRadius = borderRadius3;
-            this.sataPanel6.BorderThickness = 0;
-            this.sataPanel6.Controls.Add(this.btnCuentas);
-            this.sataPanel6.Location = new System.Drawing.Point(5, 551);
-            this.sataPanel6.Name = "sataPanel6";
-            this.sataPanel6.Size = new System.Drawing.Size(201, 59);
-            this.sataPanel6.TabIndex = 6;
+            this.panelCuentas.BorderRadius = borderRadius3;
+            this.panelCuentas.BorderThickness = 0;
+            this.panelCuentas.Controls.Add(this.btnCuentas);
+            this.panelCuentas.Location = new System.Drawing.Point(5, 551);
+            this.panelCuentas.Name = "panelCuentas";
+            this.panelCuentas.Size = new System.Drawing.Size(201, 59);
+            this.panelCuentas.TabIndex = 6;
             // 
             // btnCuentas
             // 
@@ -556,7 +556,7 @@
             this.panelLateral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).EndInit();
             this.sataPanel1.ResumeLayout(false);
-            this.sataPanel6.ResumeLayout(false);
+            this.panelCuentas.ResumeLayout(false);
             this.sataPanel2.ResumeLayout(false);
             this.sataPanel4.ResumeLayout(false);
             this.sataPanel5.ResumeLayout(false);
@@ -574,7 +574,7 @@
         private SATAUiFramework.SATAPanel panelLateral;
         private SATAUiFramework.SATAPanel sataPanel1;
         private FrameworkTest.SATAButton BTNInicio;
-        private SATAUiFramework.SATAPanel sataPanel6;
+        private SATAUiFramework.SATAPanel panelCuentas;
         private FrameworkTest.SATAButton btnCuentas;
         private FrameworkTest.SATAButton BTNSalir;
         private SATAUiFramework.SATAPanel sataPanel2;

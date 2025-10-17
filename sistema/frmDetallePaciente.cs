@@ -103,9 +103,9 @@ namespace sistema
             bool valido = true;
             errorProvider1.Clear();
 
-            if (string.IsNullOrWhiteSpace(txtCedula.Text) || txtCedula.Text.Trim().Length <= 7)
+            if (string.IsNullOrWhiteSpace(txtCedula.Text) || txtCedula.Text.Trim().Length <= 6)
             {
-                errorProvider1.SetError(txtCedula, "Ingrese la cédula (mínimo 8 caracteres).");
+                errorProvider1.SetError(txtCedula, "Ingrese la cédula (mínimo 7 caracteres).");
                 valido = false;
             }
 

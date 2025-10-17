@@ -195,6 +195,9 @@
     <Compile Include="Expediente\frmExpediente.Designer.cs">
       <DependentUpon>frmExpediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Expediente\frmExpediente.Drag.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Expediente\frmExpediente.ExportPdf.cs">
       <SubType>Form</SubType>
     </Compile>

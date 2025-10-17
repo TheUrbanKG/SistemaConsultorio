@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sistema
 {
     public partial class frmMain : Form
     {
-        // Resaltar Botones de Navegación
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+        // Resaltado de navegación (SATAButtons)
         private FrameworkTest.SATAButton[] _navMainButtons;
 
         public frmMain()
@@ -27,7 +25,9 @@ namespace sistema
             labelTitulo.Text = "Inicio";
             this.pbTitulo.Image = Properties.Resources.hogar;
 
-            // Resaltar Inicio al cargar
+            AplicarPermisosCuentasPorRol();
+
+            // Dejar “Inicio” resaltado
             SetActiveNavButton(BTNInicio);
         }
 
@@ -108,15 +108,54 @@ namespace sistema
             this.Refresh();
         }
 
-        // -------------------- Navegación/Resaltado --------------------
+        // Aplica visibilidad/habilitación de panelCuentas según rol del usuario logueado
+        private void AplicarPermisosCuentasPorRol()
+        {
+            try
+            {
+                bool esAdmin = false;
+                string usuario = sistema.Infrastructure.Security.Sesion.UsuarioActual;
+
+                if (!string.IsNullOrWhiteSpace(usuario))
+                {
+                    using (var conn = new SqlConnection(connectionString))
+                    using (var cmd = new SqlCommand("SELECT TOP (1) Rol FROM login WHERE Usuario = @Usuario", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Usuario", usuario);
+                        conn.Open();
+                        var rolObj = cmd.ExecuteScalar();
+                        var rol = rolObj?.ToString();
+                        esAdmin = string.Equals(rol, "Administrador", StringComparison.OrdinalIgnoreCase);
+                    }
+                }
+
+                if (panelCuentas != null)
+                {
+                    panelCuentas.Visible = esAdmin;
+                    panelCuentas.Enabled = esAdmin;
+                }
+
+                if (btnCuentas != null)
+                    btnCuentas.Enabled = esAdmin;
+            }
+            catch
+            {
+                if (panelCuentas != null)
+                {
+                    panelCuentas.Visible = false;
+                    panelCuentas.Enabled = false;
+                }
+                if (btnCuentas != null)
+                    btnCuentas.Enabled = false;
+            }
+        }
+
+        // -------------------- Resaltado de navegación (hover fijo) --------------------
 
         private void InicializarNavegacionLateral()
         {
-            // Excluyo BTNSalir para que no quede “activo”
-            _navMainButtons = new[]
-            {
-                BTNInicio, BTNCitas, BTNPacientes, BTNAgenda, BTNNotas, btnCuentas
-            };
+            // Ajusta esta lista a los SATAButtons reales del menú
+            _navMainButtons = new[] { BTNInicio, BTNCitas, BTNPacientes, BTNAgenda, BTNNotas, btnCuentas };
 
             foreach (var sb in _navMainButtons)
             {
@@ -147,17 +186,13 @@ namespace sistema
 
                 if (sb == active)
                 {
-                    // Forzamos el color del “activo” usando el Hover como Normal para que se vea fijo
                     var hover = sb.HoverBackground.IsEmpty ? ControlPaint.Light(normal) : sb.HoverBackground;
                     sb.NormalBackground = hover;
-
-                    // Si definiste HoverForeColor, úsalo; si no, deja el actual
                     if (!sb.HoverForeColor.IsEmpty)
                         sb.NormalForeColor = sb.HoverForeColor;
                 }
                 else
                 {
-                    // Restaurar color normal original
                     sb.NormalBackground = normal;
                 }
 
