@@ -49,6 +49,7 @@ namespace sistema
                     existente.Cedula = _paciente.Cedula;
                     existente.Nombre = _paciente.Nombre;
                     existente.Apellido = _paciente.Apellido;
+                    existente.GrupoSanguineo = cbGrupoSanguineo != null ? cbGrupoSanguineo.Text : existente.GrupoSanguineo;
 
                     var minSql = System.Data.SqlTypes.SqlDateTime.MinValue.Value;
                     if (existente.FechaNacimiento < minSql)
@@ -81,6 +82,7 @@ namespace sistema
                     _paciente.Direccion = txtDireccion.Text;
                     _paciente.Telefono = txtTelefono.Text;
                     _paciente.Ocupacion = txtOcupacion.Text;
+                    _paciente.GrupoSanguineo = cbGrupoSanguineo != null ? cbGrupoSanguineo.Text : null;
 
                     var minSql = System.Data.SqlTypes.SqlDateTime.MinValue.Value;
                     if (_paciente.FechaNacimiento < minSql)
@@ -129,7 +131,8 @@ namespace sistema
             txtDireccion.Text = paciente.Direccion ?? "";
             txtTelefono.Text = paciente.Telefono ?? "";
             txtOcupacion.Text = paciente.Ocupacion ?? "";
-            // Si tienes otros campos, agrégalos aquí
+            if (cbGrupoSanguineo != null)
+                cbGrupoSanguineo.Text = paciente.GrupoSanguineo ?? "";
         }
 
         // Función auxiliar local
