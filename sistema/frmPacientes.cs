@@ -55,11 +55,14 @@ SELECT
     ISNULL(NULLIF(LTRIM(RTRIM(Genero)), ''), 'N/D') AS Genero,
     Telefono
 FROM Paciente
-WHERE (@q IS NULL
+WHERE Cedula <> 'SIN-CEDULA'
+  AND (
+    @q IS NULL
     OR Nombre  LIKE @q
     OR Apellido LIKE @q
     OR Cedula   LIKE @q
-    OR Telefono LIKE @q)
+    OR Telefono LIKE @q
+  )
 ORDER BY Nombre, Apellido;";
 
                     var da = new SqlDataAdapter(query, conn);

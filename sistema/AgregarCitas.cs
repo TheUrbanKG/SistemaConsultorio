@@ -99,13 +99,11 @@ namespace sistema
             Label lblTipo = new Label { Text = "Tipo: " + paciente.Tipo, Location = new Point(10, 10), AutoSize = true, ForeColor = Color.White, Font = labelFont };
             Label lblNombre = new Label { Text = "Nombre: " + paciente.Nombre, Location = new Point(10, 35), AutoSize = true, ForeColor = Color.White, Font = labelFont };
             Label lblGenero = new Label { Text = "Género: " + paciente.Genero, Location = new Point(170, 10), AutoSize = true, ForeColor = Color.White, Font = labelFont };
-            Label lblGrupoSanguineo = new Label { Text = "Sangre: " + paciente.GrupoSanguineo, Location = new Point(170, 35), AutoSize = true, ForeColor = Color.White, Font = labelFont };
             Label lblEdad = new Label { Text = "Edad: " + paciente.Edad, Location = new Point(10, 60), AutoSize = true, ForeColor = Color.White, Font = labelFont };
 
             panel.Controls.Add(lblTipo);
             panel.Controls.Add(lblNombre);
             panel.Controls.Add(lblGenero);
-            panel.Controls.Add(lblGrupoSanguineo);
             panel.Controls.Add(lblEdad);
 
             panel.Click += PanelPaciente_Click;
