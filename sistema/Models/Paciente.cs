@@ -61,6 +61,9 @@ namespace sistema.Models
 
         // NUEVO: fecha de registro del paciente
         public DateTime FechaRegistro { get; set; }
+
+        [StringLength(100)]
+        public string Correo { get; set; }
     }
 
     [Table("Datos")]

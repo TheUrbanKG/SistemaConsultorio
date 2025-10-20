@@ -56,10 +56,10 @@ namespace sistema
             lblNombre.ForeColor = Color.Black;
 
             // Apellido Paterno - FUENTE IDÉNTICA
-            txtApellidoPa.Text = PlaceholderApellidoPa;
-            txtApellidoPa.ForeColor = Color.Gray;
-            txtApellidoPa.Font = fuentePlaceholder; // Misma instancia de fuente
-            txtApellidoPa.BackColor = Color.White;
+            txtApellido.Text = PlaceholderApellidoPa;
+            txtApellido.ForeColor = Color.Gray;
+            txtApellido.Font = fuentePlaceholder; // Misma instancia de fuente
+            txtApellido.BackColor = Color.White;
             lblApellidoPa.ForeColor = Color.Black;
         }
 
@@ -153,32 +153,32 @@ namespace sistema
 
         private void txtApellidoPa_Enter(object sender, EventArgs e)
         {
-            txtApellidoPa.BackColor = Color.Lavender;
+            txtApellido.BackColor = Color.Lavender;
 
-            if (txtApellidoPa.Text == PlaceholderApellidoPa)
+            if (txtApellido.Text == PlaceholderApellidoPa)
             {
-                txtApellidoPa.Text = "";
-                txtApellidoPa.ForeColor = Color.Black;
-                txtApellidoPa.Font = fuenteNormal;
+                txtApellido.Text = "";
+                txtApellido.ForeColor = Color.Black;
+                txtApellido.Font = fuenteNormal;
             }
             lblApellidoPa.ForeColor = Color.Black;
         }
 
         private void txtApellidoPa_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtApellidoPa.Text))
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
-                txtApellidoPa.Text = PlaceholderApellidoPa;
-                txtApellidoPa.ForeColor = Color.Red;
-                txtApellidoPa.BackColor = Color.MistyRose;
-                txtApellidoPa.Font = fuentePlaceholder;
+                txtApellido.Text = PlaceholderApellidoPa;
+                txtApellido.ForeColor = Color.Red;
+                txtApellido.BackColor = Color.MistyRose;
+                txtApellido.Font = fuentePlaceholder;
                 lblApellidoPa.ForeColor = Color.Red;
             }
             else
             {
-                txtApellidoPa.ForeColor = Color.Black;
-                txtApellidoPa.BackColor = Color.White;
-                txtApellidoPa.Font = fuenteNormal;
+                txtApellido.ForeColor = Color.Black;
+                txtApellido.BackColor = Color.White;
+                txtApellido.Font = fuenteNormal;
                 lblApellidoPa.ForeColor = Color.Black;
             }
         }
@@ -198,15 +198,6 @@ namespace sistema
             dtpFechaNacimiento.Focus();
         }
 
-        private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-            DateTime hoy = DateTime.Today;
-            int edad = hoy.Year - fechaNacimiento.Year;
-            if(fechaNacimiento > hoy.AddYears(-edad)) edad--;
-
-            TextBoxEdadDesconocido.Text = edad.ToString();
-        }
 
         private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
         {
@@ -229,78 +220,62 @@ namespace sistema
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (panelConocido.Visible)
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
-                using (SqlConnection conexion = new SqlConnection(connectionString))
-                {
-                    string query = @"INSERT INTO dbo.PacienteDesconocido
-                                    (Cedula, Nombre, ApellidoPaterno, ApellidoMaterno, FechaNacimiento, Edad, Genero, Telefono, TelefonoCelular, Ocupacion, Domicilio, Ciudad, CorreoElectronico, GrupoSanguineo, Religion, Detalles, FechaRegistro)
-                                    VALUES (@Cedula, @Nombre, @ApellidoPaterno, @ApellidoMaterno, @FechaNacimiento, @Edad, @Genero, @Telefono, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @CorreoElectronico, @GrupoSanguineo, @Religion, @Detalles, @FechaRegistro)";
+                string query = @"INSERT INTO Paciente
+                    (Cedula, Nombre, Apellido, FechaNacimiento, Genero, EstadoCivil, Ocupacion, Escolaridad, Direccion, Telefono, GrupoSanguineo, TipoPaciente, Detalles, Correo)
+                    VALUES
+                    (@Cedula, @Nombre, @Apellido, @FechaNacimiento, @Genero, @EstadoCivil, @Ocupacion, @Escolaridad, @Direccion, @Telefono, @GrupoSanguineo, @TipoPaciente, @Detalles, @Correo)";
 
-                    SqlCommand cmd = new SqlCommand(query, conexion);
+                SqlCommand cmd = new SqlCommand(query, conexion);
+
+                if (panelConocido.Visible)
+                {
                     cmd.Parameters.AddWithValue("@Cedula", txtCedula.Text);
                     cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                    cmd.Parameters.AddWithValue("@ApellidoPaterno", txtApellidoPa.Text);
-                    cmd.Parameters.AddWithValue("@ApellidoMaterno", txtApellidoMa.Text);
+                    cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text);
                     cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
-                    cmd.Parameters.AddWithValue("@Edad", TextBoxEdadDesconocido.Text);
                     cmd.Parameters.AddWithValue("@Genero", radioButton2.Checked ? "Masculino" : "Femenino");
-                    cmd.Parameters.AddWithValue("@Telefono", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@TelefonoCelular", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Ocupacion", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@Domicilio", textBox6.Text);
-                    cmd.Parameters.AddWithValue("@Ciudad", textBox5.Text);
-                    cmd.Parameters.AddWithValue("@CorreoElectronico", textBox8.Text);
-                    cmd.Parameters.AddWithValue("@GrupoSanguineo", comboBox1.Text);
-                    cmd.Parameters.AddWithValue("@Religion", textBox7.Text);
-                    cmd.Parameters.AddWithValue("@Detalles", richTextBox1.Text);
-                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@EstadoCivil", DBNull.Value); // Si tienes el control, cámbialo
+                    cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacion.Text);
+                    cmd.Parameters.AddWithValue("@Escolaridad", DBNull.Value); // Si tienes el control, cámbialo
+                    cmd.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
+                    cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
+                    cmd.Parameters.AddWithValue("@GrupoSanguineo", cbGrupoSanguineo.Text);
+                    cmd.Parameters.AddWithValue("@TipoPaciente", "Conocido");
+                    cmd.Parameters.AddWithValue("@Detalles", txtDetalles.Text);
+                    cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
                 }
-            }
-            else if (panelDesconocido.Visible)
-            {
-                using (SqlConnection conexion = new SqlConnection(connectionString))
+                else if (panelDesconocido.Visible)
                 {
-                    string query = @"INSERT INTO PacienteConocido
-                (FechaRegistro, Nombre, Edad, Genero, TelefonoCelular, Ocupacion, Domicilio, Ciudad, GrupoSanguineo, Religion, Detalles)
-                VALUES (@FechaRegistro,@Nombre, @Edad, @Genero, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @GrupoSanguineo, @Religion, @Detalles)";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@Nombre", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@Edad", txtBoxEdad.Text);
+                    cmd.Parameters.AddWithValue("@Cedula", "SIN-CEDULA"); // O usa un textbox si tienes uno
+                    cmd.Parameters.AddWithValue("@Nombre", "Desconocido");
+                    cmd.Parameters.AddWithValue("@Apellido", "Desconocido");
+                    cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
                     cmd.Parameters.AddWithValue("@Genero", radioButton4.Checked ? "Masculino" : "Femenino");
-                    cmd.Parameters.AddWithValue("@TelefonoCelular", textBox12.Text);
-                    cmd.Parameters.AddWithValue("@Ocupacion", textBox11.Text);
-                    cmd.Parameters.AddWithValue("@Domicilio", textBox13.Text);
-                    cmd.Parameters.AddWithValue("@Ciudad", textBox18.Text);
-                    cmd.Parameters.AddWithValue("@GrupoSanguineo", comboBox2.Text);
-                    cmd.Parameters.AddWithValue("@Religion", textBox17.Text);
-                    cmd.Parameters.AddWithValue("@Detalles", richTextBox2.Text);
-                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-
+                    cmd.Parameters.AddWithValue("@EstadoCivil", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacionDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@Escolaridad", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Direccion", txtDireccionDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@Telefono", txtTelefonoDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@GrupoSanguineo", cbGrupoSanguineoDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@TipoPaciente", "Desconocido");
+                    cmd.Parameters.AddWithValue("@Detalles", txtDetallesDesconocido.Text);
                 }
+
+                conexion.Open();
+                cmd.ExecuteNonQuery();
             }
-            string nombre = txtNombre.Text == PlaceholderNombre ? "" : txtNombre.Text;
-            string apellidoPaterno = txtApellidoPa.Text == PlaceholderApellidoPa ? "" : txtApellidoPa.Text;
+
             MessageBox.Show("Paciente guardado correctamente.");
             this.Close();
 
-            var preview = new PacientePreview
-            {
-                Tipo = panelConocido.Visible ? "Conocido" : "Desconocido",
-                Nombre = panelConocido.Visible ? txtNombre.Text : "Desconocido",
-                Genero = panelConocido.Visible ? (radioButton2.Checked ? "Masculino" : "Femenino") : (radioButton4.Checked ? "Masculino" : "Femenino"),
-                GrupoSanguineo = panelConocido.Visible ? comboBox1.Text : comboBox2.Text,
-                Edad = panelConocido.Visible ? TextBoxEdadDesconocido.Text : txtBoxEdad.Text
-            };
+            // Lógica para la vista previa y abrir AgregarCitas...
+        }
 
-            // Abrir AgregarCitas con la vista previa del paciente
-            var agregarCitas = new AgregarCitas(preview);
-            agregarCitas.ShowDialog();
-
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarCitas));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblFechaActual = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnNuevoPaciente = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flpPacientes = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
@@ -42,7 +43,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.btnNuevoPaciente);
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.lblFechaActual);
             this.panel1.Controls.Add(this.label1);
@@ -51,6 +51,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(391, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // btnNuevoPaciente
+            // 
+            this.btnNuevoPaciente.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnNuevoPaciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoPaciente.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNuevoPaciente.Location = new System.Drawing.Point(281, 17);
+            this.btnNuevoPaciente.Name = "btnNuevoPaciente";
+            this.btnNuevoPaciente.Size = new System.Drawing.Size(97, 36);
+            this.btnNuevoPaciente.TabIndex = 0;
+            this.btnNuevoPaciente.Text = "Nuevo Paciente";
+            this.btnNuevoPaciente.UseVisualStyleBackColor = false;
+            this.btnNuevoPaciente.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblFecha
             // 
@@ -86,25 +99,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nueva Cita";
             // 
-            // btnNuevoPaciente
-            // 
-            this.btnNuevoPaciente.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnNuevoPaciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevoPaciente.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNuevoPaciente.Location = new System.Drawing.Point(281, 17);
-            this.btnNuevoPaciente.Name = "btnNuevoPaciente";
-            this.btnNuevoPaciente.Size = new System.Drawing.Size(97, 36);
-            this.btnNuevoPaciente.TabIndex = 0;
-            this.btnNuevoPaciente.Text = "Nuevo Paciente";
-            this.btnNuevoPaciente.UseVisualStyleBackColor = false;
-            this.btnNuevoPaciente.Click += new System.EventHandler(this.button1_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // flpPacientes
             // 
+            this.flpPacientes.AutoScroll = true;
             this.flpPacientes.Location = new System.Drawing.Point(0, 131);
             this.flpPacientes.Name = "flpPacientes";
             this.flpPacientes.Size = new System.Drawing.Size(391, 591);
@@ -115,10 +116,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(390, 778);
             this.Controls.Add(this.flpPacientes);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AgregarCitas";
             this.Style = MetroFramework.MetroColorStyle.Black;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
