@@ -37,43 +37,73 @@ namespace sistema
 
         public void MostrarPacientesRegistrados(DateTime fechaSeleccionada)
         {
-            var pacientes = new List<PacientePreview>();
+            List<PacientePreview> pacientes = new List<PacientePreview>();
             string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
 
-            using (var conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
+                // Pacientes de la tabla Paciente
+                string queryPaciente = "SELECT PacienteID, Nombre, Genero, FechaNacimiento FROM Paciente";
+                SqlCommand cmdPaciente = new SqlCommand(queryPaciente, conexion);
                 conexion.Open();
-
-                // Solo Paciente
-                using (var cmdPaciente = new SqlCommand(
-                    @"SELECT PacienteID, Nombre, Apellido, Genero, FechaNacimiento, GrupoSanguineo, Telefono, Detalles
-                      FROM Paciente;", conexion))
-                using (var reader = cmdPaciente.ExecuteReader())
+                using (SqlDataReader reader = cmdPaciente.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        int pacienteId = reader["PacienteID"] != DBNull.Value ? Convert.ToInt32(reader["PacienteID"]) : 0;
-                        string nombre = reader["Nombre"]?.ToString() ?? "";
-                        string apellido = reader["Apellido"]?.ToString() ?? "";
-                        DateTime fechaNac = reader["FechaNacimiento"] != DBNull.Value ? Convert.ToDateTime(reader["FechaNacimiento"]) : DateTime.MinValue;
-
-                        int edad = 0;
-                        if (fechaNac != DateTime.MinValue)
-                        {
-                            edad = DateTime.Today.Year - fechaNac.Year;
-                            if (fechaNac > DateTime.Today.AddYears(-edad)) edad--;
-                        }
+                        DateTime fechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+                        int edad = DateTime.Today.Year - fechaNacimiento.Year;
+                        if (fechaNacimiento > DateTime.Today.AddYears(-edad)) edad--;
 
                         var preview = new PacientePreview
                         {
-                            PacienteID = pacienteId,
+                            PacienteID = Convert.ToInt32(reader["PacienteID"]), // <--- Asignar correctamente
                             Tipo = "Expediente",
-                            Nombre = (nombre + " " + apellido).Trim(),
-                            Genero = reader["Genero"]?.ToString() ?? "",
-                            GrupoSanguineo = reader["GrupoSanguineo"]?.ToString() ?? "",
-                            Edad = edad > 0 ? edad.ToString() : ""
-                            // Si PacientePreview tiene Detalles, asígnalo aquí:
-                            // Detalles = reader["Detalles"]?.ToString() ?? ""
+                            Nombre = reader["Nombre"].ToString(),
+                            Genero = reader["Genero"].ToString(),
+                            GrupoSanguineo = "", // Si tienes este dato en la tabla, agrégalo aquí
+                            Edad = edad.ToString()
+                        };
+                        pacientes.Add(preview);
+                    }
+                }
+                conexion.Close();
+
+                // Pacientes conocidos
+                conexion.Open();
+                string queryConocido = "SELECT Nombre, Genero, GrupoSanguineo, Edad FROM PacienteConocido";
+                SqlCommand cmdConocido = new SqlCommand(queryConocido, conexion);
+                using (SqlDataReader reader = cmdConocido.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var preview = new PacientePreview
+                        {
+                            Tipo = "Conocido",
+                            Nombre = reader["Nombre"].ToString(),
+                            Genero = reader["Genero"].ToString(),
+                            GrupoSanguineo = reader["GrupoSanguineo"].ToString(),
+                            Edad = reader["Edad"].ToString()
+                        };
+                        pacientes.Add(preview);
+                    }
+                }
+                conexion.Close();
+
+                // Pacientes desconocidos
+                conexion.Open();
+                string queryDesconocido = "SELECT Nombre, Genero, GrupoSanguineo, Edad FROM PacienteDesconocido";
+                SqlCommand cmdDesconocido = new SqlCommand(queryDesconocido, conexion);
+                using (SqlDataReader reader = cmdDesconocido.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var preview = new PacientePreview
+                        {
+                            Tipo = "Desconocido",
+                            Nombre = reader["Nombre"].ToString(),
+                            Genero = reader["Genero"].ToString(),
+                            GrupoSanguineo = reader["GrupoSanguineo"].ToString(),
+                            Edad = reader["Edad"].ToString()
                         };
                         pacientes.Add(preview);
                     }
@@ -81,7 +111,7 @@ namespace sistema
                 conexion.Close();
             }
 
-            // Abrir ventana de agregar citas y poblarla
+            // Crea el formulario pasando la fecha seleccionada
             AgregarCitas agregarCitas = new AgregarCitas(fechaSeleccionada);
             foreach (var paciente in pacientes)
             {
