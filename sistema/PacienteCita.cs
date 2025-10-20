@@ -1,306 +1,211 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel; // Importa este namespace
 
 namespace sistema
 {
     public partial class PacienteCita : Form
     {
-        public PacientePreview PreviewPaciente { get; private set; }
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
-        private const string PlaceholderCedula = "Ingrese cédula";
-        private const string PlaceholderNombre = "Ingrese Nombre";
-        private const string PlaceholderApellidoPa = "Ingrese Apellido";
-
-        // Crear una fuente de referencia consistente
-        private Font fuentePlaceholder;
-        private Font fuenteNormal;
 
         public PacienteCita()
         {
+            SuspendLayout(); // Suspender el diseño
+
             InitializeComponent();
 
-            // Inicializar las fuentes una sola vez
-            fuentePlaceholder = new Font("Segoe UI", 13, FontStyle.Italic);
-            fuenteNormal = new Font("Segoe UI", 12, FontStyle.Regular);
-
-            panelConocido.Visible = false;
-            panelDesconocido.Visible = false;
-
-            InicializarCampos();
-            dtpFechaNacimiento.Visible = false;
-        }
-
-        private void InicializarCampos()
-        {
-            // Cedula
-            txtCedula.Text = PlaceholderCedula;
-            txtCedula.ForeColor = Color.Gray;
-            txtCedula.Font = fuentePlaceholder;
-            txtCedula.BackColor = Color.White;
-            lblCedula.ForeColor = Color.Black;
-
-            // Nombre - FUENTE IDÉNTICA
-            txtNombre.Text = PlaceholderNombre;
-            txtNombre.ForeColor = Color.Gray;
-            txtNombre.Font = fuentePlaceholder; // Misma instancia de fuente
-            txtNombre.BackColor = Color.White;
-            lblNombre.ForeColor = Color.Black;
-
-            // Apellido Paterno - FUENTE IDÉNTICA
-            txtApellidoPa.Text = PlaceholderApellidoPa;
-            txtApellidoPa.ForeColor = Color.Gray;
-            txtApellidoPa.Font = fuentePlaceholder; // Misma instancia de fuente
-            txtApellidoPa.BackColor = Color.White;
-            lblApellidoPa.ForeColor = Color.Black;
-        }
-
-        private void rbSi_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbSi.Checked)
+            // Verificar si se está en tiempo de diseño
+            if (!DesignMode)
             {
-                panelSi.BackColor = Color.LightGreen;
-                panelNo.BackColor = Color.WhiteSmoke;
-
-                panelConocido.Visible = true;
-                panelDesconocido.Visible = false;
+                AplicarTemaOscuro();
             }
-        }
 
-        private void rbNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbNo.Checked)
+            // Lógica para mostrar paneles según tipo de paciente
+            rbConocido.CheckedChanged += (s, e) =>
             {
-                panelNo.BackColor = Color.LightCoral;
-                panelSi.BackColor = Color.WhiteSmoke;
-
-                panelConocido.Visible = false;
-                panelDesconocido.Visible = true;
-            }
-        }
-
-        private void txtCedula_Enter(object sender, EventArgs e)
-        {
-            txtCedula.BackColor = Color.Lavender;
-
-            if (txtCedula.Text == PlaceholderCedula)
+                panelConocido.Visible = rbConocido.Checked;
+                panelDesconocido.Visible = !rbConocido.Checked;
+            };
+            rbDesconocido.CheckedChanged += (s, e) =>
             {
-                txtCedula.Text = "";
-                txtCedula.ForeColor = Color.Black;
-                txtCedula.Font = fuenteNormal;
-            }
-            lblCedula.ForeColor = Color.Black;
-        }
+                panelConocido.Visible = !rbDesconocido.Checked;
+                panelDesconocido.Visible = rbDesconocido.Checked;
+            };
 
-        private void txtCedula_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtCedula.Text))
-            {
-                txtCedula.Text = PlaceholderCedula;
-                txtCedula.ForeColor = Color.Red;
-                txtCedula.BackColor = Color.MistyRose;
-                txtCedula.Font = fuentePlaceholder;
-                lblCedula.ForeColor = Color.Red;
-            }
-            else
-            {
-                txtCedula.ForeColor = Color.Black;
-                txtCedula.BackColor = Color.White;
-                txtCedula.Font = fuenteNormal;
-                lblCedula.ForeColor = Color.Black;
-            }
-        }
+            // Por defecto, conocido
+            rbConocido.Checked = true;
 
-        private void txtNombre_Enter(object sender, EventArgs e)
-        {
-            txtNombre.BackColor = Color.Lavender;
+            // Ajustar ubicación y tamaño de los paneles
+            panelConocido.Location = new Point(20, 140);
+            panelConocido.Size = new Size(460, 500);
+            panelDesconocido.Location = new Point(20, 140);
+            panelDesconocido.Size = new Size(460, 350);
 
-            if (txtNombre.Text == PlaceholderNombre)
-            {
-                txtNombre.Text = "";
-                txtNombre.ForeColor = Color.Black;
-                txtNombre.Font = fuenteNormal;
-            }
-            lblNombre.ForeColor = Color.Black;
-        }
+            cbGrupoSanguineo.Items.AddRange(new object[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" });
+            cbGrupoSanguineoDes.Items.AddRange(new object[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" });
 
-        private void txtNombre_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                txtNombre.Text = PlaceholderNombre;
-                txtNombre.ForeColor = Color.Red;
-                txtNombre.BackColor = Color.MistyRose;
-                txtNombre.Font = fuentePlaceholder;
-                lblNombre.ForeColor = Color.Red;
-            }
-            else
-            {
-                txtNombre.ForeColor = Color.Black;
-                txtNombre.BackColor = Color.White;
-                txtNombre.Font = fuenteNormal;
-                lblNombre.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtApellidoPa_Enter(object sender, EventArgs e)
-        {
-            txtApellidoPa.BackColor = Color.Lavender;
-
-            if (txtApellidoPa.Text == PlaceholderApellidoPa)
-            {
-                txtApellidoPa.Text = "";
-                txtApellidoPa.ForeColor = Color.Black;
-                txtApellidoPa.Font = fuenteNormal;
-            }
-            lblApellidoPa.ForeColor = Color.Black;
-        }
-
-        private void txtApellidoPa_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtApellidoPa.Text))
-            {
-                txtApellidoPa.Text = PlaceholderApellidoPa;
-                txtApellidoPa.ForeColor = Color.Red;
-                txtApellidoPa.BackColor = Color.MistyRose;
-                txtApellidoPa.Font = fuentePlaceholder;
-                lblApellidoPa.ForeColor = Color.Red;
-            }
-            else
-            {
-                txtApellidoPa.ForeColor = Color.Black;
-                txtApellidoPa.BackColor = Color.White;
-                txtApellidoPa.Font = fuenteNormal;
-                lblApellidoPa.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e) { }
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-
-        private void PacienteCita_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            dtpFechaNacimiento.Visible = true;
-            dtpFechaNacimiento.Focus();
-        }
-
-        private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-            DateTime hoy = DateTime.Today;
-            int edad = hoy.Year - fechaNacimiento.Year;
-            if(fechaNacimiento > hoy.AddYears(-edad)) edad--;
-
-            TextBoxEdadDesconocido.Text = edad.ToString();
-        }
-
-        private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
-        {
-            txtFechaNacimiento.Text = dtpFechaNacimiento.Value.ToString("dd/MM/yyyy");
-            dtpFechaNacimiento.Visible = false;
-        }
-
-        private void picCalendario_MouseEnter(object sender, EventArgs e)
-        {
-        }
-
-        private void picCalendario_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
-        private void panelConocido_Paint(object sender, PaintEventArgs e)
-        {
-
+            ResumeLayout(false); // Reanudar el diseño
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Validar entradas
             if (panelConocido.Visible)
             {
-                using (SqlConnection conexion = new SqlConnection(connectionString))
+                if (string.IsNullOrWhiteSpace(txtCedula.Text) ||
+                    string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                    string.IsNullOrWhiteSpace(txtApellidoPa.Text) ||
+                    string.IsNullOrWhiteSpace(txtApellidoMa.Text) ||
+                    string.IsNullOrWhiteSpace(txtTelefono.Text))
                 {
-                    string query = @"INSERT INTO dbo.PacienteDesconocido
-                                    (Cedula, Nombre, ApellidoPaterno, ApellidoMaterno, FechaNacimiento, Edad, Genero, Telefono, TelefonoCelular, Ocupacion, Domicilio, Ciudad, CorreoElectronico, GrupoSanguineo, Religion, Detalles, FechaRegistro)
-                                    VALUES (@Cedula, @Nombre, @ApellidoPaterno, @ApellidoMaterno, @FechaNacimiento, @Edad, @Genero, @Telefono, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @CorreoElectronico, @GrupoSanguineo, @Religion, @Detalles, @FechaRegistro)";
-
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@Cedula", txtCedula.Text);
-                    cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                    cmd.Parameters.AddWithValue("@ApellidoPaterno", txtApellidoPa.Text);
-                    cmd.Parameters.AddWithValue("@ApellidoMaterno", txtApellidoMa.Text);
-                    cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
-                    cmd.Parameters.AddWithValue("@Edad", TextBoxEdadDesconocido.Text);
-                    cmd.Parameters.AddWithValue("@Genero", radioButton2.Checked ? "Masculino" : "Femenino");
-                    cmd.Parameters.AddWithValue("@Telefono", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@TelefonoCelular", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Ocupacion", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@Domicilio", textBox6.Text);
-                    cmd.Parameters.AddWithValue("@Ciudad", textBox5.Text);
-                    cmd.Parameters.AddWithValue("@CorreoElectronico", textBox8.Text);
-                    cmd.Parameters.AddWithValue("@GrupoSanguineo", comboBox1.Text);
-                    cmd.Parameters.AddWithValue("@Religion", textBox7.Text);
-                    cmd.Parameters.AddWithValue("@Detalles", richTextBox1.Text);
-                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
-            else if (panelDesconocido.Visible)
+            else
             {
-                using (SqlConnection conexion = new SqlConnection(connectionString))
+                if (string.IsNullOrWhiteSpace(txtEdadDes.Text))
                 {
-                    string query = @"INSERT INTO PacienteConocido
-                (FechaRegistro, Nombre, Edad, Genero, TelefonoCelular, Ocupacion, Domicilio, Ciudad, GrupoSanguineo, Religion, Detalles)
-                VALUES (@FechaRegistro,@Nombre, @Edad, @Genero, @TelefonoCelular, @Ocupacion, @Domicilio, @Ciudad, @GrupoSanguineo, @Religion, @Detalles)";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@Nombre", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@Edad", txtBoxEdad.Text);
-                    cmd.Parameters.AddWithValue("@Genero", radioButton4.Checked ? "Masculino" : "Femenino");
-                    cmd.Parameters.AddWithValue("@TelefonoCelular", textBox12.Text);
-                    cmd.Parameters.AddWithValue("@Ocupacion", textBox11.Text);
-                    cmd.Parameters.AddWithValue("@Domicilio", textBox13.Text);
-                    cmd.Parameters.AddWithValue("@Ciudad", textBox18.Text);
-                    cmd.Parameters.AddWithValue("@GrupoSanguineo", comboBox2.Text);
-                    cmd.Parameters.AddWithValue("@Religion", textBox17.Text);
-                    cmd.Parameters.AddWithValue("@Detalles", richTextBox2.Text);
-                    cmd.Parameters.AddWithValue("@FechaRegistro", DateTime.Now);
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-
+                    MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
-            string nombre = txtNombre.Text == PlaceholderNombre ? "" : txtNombre.Text;
-            string apellidoPaterno = txtApellidoPa.Text == PlaceholderApellidoPa ? "" : txtApellidoPa.Text;
-            MessageBox.Show("Paciente guardado correctamente.");
-            this.Close();
 
-            var preview = new PacientePreview
+            try
             {
-                Tipo = panelConocido.Visible ? "Conocido" : "Desconocido",
-                Nombre = panelConocido.Visible ? txtNombre.Text : "Desconocido",
-                Genero = panelConocido.Visible ? (radioButton2.Checked ? "Masculino" : "Femenino") : (radioButton4.Checked ? "Masculino" : "Femenino"),
-                GrupoSanguineo = panelConocido.Visible ? comboBox1.Text : comboBox2.Text,
-                Edad = panelConocido.Visible ? TextBoxEdadDesconocido.Text : txtBoxEdad.Text
-            };
+                using (var conexion = new SqlConnection(connectionString))
+                {
+                    conexion.Open();
+                    SqlCommand cmd;
 
-            // Abrir AgregarCitas con la vista previa del paciente
-            var agregarCitas = new AgregarCitas(preview);
-            agregarCitas.ShowDialog();
+                    if (panelConocido.Visible)
+                    {
+                        // Guardar paciente conocido
+                        string sql = @"INSERT INTO Paciente
+                            (Cedula, Nombre, Apellido, FechaNacimiento, Genero, Ocupacion, Telefono, Direccion, GrupoSanguineo, Detalles)
+                            VALUES (@Cedula, @Nombre, @Apellido, @FechaNacimiento, @Genero, @Ocupacion, @Telefono, @Direccion, @GrupoSanguineo, @Detalles)";
 
+                        cmd = new SqlCommand(sql, conexion);
+                        cmd.Parameters.AddWithValue("@Cedula", txtCedula.Text);
+                        cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                        cmd.Parameters.AddWithValue("@Apellido", txtApellidoPa.Text);
+                        cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
+                        cmd.Parameters.AddWithValue("@Genero", rbMasculino.Checked ? "Masculino" : "Femenino");
+                        cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacion.Text);
+                        cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
+                        cmd.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
+                        cmd.Parameters.AddWithValue("@GrupoSanguineo", string.IsNullOrEmpty(cbGrupoSanguineo.Text) ? (object)DBNull.Value : cbGrupoSanguineo.Text);
+                        cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrEmpty(txtDetalles.Text) ? (object)DBNull.Value : txtDetalles.Text);
+                    }
+                    else
+                    {
+                        // Guardar paciente desconocido
+                        string sql = @"INSERT INTO Paciente
+                            (Nombre, Genero, Ocupacion, Telefono, Direccion, GrupoSanguineo, Detalles)
+                            VALUES (@Nombre, @Genero, @Ocupacion, @Telefono, @Direccion, @GrupoSanguineo, @Detalles)";
+
+                        cmd = new SqlCommand(sql, conexion);
+                        cmd.Parameters.AddWithValue("@Nombre", "Desconocido");
+                        cmd.Parameters.AddWithValue("@Genero", rbMasculinoDes.Checked ? "Masculino" : "Femenino");
+                        cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacionDes.Text);
+                        cmd.Parameters.AddWithValue("@Direccion", txtDireccionDes.Text);
+                        cmd.Parameters.AddWithValue("@GrupoSanguineo", string.IsNullOrEmpty(cbGrupoSanguineoDes.Text) ? (object)DBNull.Value : cbGrupoSanguineoDes.Text);
+                        cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrEmpty(txtDetallesDes.Text) ? (object)DBNull.Value : txtDetallesDes.Text);
+                    }
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Paciente guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Crear objeto PacientePreview
+                PreviewPaciente = panelConocido.Visible ?
+                    new PacientePreview
+                    {
+                        Tipo = "Conocido",
+                        Nombre = txtNombre.Text,
+                        Genero = rbMasculino.Checked ? "Masculino" : "Femenino",
+                        GrupoSanguineo = cbGrupoSanguineo.Text,
+                    }
+                    : new PacientePreview
+                    {
+                        Tipo = "Desconocido",
+                        Nombre = "Desconocido",
+                        Genero = rbMasculinoDes.Checked ? "Masculino" : "Femenino",
+                        GrupoSanguineo = cbGrupoSanguineoDes.Text,
+                        Edad = txtEdadDes.Text
+                    };
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar el paciente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AplicarTemaOscuro()
+        {
+            this.BackColor = Color.FromArgb(45, 48, 53);
+
+            // Panel Header
+            panelHeader.BackColor = Color.FromArgb(54, 57, 63);
+            lblTitulo.ForeColor = Color.White;
+            btnGuardar.BackColor = Color.FromArgb(0, 167, 110);
+            btnGuardar.ForeColor = Color.White;
+
+            // Panel Tipo
+            panelTipo.BackColor = Color.FromArgb(54, 57, 63);
+            lblTipo.ForeColor = Color.White;
+            rbConocido.ForeColor = Color.White;
+            rbDesconocido.ForeColor = Color.White;
+
+            // Panel Conocido
+            panelConocido.BackColor = Color.FromArgb(54, 57, 63);
+            //lblCedula.ForeColor = Color.White;
+            //lblNombre.ForeColor = Color.White;
+            //lblApellidoPa.ForeColor = Color.White;
+            //lblApellidoMa.ForeColor = Color.White;
+            //lblFechaNacimiento.ForeColor = Color.White;
+            //lblGenero.ForeColor = Color.White;
+            //lblOcupacion.ForeColor = Color.White;
+            //lblTelefono.ForeColor = Color.White;
+            //lblDireccion.ForeColor = Color.White;
+            //lblGrupoSanguineo.ForeColor = Color.White;
+            //lblCorreoElectronico.ForeColor = Color.White;
+            //lblDetalles.ForeColor = Color.White;
+
+            // Panel Desconocido
+            panelDesconocido.BackColor = Color.FromArgb(54, 57, 63);
+            //lblEdadDes.ForeColor = Color.White;
+            //lblGeneroDes.ForeColor = Color.White;
+            //lblOcupacionDes.ForeColor = Color.White;
+            //lblTelefonoCelularDes.ForeColor = Color.White;
+            //lblDireccionDes.ForeColor = Color.White;
+            //lblGrupoSanguineoDes.ForeColor = Color.White;
+            //lblDetallesDes.ForeColor = Color.White;
+        }
+
+        public PacientePreview PreviewPaciente { get; set; }
+
+        // Esta propiedad indica si el control está en modo de diseño
+        private bool DesignMode
+        {
+            get
+            {
+                if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                {
+                    return true;
+                }
+                else
+                {
+                    return System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
+                }
+            }
         }
     }
 }

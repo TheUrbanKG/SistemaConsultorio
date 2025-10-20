@@ -12,6 +12,10 @@ namespace sistema.Models
         public int PacienteID { get; set; }
 
         [Required]
+        [StringLength(15)]
+        public string Cedula { get; set; }
+
+        [Required]
         [StringLength(100)]
         public string Nombre { get; set; }
 
@@ -21,6 +25,38 @@ namespace sistema.Models
 
         [Required]
         public DateTime FechaNacimiento { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string Genero { get; set; }
+
+        [StringLength(50)]
+        public string EstadoCivil { get; set; }
+
+        [StringLength(100)]
+        public string Ocupacion { get; set; }
+
+        [StringLength(100)]
+        public string Escolaridad { get; set; }
+
+        [StringLength(255)]
+        public string Direccion { get; set; }
+
+        [Required]
+        [StringLength(15)]
+        public string Telefono { get; set; }
+
+        [StringLength(3)]
+        public string GrupoSanguineo { get; set; }
+
+        [StringLength(20)]
+        public string TipoPaciente { get; set; } // Nuevo campo
+
+        [StringLength(500)]
+        public string Detalles { get; set; } // Nuevo campo
+
+        // Si tienes FechaRegistro, agrégalo aquí
+        public DateTime FechaRegistro { get; set; }
 
         [NotMapped]
         public int EdadActual
@@ -32,35 +68,6 @@ namespace sistema.Models
                 return edad;
             }
         }
-
-        [Required]
-        [StringLength(20)]
-        public string Genero { get; set; }
-
-        [StringLength(30)]
-        public string EstadoCivil { get; set; }
-
-        [StringLength(50)]
-        public string Escolaridad { get; set; }
-
-        [StringLength(50)]
-        public string Ocupacion { get; set; }
-
-        [StringLength(20)]
-        public string Telefono { get; set; }
-
-        [StringLength(200)]
-        public string Direccion { get; set; }
-
-        [StringLength(20)]
-        public string Cedula { get; set; }
-
-        // NUEVO
-        [StringLength(3)]
-        public string GrupoSanguineo { get; set; }
-
-        // NUEVO: fecha de registro del paciente
-        public DateTime FechaRegistro { get; set; }
     }
 
     [Table("Datos")]
