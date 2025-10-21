@@ -22,7 +22,6 @@ namespace sistema.Expediente.Recetas
         {
             InitializeComponent();
             this.Load += frmRecetas_Load;
-            btnNuevaReceta.Click += btnNuevaReceta_Click;
         }
 
         private void frmRecetas_Load(object sender, EventArgs e)
@@ -36,13 +35,6 @@ namespace sistema.Expediente.Recetas
             CargarRecetas(PacienteID);
         }
 
-        private void btnNuevaReceta_Click(object sender, EventArgs e)
-        {
-            var frm = new frmDetalleRecetas();
-            frm.PacienteID = this.PacienteID;
-            frm.ShowDialog();
-            CargarRecetas(this.PacienteID);
-        }
 
         private class PlanView
         {
@@ -94,17 +86,15 @@ namespace sistema.Expediente.Recetas
 
             if (planes == null || planes.Count == 0)
             {
-                // Opcional: mostrar un label "Sin recetas"
-                var lbl = new Label
-                {
-                    Text = "No hay planes terapéuticos guardados.",
-                    ForeColor = Color.Gray,
-                    AutoSize = true,
-                    Padding = new Padding(5)
-                };
-                flpRecetas.Controls.Add(lbl);
+                lbRecetas.Visible = true;
+                pbRecetas.Visible = true;
+                flpRecetas.Visible = false;
                 return;
             }
+
+            lbRecetas.Visible = false;
+            pbRecetas.Visible = false;
+            flpRecetas.Visible = true;
 
             foreach (var p in planes)
             {
@@ -198,6 +188,19 @@ namespace sistema.Expediente.Recetas
 
                 flpRecetas.Controls.Add(panel);
             }
+        }
+
+        private void btnNuevaReceta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevaReceta_Click_1(object sender, EventArgs e)
+        {
+            var frm = new frmDetalleRecetas();
+            frm.PacienteID = this.PacienteID;
+            frm.ShowDialog();
+            CargarRecetas(this.PacienteID);
         }
     }
 }

@@ -48,7 +48,7 @@
             this.lblSinAlergias.AutoSize = true;
             this.lblSinAlergias.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinAlergias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
-            this.lblSinAlergias.Location = new System.Drawing.Point(455, 394);
+            this.lblSinAlergias.Location = new System.Drawing.Point(468, 404);
             this.lblSinAlergias.Name = "lblSinAlergias";
             this.lblSinAlergias.Size = new System.Drawing.Size(296, 32);
             this.lblSinAlergias.TabIndex = 2;
@@ -131,9 +131,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbAlergias.Image = ((System.Drawing.Image)(resources.GetObject("pbAlergias.Image")));
-            this.pbAlergias.Location = new System.Drawing.Point(475, 130);
+            this.pbAlergias.Location = new System.Drawing.Point(485, 130);
             this.pbAlergias.Name = "pbAlergias";
-            this.pbAlergias.Size = new System.Drawing.Size(251, 237);
+            this.pbAlergias.Size = new System.Drawing.Size(251, 250);
             this.pbAlergias.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbAlergias.TabIndex = 5;
             this.pbAlergias.TabStop = false;

@@ -115,11 +115,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbCuadros.AutoSize = true;
-            this.lbCuadros.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCuadros.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCuadros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(162)))), ((int)(((byte)(203)))));
-            this.lbCuadros.Location = new System.Drawing.Point(502, 406);
+            this.lbCuadros.Location = new System.Drawing.Point(488, 406);
             this.lbCuadros.Name = "lbCuadros";
-            this.lbCuadros.Size = new System.Drawing.Size(230, 25);
+            this.lbCuadros.Size = new System.Drawing.Size(264, 28);
             this.lbCuadros.TabIndex = 4;
             this.lbCuadros.Text = "No Registros Actuales";
             // 
@@ -129,9 +129,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbCuadros.Image = ((System.Drawing.Image)(resources.GetObject("pbCuadros.Image")));
-            this.pbCuadros.Location = new System.Drawing.Point(439, 162);
+            this.pbCuadros.Location = new System.Drawing.Point(449, 119);
             this.pbCuadros.Name = "pbCuadros";
-            this.pbCuadros.Size = new System.Drawing.Size(331, 241);
+            this.pbCuadros.Size = new System.Drawing.Size(331, 291);
             this.pbCuadros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCuadros.TabIndex = 3;
             this.pbCuadros.TabStop = false;
