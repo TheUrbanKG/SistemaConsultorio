@@ -7,13 +7,6 @@ namespace sistema
 {
     public partial class frmAgenda : Form
     {
-        private DateTimePicker dtpFecha;
-        private FlowLayoutPanel flowPanelContenedor;
-        private FlowLayoutPanel flowPanelCitas;
-        private ComboBox cmbFiltro;
-        private Button btnAplicarFiltro;
-        private Label lblTitulo;
-
         public frmAgenda()
         {
             InitializeComponent();
@@ -22,113 +15,33 @@ namespace sistema
             this.TopLevel = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Dock = DockStyle.Fill;
-            
-            InitializeModernUI();
+
+            ConfigurarEventos();
             this.Shown += (s, e) => AplicarFiltro();
         }
 
-        private void InitializeModernUI()
+        private void ConfigurarEventos()
         {
-            this.BackColor = Color.FromArgb(45, 45, 48);
-            this.ForeColor = Color.White;
-            this.StartPosition = FormStartPosition.CenterScreen;
-
-            // Contenedor principal
-            flowPanelContenedor = new FlowLayoutPanel();
-            flowPanelContenedor.Dock = DockStyle.Fill;
-            flowPanelContenedor.FlowDirection = FlowDirection.TopDown;
-            flowPanelContenedor.WrapContents = false;
-            flowPanelContenedor.AutoScroll = true;
-            flowPanelContenedor.BackColor = Color.FromArgb(37, 37, 38);
-            flowPanelContenedor.Padding = new Padding(20);
-            this.Controls.Add(flowPanelContenedor);
-
-            // Título
-            lblTitulo = new Label();
-            lblTitulo.Text = "AGENDA DE CITAS";
-            lblTitulo.Font = new Font("Segoe UI", 20, FontStyle.Bold);
-            lblTitulo.AutoSize = true;
-            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
-            lblTitulo.ForeColor = Color.White;
-            lblTitulo.Margin = new Padding(0, 0, 0, 20);
-            flowPanelContenedor.Controls.Add(lblTitulo);
-
-            // Panel de filtros
-            Panel panelFiltros = new Panel();
-            panelFiltros.Dock = DockStyle.Top;
-            panelFiltros.Height = 80;
-            panelFiltros.BackColor = Color.FromArgb(55, 55, 58);
-            panelFiltros.Padding = new Padding(15);
-            panelFiltros.Margin = new Padding(0, 0, 0, 20);
-            flowPanelContenedor.Controls.Add(panelFiltros);
-
-            // Filtro por tipo
-            Label lblFiltro = new Label();
-            lblFiltro.Text = "Filtrar por:";
-            lblFiltro.Font = new Font("Segoe UI", 10);
-            lblFiltro.ForeColor = Color.LightGray;
-            lblFiltro.Location = new Point(15, 10);
-            lblFiltro.AutoSize = true;
-            panelFiltros.Controls.Add(lblFiltro);
-
-            cmbFiltro = new ComboBox();
-            cmbFiltro.Font = new Font("Segoe UI", 10);
-            cmbFiltro.Size = new Size(120, 25);
-            cmbFiltro.Location = new Point(90, 10);
-            cmbFiltro.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbFiltro.BackColor = Color.FromArgb(63, 63, 70);
-            cmbFiltro.ForeColor = Color.White;
-            cmbFiltro.FlatStyle = FlatStyle.Flat;
-            cmbFiltro.Items.AddRange(new string[] { "Día específico", "Mes actual" });
-            cmbFiltro.SelectedIndex = 0;
-            panelFiltros.Controls.Add(cmbFiltro);
-
-            // Fecha
-            Label lblFecha = new Label();
-            lblFecha.Text = "Fecha:";
-            lblFecha.Font = new Font("Segoe UI", 10);
-            lblFecha.ForeColor = Color.LightGray;
-            lblFecha.Location = new Point(230, 10);
-            lblFecha.AutoSize = true;
-            panelFiltros.Controls.Add(lblFecha);
-
-            dtpFecha = new DateTimePicker();
-            dtpFecha.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dtpFecha.Size = new Size(300, 35);
-            dtpFecha.Location = new Point(280, 10);
-            dtpFecha.ValueChanged += DtpFecha_ValueChanged;
-            dtpFecha.BackColor = Color.FromArgb(63, 63, 70);
-            dtpFecha.ForeColor = Color.White;
-            panelFiltros.Controls.Add(dtpFecha);
-
-            // Botón aplicar
-            btnAplicarFiltro = new Button();
-            btnAplicarFiltro.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            btnAplicarFiltro.Size = new Size(100, 30);
-            btnAplicarFiltro.Location = new Point(600, 10);
-            btnAplicarFiltro.Text = "Aplicar Filtro";
-            btnAplicarFiltro.BackColor = Color.FromArgb(0, 122, 204);
-            btnAplicarFiltro.ForeColor = Color.White;
-            btnAplicarFiltro.FlatStyle = FlatStyle.Flat;
+            cmbFiltro.SelectedIndexChanged += CmbFiltro_SelectedIndexChanged;
             btnAplicarFiltro.Click += BtnAplicarFiltro_Click;
-            panelFiltros.Controls.Add(btnAplicarFiltro);
+            dtpFecha.ValueChanged += DtpFecha_ValueChanged;
+            this.Load += frmAgenda_Load;
+            txtBuscar.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    AplicarFiltro();
+                    e.SuppressKeyPress = true;
+                }
+            };
 
-            // Panel de citas
-            flowPanelCitas = new FlowLayoutPanel();
-            flowPanelCitas.Dock = DockStyle.Top;
-            flowPanelCitas.AutoSize = true;
-            flowPanelCitas.FlowDirection = FlowDirection.TopDown;
-            flowPanelCitas.WrapContents = false;
-            flowPanelCitas.AutoScroll = true;
-            flowPanelCitas.BackColor = Color.FromArgb(37, 37, 38);
-            flowPanelCitas.Padding = new Padding(10);
-            flowPanelContenedor.Controls.Add(flowPanelCitas);
+        }
 
-            // Cargar citas iniciales
-            CargarCitasPorFecha(dtpFecha.Value.Date);
-
-            // Abrir calendario al mostrar
-            this.Shown += (s, e) => dtpFecha.Focus();
+        private void CmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Mostrar u ocultar controles según el filtro seleccionado
+            panelDiaEspecifico.Visible = cmbFiltro.SelectedIndex == 0;
+            panelMesEspecifico.Visible = cmbFiltro.SelectedIndex == 2;
         }
 
         private void BtnAplicarFiltro_Click(object sender, EventArgs e) => AplicarFiltro();
@@ -141,10 +54,18 @@ namespace sistema
 
         private void AplicarFiltro()
         {
-            if (cmbFiltro.SelectedIndex == 0)
-                CargarCitasPorFecha(dtpFecha.Value.Date);
-            else
-                CargarCitasDelMesActual();
+            switch (cmbFiltro.SelectedIndex)
+            {
+                case 0: // Día específico
+                    CargarCitasPorFecha(dtpFecha.Value.Date);
+                    break;
+                case 1: // Mes actual
+                    CargarCitasDelMesActual();
+                    break;
+                case 2: // Mes específico
+                    CargarCitasDelMesEspecifico(dtpMesEspecifico.Value);
+                    break;
+            }
         }
 
         private void CargarCitasPorFecha(DateTime fecha)
@@ -154,14 +75,17 @@ namespace sistema
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 string query = @"
-                    SELECT c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo,
-                           p.Nombre, p.Apellido, p.Telefono
-                    FROM Cita c
-                    INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
-                    WHERE c.FechaCita = @FechaCita
-                    ORDER BY c.HoraCita";
+            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo,
+                   p.Nombre, p.Apellido, p.Telefono
+            FROM Cita c
+            INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
+            WHERE c.FechaCita = @FechaCita
+              AND (p.Nombre + ' ' + p.Apellido) LIKE @FiltroNombre
+            ORDER BY c.HoraCita";
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 cmd.Parameters.AddWithValue("@FechaCita", fecha);
+                string filtroNombre = string.IsNullOrWhiteSpace(txtBuscar.Text) ? "%" : $"%{txtBuscar.Text.Trim()}%";
+                cmd.Parameters.AddWithValue("@FiltroNombre", filtroNombre);
                 conexion.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -170,45 +94,44 @@ namespace sistema
                 }
             }
             ActualizarTitulo($"Citas del día: {fecha:dd/MM/yyyy}");
-
-            if (flowPanelCitas.Controls.Count == 0)
-            {
-                Panel placeholder = new Panel();
-                placeholder.Size = new Size(flowPanelContenedor.ClientSize.Width - 60, 100);
-                placeholder.BackColor = Color.FromArgb(45, 45, 48);
-
-                Label lblVacio = new Label();
-                lblVacio.Text = "No hay citas para esta fecha.";
-                lblVacio.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-                lblVacio.ForeColor = Color.Gray;
-                lblVacio.Dock = DockStyle.Fill;
-                lblVacio.TextAlign = ContentAlignment.MiddleCenter;
-
-                placeholder.Controls.Add(lblVacio);
-                flowPanelCitas.Controls.Add(placeholder);
-                flowPanelCitas.PerformLayout();
-                flowPanelContenedor.PerformLayout();
-            }
+            MostrarMensajeVacio();
         }
+
 
         private void CargarCitasDelMesActual()
         {
-            flowPanelCitas.Controls.Clear();
+            LimpiarPanelCitas();
             DateTime primerDiaMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             DateTime ultimoDiaMes = primerDiaMes.AddMonths(1).AddDays(-1);
+            CargarCitasPorRango(primerDiaMes, ultimoDiaMes, $"Citas del mes: {DateTime.Now:MMMM yyyy}");
+        }
+
+        private void CargarCitasDelMesEspecifico(DateTime fecha)
+        {
+            LimpiarPanelCitas();
+            DateTime primerDiaMes = new DateTime(fecha.Year, fecha.Month, 1);
+            DateTime ultimoDiaMes = primerDiaMes.AddMonths(1).AddDays(-1);
+            CargarCitasPorRango(primerDiaMes, ultimoDiaMes, $"Citas del mes: {fecha:MMMM yyyy}");
+        }
+
+        private void CargarCitasPorRango(DateTime fechaInicio, DateTime fechaFin, string titulo)
+        {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 string query = @"
-                    SELECT c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo,
-                           p.Nombre, p.Apellido, p.Telefono
-                    FROM Cita c
-                    INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
-                    WHERE c.FechaCita BETWEEN @FechaInicio AND @FechaFin
-                    ORDER BY c.FechaCita, c.HoraCita";
+            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo,
+                   p.Nombre, p.Apellido, p.Telefono
+            FROM Cita c
+            INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
+            WHERE c.FechaCita BETWEEN @FechaInicio AND @FechaFin
+              AND (p.Nombre + ' ' + p.Apellido) LIKE @FiltroNombre
+            ORDER BY c.FechaCita, c.HoraCita";
                 SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("@FechaInicio", primerDiaMes);
-                cmd.Parameters.AddWithValue("@FechaFin", ultimoDiaMes);
+                cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@FechaFin", fechaFin);
+                string filtroNombre = string.IsNullOrWhiteSpace(txtBuscar.Text) ? "%" : $"%{txtBuscar.Text.Trim()}%";
+                cmd.Parameters.AddWithValue("@FiltroNombre", filtroNombre);
                 conexion.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -216,34 +139,24 @@ namespace sistema
                         CrearPanelCita(reader);
                 }
             }
-            ActualizarTitulo($"Citas del mes: {DateTime.Now:MMMM yyyy}");
+            ActualizarTitulo(titulo);
+            MostrarMensajeVacio();
+            AjustarTamañoPaneles();
+        }
 
-            if (flowPanelCitas.Controls.Count == 0)
-            {
-                Panel placeholder = new Panel();
-                placeholder.Dock = DockStyle.Top;
-                placeholder.AutoSize = true;
-                placeholder.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                placeholder.BackColor = Color.FromArgb(45, 45, 48);
 
-                Label lblVacio = new Label();
-                lblVacio.Text = "No hay citas para esta fecha.";
-                lblVacio.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-                lblVacio.ForeColor = Color.Gray;
-                lblVacio.Dock = DockStyle.Fill;
-                lblVacio.TextAlign = ContentAlignment.MiddleCenter;
-
-                placeholder.Controls.Add(lblVacio);
-                flowPanelCitas.Controls.Add(placeholder);
-                flowPanelCitas.PerformLayout();
-                flowPanelContenedor.PerformLayout();
-            }
+        private void LimpiarPanelCitas()
+        {
+            flowPanelCitas.SuspendLayout();
+            flowPanelCitas.Controls.Clear();
+            flowPanelCitas.ResumeLayout();
         }
 
         private void CrearPanelCita(SqlDataReader reader)
         {
             Panel panelCita = new Panel();
-            panelCita.Size = new Size(flowPanelContenedor.ClientSize.Width - 60, 120);
+            panelCita.Width = flowPanelCitas.ClientSize.Width - 25;
+            panelCita.Height = 120;
             panelCita.BackColor = Color.FromArgb(55, 55, 58);
             panelCita.Margin = new Padding(0, 0, 0, 10);
             panelCita.Padding = new Padding(10);
@@ -260,6 +173,7 @@ namespace sistema
             DateTime fechaCita = Convert.ToDateTime(reader["FechaCita"]);
             TimeSpan horaCita = (TimeSpan)reader["HoraCita"];
             string periodo = reader["Periodo"].ToString();
+            int citaID = Convert.ToInt32(reader["CitaID"]);
 
             // Panel izquierdo: fecha y hora
             Panel panelInfo = new Panel();
@@ -291,7 +205,7 @@ namespace sistema
             Label lblPaciente = new Label();
             lblPaciente.Text = $"{reader["Nombre"]} {reader["Apellido"]}";
             lblPaciente.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            lblPaciente.Size = new Size(350, 25);
+            lblPaciente.Size = new Size(300, 25);
             lblPaciente.Location = new Point(120, 15);
             lblPaciente.ForeColor = Color.White;
             panelCita.Controls.Add(lblPaciente);
@@ -300,7 +214,7 @@ namespace sistema
             Label lblTelefono = new Label();
             lblTelefono.Text = $"📞 {reader["Telefono"]}";
             lblTelefono.Font = new Font("Segoe UI", 10);
-            lblTelefono.Size = new Size(250, 20);
+            lblTelefono.Size = new Size(200, 20);
             lblTelefono.Location = new Point(120, 45);
             lblTelefono.ForeColor = Color.LightGray;
             panelCita.Controls.Add(lblTelefono);
@@ -309,22 +223,130 @@ namespace sistema
             Label lblMotivo = new Label();
             lblMotivo.Text = $"📋 {reader["Motivo"]}";
             lblMotivo.Font = new Font("Segoe UI", 10);
-            lblMotivo.Size = new Size(500, 20);
+            lblMotivo.Size = new Size(350, 20);
             lblMotivo.Location = new Point(120, 70);
             lblMotivo.ForeColor = Color.LightGray;
             panelCita.Controls.Add(lblMotivo);
 
+            // Botón Eliminar
+            Button btnEliminar = new Button();
+            btnEliminar.Size = new Size(80, 30);
+            btnEliminar.Location = new Point(panelCita.Width - btnEliminar.Width - 10, 70);
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            btnEliminar.BackColor = Color.FromArgb(220, 53, 69);
+            btnEliminar.ForeColor = Color.White;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.FlatAppearance.BorderSize = 0;
+            btnEliminar.Cursor = Cursors.Hand;
+            btnEliminar.Tag = citaID;
+            btnEliminar.Click += BtnEliminar_Click;
+            btnEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelCita.Controls.Add(btnEliminar);
+
             // Año
             Label lblAnio = new Label();
-            lblAnio.Text = fechaCita.ToString("yyyy");
+            lblAnio.Text = $"Año: {fechaCita:yyyy}";
             lblAnio.Font = new Font("Segoe UI", 9);
-            lblAnio.Size = new Size(80, 20);
-            lblAnio.Location = new Point(panelCita.Width - 90, 15);
+            lblAnio.Size = new Size(60, 20);
+            lblAnio.Location = new Point(panelCita.Width - lblAnio.Width - 10, 15);
             lblAnio.ForeColor = Color.LightGray;
             lblAnio.TextAlign = ContentAlignment.MiddleRight;
+            lblAnio.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panelCita.Controls.Add(lblAnio);
 
             flowPanelCitas.Controls.Add(panelCita);
+        }
+
+        private void AjustarTamañoPaneles()
+        {
+            foreach (Control control in flowPanelCitas.Controls)
+            {
+                if (control is Panel panelCita)
+                {
+                    panelCita.Width = flowPanelCitas.ClientSize.Width - 25;
+
+                    foreach (Control innerControl in panelCita.Controls)
+                    {
+                        if (innerControl is Label lbl && lbl.Text.Length == 4 && int.TryParse(lbl.Text, out _))
+                        {
+                            lbl.Location = new Point(panelCita.Width - 150, 15);
+                        }
+                        else if (innerControl is Button btn && btn.Text == "Eliminar")
+                        {
+                            btn.Location = new Point(panelCita.Width - 90, 70);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            Button btnEliminar = (Button)sender;
+            int citaID = (int)btnEliminar.Tag;
+
+            DialogResult result = MessageBox.Show(
+                "¿Está seguro de que desea eliminar esta cita?",
+                "Confirmar Eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                EliminarCita(citaID);
+            }
+        }
+
+        private void EliminarCita(int citaID)
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Cita WHERE CitaID = @CitaID";
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@CitaID", citaID);
+
+                try
+                {
+                    conexion.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Cita eliminada correctamente.", "Éxito",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AplicarFiltro();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al eliminar la cita: {ex.Message}", "Error",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void MostrarMensajeVacio()
+        {
+            if (flowPanelCitas.Controls.Count == 0)
+            {
+                Panel placeholder = new Panel();
+                placeholder.Width = flowPanelCitas.ClientSize.Width - 25;
+                placeholder.Height = 100;
+                placeholder.BackColor = Color.FromArgb(45, 45, 48);
+
+                Label lblVacio = new Label();
+                lblVacio.Text = "No hay citas para esta fecha.";
+                lblVacio.Font = new Font("Segoe UI", 12, FontStyle.Italic);
+                lblVacio.ForeColor = Color.Gray;
+                lblVacio.Dock = DockStyle.Fill;
+                lblVacio.TextAlign = ContentAlignment.MiddleCenter;
+
+                placeholder.Controls.Add(lblVacio);
+                flowPanelCitas.Controls.Add(placeholder);
+            }
         }
 
         private void ActualizarTitulo(string subtitulo)
@@ -336,5 +358,6 @@ namespace sistema
         {
             AplicarFiltro();
         }
+
     }
 }
