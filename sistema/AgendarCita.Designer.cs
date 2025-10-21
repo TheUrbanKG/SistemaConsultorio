@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgendarCita));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblTipoSangre = new System.Windows.Forms.Label();
             this.lblGeneroPaciente = new System.Windows.Forms.Label();
             this.lblEdadPaciente = new System.Windows.Forms.Label();
@@ -54,11 +54,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.metroLabel1);
             this.panel1.Controls.Add(this.lblTipoSangre);
             this.panel1.Controls.Add(this.lblGeneroPaciente);
             this.panel1.Controls.Add(this.lblEdadPaciente);
@@ -69,102 +69,102 @@
             this.panel1.Size = new System.Drawing.Size(429, 165);
             this.panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(133, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(184, 23);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Datos del Paciente";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(11, 125);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 18);
+            this.label4.Size = new System.Drawing.Size(192, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Tipo de Sangre del Paciente:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(11, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 18);
+            this.label3.Size = new System.Drawing.Size(146, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Genero del paciente:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(12, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 18);
+            this.label2.Size = new System.Drawing.Size(132, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Edad del paciente:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(13, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 18);
+            this.label1.Size = new System.Drawing.Size(151, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Nombre del paciente:";
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroLabel1.Location = new System.Drawing.Point(130, 9);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(155, 28);
-            this.metroLabel1.TabIndex = 4;
-            this.metroLabel1.Text = "Datos del Paciente";
-            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // lblTipoSangre
             // 
             this.lblTipoSangre.AutoSize = true;
-            this.lblTipoSangre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoSangre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoSangre.ForeColor = System.Drawing.SystemColors.Control;
             this.lblTipoSangre.Location = new System.Drawing.Point(229, 125);
             this.lblTipoSangre.Name = "lblTipoSangre";
-            this.lblTipoSangre.Size = new System.Drawing.Size(192, 18);
+            this.lblTipoSangre.Size = new System.Drawing.Size(188, 17);
             this.lblTipoSangre.TabIndex = 3;
             this.lblTipoSangre.Text = "Tipo de Sangre del Paciente";
             // 
             // lblGeneroPaciente
             // 
             this.lblGeneroPaciente.AutoSize = true;
-            this.lblGeneroPaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneroPaciente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGeneroPaciente.ForeColor = System.Drawing.SystemColors.Control;
             this.lblGeneroPaciente.Location = new System.Drawing.Point(229, 102);
             this.lblGeneroPaciente.Name = "lblGeneroPaciente";
-            this.lblGeneroPaciente.Size = new System.Drawing.Size(142, 18);
+            this.lblGeneroPaciente.Size = new System.Drawing.Size(141, 17);
             this.lblGeneroPaciente.TabIndex = 2;
             this.lblGeneroPaciente.Text = "Genero del Paciente";
             // 
             // lblEdadPaciente
             // 
             this.lblEdadPaciente.AutoSize = true;
-            this.lblEdadPaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdadPaciente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEdadPaciente.ForeColor = System.Drawing.SystemColors.Control;
             this.lblEdadPaciente.Location = new System.Drawing.Point(229, 79);
             this.lblEdadPaciente.Name = "lblEdadPaciente";
-            this.lblEdadPaciente.Size = new System.Drawing.Size(126, 18);
+            this.lblEdadPaciente.Size = new System.Drawing.Size(127, 17);
             this.lblEdadPaciente.TabIndex = 1;
             this.lblEdadPaciente.Text = "Edad del Paciente";
             // 
             // lblNombrePaciente
             // 
             this.lblNombrePaciente.AutoSize = true;
-            this.lblNombrePaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombrePaciente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombrePaciente.ForeColor = System.Drawing.SystemColors.Control;
             this.lblNombrePaciente.Location = new System.Drawing.Point(229, 58);
             this.lblNombrePaciente.Name = "lblNombrePaciente";
-            this.lblNombrePaciente.Size = new System.Drawing.Size(146, 18);
+            this.lblNombrePaciente.Size = new System.Drawing.Size(146, 17);
             this.lblNombrePaciente.TabIndex = 0;
             this.lblNombrePaciente.Text = "Nombre del Paciente";
             // 
@@ -199,7 +199,7 @@
             this.radioPM.AutoSize = true;
             this.radioPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioPM.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioPM.Location = new System.Drawing.Point(334, 41);
+            this.radioPM.Location = new System.Drawing.Point(357, 47);
             this.radioPM.Name = "radioPM";
             this.radioPM.Size = new System.Drawing.Size(47, 20);
             this.radioPM.TabIndex = 7;
@@ -212,7 +212,7 @@
             this.radioAM.AutoSize = true;
             this.radioAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioAM.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioAM.Location = new System.Drawing.Point(333, 19);
+            this.radioAM.Location = new System.Drawing.Point(357, 21);
             this.radioAM.Name = "radioAM";
             this.radioAM.Size = new System.Drawing.Size(47, 20);
             this.radioAM.TabIndex = 6;
@@ -222,7 +222,7 @@
             // 
             // dtpHora
             // 
-            this.dtpHora.Location = new System.Drawing.Point(123, 22);
+            this.dtpHora.Location = new System.Drawing.Point(137, 30);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.Size = new System.Drawing.Size(200, 20);
             this.dtpHora.TabIndex = 5;
@@ -230,12 +230,14 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(303, 209);
+            this.metroButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(150)))), ((int)(((byte)(100)))));
+            this.metroButton1.Location = new System.Drawing.Point(293, 211);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(111, 23);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Teal;
+            this.metroButton1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroButton1.TabIndex = 4;
             this.metroButton1.Text = "Guardar";
+            this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseSelectable = true;
             this.metroButton1.UseStyleColors = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
@@ -243,7 +245,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(16, 77);
+            this.metroLabel3.Location = new System.Drawing.Point(18, 79);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(113, 19);
             this.metroLabel3.TabIndex = 3;
@@ -254,14 +256,14 @@
             // 
             this.txtMotivoCita.Location = new System.Drawing.Point(137, 79);
             this.txtMotivoCita.Name = "txtMotivoCita";
-            this.txtMotivoCita.Size = new System.Drawing.Size(232, 118);
+            this.txtMotivoCita.Size = new System.Drawing.Size(267, 118);
             this.txtMotivoCita.TabIndex = 2;
             this.txtMotivoCita.Text = "";
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(16, 21);
+            this.metroLabel2.Location = new System.Drawing.Point(28, 31);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(101, 19);
             this.metroLabel2.TabIndex = 0;
@@ -278,6 +280,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AgendarCita";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Agendar Cita";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -298,7 +301,6 @@
         private System.Windows.Forms.Label lblGeneroPaciente;
         private System.Windows.Forms.Label lblEdadPaciente;
         private System.Windows.Forms.Label lblNombrePaciente;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.Label lblFechaCita;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -312,5 +314,6 @@
         private System.Windows.Forms.DateTimePicker dtpHora;
         private System.Windows.Forms.RadioButton radioPM;
         private System.Windows.Forms.RadioButton radioAM;
+        private System.Windows.Forms.Label label5;
     }
 }
