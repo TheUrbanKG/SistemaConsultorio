@@ -78,7 +78,7 @@
             // 
             // panelFiltros
             // 
-            this.panelFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.panelFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(67)))));
             this.panelFiltros.Controls.Add(this.lblFiltroTipo);
             this.panelFiltros.Controls.Add(this.cboFiltroTipo);
             this.panelFiltros.Controls.Add(this.lblFiltroPaciente);
@@ -129,7 +129,7 @@
             // cboFiltroPaciente
             // 
             this.cboFiltroPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboFiltroPaciente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.cboFiltroPaciente.BackColor = System.Drawing.Color.Gainsboro;
             this.cboFiltroPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltroPaciente.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboFiltroPaciente.ForeColor = System.Drawing.Color.Black;
@@ -155,7 +155,7 @@
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.ForeColor = System.Drawing.Color.Black;
             this.txtBuscar.Location = new System.Drawing.Point(241, 13);
@@ -180,7 +180,7 @@
             // 
             // panelEditor
             // 
-            this.panelEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.panelEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
             this.panelEditor.Controls.Add(this.rbGeneral);
             this.panelEditor.Controls.Add(this.rbMedica);
             this.panelEditor.Controls.Add(this.lblPaciente);
@@ -282,7 +282,7 @@
             // 
             this.txtContenido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtContenido.BackColor = System.Drawing.Color.White;
+            this.txtContenido.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtContenido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContenido.ForeColor = System.Drawing.Color.Black;
             this.txtContenido.Location = new System.Drawing.Point(17, 193);
@@ -328,7 +328,7 @@
             this.flpNotas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpNotas.Location = new System.Drawing.Point(326, 52);
             this.flpNotas.Name = "flpNotas";
-            this.flpNotas.Padding = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.flpNotas.Padding = new System.Windows.Forms.Padding(7);
             this.flpNotas.Size = new System.Drawing.Size(589, 505);
             this.flpNotas.TabIndex = 2;
             // 

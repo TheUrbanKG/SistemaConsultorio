@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCuentas));
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -42,8 +42,9 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAñadirUsuario = new FrameworkTest.SATAButton();
             this.btnModificarUsuario = new FrameworkTest.SATAButton();
-            this.btnDesabilitar = new FrameworkTest.SATAButton();
             this.btnHistorial = new FrameworkTest.SATAButton();
+            this.panelTopAccent = new System.Windows.Forms.Panel();
+            this.btnDesabilitar = new FrameworkTest.SATAButton();
             this.sataPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -56,14 +57,14 @@
             this.sataPanel1.BackColor = System.Drawing.Color.LightSalmon;
             this.sataPanel1.BackColor2 = System.Drawing.Color.LightSalmon;
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 10;
-            borderRadius1.BottomRight = 10;
-            borderRadius1.TopLeft = 10;
-            borderRadius1.TopRight = 10;
-            this.sataPanel1.BorderRadius = borderRadius1;
+            borderRadius3.BottomLeft = 10;
+            borderRadius3.BottomRight = 10;
+            borderRadius3.TopLeft = 10;
+            borderRadius3.TopRight = 10;
+            this.sataPanel1.BorderRadius = borderRadius3;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.dgvUsuarios);
-            this.sataPanel1.Location = new System.Drawing.Point(69, 129);
+            this.sataPanel1.Location = new System.Drawing.Point(73, 79);
             this.sataPanel1.Name = "sataPanel1";
             this.sataPanel1.Padding = new System.Windows.Forms.Padding(5, 1, 5, 15);
             this.sataPanel1.Size = new System.Drawing.Size(765, 488);
@@ -82,41 +83,41 @@
             this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Usuario,
             this.Nombre,
             this.Apellido,
             this.Rol,
             this.Status});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvUsuarios.EnableHeadersVisualStyles = false;
             this.dgvUsuarios.Location = new System.Drawing.Point(5, 1);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.RowHeadersWidth = 30;
             this.dgvUsuarios.RowTemplate.Height = 30;
@@ -176,7 +177,7 @@
             this.btnAñadirUsuario.ImageTint = System.Drawing.Color.White;
             this.btnAñadirUsuario.IsToggleButton = false;
             this.btnAñadirUsuario.IsToggled = false;
-            this.btnAñadirUsuario.Location = new System.Drawing.Point(886, 119);
+            this.btnAñadirUsuario.Location = new System.Drawing.Point(886, 80);
             this.btnAñadirUsuario.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnAñadirUsuario.Name = "btnAñadirUsuario";
             this.btnAñadirUsuario.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
@@ -216,7 +217,7 @@
             this.btnModificarUsuario.ImageTint = System.Drawing.Color.White;
             this.btnModificarUsuario.IsToggleButton = false;
             this.btnModificarUsuario.IsToggled = false;
-            this.btnModificarUsuario.Location = new System.Drawing.Point(886, 208);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(886, 175);
             this.btnModificarUsuario.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
             this.btnModificarUsuario.NormalBackground = System.Drawing.Color.RoyalBlue;
@@ -233,45 +234,6 @@
             this.btnModificarUsuario.TextAutoCenter = true;
             this.btnModificarUsuario.TextOffset = new System.Drawing.Point(0, 0);
             this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
-            // 
-            // btnDesabilitar
-            // 
-            this.btnDesabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDesabilitar.ButtonText = "Desabilitar/Habilitar Usuario";
-            this.btnDesabilitar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.btnDesabilitar.CheckedForeColor = System.Drawing.Color.White;
-            this.btnDesabilitar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnDesabilitar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnDesabilitar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesabilitar.HoverBackground = System.Drawing.Color.Firebrick;
-            this.btnDesabilitar.HoverForeColor = System.Drawing.Color.White;
-            this.btnDesabilitar.HoverImage = null;
-            this.btnDesabilitar.HoverImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.HoverOutline = System.Drawing.Color.Empty;
-            this.btnDesabilitar.Image = null;
-            this.btnDesabilitar.ImageAutoCenter = true;
-            this.btnDesabilitar.ImageExpand = new System.Drawing.Point(5, 5);
-            this.btnDesabilitar.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnDesabilitar.ImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.IsToggleButton = false;
-            this.btnDesabilitar.IsToggled = false;
-            this.btnDesabilitar.Location = new System.Drawing.Point(886, 292);
-            this.btnDesabilitar.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.btnDesabilitar.Name = "btnDesabilitar";
-            this.btnDesabilitar.NormalBackground = System.Drawing.Color.Crimson;
-            this.btnDesabilitar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDesabilitar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnDesabilitar.OutlineThickness = 2F;
-            this.btnDesabilitar.PressedBackground = System.Drawing.Color.Firebrick;
-            this.btnDesabilitar.PressedForeColor = System.Drawing.Color.White;
-            this.btnDesabilitar.PressedImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnDesabilitar.Rounding = new System.Windows.Forms.Padding(20);
-            this.btnDesabilitar.Size = new System.Drawing.Size(240, 47);
-            this.btnDesabilitar.TabIndex = 44;
-            this.btnDesabilitar.TextAutoCenter = true;
-            this.btnDesabilitar.TextOffset = new System.Drawing.Point(0, 0);
             // 
             // btnHistorial
             // 
@@ -295,7 +257,7 @@
             this.btnHistorial.ImageTint = System.Drawing.Color.White;
             this.btnHistorial.IsToggleButton = false;
             this.btnHistorial.IsToggled = false;
-            this.btnHistorial.Location = new System.Drawing.Point(886, 520);
+            this.btnHistorial.Location = new System.Drawing.Point(886, 495);
             this.btnHistorial.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.NormalBackground = System.Drawing.Color.Coral;
@@ -313,12 +275,62 @@
             this.btnHistorial.TextOffset = new System.Drawing.Point(0, 0);
             this.btnHistorial.Click += new System.EventHandler(this.sataButton1_Click);
             // 
+            // panelTopAccent
+            // 
+            this.panelTopAccent.BackColor = System.Drawing.Color.Coral;
+            this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
+            this.panelTopAccent.Name = "panelTopAccent";
+            this.panelTopAccent.Size = new System.Drawing.Size(1173, 3);
+            this.panelTopAccent.TabIndex = 101;
+            // 
+            // btnDesabilitar
+            // 
+            this.btnDesabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDesabilitar.ButtonText = "Desabilitar/Habilitar Usuario";
+            this.btnDesabilitar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnDesabilitar.CheckedForeColor = System.Drawing.Color.White;
+            this.btnDesabilitar.CheckedImageTint = System.Drawing.Color.White;
+            this.btnDesabilitar.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnDesabilitar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDesabilitar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesabilitar.HoverBackground = System.Drawing.Color.Firebrick;
+            this.btnDesabilitar.HoverForeColor = System.Drawing.Color.White;
+            this.btnDesabilitar.HoverImage = null;
+            this.btnDesabilitar.HoverImageTint = System.Drawing.Color.White;
+            this.btnDesabilitar.HoverOutline = System.Drawing.Color.Empty;
+            this.btnDesabilitar.Image = null;
+            this.btnDesabilitar.ImageAutoCenter = true;
+            this.btnDesabilitar.ImageExpand = new System.Drawing.Point(5, 5);
+            this.btnDesabilitar.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnDesabilitar.ImageTint = System.Drawing.Color.White;
+            this.btnDesabilitar.IsToggleButton = false;
+            this.btnDesabilitar.IsToggled = false;
+            this.btnDesabilitar.Location = new System.Drawing.Point(886, 266);
+            this.btnDesabilitar.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.btnDesabilitar.Name = "btnDesabilitar";
+            this.btnDesabilitar.NormalBackground = System.Drawing.Color.Crimson;
+            this.btnDesabilitar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDesabilitar.NormalOutline = System.Drawing.Color.Empty;
+            this.btnDesabilitar.OutlineThickness = 2F;
+            this.btnDesabilitar.PressedBackground = System.Drawing.Color.Firebrick;
+            this.btnDesabilitar.PressedForeColor = System.Drawing.Color.White;
+            this.btnDesabilitar.PressedImageTint = System.Drawing.Color.White;
+            this.btnDesabilitar.PressedOutline = System.Drawing.Color.Empty;
+            this.btnDesabilitar.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnDesabilitar.Size = new System.Drawing.Size(240, 47);
+            this.btnDesabilitar.TabIndex = 44;
+            this.btnDesabilitar.TextAutoCenter = true;
+            this.btnDesabilitar.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnDesabilitar.Click += new System.EventHandler(this.btnDesabilitar_Click);
+            // 
             // frmCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1173, 692);
+            this.Controls.Add(this.panelTopAccent);
             this.Controls.Add(this.btnHistorial);
             this.Controls.Add(this.btnDesabilitar);
             this.Controls.Add(this.btnModificarUsuario);
@@ -340,12 +352,13 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private FrameworkTest.SATAButton btnAñadirUsuario;
         private FrameworkTest.SATAButton btnModificarUsuario;
-        private FrameworkTest.SATAButton btnDesabilitar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private FrameworkTest.SATAButton btnHistorial;
+        private System.Windows.Forms.Panel panelTopAccent;
+        private FrameworkTest.SATAButton btnDesabilitar;
     }
 }

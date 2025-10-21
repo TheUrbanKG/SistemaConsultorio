@@ -64,6 +64,7 @@
             this.panelBotones = new System.Windows.Forms.Panel();
             this.PanelFoto = new SATAUiFramework.SATAPanel();
             this.pbFotoInicio = new System.Windows.Forms.PictureBox();
+            this.panelTopAccent = new System.Windows.Forms.Panel();
             this.sataPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -559,12 +560,22 @@
             this.pbFotoInicio.TabIndex = 0;
             this.pbFotoInicio.TabStop = false;
             // 
+            // panelTopAccent
+            // 
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
+            this.panelTopAccent.Name = "panelTopAccent";
+            this.panelTopAccent.Size = new System.Drawing.Size(1365, 3);
+            this.panelTopAccent.TabIndex = 101;
+            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1365, 692);
+            this.Controls.Add(this.panelTopAccent);
             this.Controls.Add(this.PanelFoto);
             this.Controls.Add(this.panelBotones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -630,5 +641,6 @@
         private System.Windows.Forms.Panel panelBotones;
         private System.Windows.Forms.PictureBox pbFotoInicio;
         private SATAUiFramework.SATAPanel PanelFoto;
+        private System.Windows.Forms.Panel panelTopAccent;
     }
 }

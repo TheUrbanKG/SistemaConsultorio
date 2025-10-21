@@ -187,7 +187,7 @@
             // 
             this.btnCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCuentas.ButtonText = "Gestion de Cuentas";
-            this.btnCuentas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnCuentas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCuentas.CheckedForeColor = System.Drawing.Color.White;
             this.btnCuentas.CheckedImageTint = System.Drawing.Color.White;
             this.btnCuentas.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -210,7 +210,7 @@
             this.btnCuentas.Name = "btnCuentas";
             this.btnCuentas.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.btnCuentas.NormalForeColor = System.Drawing.Color.White;
-            this.btnCuentas.NormalOutline = System.Drawing.Color.DarkSlateGray;
+            this.btnCuentas.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCuentas.OutlineThickness = 2F;
             this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.btnCuentas.PressedForeColor = System.Drawing.Color.White;

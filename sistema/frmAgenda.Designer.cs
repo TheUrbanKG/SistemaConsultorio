@@ -28,7 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panelTopAccent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // panelTopAccent
+            // 
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
+            this.panelTopAccent.Name = "panelTopAccent";
+            this.panelTopAccent.Size = new System.Drawing.Size(800, 3);
+            this.panelTopAccent.TabIndex = 101;
             // 
             // frmAgenda
             // 
@@ -36,6 +46,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.panelTopAccent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAgenda";
             this.Text = "frmAgenda";
@@ -45,5 +56,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panelTopAccent;
     }
 }

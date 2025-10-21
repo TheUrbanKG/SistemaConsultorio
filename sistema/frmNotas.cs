@@ -169,7 +169,7 @@ namespace sistema
                     Width = CalcularAnchoTarjeta(),
                     Height = 120,
                     Margin = new Padding(8),
-                    BackColor = Color.FromArgb(44, 62, 80)  
+                    BackColor = Color.FromArgb(30, 80, 80)  
                 };
 
                 var lblTipo = new Label
@@ -208,7 +208,7 @@ namespace sistema
                     Name = "lblFecha",
                     Text = n.CreadoEn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
                     AutoSize = true,
-                    ForeColor = Color.Gray,
+                    ForeColor = Color.LightGray,
                     Location = new Point(12, 82)
                 };
 

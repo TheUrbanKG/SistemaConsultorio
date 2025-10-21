@@ -39,6 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelFecha = new System.Windows.Forms.Label();
+            this.panelTopAccent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // contenedorDias
@@ -164,12 +165,22 @@
             this.labelFecha.Text = "MES AÑO";
             this.labelFecha.Click += new System.EventHandler(this.labelFecha_Click);
             // 
+            // panelTopAccent
+            // 
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
+            this.panelTopAccent.Name = "panelTopAccent";
+            this.panelTopAccent.Size = new System.Drawing.Size(1149, 3);
+            this.panelTopAccent.TabIndex = 101;
+            // 
             // frmCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(1149, 609);
+            this.Controls.Add(this.panelTopAccent);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.labelFecha);
             this.Controls.Add(this.label8);
@@ -203,5 +214,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelFecha;
+        private System.Windows.Forms.Panel panelTopAccent;
     }
 }
