@@ -54,21 +54,21 @@ FROM Paciente;";
         {
             _mainForm.abrirFormHijo(new frmPacientes());
             _mainForm.labelTitulo.Text = "Pacientes";
-            _mainForm.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\paciente.png");
+            _mainForm.pbTitulo.Image = Properties.Resources.paciente;
         }
 
         private void btnAgendarCita_Click(object sender, EventArgs e)
         {
             _mainForm.abrirFormHijo(new frmCitas());
             _mainForm.labelTitulo.Text = "Citas";
-            _mainForm.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\calendario.png");
+            _mainForm.pbTitulo.Image = Properties.Resources.calendario;
         }
 
         private void btnBuscarCita_Click(object sender, EventArgs e)
         {
             _mainForm.abrirFormHijo(new frmAgenda());
             _mainForm.labelTitulo.Text = "Agenda";
-            _mainForm.pbTitulo.Image = Image.FromFile(@"C:\Users\Urban\Desktop\Sistema Consultorio\Icons\agenda.png");
+            _mainForm.pbTitulo.Image = Properties.Resources.agenda;
         }
     }
 }

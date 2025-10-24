@@ -114,6 +114,15 @@ namespace sistema
             }
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {

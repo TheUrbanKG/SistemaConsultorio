@@ -107,11 +107,11 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
-            this.label5.Location = new System.Drawing.Point(129, 19);
+            this.label5.Location = new System.Drawing.Point(118, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 16);
+            this.label5.Size = new System.Drawing.Size(186, 16);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Citas Agendadas";
+            this.label5.Text = "Citas Agendadas para Hoy";
             // 
             // lbCitasAgendadas
             // 

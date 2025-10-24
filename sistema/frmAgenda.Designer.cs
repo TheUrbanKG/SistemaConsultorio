@@ -31,6 +31,7 @@
             this.flowPanelCitas = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.panelTopAccent = new System.Windows.Forms.Panel();
             this.panelFiltros.SuspendLayout();
             this.panelDiaEspecifico.SuspendLayout();
             this.panelMesEspecifico.SuspendLayout();
@@ -206,12 +207,22 @@
             this.txtBuscar.Size = new System.Drawing.Size(269, 22);
             this.txtBuscar.TabIndex = 7;
             // 
+            // panelTopAccent
+            // 
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(177)))));
+            this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
+            this.panelTopAccent.Name = "panelTopAccent";
+            this.panelTopAccent.Size = new System.Drawing.Size(1109, 3);
+            this.panelTopAccent.TabIndex = 102;
+            // 
             // frmAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1109, 700);
+            this.Controls.Add(this.panelTopAccent);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.panelFiltros);
             this.Controls.Add(this.flowPanelCitas);
@@ -246,5 +257,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowPanelCitas;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelTopAccent;
     }
 }

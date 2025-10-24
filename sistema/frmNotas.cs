@@ -169,7 +169,7 @@ namespace sistema
                     Width = CalcularAnchoTarjeta(),
                     Height = 120,
                     Margin = new Padding(8),
-                    BackColor = Color.FromArgb(30, 80, 80)  
+                    BackColor = Color.FromArgb(30, 80, 85)  
                 };
 
                 var lblTipo = new Label

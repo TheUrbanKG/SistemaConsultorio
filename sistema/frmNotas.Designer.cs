@@ -69,7 +69,7 @@
             // 
             // panelTopAccent
             // 
-            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(180)))), ((int)(((byte)(80)))));
             this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccent.Name = "panelTopAccent";
