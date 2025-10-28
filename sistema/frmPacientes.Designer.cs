@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacientes));
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
@@ -40,6 +40,8 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTopAccent = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbTipoPaciente = new System.Windows.Forms.ComboBox();
             this.sataPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             this.SuspendLayout();
@@ -52,11 +54,11 @@
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 10;
-            borderRadius1.BottomRight = 10;
-            borderRadius1.TopLeft = 10;
-            borderRadius1.TopRight = 10;
-            this.sataPanel1.BorderRadius = borderRadius1;
+            borderRadius2.BottomLeft = 10;
+            borderRadius2.BottomRight = 10;
+            borderRadius2.TopLeft = 10;
+            borderRadius2.TopRight = 10;
+            this.sataPanel1.BorderRadius = borderRadius2;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.dgvPacientes);
             this.sataPanel1.Location = new System.Drawing.Point(55, 101);
@@ -75,36 +77,36 @@
             this.dgvPacientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPacientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPacientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPacientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPacientes.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPacientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPacientes.EnableHeadersVisualStyles = false;
             this.dgvPacientes.Location = new System.Drawing.Point(5, 1);
             this.dgvPacientes.MultiSelect = false;
             this.dgvPacientes.Name = "dgvPacientes";
             this.dgvPacientes.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPacientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPacientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPacientes.RowHeadersVisible = false;
             this.dgvPacientes.RowHeadersWidth = 30;
             this.dgvPacientes.RowTemplate.Height = 30;
@@ -224,11 +226,39 @@
             this.panelTopAccent.Size = new System.Drawing.Size(1163, 3);
             this.panelTopAccent.TabIndex = 101;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(523, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 17);
+            this.label2.TabIndex = 102;
+            this.label2.Text = "Tipo de Paciente";
+            // 
+            // cbTipoPaciente
+            // 
+            this.cbTipoPaciente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(61)))), ((int)(((byte)(68)))));
+            this.cbTipoPaciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbTipoPaciente.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoPaciente.ForeColor = System.Drawing.SystemColors.Window;
+            this.cbTipoPaciente.FormattingEnabled = true;
+            this.cbTipoPaciente.Items.AddRange(new object[] {
+            "Conocido",
+            "Desconocido"});
+            this.cbTipoPaciente.Location = new System.Drawing.Point(526, 58);
+            this.cbTipoPaciente.Name = "cbTipoPaciente";
+            this.cbTipoPaciente.Size = new System.Drawing.Size(279, 24);
+            this.cbTipoPaciente.TabIndex = 103;
+            // 
             // frmPacientes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1163, 601);
+            this.Controls.Add(this.cbTipoPaciente);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panelTopAccent);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBuscar);
@@ -254,5 +284,7 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelTopAccent;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbTipoPaciente;
     }
 }

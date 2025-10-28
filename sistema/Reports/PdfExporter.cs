@@ -67,8 +67,8 @@ namespace sistema.Reports
         private static void AgregarResumenPaciente(Section sec, SqlConnection conn, int pacienteId)
         {
             using (var cmd = new SqlCommand(@"
-SELECT Cedula, Nombre, Apellido, Genero, FechaNacimiento, Telefono, Direccion, FechaRegistro, GrupoSanguineo
-FROM Paciente WHERE PacienteID = @Id;", conn))
+            SELECT Cedula, Nombre, Apellido, Genero, FechaNacimiento, Telefono, Direccion, FechaRegistro, GrupoSanguineo
+            FROM Paciente WHERE PacienteID = @Id;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -118,11 +118,11 @@ FROM Paciente WHERE PacienteID = @Id;", conn))
         private static void AgregarAntecedentes(Section sec, SqlConnection conn, int pacienteId)
         {
             using (var cmd = new SqlCommand(@"
-SELECT TOP (1)
-    Hipertension, Tuberculosis, Diabetes, Obesidad, Tiroides, Dislipidemia,
-    Sarampion, Rubeola, Tosferina, Varicela, Artritis, Osteoporosis,
-    OtroPadecimiento, Padecimiento
-FROM AntecedentePatologico WHERE PacienteID = @Id;", conn))
+            SELECT TOP (1)
+            Hipertension, Tuberculosis, Diabetes, Obesidad, Tiroides, Dislipidemia,
+            Sarampion, Rubeola, Tosferina, Varicela, Artritis, Osteoporosis,
+            OtroPadecimiento, Padecimiento
+            FROM AntecedentePatologico WHERE PacienteID = @Id;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -169,8 +169,8 @@ FROM AntecedentePatologico WHERE PacienteID = @Id;", conn))
             }
 
             using (var cmd = new SqlCommand(@"
-SELECT TOP (1) Tabaco, Alcohol, Mascotas, Servicios, Vivienda, FechaActualizacion
-FROM AntecedentePersonal WHERE PacienteID = @Id;", conn))
+            SELECT TOP (1) Tabaco, Alcohol, Mascotas, Servicios, Vivienda, FechaActualizacion
+            FROM AntecedentePersonal WHERE PacienteID = @Id;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -209,14 +209,13 @@ FROM AntecedentePersonal WHERE PacienteID = @Id;", conn))
             }
         }
 
-        // NUEVO: Alergias
         private static void AgregarAlergias(Section sec, SqlConnection conn, int pacienteId)
         {
             using (var cmd = new SqlCommand(@"
-SELECT Nombre, Tipo, Severidad, EstadoClinico, FechaUltimaModificacion
-FROM Alergia
-WHERE PacienteID = @Id
-ORDER BY FechaUltimaModificacion DESC;", conn))
+            SELECT Nombre, Tipo, Severidad, EstadoClinico, FechaUltimaModificacion
+            FROM Alergia
+            WHERE PacienteID = @Id
+            ORDER BY FechaUltimaModificacion DESC;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -280,12 +279,12 @@ ORDER BY FechaUltimaModificacion DESC;", conn))
 
             // 2) Fallback: cuadros usados en planes terapéuticos del paciente
             using (var cmd2 = new SqlCommand(@"
-SELECT c.Id, c.Nombre, c.Impresiones AS Descripcion, MAX(p.FechaCreacion) AS UltimaFecha
-FROM PlanTerapeutico p
-INNER JOIN CuadroClinico c ON c.Id = p.CuadroClinicoId
-WHERE p.PacienteID = @Id
-GROUP BY c.Id, c.Nombre, c.Impresiones
-ORDER BY UltimaFecha DESC;", conn))
+            SELECT c.Id, c.Nombre, c.Impresiones AS Descripcion, MAX(p.FechaCreacion) AS UltimaFecha
+            FROM PlanTerapeutico p
+            INNER JOIN CuadroClinico c ON c.Id = p.CuadroClinicoId
+            WHERE p.PacienteID = @Id
+            GROUP BY c.Id, c.Nombre, c.Impresiones
+            ORDER BY UltimaFecha DESC;", conn))
             {
                 cmd2.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd2))
@@ -374,13 +373,13 @@ ORDER BY UltimaFecha DESC;", conn))
         private static void AgregarExploracionFisica(Section sec, SqlConnection conn, int pacienteId)
         {
             using (var cmd = new SqlCommand(@"
-SELECT TOP (1)
- Temperatura, Peso, Altura, TensionSistolica, TensionDiastolica,
- FrecuenciaRespiratoria, FrecuenciaCardiaca, SaturacionOxigeno,
- Vision, Olfato, Tacto, Oido, Gusto, FechaRegistro
-FROM ExploracionFisica
-WHERE PacienteID = @Id
-ORDER BY FechaRegistro DESC;", conn))
+            SELECT TOP (1)
+            Temperatura, Peso, Altura, TensionSistolica, TensionDiastolica,
+            FrecuenciaRespiratoria, FrecuenciaCardiaca, SaturacionOxigeno,
+            Vision, Olfato, Tacto, Oido, Gusto, FechaRegistro
+            FROM ExploracionFisica
+            WHERE PacienteID = @Id
+            ORDER BY FechaRegistro DESC;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -434,10 +433,10 @@ ORDER BY FechaRegistro DESC;", conn))
         private static void AgregarPlanesTerapeuticos(Section sec, SqlConnection conn, int pacienteId)
         {
             using (var cmd = new SqlCommand(@"
-SELECT Id, Titulo, Descripcion, FechaCreacion
-FROM PlanTerapeutico
-WHERE PacienteID = @Id
-ORDER BY FechaCreacion DESC;", conn))
+            SELECT Id, Titulo, Descripcion, FechaCreacion
+            FROM PlanTerapeutico
+            WHERE PacienteID = @Id
+            ORDER BY FechaCreacion DESC;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -466,10 +465,10 @@ ORDER BY FechaCreacion DESC;", conn))
                             sec.AddParagraph(desc);
 
                         using (var cmdArt = new SqlCommand(@"
-SELECT Nombre, Indicaciones, Orden
-FROM PlanArticulo
-WHERE PlanId = @PlanId
-ORDER BY Orden;", conn))
+                        SELECT Nombre, Indicaciones, Orden
+                        FROM PlanArticulo
+                        WHERE PlanId = @PlanId
+                        ORDER BY Orden;", conn))
                         {
                             cmdArt.Parameters.AddWithValue("@PlanId", (int)p["Id"]);
                             using (var daArt = new SqlDataAdapter(cmdArt))

@@ -29,14 +29,27 @@ namespace sistema
 
             AplicarTemaGrid();
 
+            // Establecer "Conocido" como valor por defecto
+            cbTipoPaciente.SelectedItem = "Conocido";
+
             CargarPacientes(); // carga inicial
 
-            // Búsqueda en vivo (igual que frmNotas)
-            txtBuscar.TextChanged += (s, ev) => CargarPacientes(txtBuscar.Text);
+            // Conectar eventos de filtrado
+            txtBuscar.TextChanged += (s, ev) => AplicarFiltros();
+            cbTipoPaciente.SelectedIndexChanged += (s, ev) => AplicarFiltros();
         }
 
-        // Carga con filtro opcional (servidor) y enlaza por DataSource
-        public void CargarPacientes(string search = null)
+        // Método para aplicar ambos filtros
+        private void AplicarFiltros()
+        {
+            string textoBusqueda = txtBuscar.Text.Trim();
+            string tipoPaciente = cbTipoPaciente.SelectedItem?.ToString();
+
+            CargarPacientes(textoBusqueda, tipoPaciente);
+        }
+
+        // Carga con filtros opcionales (búsqueda y tipo de paciente)
+        public void CargarPacientes(string search = null, string tipoPaciente = null)
         {
             try
             {
@@ -55,8 +68,24 @@ SELECT
     ISNULL(NULLIF(LTRIM(RTRIM(Genero)), ''), 'N/D') AS Genero,
     Telefono
 FROM Paciente
-WHERE Cedula <> 'SIN-CEDULA'
-  AND (
+WHERE 1=1";
+
+                    // Filtro para tipo de paciente
+                    if (tipoPaciente == "Conocido")
+                    {
+                        query += " AND Cedula <> 'SIN-CEDULA' AND Cedula NOT LIKE 'desc%'";
+                    }
+                    else if (tipoPaciente == "Desconocido")
+                    {
+                        query += " AND (Cedula = 'SIN-CEDULA' OR Cedula LIKE 'desc%')";
+                    }
+                    else // Por defecto (incluye cuando se llama sin parámetros)
+                    {
+                        query += " AND Cedula <> 'SIN-CEDULA' AND Cedula NOT LIKE 'desc%'";
+                    }
+
+                    // Filtro de búsqueda por texto
+                    query += @" AND (
     @q IS NULL
     OR Nombre  LIKE @q
     OR Apellido LIKE @q
@@ -156,10 +185,30 @@ ORDER BY Nombre, Apellido;";
                     return;
                 }
 
+                string cedula = fila.Cells["Cedula"].Value?.ToString() ?? "";
                 string nombre = fila.Cells["Nombre"].Value?.ToString() ?? "";
                 string apellido = fila.Cells["Apellido"].Value?.ToString() ?? "";
-                string cedula = fila.Cells["Cedula"].Value?.ToString() ?? "";
 
+                // Verificar si es paciente desconocido
+                if (EsPacienteDesconocido(cedula))
+                {
+                    MessageBox.Show("Debe completar los datos del paciente antes de abrir un expediente.",
+                        "Paciente Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    // Abrir formulario de edición del paciente
+                    using (var context = new Data.DBContext())
+                    {
+                        var paciente = context.Paciente.FirstOrDefault(p => p.PacienteID == pacienteId);
+                        if (paciente != null)
+                        {
+                            var formPaciente = new frmDetallePaciente(paciente, this);
+                            formPaciente.Show();
+                        }
+                    }
+                    return;
+                }
+
+                // Si es paciente conocido, abrir expediente normal
                 var expediente = new sistema.Expediente.frmExpediente
                 {
                     PacienteID = pacienteId,
@@ -175,6 +224,13 @@ ORDER BY Nombre, Apellido;";
             {
                 MessageBox.Show("Error al abrir expediente: " + ex.Message);
             }
+        }
+
+        // Método para verificar si un paciente es desconocido
+        private bool EsPacienteDesconocido(string cedula)
+        {
+            return cedula == "SIN-CEDULA" ||
+                   (cedula?.StartsWith("desc", StringComparison.OrdinalIgnoreCase) == true);
         }
     }
 }

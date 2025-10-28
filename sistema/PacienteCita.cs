@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace sistema
 {
@@ -23,6 +24,8 @@ namespace sistema
         // Crear una fuente de referencia consistente
         private Font fuentePlaceholder;
         private Font fuenteNormal;
+        private Regex _regexEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex _regexSoloLetras = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", RegexOptions.Compiled);
 
         public PacienteCita()
         {
@@ -37,6 +40,9 @@ namespace sistema
 
             InicializarCampos();
             dtpFechaNacimiento.Visible = false;
+            dtpFechaNacimientoDesconocido.Visible = true;
+
+            ConfigurarValidaciones();
         }
 
         private void InicializarCampos()
@@ -61,6 +67,319 @@ namespace sistema
             txtApellido.Font = fuentePlaceholder; // Misma instancia de fuente
             txtApellido.BackColor = Color.White;
             lblApellidoPa.ForeColor = Color.Black;
+        }
+
+        private void ConfigurarValidaciones()
+        {
+            // Validación para cédula (solo números)
+            txtCedula.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            // Validación para teléfono (solo números y caracteres especiales)
+            txtTelefono.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+' && e.KeyChar != ' ' && e.KeyChar != '-' && e.KeyChar != '(' && e.KeyChar != ')')
+                    e.Handled = true;
+            };
+
+            txtTelefonoDesconocido.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+' && e.KeyChar != ' ' && e.KeyChar != '-' && e.KeyChar != '(' && e.KeyChar != ')')
+                    e.Handled = true;
+            };
+
+            // Validación para nombre y apellido (solo letras y espacios)
+            txtNombre.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            txtApellido.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            txtNombreDesconocido.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            // Validación para ocupación (solo letras y espacios)
+            txtOcupacion.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            txtOcupacionDesconocido.KeyPress += (s, e) =>
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            // Validación de longitud máxima
+            txtCedula.MaxLength = 20;
+            txtNombre.MaxLength = 50;
+            txtApellido.MaxLength = 50;
+            txtNombreDesconocido.MaxLength = 50;
+            txtTelefono.MaxLength = 15;
+            txtTelefonoDesconocido.MaxLength = 15;
+            txtOcupacion.MaxLength = 50;
+            txtOcupacionDesconocido.MaxLength = 50;
+            txtDireccion.MaxLength = 200;
+            txtDireccionDesconocido.MaxLength = 200;
+            txtCorreo.MaxLength = 100;
+        }
+
+        // MÉTODOS DE VALIDACIÓN
+        private bool ValidarFormularioCompleto()
+        {
+            if (panelConocido.Visible)
+            {
+                return ValidarPacienteConocido();
+            }
+            else if (panelDesconocido.Visible)
+            {
+                return ValidarPacienteDesconocido();
+            }
+
+            return false;
+        }
+
+        private bool ValidarPacienteConocido()
+        {
+            // Campos obligatorios para paciente conocido
+            if (!ValidarCedula(txtCedula))
+                return false;
+
+            if (!ValidarNombre(txtNombre))
+                return false;
+
+            if (!ValidarApellido(txtApellido))
+                return false;
+
+            if (!ValidarFechaNacimiento(dtpFechaNacimiento.Value))
+                return false;
+
+            if (!ValidarGenero(radioButton2, radioButton1))
+                return false;
+
+            // Validaciones opcionales (solo si se ingresan datos)
+            if (!string.IsNullOrWhiteSpace(txtCorreo.Text) && !ValidarCorreo(txtCorreo))
+                return false;
+
+            if (!string.IsNullOrWhiteSpace(txtTelefono.Text) && !ValidarTelefono(txtTelefono))
+                return false;
+
+            return true;
+        }
+
+        private bool ValidarPacienteDesconocido()
+        {
+            // Solo nombre y género son obligatorios para paciente desconocido
+            if (!ValidarNombreDesconocido(txtNombreDesconocido))
+                return false;
+
+            if (!ValidarGenero(radioButton4, radioButton3))
+                return false;
+
+            // Validaciones opcionales (solo si se ingresan datos)
+            if (!string.IsNullOrWhiteSpace(txtTelefonoDesconocido.Text) && !ValidarTelefono(txtTelefonoDesconocido))
+                return false;
+
+            return true;
+        }
+
+        private bool ValidarCedula(TextBox txtCedulaControl)
+        {
+            string cedula = txtCedulaControl.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(cedula) || cedula == PlaceholderCedula)
+            {
+                MessageBox.Show("La cédula es obligatoria para pacientes conocidos.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCedulaControl.Focus();
+                return false;
+            }
+
+            if (cedula.Length < 7)
+            {
+                MessageBox.Show("La cédula debe tener al menos 7 dígitos.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCedulaControl.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarNombre(TextBox txtNombreControl)
+        {
+            string nombre = txtNombreControl.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(nombre) || nombre == PlaceholderNombre)
+            {
+                MessageBox.Show("El nombre es obligatorio para pacientes conocidos.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreControl.Focus();
+                return false;
+            }
+
+            if (nombre.Length < 2)
+            {
+                MessageBox.Show("El nombre debe tener al menos 2 caracteres.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreControl.Focus();
+                return false;
+            }
+
+            if (!_regexSoloLetras.IsMatch(nombre))
+            {
+                MessageBox.Show("El nombre solo puede contener letras y espacios.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreControl.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarNombreDesconocido(TextBox txtNombreControl)
+        {
+            string nombre = txtNombreControl.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("El nombre es obligatorio para pacientes desconocidos.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreControl.Focus();
+                return false;
+            }
+
+            if (nombre.Length < 2)
+            {
+                MessageBox.Show("El nombre debe tener al menos 2 caracteres.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreControl.Focus();
+                return false;
+            }
+
+            if (!_regexSoloLetras.IsMatch(nombre))
+            {
+                MessageBox.Show("El nombre solo puede contener letras y espacios.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreControl.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarApellido(TextBox txtApellidoControl)
+        {
+            string apellido = txtApellidoControl.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(apellido) || apellido == PlaceholderApellidoPa)
+            {
+                MessageBox.Show("El apellido es obligatorio para pacientes conocidos.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtApellidoControl.Focus();
+                return false;
+            }
+
+            if (apellido.Length < 2)
+            {
+                MessageBox.Show("El apellido debe tener al menos 2 caracteres.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtApellidoControl.Focus();
+                return false;
+            }
+
+            if (!_regexSoloLetras.IsMatch(apellido))
+            {
+                MessageBox.Show("El apellido solo puede contener letras y espacios.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtApellidoControl.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarFechaNacimiento(DateTime fecha)
+        {
+            if (fecha > DateTime.Today)
+            {
+                MessageBox.Show("La fecha de nacimiento no puede ser futura.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Validar que el paciente tenga al menos 1 año de edad
+            DateTime fechaMinima = DateTime.Today.AddYears(-1);
+
+            if (fecha > fechaMinima)
+            {
+                MessageBox.Show("El paciente debe tener al menos 1 año de edad.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarGenero(RadioButton rbMasculino, RadioButton rbFemenino)
+        {
+            if (!rbMasculino.Checked && !rbFemenino.Checked)
+            {
+                MessageBox.Show("Debe seleccionar el género del paciente.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarTelefono(TextBox txtTelefonoControl)
+        {
+            string telefono = txtTelefonoControl.Text.Trim();
+
+            // Remover caracteres especiales para contar solo dígitos
+            string soloDigitos = new string(telefono.Where(char.IsDigit).ToArray());
+
+            if (soloDigitos.Length < 7)
+            {
+                MessageBox.Show("El teléfono debe tener al menos 7 dígitos.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTelefonoControl.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarCorreo(TextBox txtCorreoControl)
+        {
+            string correo = txtCorreoControl.Text.Trim();
+
+            if (string.IsNullOrEmpty(correo))
+                return true; // Opcional, no hay error
+
+            if (!_regexEmail.IsMatch(correo))
+            {
+                MessageBox.Show("Formato de correo electrónico inválido.", "Error de Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCorreoControl.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void rbSi_CheckedChanged(object sender, EventArgs e)
@@ -183,13 +502,8 @@ namespace sistema
             }
         }
 
-        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e) { }
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-
         private void PacienteCita_Load(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -205,21 +519,15 @@ namespace sistema
             dtpFechaNacimiento.Visible = false;
         }
 
-        private void picCalendario_MouseEnter(object sender, EventArgs e)
-        {
-        }
-
-        private void picCalendario_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
-        private void panelConocido_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Validar formulario completo antes de guardar
+            if (!ValidarFormularioCompleto())
+            {
+                return; // No continuar si hay errores de validación
+            }
+
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 string query = @"INSERT INTO Paciente
@@ -231,47 +539,69 @@ namespace sistema
 
                 if (panelConocido.Visible)
                 {
-                    cmd.Parameters.AddWithValue("@Cedula", txtCedula.Text);
-                    cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                    cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text);
+                    cmd.Parameters.AddWithValue("@Cedula", txtCedula.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Nombre", CapitalizarTexto(txtNombre.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@Apellido", CapitalizarTexto(txtApellido.Text.Trim()));
                     cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
                     cmd.Parameters.AddWithValue("@Genero", radioButton2.Checked ? "Masculino" : "Femenino");
-                    cmd.Parameters.AddWithValue("@EstadoCivil", DBNull.Value); // Si tienes el control, cámbialo
-                    cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacion.Text);
-                    cmd.Parameters.AddWithValue("@Escolaridad", DBNull.Value); // Si tienes el control, cámbialo
-                    cmd.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
-                    cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
-                    cmd.Parameters.AddWithValue("@GrupoSanguineo", cbGrupoSanguineo.Text);
+                    cmd.Parameters.AddWithValue("@EstadoCivil", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Ocupacion", string.IsNullOrWhiteSpace(txtOcupacion.Text) ? DBNull.Value : (object)CapitalizarTexto(txtOcupacion.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@Escolaridad", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Direccion", string.IsNullOrWhiteSpace(txtDireccion.Text) ? DBNull.Value : (object)txtDireccion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Telefono", string.IsNullOrWhiteSpace(txtTelefono.Text) ? "No especificado" : txtTelefono.Text.Trim());
+                    cmd.Parameters.AddWithValue("@GrupoSanguineo", string.IsNullOrWhiteSpace(cbGrupoSanguineo.Text) ? DBNull.Value : (object)cbGrupoSanguineo.Text);
                     cmd.Parameters.AddWithValue("@TipoPaciente", "Conocido");
-                    cmd.Parameters.AddWithValue("@Detalles", txtDetalles.Text);
-                    cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
+                    cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrWhiteSpace(txtDetalles.Text) ? DBNull.Value : (object)txtDetalles.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Correo", string.IsNullOrWhiteSpace(txtCorreo.Text) ? DBNull.Value : (object)txtCorreo.Text.Trim().ToLower());
                 }
                 else if (panelDesconocido.Visible)
                 {
-                    cmd.Parameters.AddWithValue("@Cedula", "SIN-CEDULA"); // O usa un textbox si tienes uno
-                    cmd.Parameters.AddWithValue("@Nombre", "Desconocido");
+                    string cedulaUnica = GenerarCedulaUnicaParaDesconocido();
+
+                    cmd.Parameters.AddWithValue("@Cedula", cedulaUnica);
+                    cmd.Parameters.AddWithValue("@Nombre", CapitalizarTexto(txtNombreDesconocido.Text.Trim()));
                     cmd.Parameters.AddWithValue("@Apellido", "Desconocido");
-                    cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimiento.Value);
+                    cmd.Parameters.AddWithValue("@FechaNacimiento", dtpFechaNacimientoDesconocido.Value);
                     cmd.Parameters.AddWithValue("@Genero", radioButton4.Checked ? "Masculino" : "Femenino");
                     cmd.Parameters.AddWithValue("@EstadoCivil", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacionDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@Ocupacion", string.IsNullOrWhiteSpace(txtOcupacionDesconocido.Text) ? DBNull.Value : (object)CapitalizarTexto(txtOcupacionDesconocido.Text.Trim()));
                     cmd.Parameters.AddWithValue("@Escolaridad", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Direccion", txtDireccionDesconocido.Text);
-                    cmd.Parameters.AddWithValue("@Telefono", txtTelefonoDesconocido.Text);
-                    cmd.Parameters.AddWithValue("@GrupoSanguineo", cbGrupoSanguineoDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@Direccion", string.IsNullOrWhiteSpace(txtDireccionDesconocido.Text) ? DBNull.Value : (object)txtDireccionDesconocido.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Telefono", string.IsNullOrWhiteSpace(txtTelefonoDesconocido.Text) ? "No especificado" : txtTelefonoDesconocido.Text.Trim());
+                    cmd.Parameters.AddWithValue("@GrupoSanguineo", string.IsNullOrWhiteSpace(cbGrupoSanguineoDesconocido.Text) ? DBNull.Value : (object)cbGrupoSanguineoDesconocido.Text);
                     cmd.Parameters.AddWithValue("@TipoPaciente", "Desconocido");
-                    cmd.Parameters.AddWithValue("@Detalles", txtDetallesDesconocido.Text);
+                    cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrWhiteSpace(txtDetallesDesconocido.Text) ? DBNull.Value : (object)txtDetallesDesconocido.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Correo", DBNull.Value);
                 }
 
-                conexion.Open();
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Paciente guardado correctamente.");
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar el paciente: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-            MessageBox.Show("Paciente guardado correctamente.");
-            this.Close();
-
-            // Lógica para la vista previa y abrir AgregarCitas...
         }
+
+        private string GenerarCedulaUnicaParaDesconocido()
+        {
+            return "DESC-" + Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
+        }
+
+        private string CapitalizarTexto(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return texto;
+
+            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(texto.ToLower());
+        }
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {

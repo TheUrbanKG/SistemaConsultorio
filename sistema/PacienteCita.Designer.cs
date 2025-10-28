@@ -29,6 +29,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PacienteCita));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.rbSi = new System.Windows.Forms.RadioButton();
@@ -134,11 +135,10 @@
             this.txtDetallesDesconocido = new System.Windows.Forms.RichTextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.panelDesconocido = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNombreDesconocido = new System.Windows.Forms.TextBox();
             this.dtpFechaNacimientoDesconocido = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtNombreDesconocido = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelConocido.SuspendLayout();
@@ -164,6 +164,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(404, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Crimson;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCerrar.Location = new System.Drawing.Point(15, 48);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(97, 36);
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnGuardar
             // 
@@ -226,7 +240,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(293, 68);
             this.panel2.TabIndex = 3;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panelNo
             // 
@@ -259,7 +272,6 @@
             this.txtCedula.Size = new System.Drawing.Size(200, 39);
             this.txtCedula.TabIndex = 4;
             this.txtCedula.Enter += new System.EventHandler(this.txtCedula_Enter);
-            this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             this.txtCedula.Leave += new System.EventHandler(this.txtCedula_Leave);
             // 
             // lblCedula
@@ -300,7 +312,6 @@
             this.panelConocido.Name = "panelConocido";
             this.panelConocido.Size = new System.Drawing.Size(238, 916);
             this.panelConocido.TabIndex = 6;
-            this.panelConocido.Paint += new System.Windows.Forms.PaintEventHandler(this.panelConocido_Paint);
             // 
             // dtpFechaNacimiento
             // 
@@ -490,8 +501,6 @@
             this.picCalendario.TabIndex = 0;
             this.picCalendario.TabStop = false;
             this.picCalendario.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.picCalendario.MouseEnter += new System.EventHandler(this.picCalendario_MouseEnter);
-            this.picCalendario.MouseLeave += new System.EventHandler(this.picCalendario_MouseLeave);
             // 
             // txtFechaNacimiento
             // 
@@ -535,7 +544,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(195, 39);
             this.txtNombre.TabIndex = 6;
-            this.txtNombre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
@@ -1204,10 +1212,26 @@
             this.panelDesconocido.Controls.Add(this.txtTelefonoDesconocido);
             this.panelDesconocido.Controls.Add(this.label21);
             this.panelDesconocido.Controls.Add(this.label22);
-            this.panelDesconocido.Location = new System.Drawing.Point(9, 182);
+            this.panelDesconocido.Location = new System.Drawing.Point(6, 178);
             this.panelDesconocido.Name = "panelDesconocido";
             this.panelDesconocido.Size = new System.Drawing.Size(238, 688);
             this.panelDesconocido.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Nombre";
+            // 
+            // txtNombreDesconocido
+            // 
+            this.txtNombreDesconocido.Location = new System.Drawing.Point(8, 33);
+            this.txtNombreDesconocido.Name = "txtNombreDesconocido";
+            this.txtNombreDesconocido.Size = new System.Drawing.Size(212, 20);
+            this.txtNombreDesconocido.TabIndex = 44;
             // 
             // dtpFechaNacimientoDesconocido
             // 
@@ -1224,36 +1248,6 @@
             this.label17.Size = new System.Drawing.Size(108, 13);
             this.label17.TabIndex = 43;
             this.label17.Text = "Fecha de Nacimiento";
-            // 
-            // txtNombreDesconocido
-            // 
-            this.txtNombreDesconocido.Location = new System.Drawing.Point(8, 33);
-            this.txtNombreDesconocido.Name = "txtNombreDesconocido";
-            this.txtNombreDesconocido.Size = new System.Drawing.Size(212, 20);
-            this.txtNombreDesconocido.TabIndex = 44;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "Nombre";
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackColor = System.Drawing.Color.Crimson;
-            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCerrar.Location = new System.Drawing.Point(15, 48);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(97, 36);
-            this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // PacienteCita
             // 

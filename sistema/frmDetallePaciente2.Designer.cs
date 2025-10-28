@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cbCivil = new System.Windows.Forms.ComboBox();
             this.cbEscolaridad = new System.Windows.Forms.ComboBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
@@ -42,6 +43,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbGrupoSanguineo = new System.Windows.Forms.ComboBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbCivil
@@ -112,7 +117,7 @@
             this.btnRegresar.ImageTint = System.Drawing.Color.White;
             this.btnRegresar.IsToggleButton = false;
             this.btnRegresar.IsToggled = false;
-            this.btnRegresar.Location = new System.Drawing.Point(140, 305);
+            this.btnRegresar.Location = new System.Drawing.Point(139, 365);
             this.btnRegresar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(89)))));
@@ -151,7 +156,7 @@
             this.btnRegistro.ImageTint = System.Drawing.Color.White;
             this.btnRegistro.IsToggleButton = false;
             this.btnRegistro.IsToggled = false;
-            this.btnRegistro.Location = new System.Drawing.Point(356, 305);
+            this.btnRegistro.Location = new System.Drawing.Point(347, 365);
             this.btnRegistro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRegistro.Name = "btnRegistro";
             this.btnRegistro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(89)))));
@@ -253,11 +258,35 @@
             this.cbGrupoSanguineo.Size = new System.Drawing.Size(171, 21);
             this.cbGrupoSanguineo.TabIndex = 14;
             // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(124, 302);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(171, 20);
+            this.txtCorreo.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(37, 302);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 16);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Correo";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmDetallePaciente2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 378);
+            this.ClientSize = new System.Drawing.Size(659, 438);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.cbGrupoSanguineo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -277,6 +306,7 @@
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Agregar Paciente";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +328,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbGrupoSanguineo;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace sistema
 {
@@ -15,6 +16,7 @@ namespace sistema
     {
         private frmPacientes _formPacientes;
         private Paciente _paciente;
+        private Regex _regexSoloLetras = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", RegexOptions.Compiled);
 
         public frmDetallePaciente(Paciente paciente, frmPacientes formPacientes)
         {
@@ -22,16 +24,55 @@ namespace sistema
             _paciente = paciente ?? new Paciente();
             _formPacientes = formPacientes;
 
-            InicializarGeneroCombo();
+            InicializarControles();
             CargarDatosDesdePaciente(_paciente);
         }
 
-        private void InicializarGeneroCombo()
+        private void InicializarControles()
         {
-            // Solo permitimos estos dos valores
+            // Configurar combo de género
             cbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbSexo.Items.Clear();
             cbSexo.Items.AddRange(new[] { "Masculino", "Femenino" });
+
+            // Configurar longitud máxima
+            txtCedula.MaxLength = 20;
+            txtNombre.MaxLength = 50;
+            txtApellido.MaxLength = 50;
+
+            // Configurar eventos de validación
+            ConfigurarEventosValidacion();
+        }
+
+        private void ConfigurarEventosValidacion()
+        {
+            // Validación en tiempo real para campos de texto
+            txtCedula.KeyPress += (s, e) =>
+            {
+                // Permitir solo números, backspace y delete
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            txtNombre.KeyPress += (s, e) =>
+            {
+                // Permitir solo letras, espacios y controles
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            txtApellido.KeyPress += (s, e) =>
+            {
+                // Permitir solo letras, espacios y controles
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            };
+
+            // Validación al perder foco
+            txtCedula.Validating += (s, e) => ValidarCedula();
+            txtNombre.Validating += (s, e) => ValidarNombre();
+            txtApellido.Validating += (s, e) => ValidarApellido();
+            dtpFechaNacimiento.Validating += (s, e) => ValidarFechaNacimiento();
+            cbSexo.Validating += (s, e) => ValidarGenero();
         }
 
         private void CargarDatosDesdePaciente(Paciente paciente)
@@ -42,115 +83,202 @@ namespace sistema
             txtNombre.Text = paciente.Nombre;
             txtApellido.Text = paciente.Apellido;
 
-            if (paciente.FechaNacimiento >= dtpFechaNacimiento.MinDate &&
-                paciente.FechaNacimiento <= dtpFechaNacimiento.MaxDate &&
-                paciente.FechaNacimiento.Year > 1900)
+            // Fecha de nacimiento con validación
+            if (paciente.FechaNacimiento != default(DateTime) &&
+                paciente.FechaNacimiento.Year > 1900 &&
+                paciente.FechaNacimiento <= DateTime.Today)
             {
                 dtpFechaNacimiento.Value = paciente.FechaNacimiento;
             }
-            else
-            {
-                dtpFechaNacimiento.Value = DateTime.Today;
-            }
 
-            // Mapear valores antiguos numéricos (1/2) a texto
-            string genero = MapearGenero(paciente.Genero);
-            if (!string.IsNullOrWhiteSpace(genero) && cbSexo.Items.Contains(genero))
-                cbSexo.SelectedItem = genero;
-            else
-                cbSexo.SelectedIndex = -1;
-        }
-
-        private string MapearGenero(string valor)
-        {
-            if (string.IsNullOrWhiteSpace(valor)) return null;
-            switch (valor.Trim().ToUpperInvariant())
+            // Género
+            if (!string.IsNullOrWhiteSpace(paciente.Genero) &&
+                cbSexo.Items.Contains(paciente.Genero))
             {
-                case "1":
-                case "M":
-                case "MASC":
-                case "MASCULINO":
-                    return "Masculino";
-                case "2":
-                case "F":
-                case "FEM":
-                case "FEMENINO":
-                    return "Femenino";
-                default:
-                    return valor; // Si ya viene como "Masculino"/"Femenino" lo conserva
+                cbSexo.SelectedItem = paciente.Genero;
             }
         }
 
-        public void PrecargarDatos(Paciente paciente)
+        // MÉTODOS DE VALIDACIÓN OPTIMIZADOS
+        private bool ValidarCedula()
         {
-            _paciente = paciente ?? new Paciente();
-            txtCedula.Text = _paciente.Cedula;
-            txtNombre.Text = _paciente.Nombre;
-            txtApellido.Text = _paciente.Apellido;
-            dtpFechaNacimiento.Value = _paciente.FechaNacimiento == default(DateTime)
-                ? DateTime.Today
-                : _paciente.FechaNacimiento;
+            errorProvider1.SetError(txtCedula, "");
 
-            string genero = MapearGenero(_paciente.Genero);
-            if (!string.IsNullOrWhiteSpace(genero) && cbSexo.Items.Contains(genero))
-                cbSexo.SelectedItem = genero;
-            else
-                cbSexo.SelectedIndex = -1;
+            string cedula = txtCedula.Text.Trim();
+
+            if (string.IsNullOrEmpty(cedula))
+            {
+                errorProvider1.SetError(txtCedula, "La cédula es obligatoria.");
+                return false;
+            }
+
+            if (cedula.Length < 7)
+            {
+                errorProvider1.SetError(txtCedula, "La cédula debe tener al menos 7 dígitos.");
+                return false;
+            }
+
+            return true;
         }
 
-        private bool ValidarDatos()
+        private bool ValidarNombre()
         {
-            bool valido = true;
-            errorProvider1.Clear();
+            errorProvider1.SetError(txtNombre, "");
 
-            if (string.IsNullOrWhiteSpace(txtCedula.Text) || txtCedula.Text.Trim().Length <= 6)
+            string nombre = txtNombre.Text.Trim();
+
+            if (string.IsNullOrEmpty(nombre))
             {
-                errorProvider1.SetError(txtCedula, "Ingrese la cédula (mínimo 7 caracteres).");
-                valido = false;
+                errorProvider1.SetError(txtNombre, "El nombre es obligatorio.");
+                return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            if (nombre.Length < 2)
             {
-                errorProvider1.SetError(txtNombre, "Ingrese el nombre.");
-                valido = false;
+                errorProvider1.SetError(txtNombre, "El nombre debe tener al menos 2 caracteres.");
+                return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtApellido.Text))
+            if (!_regexSoloLetras.IsMatch(nombre))
             {
-                errorProvider1.SetError(txtApellido, "Ingrese el apellido.");
-                valido = false;
+                errorProvider1.SetError(txtNombre, "Solo se permiten letras y espacios.");
+                return false;
             }
 
-            if (dtpFechaNacimiento.Value.Date > DateTime.Today)
+            return true;
+        }
+
+        private bool ValidarApellido()
+        {
+            errorProvider1.SetError(txtApellido, "");
+
+            string apellido = txtApellido.Text.Trim();
+
+            if (string.IsNullOrEmpty(apellido))
             {
-                errorProvider1.SetError(dtpFechaNacimiento, "La fecha de nacimiento no puede ser futura.");
-                valido = false;
+                errorProvider1.SetError(txtApellido, "El apellido es obligatorio.");
+                return false;
             }
+
+            if (apellido.Length < 2)
+            {
+                errorProvider1.SetError(txtApellido, "El apellido debe tener al menos 2 caracteres.");
+                return false;
+            }
+
+            if (!_regexSoloLetras.IsMatch(apellido))
+            {
+                errorProvider1.SetError(txtApellido, "Solo se permiten letras y espacios.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarFechaNacimiento()
+        {
+            errorProvider1.SetError(dtpFechaNacimiento, "");
+
+            DateTime fechaNacimiento = dtpFechaNacimiento.Value;
+            DateTime fechaActual = DateTime.Today;
+
+            // Validar que no sea fecha futura
+            if (fechaNacimiento > fechaActual)
+            {
+                errorProvider1.SetError(dtpFechaNacimiento, "La fecha no puede ser futura.");
+                return false;
+            }
+
+            // Validar que no sea menor a 1900
+            if (fechaNacimiento.Year < 1900)
+            {
+                errorProvider1.SetError(dtpFechaNacimiento, "La fecha no es válida.");
+                return false;
+            }
+
+            // Validar que el paciente tenga al menos 1 año de edad
+            int edad = fechaActual.Year - fechaNacimiento.Year;
+
+            // Ajustar si aún no ha cumplido años este año
+            if (fechaNacimiento.Date > fechaActual.AddYears(-edad))
+            {
+                edad--;
+            }
+
+            if (edad < 1)
+            {
+                errorProvider1.SetError(dtpFechaNacimiento, "El paciente debe tener al menos 1 año de edad.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarGenero()
+        {
+            errorProvider1.SetError(cbSexo, "");
 
             if (cbSexo.SelectedIndex < 0)
             {
                 errorProvider1.SetError(cbSexo, "Seleccione el género.");
-                valido = false;
+                return false;
             }
 
-            return valido;
+            return true;
+        }
+
+        private bool ValidarFormularioCompleto()
+        {
+            return ValidarCedula() &&
+                   ValidarNombre() &&
+                   ValidarApellido() &&
+                   ValidarFechaNacimiento() &&
+                   ValidarGenero();
+        }
+
+        private string CapitalizarTexto(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return texto;
+
+            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(texto.ToLower());
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (!ValidarDatos()) return;
+            if (!ValidarFormularioCompleto())
+            {
+                MessageBox.Show("Por favor, corrija los errores en el formulario antes de continuar.",
+                    "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Asignar datos al objeto (guardar texto "Masculino"/"Femenino")
-            _paciente.Cedula = txtCedula.Text?.Trim();
-            _paciente.Nombre = txtNombre.Text?.Trim();
-            _paciente.Apellido = txtApellido.Text?.Trim();
-            _paciente.FechaNacimiento = dtpFechaNacimiento.Value.Date;
-            _paciente.Genero = cbSexo.SelectedItem?.ToString(); // Valor textual definitivo
+            try
+            {
+                // Asignar datos al objeto
+                _paciente.Cedula = txtCedula.Text.Trim();
+                _paciente.Nombre = CapitalizarTexto(txtNombre.Text.Trim());
+                _paciente.Apellido = CapitalizarTexto(txtApellido.Text.Trim());
+                _paciente.FechaNacimiento = dtpFechaNacimiento.Value.Date;
+                _paciente.Genero = cbSexo.SelectedItem.ToString();
 
-            // Ir al segundo formulario conservando el mismo objeto
-            var paso2 = new frmDetallePaciente2(_paciente, _formPacientes);
-            paso2.Show();
-            this.Close();
+                // Ir al segundo formulario
+                var paso2 = new frmDetallePaciente2(_paciente, _formPacientes);
+                paso2.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar los datos: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Método público para precargar datos (si aún lo necesitas)
+        public void PrecargarDatos(Paciente paciente)
+        {
+            _paciente = paciente ?? new Paciente();
+            CargarDatosDesdePaciente(_paciente);
         }
     }
 }

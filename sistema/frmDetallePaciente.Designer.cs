@@ -139,11 +139,8 @@
             // 
             // cbSexo
             // 
+            this.cbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSexo.FormattingEnabled = true;
-            this.cbSexo.Items.AddRange(new object[] {
-            "",
-            "Masculino",
-            "Femenino"});
             this.cbSexo.Location = new System.Drawing.Point(51, 305);
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(202, 21);
