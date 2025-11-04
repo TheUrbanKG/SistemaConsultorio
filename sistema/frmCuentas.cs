@@ -78,8 +78,8 @@ namespace sistema
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-INSERT INTO login (Usuario, Contraseña, Nombre, Apellido, Rol, Status)
-VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status);";
+                    INSERT INTO login (Usuario, Contraseña, Nombre, Apellido, Rol, Status)
+                    VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status);";
                     cmd.Parameters.AddWithValue("@Usuario", dlg.Usuario);
                     cmd.Parameters.AddWithValue("@Contrasena", PasswordHasher.HashPBKDF2(dlg.Contrasena ?? string.Empty));
                     cmd.Parameters.AddWithValue("@Nombre", dlg.Nombre);
@@ -139,13 +139,13 @@ VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status);";
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-UPDATE login
-SET Nombre   = @Nombre,
-    Apellido = @Apellido,
-    Rol      = @Rol,
-    Status   = @Status,
-    Contraseña = COALESCE(@Contrasena, Contraseña)
-WHERE Usuario = @Usuario;";
+                UPDATE login
+                SET Nombre   = @Nombre,
+                    Apellido = @Apellido,
+                    Rol      = @Rol,
+                    Status   = @Status,
+                    Contraseña = COALESCE(@Contrasena, Contraseña)
+                WHERE Usuario = @Usuario;";
                     cmd.Parameters.AddWithValue("@Usuario", usuarioSel);
                     cmd.Parameters.AddWithValue("@Nombre", dlg.Nombre);
                     cmd.Parameters.AddWithValue("@Apellido", dlg.Apellido);

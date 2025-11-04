@@ -28,11 +28,11 @@ namespace sistema
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = @"
-SELECT 
-    COUNT(*) AS Total,
-    SUM(CASE WHEN Genero = 'Masculino' THEN 1 ELSE 0 END) AS Masculinos,
-    SUM(CASE WHEN Genero = 'Femenino'  THEN 1 ELSE 0 END) AS Femeninos
-FROM Paciente;";
+                SELECT 
+                COUNT(*) AS Total,
+                SUM(CASE WHEN Genero = 'Masculino' THEN 1 ELSE 0 END) AS Masculinos,
+                SUM(CASE WHEN Genero = 'Femenino'  THEN 1 ELSE 0 END) AS Femeninos
+                FROM Paciente;";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

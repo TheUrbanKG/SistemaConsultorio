@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius17 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro));
-            SATAUiFramework.BorderRadius borderRadius18 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius19 = new SATAUiFramework.BorderRadius();
-            SATAUiFramework.BorderRadius borderRadius20 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius3 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius4 = new SATAUiFramework.BorderRadius();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.lbEdad = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,11 +78,11 @@
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius17.BottomLeft = 15;
-            borderRadius17.BottomRight = 15;
-            borderRadius17.TopLeft = 15;
-            borderRadius17.TopRight = 15;
-            this.sataPanel1.BorderRadius = borderRadius17;
+            borderRadius1.BottomLeft = 15;
+            borderRadius1.BottomRight = 15;
+            borderRadius1.TopLeft = 15;
+            borderRadius1.TopRight = 15;
+            this.sataPanel1.BorderRadius = borderRadius1;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.lbEdad);
             this.sataPanel1.Controls.Add(this.label1);
@@ -141,11 +141,11 @@
             this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel2.BorderColor = System.Drawing.Color.Black;
-            borderRadius18.BottomLeft = 15;
-            borderRadius18.BottomRight = 15;
-            borderRadius18.TopLeft = 15;
-            borderRadius18.TopRight = 15;
-            this.sataPanel2.BorderRadius = borderRadius18;
+            borderRadius2.BottomLeft = 15;
+            borderRadius2.BottomRight = 15;
+            borderRadius2.TopLeft = 15;
+            borderRadius2.TopRight = 15;
+            this.sataPanel2.BorderRadius = borderRadius2;
             this.sataPanel2.BorderThickness = 0;
             this.sataPanel2.Controls.Add(this.lbPeso);
             this.sataPanel2.Controls.Add(this.label4);
@@ -204,11 +204,11 @@
             this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel3.BorderColor = System.Drawing.Color.Black;
-            borderRadius19.BottomLeft = 15;
-            borderRadius19.BottomRight = 15;
-            borderRadius19.TopLeft = 15;
-            borderRadius19.TopRight = 15;
-            this.sataPanel3.BorderRadius = borderRadius19;
+            borderRadius3.BottomLeft = 15;
+            borderRadius3.BottomRight = 15;
+            borderRadius3.TopLeft = 15;
+            borderRadius3.TopRight = 15;
+            this.sataPanel3.BorderRadius = borderRadius3;
             this.sataPanel3.BorderThickness = 0;
             this.sataPanel3.Controls.Add(this.lbIMC);
             this.sataPanel3.Controls.Add(this.label2);
@@ -240,7 +240,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Indice de Masa Corporal";
+            this.label2.Text = "Índice de Masa Corporal";
             // 
             // panel2
             // 
@@ -267,11 +267,11 @@
             this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.sataPanel4.BorderColor = System.Drawing.Color.Black;
-            borderRadius20.BottomLeft = 15;
-            borderRadius20.BottomRight = 15;
-            borderRadius20.TopLeft = 15;
-            borderRadius20.TopRight = 15;
-            this.sataPanel4.BorderRadius = borderRadius20;
+            borderRadius4.BottomLeft = 15;
+            borderRadius4.BottomRight = 15;
+            borderRadius4.TopLeft = 15;
+            borderRadius4.TopRight = 15;
+            this.sataPanel4.BorderRadius = borderRadius4;
             this.sataPanel4.BorderThickness = 0;
             this.sataPanel4.Controls.Add(this.lbAltura);
             this.sataPanel4.Controls.Add(this.label3);

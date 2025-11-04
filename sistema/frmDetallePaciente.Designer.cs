@@ -42,9 +42,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEstadoHuella = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxHuella = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHuella)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCedula
@@ -252,22 +254,36 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Sexo";
             // 
-            // pictureBox1
+            // lblEstadoHuella
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(375, 77);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 166);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.lblEstadoHuella.AutoSize = true;
+            this.lblEstadoHuella.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoHuella.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblEstadoHuella.Location = new System.Drawing.Point(387, 256);
+            this.lblEstadoHuella.Name = "lblEstadoHuella";
+            this.lblEstadoHuella.Size = new System.Drawing.Size(104, 16);
+            this.lblEstadoHuella.TabIndex = 12;
+            this.lblEstadoHuella.Text = "Estado de Huella";
+            // 
+            // pictureBoxHuella
+            // 
+            this.pictureBoxHuella.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxHuella.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHuella.Image")));
+            this.pictureBoxHuella.Location = new System.Drawing.Point(375, 77);
+            this.pictureBoxHuella.Name = "pictureBoxHuella";
+            this.pictureBoxHuella.Size = new System.Drawing.Size(168, 166);
+            this.pictureBoxHuella.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxHuella.TabIndex = 11;
+            this.pictureBoxHuella.TabStop = false;
+            this.pictureBoxHuella.Click += new System.EventHandler(this.pictureBoxHuella_Click_1);
             // 
             // frmDetallePaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 375);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblEstadoHuella);
+            this.Controls.Add(this.pictureBoxHuella);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -285,7 +301,7 @@
             this.Text = "Agregar Paciente";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHuella)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,6 +321,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxHuella;
+        private System.Windows.Forms.Label lblEstadoHuella;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
