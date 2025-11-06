@@ -146,16 +146,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgendarCita.cs">
+    <Compile Include="Main\Citas\AgendarCita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgendarCita.Designer.cs">
+    <Compile Include="Main\Citas\AgendarCita.Designer.cs">
       <DependentUpon>AgendarCita.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarCitas.cs">
+    <Compile Include="Main\Citas\AgregarCitas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarCitas.Designer.cs">
+    <Compile Include="Main\Citas\AgregarCitas.Designer.cs">
       <DependentUpon>AgregarCitas.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ToggleButton.cs">
@@ -242,70 +242,70 @@
     <Compile Include="Expediente\Registro\frmRegistro.Designer.cs">
       <DependentUpon>frmRegistro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAgenda.cs">
+    <Compile Include="Main\Agenda\frmAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAgenda.Designer.cs">
+    <Compile Include="Main\Agenda\frmAgenda.Designer.cs">
       <DependentUpon>frmAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCitas.cs">
+    <Compile Include="Main\Citas\frmCitas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCitas.Designer.cs">
+    <Compile Include="Main\Citas\frmCitas.Designer.cs">
       <DependentUpon>frmCitas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCuentas.cs">
+    <Compile Include="Main\Cuentas\frmCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCuentas.Designer.cs">
+    <Compile Include="Main\Cuentas\frmCuentas.Designer.cs">
       <DependentUpon>frmCuentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDetallePaciente.cs">
+    <Compile Include="Main\Pacientes\frmDetallePaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDetallePaciente.Designer.cs">
+    <Compile Include="Main\Pacientes\frmDetallePaciente.Designer.cs">
       <DependentUpon>frmDetallePaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDetallePaciente2.cs">
+    <Compile Include="Main\Pacientes\frmDetallePaciente2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDetallePaciente2.Designer.cs">
+    <Compile Include="Main\Pacientes\frmDetallePaciente2.Designer.cs">
       <DependentUpon>frmDetallePaciente2.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHistorialUsuario.cs">
+    <Compile Include="Main\Cuentas\frmHistorialUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHistorialUsuario.Designer.cs">
+    <Compile Include="Main\Cuentas\frmHistorialUsuario.Designer.cs">
       <DependentUpon>frmHistorialUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmInicio.cs">
+    <Compile Include="Main\Inicio\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInicio.Designer.cs">
+    <Compile Include="Main\Inicio\frmInicio.Designer.cs">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Main\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Main\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNotas.cs">
+    <Compile Include="Main\Notas\frmNotas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNotas.Designer.cs">
+    <Compile Include="Main\Notas\frmNotas.Designer.cs">
       <DependentUpon>frmNotas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPacientes.cs">
+    <Compile Include="Main\Pacientes\frmPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPacientes.Designer.cs">
+    <Compile Include="Main\Pacientes\frmPacientes.Designer.cs">
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUsuario.cs">
+    <Compile Include="Main\Cuentas\frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUsuario.Designer.cs">
+    <Compile Include="Main\Cuentas\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Logic\FingerprintManager.cs" />
@@ -322,13 +322,13 @@
     <Compile Include="Models\HistorialUsuario.cs" />
     <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Paciente.cs" />
-    <Compile Include="PacienteCita.cs">
+    <Compile Include="Main\Citas\PacienteCita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PacienteCita.Designer.cs">
+    <Compile Include="Main\Citas\PacienteCita.Designer.cs">
       <DependentUpon>PacienteCita.cs</DependentUpon>
     </Compile>
-    <Compile Include="PacientePreview.cs" />
+    <Compile Include="Main\Citas\PacientePreview.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\UserControlBlank.cs">
@@ -344,10 +344,10 @@
       <DependentUpon>UserControlDias.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PdfExporter.cs" />
-    <EmbeddedResource Include="AgendarCita.resx">
+    <EmbeddedResource Include="Main\Citas\AgendarCita.resx">
       <DependentUpon>AgendarCita.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarCitas.resx">
+    <EmbeddedResource Include="Main\Citas\AgregarCitas.resx">
       <DependentUpon>AgregarCitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente\Alergias\frmAlergias.resx">
@@ -386,43 +386,43 @@
     <EmbeddedResource Include="Expediente\Registro\frmRegistro.resx">
       <DependentUpon>frmRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAgenda.resx">
+    <EmbeddedResource Include="Main\Agenda\frmAgenda.resx">
       <DependentUpon>frmAgenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCitas.resx">
+    <EmbeddedResource Include="Main\Citas\frmCitas.resx">
       <DependentUpon>frmCitas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCuentas.resx">
+    <EmbeddedResource Include="Main\Cuentas\frmCuentas.resx">
       <DependentUpon>frmCuentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDetallePaciente.resx">
+    <EmbeddedResource Include="Main\Pacientes\frmDetallePaciente.resx">
       <DependentUpon>frmDetallePaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDetallePaciente2.resx">
+    <EmbeddedResource Include="Main\Pacientes\frmDetallePaciente2.resx">
       <DependentUpon>frmDetallePaciente2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHistorialUsuario.resx">
+    <EmbeddedResource Include="Main\Cuentas\frmHistorialUsuario.resx">
       <DependentUpon>frmHistorialUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInicio.resx">
+    <EmbeddedResource Include="Main\Inicio\frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Main\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNotas.resx">
+    <EmbeddedResource Include="Main\Notas\frmNotas.resx">
       <DependentUpon>frmNotas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPacientes.resx">
+    <EmbeddedResource Include="Main\Pacientes\frmPacientes.resx">
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuario.resx">
+    <EmbeddedResource Include="Main\Cuentas\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PacienteCita.resx">
+    <EmbeddedResource Include="Main\Citas\PacienteCita.resx">
       <DependentUpon>PacienteCita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

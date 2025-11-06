@@ -186,7 +186,7 @@
             this.Name = "Login";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Text = "Bienvenido al Sistema!";
+            this.Text = "¡Bienvenido al Sistema!";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -53,7 +53,6 @@
             this.contenedorDias.Name = "contenedorDias";
             this.contenedorDias.Size = new System.Drawing.Size(1159, 467);
             this.contenedorDias.TabIndex = 0;
-            this.contenedorDias.Paint += new System.Windows.Forms.PaintEventHandler(this.contenedorDias_Paint);
             // 
             // btnAnterior
             // 
@@ -126,7 +125,6 @@
             this.label4.Size = new System.Drawing.Size(72, 22);
             this.label4.TabIndex = 5;
             this.label4.Text = "Martes";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -171,7 +169,6 @@
             this.labelFecha.Size = new System.Drawing.Size(109, 25);
             this.labelFecha.TabIndex = 10;
             this.labelFecha.Text = "MES AÑO";
-            this.labelFecha.Click += new System.EventHandler(this.labelFecha_Click);
             // 
             // panelTopAccent
             // 
@@ -201,7 +198,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1195, 606);
             this.panel1.TabIndex = 102;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // frmCitas
             // 

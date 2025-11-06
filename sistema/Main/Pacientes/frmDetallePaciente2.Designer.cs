@@ -205,7 +205,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Direccion";
+            this.label3.Text = "Dirección";
             // 
             // label4
             // 
@@ -216,7 +216,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 16);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Telefono";
+            this.label4.Text = "Teléfono";
             // 
             // label5
             // 
@@ -227,7 +227,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 16);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Ocupacion";
+            this.label5.Text = "Ocupación";
             // 
             // label6
             // 
@@ -238,7 +238,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 16);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Grupo Sanguineo";
+            this.label6.Text = "Grupo Sanguíneo";
             // 
             // cbGrupoSanguineo
             // 
