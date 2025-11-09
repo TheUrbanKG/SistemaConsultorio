@@ -51,7 +51,7 @@
             this.contenedorDias.AutoScroll = true;
             this.contenedorDias.Location = new System.Drawing.Point(22, 136);
             this.contenedorDias.Name = "contenedorDias";
-            this.contenedorDias.Size = new System.Drawing.Size(1159, 467);
+            this.contenedorDias.Size = new System.Drawing.Size(1159, 430);
             this.contenedorDias.TabIndex = 0;
             this.contenedorDias.Paint += new System.Windows.Forms.PaintEventHandler(this.contenedorDias_Paint);
             // 
@@ -166,7 +166,7 @@
             this.labelFecha.AutoSize = true;
             this.labelFecha.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFecha.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelFecha.Location = new System.Drawing.Point(513, 0);
+            this.labelFecha.Location = new System.Drawing.Point(513, 36);
             this.labelFecha.Name = "labelFecha";
             this.labelFecha.Size = new System.Drawing.Size(109, 25);
             this.labelFecha.TabIndex = 10;
