@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlTypes;
 using System.Text.RegularExpressions;
+using SistemaConsultorio.Logica;
 
 namespace sistema
 {
@@ -17,14 +18,16 @@ namespace sistema
     {
         private frmPacientes _formPacientes;
         private Paciente _paciente;
+        private byte[] _huellaTemporal;
         private Regex _regexEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private Regex _regexSoloLetras = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", RegexOptions.Compiled);
 
-        public frmDetallePaciente2(Paciente paciente, frmPacientes formPacientes)
+        public frmDetallePaciente2(Paciente paciente, frmPacientes formPacientes, byte[] huellaTemporal = null)
         {
             InitializeComponent();
             _paciente = paciente;
             _formPacientes = formPacientes;
+            _huellaTemporal = huellaTemporal;
 
             InicializarControles();
             CargarDatosDesdePaciente(_paciente);
@@ -108,6 +111,13 @@ namespace sistema
                         existente.Nombre = _paciente.Nombre;
                         existente.Apellido = _paciente.Apellido;
 
+                        // Guardar huella si existe temporal
+                        if (_huellaTemporal != null && _huellaTemporal.Length > 0)
+                        {
+                            existente.FingerprintTemplate = _huellaTemporal;
+                            existente.UsaHuella = true;
+                        }
+
                         // Asegurar FechaRegistro
                         if (existente.FechaRegistro < SqlDateTime.MinValue.Value)
                             existente.FechaRegistro = DateTime.Now;
@@ -127,6 +137,13 @@ namespace sistema
                         _paciente.Ocupacion = ObtenerValorOpcional(txtOcupacion.Text.Trim());
                         _paciente.GrupoSanguineo = ObtenerValorOpcional(cbGrupoSanguineo.Text);
                         _paciente.Correo = ObtenerValorOpcional(txtCorreo.Text.Trim());
+
+                        // Guardar huella si existe temporal
+                        if (_huellaTemporal != null && _huellaTemporal.Length > 0)
+                        {
+                            _paciente.FingerprintTemplate = _huellaTemporal;
+                            _paciente.UsaHuella = true;
+                        }
 
                         // Asegurar FechaRegistro
                         if (_paciente.FechaRegistro < SqlDateTime.MinValue.Value)

@@ -117,7 +117,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Tension Diastolica";
+            this.label5.Text = "Tensión Diastólica";
             // 
             // label6
             // 
@@ -131,7 +131,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 20);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Tension Sistolica";
+            this.label6.Text = "Tensión Sistólica";
             // 
             // label7
             // 
@@ -159,7 +159,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(166, 20);
             this.label8.TabIndex = 18;
-            this.label8.Text = "Frecuencia Cardiaca";
+            this.label8.Text = "Frecuencia Cardíaca";
             // 
             // panel2
             // 
@@ -297,7 +297,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 20);
             this.label4.TabIndex = 25;
-            this.label4.Text = "Visiòn";
+            this.label4.Text = "Visión";
             // 
             // label10
             // 
@@ -339,7 +339,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 20);
             this.label12.TabIndex = 28;
-            this.label12.Text = "Audiciòn";
+            this.label12.Text = "Audición";
             // 
             // label13
             // 
@@ -367,7 +367,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(177, 20);
             this.label15.TabIndex = 31;
-            this.label15.Text = "Saturaciòn de Oxigeno";
+            this.label15.Text = "Saturación de Oxigeno";
             // 
             // btnGuardar
             // 

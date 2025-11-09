@@ -121,7 +121,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(253, 23);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Antecedentes Patologicos";
+            this.label14.Text = "Antecedentes Patológicos";
             // 
             // sataButton1
             // 
@@ -281,7 +281,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 17);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Rubeola";
+            this.label8.Text = "Rubéola";
             // 
             // label9
             // 
