@@ -66,8 +66,9 @@ namespace sistema
             this.Invoke(new Function(delegate ()
             {
                 Template = template;
-                btnAgregar.Enabled = (Template != null);
-                btnAgregar.Visible = (Template != null);
+                lblHuella.Enabled = (Template != null);
+                lblHuella.Visible = (Template != null);
+                pictureBoxHuella.Image = Properties.Resources.huella_registrada;
                 if (Template != null)
                 {
                     // Convertir inmediatamente a bytes y guardar en la variable

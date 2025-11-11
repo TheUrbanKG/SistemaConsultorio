@@ -46,6 +46,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnAñadirUsuario = new FrameworkTest.SATAButton();
             this.sataButton1 = new FrameworkTest.SATAButton();
+            this.btnHuella = new FrameworkTest.SATAButton();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -222,7 +223,7 @@
             this.btnAñadirUsuario.Location = new System.Drawing.Point(591, 310);
             this.btnAñadirUsuario.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnAñadirUsuario.Name = "btnAñadirUsuario";
-            this.btnAñadirUsuario.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnAñadirUsuario.NormalBackground = System.Drawing.Color.DarkTurquoise;
             this.btnAñadirUsuario.NormalForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.NormalOutline = System.Drawing.Color.Empty;
             this.btnAñadirUsuario.OutlineThickness = 2F;
@@ -275,11 +276,52 @@
             this.sataButton1.TextAutoCenter = true;
             this.sataButton1.TextOffset = new System.Drawing.Point(0, 0);
             // 
+            // btnHuella
+            // 
+            this.btnHuella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuella.ButtonText = "Añadir Huella";
+            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnHuella.CheckedForeColor = System.Drawing.Color.White;
+            this.btnHuella.CheckedImageTint = System.Drawing.Color.White;
+            this.btnHuella.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnHuella.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHuella.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(83)))));
+            this.btnHuella.HoverForeColor = System.Drawing.Color.White;
+            this.btnHuella.HoverImage = null;
+            this.btnHuella.HoverImageTint = System.Drawing.Color.White;
+            this.btnHuella.HoverOutline = System.Drawing.Color.Empty;
+            this.btnHuella.Image = global::sistema.Properties.Resources.huella_vacia;
+            this.btnHuella.ImageAutoCenter = true;
+            this.btnHuella.ImageExpand = new System.Drawing.Point(3, 3);
+            this.btnHuella.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnHuella.ImageTint = System.Drawing.Color.White;
+            this.btnHuella.IsToggleButton = false;
+            this.btnHuella.IsToggled = false;
+            this.btnHuella.Location = new System.Drawing.Point(72, 310);
+            this.btnHuella.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.btnHuella.Name = "btnHuella";
+            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.NormalForeColor = System.Drawing.Color.White;
+            this.btnHuella.NormalOutline = System.Drawing.Color.Empty;
+            this.btnHuella.OutlineThickness = 2F;
+            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.btnHuella.PressedForeColor = System.Drawing.Color.White;
+            this.btnHuella.PressedImageTint = System.Drawing.Color.White;
+            this.btnHuella.PressedOutline = System.Drawing.Color.Empty;
+            this.btnHuella.Rounding = new System.Windows.Forms.Padding(10);
+            this.btnHuella.Size = new System.Drawing.Size(170, 47);
+            this.btnHuella.TabIndex = 45;
+            this.btnHuella.TextAutoCenter = true;
+            this.btnHuella.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnHuella.Click += new System.EventHandler(this.btnHuella_Click);
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 389);
+            this.Controls.Add(this.btnHuella);
             this.Controls.Add(this.sataButton1);
             this.Controls.Add(this.btnAñadirUsuario);
             this.Controls.Add(this.label7);
@@ -326,5 +368,6 @@
         private System.Windows.Forms.Label label7;
         private FrameworkTest.SATAButton btnAñadirUsuario;
         private FrameworkTest.SATAButton sataButton1;
+        private FrameworkTest.SATAButton btnHuella;
     }
 }

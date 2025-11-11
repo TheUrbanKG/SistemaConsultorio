@@ -1,10 +1,16 @@
-﻿using System;
+﻿using DPFP;
+using sistema.Main.Pacientes;
+using System;
 using System.Windows.Forms;
 
 namespace sistema
 {
     public partial class frmUsuario : MetroFramework.Forms.MetroForm
     {
+        // Variable para almacenar la huella en bytes temporalmente
+        private byte[] _huellaTemporal;
+        
+        private DPFP.Template Template;
         // Indica si la contraseña es opcional (true al modificar; false al crear)
         public bool ContrasenaOpcional { get; set; } = false;
 
@@ -22,6 +28,7 @@ namespace sistema
         public string Rol { get => cbRol.Text?.Trim(); set => cbRol.Text = value; }
         public string Status { get => cbStatus.Text?.Trim(); set => cbStatus.Text = value; }
         public string Contrasena => txtPassword.Text;
+        public byte[] HuellaCapturada => _huellaTemporal;
 
         public frmUsuario()
         {
@@ -86,6 +93,45 @@ namespace sistema
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        
+        private void btnHuella_Click(object sender, EventArgs e)
+        {
+            CapturarHuella capturarHuella = new CapturarHuella();
+            capturarHuella.OnTemplate += OnTemplate;
+            capturarHuella.ShowDialog();
+        }
+
+        private void OnTemplate(DPFP.Template template)
+        {
+            this.Invoke(new Function(delegate ()
+            {
+                Template = template;
+                if (Template != null)
+                {
+                    // Convertir inmediatamente a bytes y guardar en la variable
+                    try
+                    {
+                        using (var stream = new System.IO.MemoryStream())
+                        {
+                            Template.Serialize(stream);
+                            _huellaTemporal = stream.ToArray(); // ← GUARDAR aquí
+                        }
+                        MessageBox.Show($"Huella capturada y convertida: {_huellaTemporal.Length} bytes",
+                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al convertir huella: {ex.Message}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The fingerprint template is not valid. Repeat fingerprint enrollment.", "Fingerprint Enrollment");
+                }
+            }));
         }
     }
 }

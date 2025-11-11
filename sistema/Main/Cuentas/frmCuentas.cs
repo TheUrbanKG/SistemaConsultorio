@@ -1,5 +1,5 @@
-﻿using sistema.Infrastructure.Security; // <-- agregar
-using sistema.Models; // <-- agregar
+﻿using sistema.Infrastructure.Security;
+using sistema.Models;
 using System;
 using System.Configuration;
 using System.Data;
@@ -78,8 +78,9 @@ namespace sistema
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                    INSERT INTO login (Usuario, Contraseña, Nombre, Apellido, Rol, Status)
-                    VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status);";
+                    INSERT INTO login (Usuario, Contraseña, Nombre, Apellido, Rol, Status, Huella)
+                    VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status, @Huella);";
+
                     cmd.Parameters.AddWithValue("@Usuario", dlg.Usuario);
                     cmd.Parameters.AddWithValue("@Contrasena", PasswordHasher.HashPBKDF2(dlg.Contrasena ?? string.Empty));
                     cmd.Parameters.AddWithValue("@Nombre", dlg.Nombre);
@@ -87,12 +88,27 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@Rol", dlg.Rol);
                     cmd.Parameters.AddWithValue("@Status", dlg.Status);
 
+                    // AGREGAR PARÁMETRO DE HUELLA
+                    if (dlg.HuellaCapturada != null && dlg.HuellaCapturada.Length > 0)
+                    {
+                        cmd.Parameters.AddWithValue("@Huella", dlg.HuellaCapturada);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Huella", DBNull.Value);
+                    }
+
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
 
                 CargarUsuarios();
-                MessageBox.Show("Usuario creado correctamente.");
+
+                // Mensaje informativo sobre la huella
+                string mensajeHuella = dlg.HuellaCapturada != null ?
+                    " con huella digital registrada" : " sin huella digital";
+
+                MessageBox.Show($"Usuario creado correctamente{mensajeHuella}.");
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601) // PK/UNIQUE
             {
@@ -119,6 +135,9 @@ namespace sistema
             string rolSel = row.Cells[3].Value?.ToString();
             string statusSel = row.Cells[4].Value?.ToString();
 
+            // Obtener la huella actual del usuario desde la base de datos
+            byte[] huellaActual = ObtenerHuellaActual(usuarioSel);
+
             var dlg = new frmUsuario
             {
                 Text = "Modificar usuario",
@@ -144,8 +163,10 @@ namespace sistema
                     Apellido = @Apellido,
                     Rol      = @Rol,
                     Status   = @Status,
-                    Contraseña = COALESCE(@Contrasena, Contraseña)
+                    Contraseña = COALESCE(@Contrasena, Contraseña),
+                    Huella   = @Huella
                 WHERE Usuario = @Usuario;";
+
                     cmd.Parameters.AddWithValue("@Usuario", usuarioSel);
                     cmd.Parameters.AddWithValue("@Nombre", dlg.Nombre);
                     cmd.Parameters.AddWithValue("@Apellido", dlg.Apellido);
@@ -157,6 +178,16 @@ namespace sistema
                     else
                         cmd.Parameters.AddWithValue("@Contrasena", DBNull.Value);
 
+                    // MANEJO DE HUELLA: Si se capturó nueva huella, usar esa; sino mantener la actual
+                    if (dlg.HuellaCapturada != null && dlg.HuellaCapturada.Length > 0)
+                    {
+                        cmd.Parameters.AddWithValue("@Huella", dlg.HuellaCapturada);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Huella", huellaActual ?? (object)DBNull.Value);
+                    }
+
                     conn.Open();
                     int n = cmd.ExecuteNonQuery();
                     if (n == 0)
@@ -167,12 +198,46 @@ namespace sistema
                 }
 
                 CargarUsuarios();
-                MessageBox.Show("Usuario modificado correctamente.");
+
+                // Mensaje informativo sobre la huella
+                string mensajeHuella = dlg.HuellaCapturada != null ?
+                    " con nueva huella digital" : " (huella digital sin cambios)";
+
+                MessageBox.Show($"Usuario modificado correctamente{mensajeHuella}.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar usuario: " + ex.Message);
             }
+        }
+
+        // Método auxiliar para obtener la huella actual de un usuario
+        private byte[] ObtenerHuellaActual(string usuario)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT Huella FROM login WHERE Usuario = @Usuario";
+                    cmd.Parameters.AddWithValue("@Usuario", usuario);
+
+                    conn.Open();
+                    var result = cmd.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return (byte[])result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener huella actual: {ex.Message}", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return null;
         }
 
         private void sataButton1_Click(object sender, EventArgs e)
@@ -192,7 +257,7 @@ namespace sistema
 
         private void btnDesabilitar_Click(object sender, EventArgs e)
         {
-
+            // Tu código existente para deshabilitar/habilitar
         }
     }
 }

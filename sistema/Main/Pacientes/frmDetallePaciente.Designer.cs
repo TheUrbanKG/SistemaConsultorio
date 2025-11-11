@@ -43,8 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnAgregar = new FrameworkTest.SATAButton();
             this.pictureBoxHuella = new System.Windows.Forms.PictureBox();
+            this.lblHuella = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHuella)).BeginInit();
             this.SuspendLayout();
@@ -254,47 +254,6 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Sexo";
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.ButtonText = "Guardar Huella";
-            this.btnAgregar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(89)))));
-            this.btnAgregar.CheckedForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnAgregar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(207)))), ((int)(((byte)(89)))));
-            this.btnAgregar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAgregar.Enabled = false;
-            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btnAgregar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(207)))), ((int)(((byte)(89)))));
-            this.btnAgregar.HoverForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.HoverImage = null;
-            this.btnAgregar.HoverImageTint = System.Drawing.Color.White;
-            this.btnAgregar.HoverOutline = System.Drawing.Color.Empty;
-            this.btnAgregar.Image = null;
-            this.btnAgregar.ImageAutoCenter = true;
-            this.btnAgregar.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnAgregar.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAgregar.ImageTint = System.Drawing.Color.White;
-            this.btnAgregar.IsToggleButton = false;
-            this.btnAgregar.IsToggled = false;
-            this.btnAgregar.Location = new System.Drawing.Point(363, 249);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(89)))));
-            this.btnAgregar.NormalForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnAgregar.OutlineThickness = 2F;
-            this.btnAgregar.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnAgregar.PressedForeColor = System.Drawing.Color.White;
-            this.btnAgregar.PressedImageTint = System.Drawing.Color.White;
-            this.btnAgregar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnAgregar.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnAgregar.Size = new System.Drawing.Size(168, 27);
-            this.btnAgregar.TabIndex = 12;
-            this.btnAgregar.TextAutoCenter = true;
-            this.btnAgregar.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnAgregar.Visible = false;
-            // 
             // pictureBoxHuella
             // 
             this.pictureBoxHuella.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -307,12 +266,24 @@
             this.pictureBoxHuella.TabStop = false;
             this.pictureBoxHuella.Click += new System.EventHandler(this.pictureBoxHuella_Click_1);
             // 
+            // lblHuella
+            // 
+            this.lblHuella.AutoSize = true;
+            this.lblHuella.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHuella.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(239)))), ((int)(((byte)(208)))));
+            this.lblHuella.Location = new System.Drawing.Point(396, 246);
+            this.lblHuella.Name = "lblHuella";
+            this.lblHuella.Size = new System.Drawing.Size(109, 17);
+            this.lblHuella.TabIndex = 13;
+            this.lblHuella.Text = "Huella Guardada";
+            this.lblHuella.Visible = false;
+            // 
             // frmDetallePaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 375);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.lblHuella);
             this.Controls.Add(this.pictureBoxHuella);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -353,6 +324,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxHuella;
         private System.Windows.Forms.ToolTip toolTip1;
-        private FrameworkTest.SATAButton btnAgregar;
+        private System.Windows.Forms.Label lblHuella;
     }
 }
