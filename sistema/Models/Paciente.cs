@@ -64,9 +64,8 @@ namespace sistema.Models
         public string Correo { get; set; }
 
         // NUEVAS PROPIEDADES PARA HUELLA DIGITAL
-        public byte[] FingerprintTemplate { get; set; }
+        public byte[] Huella { get; set; }
 
-        public bool UsaHuella { get; set; }
     }
 
     [Table("Datos")]

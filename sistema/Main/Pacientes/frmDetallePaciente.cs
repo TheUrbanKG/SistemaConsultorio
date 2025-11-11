@@ -1,5 +1,7 @@
-﻿using sistema.Models;
-using SistemaConsultorio.Logica;
+﻿
+using DPFP;
+using sistema.Main.Pacientes;
+using sistema.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DPFP.Processing.Enrollment;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace sistema
@@ -19,11 +22,9 @@ namespace sistema
         private frmPacientes _formPacientes;
         private Paciente _paciente;
         private Regex _regexSoloLetras = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", RegexOptions.Compiled);
+        private DPFP.Template Template;
 
-        // Variables para el sistema de huellas
-        private FingerprintManager fingerprintManager;
-        private bool lectorConectado = false;
-        private byte[] huellaTemporal; // Para almacenar huella antes de guardar paciente
+        private byte[] _huellaTemporal;
 
         public frmDetallePaciente(Paciente paciente, frmPacientes formPacientes)
         {
@@ -33,294 +34,147 @@ namespace sistema
 
             InicializarControles();
             CargarDatosDesdePaciente(_paciente);
-
-            // Inicializar sistema de huellas (para pacientes nuevos y existentes)
-            InitializeFingerprintSystem();
         }
 
         private void InicializarControles()
         {
-            // Configurar combo de género
             cbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSexo.Items.AddRange(new[] { "Masculino", "Femenino" });
 
-            // Configurar longitud máxima
             txtCedula.MaxLength = 20;
             txtNombre.MaxLength = 50;
             txtApellido.MaxLength = 50;
 
-            // Configurar eventos de validación
             ConfigurarEventosValidacion();
 
-            // Configurar pictureBox de huella
             pictureBoxHuella.Cursor = Cursors.Hand;
             pictureBoxHuella.SizeMode = PictureBoxSizeMode.Zoom;
-
-            // Actualizar estado inicial de la huella
-            ActualizarEstadoHuellaInicial();
+            pictureBoxHuella.Image = Properties.Resources.huella_vacia;
+            toolTip1.SetToolTip(pictureBoxHuella, "Click para registrar huella");
         }
 
-        // SISTEMA DE HUELLAS DIGITALES
-        private void InitializeFingerprintSystem()
-        {
-            fingerprintManager = new FingerprintManager();
 
-            fingerprintManager.OnStatusChanged += (mensaje) =>
+        private void pictureBoxHuella_Click_1(object sender, EventArgs e)
+        {
+            CapturarHuella capturarHuella = new CapturarHuella();
+            capturarHuella.OnTemplate += OnTemplate;
+            capturarHuella.ShowDialog();
+        }
+
+        private void OnTemplate(DPFP.Template template)
+        {
+            this.Invoke(new Function(delegate ()
             {
-                if (this.InvokeRequired)
+                Template = template;
+                btnAgregar.Enabled = (Template != null);
+                btnAgregar.Visible = (Template != null);
+                if (Template != null)
                 {
-                    this.Invoke(new Action(() => ActualizarEstadoHuella(mensaje)));
+                    // Convertir inmediatamente a bytes y guardar en la variable
+                    try
+                    {
+                        using (var stream = new System.IO.MemoryStream())
+                        {
+                            Template.Serialize(stream);
+                            _huellaTemporal = stream.ToArray(); // ← GUARDAR aquí
+                        }
+                        MessageBox.Show($"Huella capturada y convertida: {_huellaTemporal.Length} bytes",
+                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al convertir huella: {ex.Message}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    ActualizarEstadoHuella(mensaje);
+                    MessageBox.Show("The fingerprint template is not valid. Repeat fingerprint enrollment.", "Fingerprint Enrollment");
                 }
-            };
-
-            fingerprintManager.OnHuellaCapturada += () =>
-            {
-                this.Invoke(new Action(() => ProcesarHuellaCapturada()));
-            };
-
-            fingerprintManager.OnRegistrationResult += (exito, mensaje) =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    if (exito)
-                    {
-                        MessageBox.Show(mensaje, "Registro Exitoso",
-                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        pictureBoxHuella.Image = Properties.Resources.huella_registrada;
-                        lblEstadoHuella.Text = "Huella registrada";
-                    }
-                    else
-                    {
-                        MessageBox.Show(mensaje, "Error",
-                                      MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }));
-            };
-
-            // Conectar automáticamente
-            ConectarLectorAutomaticamente();
+            }));
         }
 
-        private void ActualizarEstadoHuellaInicial()
+        private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (_paciente.PacienteID == 0) // Paciente nuevo
+            if (!ValidarFormularioCompleto())
             {
-                pictureBoxHuella.Image = Properties.Resources.huella_vacia;
-                lblEstadoHuella.Text = "Registrar huella";
-                toolTip1.SetToolTip(pictureBoxHuella, "Click para registrar huella (opcional)");
+                MessageBox.Show("Por favor, corrija los errores en el formulario antes de continuar.",
+                    "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else // Paciente existente
-            {
-                pictureBoxHuella.Image = Properties.Resources.huella_vacia;
-                lblEstadoHuella.Text = "Verificando...";
-                toolTip1.SetToolTip(pictureBoxHuella, "Verificando estado de huella");
-            }
-        }
 
-        private void ConectarLectorAutomaticamente()
-        {
-            lectorConectado = fingerprintManager.Connect("COM3", 57600);
-            if (lectorConectado)
-            {
-                ActualizarEstadoHuella("Lector conectado");
-
-                // Si es paciente existente, verificar si ya tiene huella
-                if (_paciente.PacienteID > 0)
-                {
-                    VerificarHuellaExistente();
-                }
-            }
-            else
-            {
-                ActualizarEstadoHuella("Lector no conectado");
-                pictureBoxHuella.Image = Properties.Resources.huella_error;
-            }
-        }
-
-        private void VerificarHuellaExistente()
-        {
             try
             {
-                bool tieneHuella = fingerprintManager.CheckPacienteFingerprintAvailable(_paciente.PacienteID);
-                if (tieneHuella)
+                _paciente.Cedula = txtCedula.Text.Trim();
+                _paciente.Nombre = CapitalizarTexto(txtNombre.Text.Trim());
+                _paciente.Apellido = CapitalizarTexto(txtApellido.Text.Trim());
+                _paciente.FechaNacimiento = dtpFechaNacimiento.Value.Date;
+                _paciente.Genero = cbSexo.SelectedItem.ToString();
+
+                byte[] huellaBytes = null;
+                if (Template != null)
                 {
-                    pictureBoxHuella.Image = Properties.Resources.huella_registrada;
-                    lblEstadoHuella.Text = "Huella registrada";
-                    toolTip1.SetToolTip(pictureBoxHuella, "Click para reemplazar huella");
+                    try
+                    {
+                        using (var stream = new System.IO.MemoryStream())
+                        {
+                            Template.Serialize(stream);
+                            huellaBytes = stream.ToArray();
+
+                            // DEBUG: Verificar la conversión
+                            MessageBox.Show($"Huella convertida a bytes. Tamaño: {huellaBytes.Length} bytes",
+                                "Conversión Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al convertir huella: {ex.Message}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    pictureBoxHuella.Image = Properties.Resources.huella_vacia;
-                    lblEstadoHuella.Text = "Registrar huella";
-                    toolTip1.SetToolTip(pictureBoxHuella, "Click para registrar huella");
+                    MessageBox.Show("No se ha capturado ninguna huella. ¿Desea continuar sin huella?",
+                        "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 }
+
+
+                var paso2 = new frmDetallePaciente2(_paciente, _formPacientes, _huellaTemporal);
+                paso2.Show();
+                this.Close();
             }
-            catch
+            catch (Exception ex)
             {
-                pictureBoxHuella.Image = Properties.Resources.huella_error;
-                lblEstadoHuella.Text = "Error verificar huella";
+                MessageBox.Show($"Error al guardar los datos: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ActualizarEstadoHuella(string mensaje)
+
+        private void CargarDatosDesdePaciente(Paciente paciente)
         {
-            lblEstadoHuella.Text = mensaje;
-            toolTip1.SetToolTip(pictureBoxHuella, mensaje);
+            txtCedula.Text = paciente.Cedula;
+            txtNombre.Text = paciente.Nombre;
+            txtApellido.Text = paciente.Apellido;
+
+            if (paciente.FechaNacimiento.Year > 1900 && paciente.FechaNacimiento <= DateTime.Today)
+                dtpFechaNacimiento.Value = paciente.FechaNacimiento;
+
+            if (!string.IsNullOrWhiteSpace(paciente.Genero) && cbSexo.Items.Contains(paciente.Genero))
+                cbSexo.SelectedItem = paciente.Genero;
         }
 
-        private void RegistrarHuellaPaciente()
-        {
-            if (!lectorConectado)
-            {
-                var resultado = MessageBox.Show("El lector de huellas no está conectado. ¿Desea conectarlo ahora?",
-                                              "Lector No Conectado",
-                                              MessageBoxButtons.YesNo,
-                                              MessageBoxIcon.Question);
-
-                if (resultado == DialogResult.Yes)
-                {
-                    ConectarLectorAutomaticamente();
-                    if (!lectorConectado) return;
-                }
-                else
-                {
-                    return;
-                }
-            }
-
-            // Para pacientes existentes, verificar si ya tiene huella
-            if (_paciente.PacienteID > 0)
-            {
-                bool tieneHuella = fingerprintManager.CheckPacienteFingerprintAvailable(_paciente.PacienteID);
-
-                if (tieneHuella)
-                {
-                    var resultado = MessageBox.Show("Este paciente ya tiene una huella registrada. ¿Desea reemplazarla?",
-                                                  "Huella Existente",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Question);
-
-                    if (resultado != DialogResult.Yes)
-                        return;
-                }
-            }
-
-            // Iniciar proceso de registro
-            fingerprintManager.StartCapture(FingerprintMode.RegistroPaciente);
-            lblEstadoHuella.Text = "Coloque el dedo en el sensor...";
-        }
-
-        private void ProcesarHuellaCapturada()
-        {
-            var template = fingerprintManager.GetCapturedTemplate();
-
-            if (template != null && template.Length > 0)
-            {
-                if (_paciente.PacienteID > 0) // Paciente existente
-                {
-                    // Registrar directamente en la base de datos
-                    bool exito = fingerprintManager.RegisterPacienteFingerprint(_paciente.PacienteID, template);
-
-                    if (exito)
-                    {
-                        pictureBoxHuella.Image = Properties.Resources.huella_registrada;
-                        lblEstadoHuella.Text = "Huella registrada";
-                        MessageBox.Show("Huella registrada exitosamente!", "Éxito",
-                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al registrar la huella en la base de datos",
-                                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        pictureBoxHuella.Image = SystemIcons.Error.ToBitmap();
-                    }
-                }
-                else // Paciente nuevo
-                {
-                    // Guardar huella temporalmente hasta que se guarde el paciente
-                    huellaTemporal = template;
-                    pictureBoxHuella.Image = Properties.Resources.huella_registrada;
-                    lblEstadoHuella.Text = "Huella lista para guardar";
-                    toolTip1.SetToolTip(pictureBoxHuella, "Huella capturada - Se guardará con el paciente");
-
-                    MessageBox.Show("Huella capturada correctamente. Se guardará cuando registre el paciente.",
-                                  "Huella Capturada",
-                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se pudo capturar la huella correctamente. Intente nuevamente.",
-                              "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                pictureBoxHuella.Image = Properties.Resources.huella_error;
-            }
-        }
-
-        // Método para obtener la huella temporal (será llamado desde frmDetallePaciente2)
-        public byte[] ObtenerHuellaTemporal()
-        {
-            return huellaTemporal;
-        }
-
-        // Método para verificar si hay huella temporal
-        public bool TieneHuellaTemporal()
-        {
-            return huellaTemporal != null && huellaTemporal.Length > 0;
-        }
-
-        // [TUS MÉTODOS EXISTENTES SE MANTIENEN IGUAL]
         private void ConfigurarEventosValidacion()
         {
-            txtCedula.KeyPress += (s, e) =>
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                    e.Handled = true;
-            };
+            txtCedula.KeyPress += (s, e) => { if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true; };
+            txtNombre.KeyPress += (s, e) => { if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; };
+            txtApellido.KeyPress += (s, e) => { if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; };
 
-            txtNombre.KeyPress += (s, e) =>
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-                    e.Handled = true;
-            };
-
-            txtApellido.KeyPress += (s, e) =>
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-                    e.Handled = true;
-            };
-
-            // Validación al perder foco
             txtCedula.Validating += (s, e) => ValidarCedula();
             txtNombre.Validating += (s, e) => ValidarNombre();
             txtApellido.Validating += (s, e) => ValidarApellido();
             dtpFechaNacimiento.Validating += (s, e) => ValidarFechaNacimiento();
             cbSexo.Validating += (s, e) => ValidarGenero();
-        }
-
-        private void CargarDatosDesdePaciente(Paciente paciente)
-        {
-            if (paciente == null) return;
-
-            txtCedula.Text = paciente.Cedula;
-            txtNombre.Text = paciente.Nombre;
-            txtApellido.Text = paciente.Apellido;
-
-            if (paciente.FechaNacimiento != default(DateTime) &&
-                paciente.FechaNacimiento.Year > 1900 &&
-                paciente.FechaNacimiento <= DateTime.Today)
-            {
-                dtpFechaNacimiento.Value = paciente.FechaNacimiento;
-            }
-
-            if (!string.IsNullOrWhiteSpace(paciente.Genero) &&
-                cbSexo.Items.Contains(paciente.Genero))
-            {
-                cbSexo.SelectedItem = paciente.Genero;
-            }
         }
 
         private bool ValidarCedula()
@@ -402,10 +256,8 @@ namespace sistema
             }
 
             int edad = fechaActual.Year - fechaNacimiento.Year;
-            if (fechaNacimiento.Date > fechaActual.AddYears(-edad))
-            {
-                edad--;
-            }
+            if (fechaNacimiento.Date > fechaActual.AddYears(-edad)) edad--;
+
             if (edad < 1)
             {
                 errorProvider1.SetError(dtpFechaNacimiento, "El paciente debe tener al menos 1 año de edad.");
@@ -427,63 +279,19 @@ namespace sistema
 
         private bool ValidarFormularioCompleto()
         {
-            return ValidarCedula() &&
-                   ValidarNombre() &&
-                   ValidarApellido() &&
-                   ValidarFechaNacimiento() &&
-                   ValidarGenero();
+            return ValidarCedula() && ValidarNombre() && ValidarApellido() &&
+                   ValidarFechaNacimiento() && ValidarGenero();
         }
 
         private string CapitalizarTexto(string texto)
         {
-            if (string.IsNullOrWhiteSpace(texto))
-                return texto;
+            if (string.IsNullOrWhiteSpace(texto)) return texto;
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(texto.ToLower());
         }
-
-        private void btnSiguiente_Click(object sender, EventArgs e)
-        {
-            if (!ValidarFormularioCompleto())
-            {
-                MessageBox.Show("Por favor, corrija los errores en el formulario antes de continuar.",
-                    "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                _paciente.Cedula = txtCedula.Text.Trim();
-                _paciente.Nombre = CapitalizarTexto(txtNombre.Text.Trim());
-                _paciente.Apellido = CapitalizarTexto(txtApellido.Text.Trim());
-                _paciente.FechaNacimiento = dtpFechaNacimiento.Value.Date;
-                _paciente.Genero = cbSexo.SelectedItem.ToString();
-
-                // Pasar también la huella temporal si existe
-                var paso2 = new frmDetallePaciente2(_paciente, _formPacientes, huellaTemporal);
-                paso2.Show();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al guardar los datos: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         public void PrecargarDatos(Paciente paciente)
         {
             _paciente = paciente ?? new Paciente();
             CargarDatosDesdePaciente(_paciente);
-        }
-
-        private void frmDetallePaciente_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            fingerprintManager?.Disconnect();
-        }
-
-        private void pictureBoxHuella_Click_1(object sender, EventArgs e)
-        {
-            RegistrarHuellaPaciente();
         }
     }
 }

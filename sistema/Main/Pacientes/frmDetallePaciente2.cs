@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlTypes;
 using System.Text.RegularExpressions;
-using SistemaConsultorio.Logica;
 
 namespace sistema
 {
@@ -72,6 +71,8 @@ namespace sistema
             txtOcupacion.Validating += (s, e) => ValidarOcupacion();
         }
 
+
+
         private void btnRegistro_Click(object sender, EventArgs e)
         {
             // Validar todos los campos antes de guardar
@@ -93,6 +94,18 @@ namespace sistema
                         existente = context.Paciente.FirstOrDefault(p => p.PacienteID == _paciente.PacienteID);
                     }
 
+                    // DEBUG: Verificar que la huella llega al segundo formulario
+                    if (_huellaTemporal != null)
+                    {
+                        MessageBox.Show($"Huella recibida en paso 2: {_huellaTemporal.Length} bytes",
+                            "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se recibió huella en el paso 2",
+                            "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
                     if (existente != null)
                     {
                         // Actualizar paciente existente
@@ -104,19 +117,17 @@ namespace sistema
                         existente.GrupoSanguineo = ObtenerValorOpcional(cbGrupoSanguineo.Text);
                         existente.Correo = ObtenerValorOpcional(txtCorreo.Text.Trim());
 
+                        if (_huellaTemporal != null && _huellaTemporal.Length > 0)
+                        {
+                            existente.Huella = _huellaTemporal;
+                        }
+
                         // Mantener datos del primer formulario
                         existente.Genero = _paciente.Genero;
                         existente.FechaNacimiento = _paciente.FechaNacimiento;
                         existente.Cedula = _paciente.Cedula;
                         existente.Nombre = _paciente.Nombre;
                         existente.Apellido = _paciente.Apellido;
-
-                        // Guardar huella si existe temporal
-                        if (_huellaTemporal != null && _huellaTemporal.Length > 0)
-                        {
-                            existente.FingerprintTemplate = _huellaTemporal;
-                            existente.UsaHuella = true;
-                        }
 
                         // Asegurar FechaRegistro
                         if (existente.FechaRegistro < SqlDateTime.MinValue.Value)
@@ -138,11 +149,9 @@ namespace sistema
                         _paciente.GrupoSanguineo = ObtenerValorOpcional(cbGrupoSanguineo.Text);
                         _paciente.Correo = ObtenerValorOpcional(txtCorreo.Text.Trim());
 
-                        // Guardar huella si existe temporal
                         if (_huellaTemporal != null && _huellaTemporal.Length > 0)
                         {
-                            _paciente.FingerprintTemplate = _huellaTemporal;
-                            _paciente.UsaHuella = true;
+                            _paciente.Huella = _huellaTemporal;
                         }
 
                         // Asegurar FechaRegistro

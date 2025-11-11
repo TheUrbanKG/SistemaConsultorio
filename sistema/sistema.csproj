@@ -36,6 +36,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DPFPCtlXTypeLibNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXTypeLibNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPCtlXWrapperNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXWrapperNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPVerNET.dll</HintPath>
+    </Reference>
     <Reference Include="DPUruNet, Version=1.0.0.1, Culture=neutral, PublicKeyToken=7f32ef930fec5e5f, processorArchitecture=MSIL">
       <HintPath>..\packages\DPUruNet.1.0.0.1\lib\DPUruNet.dll</HintPath>
     </Reference>
@@ -260,6 +285,18 @@
     <Compile Include="Main\Cuentas\frmCuentas.Designer.cs">
       <DependentUpon>frmCuentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Pacientes\CapturarHuella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Pacientes\CapturarHuella.Designer.cs">
+      <DependentUpon>CapturarHuella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Pacientes\CaptureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Pacientes\CaptureForm.Designer.cs">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\Pacientes\frmDetallePaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,7 +345,6 @@
     <Compile Include="Main\Cuentas\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Logic\FingerprintManager.cs" />
     <Compile Include="Infrastructure\Security\PasswordHasher.cs" />
     <Compile Include="Infrastructure\Security\Sesion.cs" />
     <Compile Include="Infrastructure\Sql\SqlSessionContext.cs" />
@@ -394,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Cuentas\frmCuentas.resx">
       <DependentUpon>frmCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Pacientes\CaptureForm.resx">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Pacientes\frmDetallePaciente.resx">
       <DependentUpon>frmDetallePaciente.cs</DependentUpon>
@@ -502,6 +541,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\huella_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\Logic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
