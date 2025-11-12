@@ -548,9 +548,7 @@
   <ItemGroup>
     <None Include="Resources\huella_error.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\Logic\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\huella_login.png" />
   </ItemGroup>

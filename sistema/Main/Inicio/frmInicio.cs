@@ -21,6 +21,7 @@ namespace sistema
         private void frmInicio_Load(object sender, EventArgs e)
         {
             ActualizarContadoresPacientes();
+            ActualizarContadorCitasHoy();
         }
 
         private void ActualizarContadoresPacientes()
@@ -30,8 +31,8 @@ namespace sistema
                 string query = @"
                 SELECT 
                 COUNT(*) AS Total,
-                SUM(CASE WHEN Genero = 'Masculino' THEN 1 ELSE 0 END) AS Masculinos,
-                SUM(CASE WHEN Genero = 'Femenino'  THEN 1 ELSE 0 END) AS Femeninos
+                COALESCE(SUM(CASE WHEN Genero = 'Masculino' THEN 1 ELSE 0 END), 0) AS Masculinos,
+                COALESCE(SUM(CASE WHEN Genero = 'Femenino'  THEN 1 ELSE 0 END), 0) AS Femeninos
                 FROM Paciente;";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -46,6 +47,24 @@ namespace sistema
                             lbPacientesFemeninos.Text = reader["Femeninos"].ToString();
                         }
                     }
+                }
+            }
+        }
+
+        private void ActualizarContadorCitasHoy()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT COUNT(*) 
+            FROM Cita
+            WHERE FechaCita = CAST(GETDATE() AS DATE);"; // compara solo la fecha actual
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    int totalCitasHoy = (int)cmd.ExecuteScalar();
+                    lbCitasAgendadas.Text = totalCitasHoy.ToString();
                 }
             }
         }

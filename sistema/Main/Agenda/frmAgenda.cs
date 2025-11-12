@@ -34,12 +34,10 @@ namespace sistema
                     e.SuppressKeyPress = true;
                 }
             };
-
         }
 
         private void CmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Mostrar u ocultar controles según el filtro seleccionado
             panelDiaEspecifico.Visible = cmbFiltro.SelectedIndex == 0;
             panelMesEspecifico.Visible = cmbFiltro.SelectedIndex == 2;
         }
@@ -75,7 +73,7 @@ namespace sistema
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 string query = @"
-            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo,
+            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status,
                    p.Nombre, p.Apellido, p.Telefono
             FROM Cita c
             INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
@@ -96,7 +94,6 @@ namespace sistema
             ActualizarTitulo($"Citas del día: {fecha:dd/MM/yyyy}");
             MostrarMensajeVacio();
         }
-
 
         private void CargarCitasDelMesActual()
         {
@@ -120,7 +117,7 @@ namespace sistema
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 string query = @"
-            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo,
+            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status,
                    p.Nombre, p.Apellido, p.Telefono
             FROM Cita c
             INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
@@ -144,7 +141,6 @@ namespace sistema
             AjustarTamañoPaneles();
         }
 
-
         private void LimpiarPanelCitas()
         {
             flowPanelCitas.SuspendLayout();
@@ -156,28 +152,20 @@ namespace sistema
         {
             Panel panelCita = new Panel();
             panelCita.Width = flowPanelCitas.ClientSize.Width - 25;
-            panelCita.Height = 120;
+            panelCita.Height = 130;
             panelCita.BackColor = Color.FromArgb(55, 55, 58);
             panelCita.Margin = new Padding(0, 0, 0, 10);
             panelCita.Padding = new Padding(10);
-
-            // Borde sutil
-            panelCita.Paint += (s, e) =>
-            {
-                using (var pen = new Pen(Color.FromArgb(80, 80, 80), 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, panelCita.Width - 1, panelCita.Height - 1);
-                }
-            };
 
             DateTime fechaCita = Convert.ToDateTime(reader["FechaCita"]);
             TimeSpan horaCita = (TimeSpan)reader["HoraCita"];
             string periodo = reader["Periodo"].ToString();
             int citaID = Convert.ToInt32(reader["CitaID"]);
+            string statusActual = reader["Status"].ToString();
 
             // Panel izquierdo: fecha y hora
             Panel panelInfo = new Panel();
-            panelInfo.Size = new Size(100, 100);
+            panelInfo.Size = new Size(100, 110);
             panelInfo.Location = new Point(10, 10);
             panelInfo.BackColor = Color.FromArgb(0, 122, 204);
 
@@ -228,6 +216,25 @@ namespace sistema
             lblMotivo.ForeColor = Color.LightGray;
             panelCita.Controls.Add(lblMotivo);
 
+            // ComboBox para Status
+            ComboBox cmbStatus = new ComboBox();
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.Items.AddRange(new object[] {
+                "Programada",
+                "Confirmada",
+                "Completada",
+                "Cancelada",
+                "No asistió",
+                "Reprogramada"
+            });
+            cmbStatus.SelectedItem = statusActual;
+            cmbStatus.Location = new Point(120, 95);
+            cmbStatus.Size = new Size(150, 25);
+            cmbStatus.Tag = citaID; // guardar el ID de la cita
+            cmbStatus.SelectedIndexChanged += CmbStatus_SelectedIndexChanged;
+            cmbStatus.Font = new Font("Segoe UI", 9);
+            panelCita.Controls.Add(cmbStatus);
+
             // Botón Eliminar
             Button btnEliminar = new Button();
             btnEliminar.Size = new Size(80, 30);
@@ -268,13 +275,13 @@ namespace sistema
 
                     foreach (Control innerControl in panelCita.Controls)
                     {
-                        if (innerControl is Label lbl && lbl.Text.Length == 4 && int.TryParse(lbl.Text, out _))
-                        {
-                            lbl.Location = new Point(panelCita.Width - 150, 15);
-                        }
-                        else if (innerControl is Button btn && btn.Text == "Eliminar")
+                        if (innerControl is Button btn && btn.Text == "Eliminar")
                         {
                             btn.Location = new Point(panelCita.Width - 90, 70);
+                        }
+                        else if (innerControl is Label lbl && lbl.Text.StartsWith("Año"))
+                        {
+                            lbl.Location = new Point(panelCita.Width - lbl.Width - 10, 15);
                         }
                     }
                 }
@@ -359,5 +366,36 @@ namespace sistema
             AplicarFiltro();
         }
 
+        // Manejador para actualizar el Status en BD
+        private void CmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            if (cmb != null && cmb.Tag is int citaID)
+            {
+                string nuevoStatus = cmb.SelectedItem.ToString();
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE Cita SET Status = @Status WHERE CitaID = @CitaID";
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("@Status", nuevoStatus);
+                    cmd.Parameters.AddWithValue("@CitaID", citaID);
+
+                    try
+                    {
+                        conexion.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Estado de la cita actualizado correctamente.", "Éxito",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al actualizar el estado: {ex.Message}", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
