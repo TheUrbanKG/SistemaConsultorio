@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new MetroFramework.Controls.MetroTextBox();
             this.btnIngresar = new FrameworkTest.SATAButton();
+            this.btnHuella = new FrameworkTest.SATAButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,17 +166,57 @@
             this.btnIngresar.PressedImageTint = System.Drawing.Color.White;
             this.btnIngresar.PressedOutline = System.Drawing.Color.Empty;
             this.btnIngresar.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnIngresar.Size = new System.Drawing.Size(111, 37);
+            this.btnIngresar.Size = new System.Drawing.Size(120, 37);
             this.btnIngresar.TabIndex = 5;
             this.btnIngresar.TextAutoCenter = true;
             this.btnIngresar.TextOffset = new System.Drawing.Point(0, 0);
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            // 
+            // btnHuella
+            // 
+            this.btnHuella.ButtonText = "";
+            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.CheckedForeColor = System.Drawing.Color.White;
+            this.btnHuella.CheckedImageTint = System.Drawing.Color.White;
+            this.btnHuella.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHuella.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(139)))), ((int)(((byte)(73)))));
+            this.btnHuella.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnHuella.HoverImage = null;
+            this.btnHuella.HoverImageTint = System.Drawing.Color.White;
+            this.btnHuella.HoverOutline = System.Drawing.Color.Empty;
+            this.btnHuella.Image = global::sistema.Properties.Resources.huella_login;
+            this.btnHuella.ImageAutoCenter = true;
+            this.btnHuella.ImageExpand = new System.Drawing.Point(5, 5);
+            this.btnHuella.ImageOffset = new System.Drawing.Point(5, 0);
+            this.btnHuella.ImageTint = System.Drawing.Color.White;
+            this.btnHuella.IsToggleButton = false;
+            this.btnHuella.IsToggled = false;
+            this.btnHuella.Location = new System.Drawing.Point(444, 238);
+            this.btnHuella.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnHuella.Name = "btnHuella";
+            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.btnHuella.NormalOutline = System.Drawing.Color.Empty;
+            this.btnHuella.OutlineThickness = 2F;
+            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.btnHuella.PressedForeColor = System.Drawing.Color.White;
+            this.btnHuella.PressedImageTint = System.Drawing.Color.White;
+            this.btnHuella.PressedOutline = System.Drawing.Color.Empty;
+            this.btnHuella.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnHuella.Size = new System.Drawing.Size(75, 37);
+            this.btnHuella.TabIndex = 6;
+            this.btnHuella.TextAutoCenter = true;
+            this.btnHuella.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnHuella.Click += new System.EventHandler(this.btnHuella_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 315);
+            this.Controls.Add(this.btnHuella);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
@@ -202,5 +243,6 @@
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroTextBox txtPassword;
         private FrameworkTest.SATAButton btnIngresar;
+        private FrameworkTest.SATAButton btnHuella;
     }
 }
