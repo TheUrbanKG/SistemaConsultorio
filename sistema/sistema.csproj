@@ -354,6 +354,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Pacientes\VerificarHuellaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Pacientes\VerificarHuellaPaciente.Designer.cs">
+      <DependentUpon>VerificarHuellaPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Alergia.cs" />
     <Compile Include="Models\HistorialUsuario.cs" />
     <Compile Include="Models\Nota.cs" />
