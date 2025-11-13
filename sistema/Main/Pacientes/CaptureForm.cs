@@ -166,7 +166,7 @@ namespace sistema
 			}));
 		}
 
-		private void DrawPicture(Bitmap bitmap)
+		protected void DrawPicture(Bitmap bitmap)
 		{
 			this.Invoke(new Function(delegate() {
 				Picture.Image = new Bitmap(bitmap, Picture.Size);	// fit the image into the picture box

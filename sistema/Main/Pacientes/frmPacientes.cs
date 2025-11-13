@@ -32,6 +32,9 @@ namespace sistema
             // Establecer "Conocido" como valor por defecto
             cbTipoPaciente.SelectedItem = "Conocido";
 
+            // Agregar opción para filtrar por huella
+            cbTipoPaciente.Items.Add("Con Huella");
+
             CargarPacientes(); // carga inicial
 
             // Conectar eventos de filtrado
@@ -66,7 +69,8 @@ SELECT
                OR (MONTH(FechaNacimiento) = MONTH(GETDATE()) AND DAY(FechaNacimiento) > DAY(GETDATE()))
              THEN 1 ELSE 0 END AS EdadActual,
     ISNULL(NULLIF(LTRIM(RTRIM(Genero)), ''), 'N/D') AS Genero,
-    Telefono
+    Telefono,
+    CASE WHEN Huella IS NOT NULL THEN 'Sí' ELSE 'No' END AS TieneHuella
 FROM Paciente
 WHERE 1=1";
 
@@ -78,6 +82,10 @@ WHERE 1=1";
                     else if (tipoPaciente == "Desconocido")
                     {
                         query += " AND (Cedula = 'SIN-CEDULA' OR Cedula LIKE 'desc%')";
+                    }
+                    else if (tipoPaciente == "Con Huella")
+                    {
+                        query += " AND Huella IS NOT NULL";
                     }
                     else // Por defecto (incluye cuando se llama sin parámetros)
                     {
@@ -168,6 +176,112 @@ ORDER BY Nombre, Apellido;";
                     MessageBox.Show("Paciente no encontrado.");
                 }
             }
+        }
+
+        // Nuevo método para el botón de huella
+        private void btnHuella_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var verificarPaciente = new VerificarHuellaPaciente())
+                {
+                    var resultado = verificarPaciente.ShowDialog();
+
+                    if (resultado == DialogResult.OK && verificarPaciente.HuellaVerificada)
+                    {
+                        FiltrarPorPacienteId(verificarPaciente.PacienteID);
+
+                        MessageBox.Show($"¡Paciente encontrado!\n\nNombre: {verificarPaciente.PacienteEncontrado}\nCédula: {verificarPaciente.CedulaPaciente}",
+                                      "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró ningún paciente con esa huella.",
+                                      "Búsqueda Fallida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MostrarTodosLosPacientes();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar paciente por huella: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Método para obtener el PacienteID por nombre de usuario
+        private int ObtenerPacienteIdPorUsuario(string usuarioNombre)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = new SqlCommand("SELECT PacienteID FROM Paciente WHERE Nombre = @nombre", conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", usuarioNombre);
+                    conn.Open();
+
+                    var result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar paciente: {ex.Message}");
+                return -1;
+            }
+        }
+
+        // Método para filtrar el DataGridView por PacienteID
+        private void FiltrarPorPacienteId(int pacienteId)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+SELECT
+    PacienteID AS ID,
+    Cedula,
+    Nombre,
+    Apellido,
+    DATEDIFF(YEAR, FechaNacimiento, GETDATE()) -
+        CASE WHEN MONTH(FechaNacimiento) > MONTH(GETDATE())
+               OR (MONTH(FechaNacimiento) = MONTH(GETDATE()) AND DAY(FechaNacimiento) > DAY(GETDATE()))
+             THEN 1 ELSE 0 END AS EdadActual,
+    ISNULL(NULLIF(LTRIM(RTRIM(Genero)), ''), 'N/D') AS Genero,
+    Telefono,
+    CASE WHEN Huella IS NOT NULL THEN 'Sí' ELSE 'No' END AS TieneHuella
+FROM Paciente
+WHERE PacienteID = @id";
+
+                    var da = new SqlDataAdapter(query, conn);
+                    da.SelectCommand.Parameters.AddWithValue("@id", pacienteId);
+
+                    var dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgvPacientes.DataSource = dt;
+
+                    // Si se encontró el paciente, seleccionar la fila
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgvPacientes.ClearSelection();
+                        dgvPacientes.Rows[0].Selected = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al filtrar paciente: {ex.Message}");
+            }
+        }
+
+        // Método para limpiar filtros y mostrar todos los pacientes
+        public void MostrarTodosLosPacientes()
+        {
+            txtBuscar.Text = "";
+            cbTipoPaciente.SelectedItem = "Conocido";
+            CargarPacientes();
         }
 
         private void dgvPacientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

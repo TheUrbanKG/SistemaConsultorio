@@ -42,6 +42,7 @@
             this.panelTopAccent = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.cbTipoPaciente = new System.Windows.Forms.ComboBox();
+            this.btnHuella = new FrameworkTest.SATAButton();
             this.sataPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             this.SuspendLayout();
@@ -125,7 +126,7 @@
             this.btnModificar.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnModificar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnModificar.HoverBackground = System.Drawing.Color.RoyalBlue;
             this.btnModificar.HoverForeColor = System.Drawing.Color.White;
             this.btnModificar.HoverImage = null;
             this.btnModificar.HoverImageTint = System.Drawing.Color.White;
@@ -252,11 +253,52 @@
             this.cbTipoPaciente.Size = new System.Drawing.Size(279, 24);
             this.cbTipoPaciente.TabIndex = 103;
             // 
+            // btnHuella
+            // 
+            this.btnHuella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuella.ButtonText = "Filtrar por Huella";
+            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.CheckedForeColor = System.Drawing.Color.White;
+            this.btnHuella.CheckedImageTint = System.Drawing.Color.White;
+            this.btnHuella.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHuella.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(139)))), ((int)(((byte)(73)))));
+            this.btnHuella.HoverForeColor = System.Drawing.Color.White;
+            this.btnHuella.HoverImage = null;
+            this.btnHuella.HoverImageTint = System.Drawing.Color.White;
+            this.btnHuella.HoverOutline = System.Drawing.Color.Empty;
+            this.btnHuella.Image = global::sistema.Properties.Resources.huella_vacia;
+            this.btnHuella.ImageAutoCenter = true;
+            this.btnHuella.ImageExpand = new System.Drawing.Point(5, 5);
+            this.btnHuella.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnHuella.ImageTint = System.Drawing.Color.White;
+            this.btnHuella.IsToggleButton = false;
+            this.btnHuella.IsToggled = false;
+            this.btnHuella.Location = new System.Drawing.Point(909, 271);
+            this.btnHuella.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.btnHuella.Name = "btnHuella";
+            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHuella.NormalOutline = System.Drawing.Color.Empty;
+            this.btnHuella.OutlineThickness = 2F;
+            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(109)))), ((int)(((byte)(43)))));
+            this.btnHuella.PressedForeColor = System.Drawing.Color.White;
+            this.btnHuella.PressedImageTint = System.Drawing.Color.White;
+            this.btnHuella.PressedOutline = System.Drawing.Color.Empty;
+            this.btnHuella.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnHuella.Size = new System.Drawing.Size(240, 47);
+            this.btnHuella.TabIndex = 104;
+            this.btnHuella.TextAutoCenter = true;
+            this.btnHuella.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnHuella.Click += new System.EventHandler(this.btnHuella_Click);
+            // 
             // frmPacientes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1163, 601);
+            this.Controls.Add(this.btnHuella);
             this.Controls.Add(this.cbTipoPaciente);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelTopAccent);
@@ -286,5 +328,6 @@
         private System.Windows.Forms.Panel panelTopAccent;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbTipoPaciente;
+        private FrameworkTest.SATAButton btnHuella;
     }
 }
