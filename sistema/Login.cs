@@ -17,87 +17,94 @@ namespace sistema
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            var usuario = txtUsuario.Text?.Trim();
-            var password = txtPassword.Text ?? "";
+            // RECOLECCIÓN Y VALIDACIÓN DE DATOS DE ENTRADA
+            var usuario = txtUsuario.Text?.Trim(); 
+            var password = txtPassword.Text ?? "";   
 
+            // Valida que el campo de usuario no esté vacío.
             if (string.IsNullOrWhiteSpace(usuario))
             {
                 MessageBox.Show("Usuario requerido");
-                return;
+                return; 
             }
 
+            // 2. CONEXIÓN Y CONSULTA A LA BASE DE DATOS
             using (var conn = new SqlConnection(connectionString))
             using (var cmd = new SqlCommand("SELECT Contraseña, Status FROM login WHERE Usuario=@u", conn))
             {
+              
                 cmd.Parameters.AddWithValue("@u", usuario);
-                conn.Open();
+                conn.Open(); // conexión a la base de datos.
 
-                string stored = null;   // <-- ahora fuera del reader
-                string status = null;
+                string storedHash = null; 
+                string status = null;     
 
                 using (var rd = cmd.ExecuteReader())
                 {
-                    if (!rd.Read())
+                    // 3. VERIFICACIÓN DEL USUARIO Y SU ESTADO
+                    if (!rd.Read()) 
                     {
                         MessageBox.Show("Usuario o contraseña incorrectos.");
                         return;
                     }
 
-                    stored = rd.IsDBNull(0) ? null : rd.GetString(0);
+                    // Lee los valores de la base de datos.
+                    storedHash = rd.IsDBNull(0) ? null : rd.GetString(0);
                     status = rd.IsDBNull(1) ? null : rd.GetString(1);
 
+                    // Comprueba si el usuario está activo.
                     if (!string.Equals(status, "Habilitado", StringComparison.OrdinalIgnoreCase))
                     {
                         MessageBox.Show("Usuario deshabilitado.");
                         return;
                     }
 
-                    bool ok = false;
-                    if (!string.IsNullOrEmpty(stored) && stored.StartsWith("PBKDF2$", StringComparison.Ordinal))
+                    // 4. VERIFICACIÓN DE LA CONTRASEÑA
+                    bool passwordValida = false;
+                    if (!string.IsNullOrEmpty(storedHash) && storedHash.StartsWith("PBKDF2$", StringComparison.Ordinal))
                     {
-                        ok = PasswordHasher.VerifyPBKDF2(password, stored);
+                        // Compara la contraseña ingresada con el hash almacenado.
+                        passwordValida = PasswordHasher.VerifyPBKDF2(password, storedHash);
                     }
                     else
                     {
-                        // Compatibilidad con texto plano heredado
-                        ok = string.Equals(stored, password);
+                        passwordValida = string.Equals(storedHash, password);
                     }
 
-                    if (!ok)
+                    if (!passwordValida)
                     {
                         MessageBox.Show("Usuario o contraseña incorrectos.");
                         return;
                     }
-                } // aquí el reader ya está cerrado
+                } 
 
-                // Si era texto plano, migrar a PBKDF2
-                if (!string.IsNullOrEmpty(stored) && !stored.StartsWith("PBKDF2$", StringComparison.Ordinal))
+                // 5. MIGRACIÓN AUTOMÁTICA DE CONTRASEÑA 
+                if (!string.IsNullOrEmpty(storedHash) && !storedHash.StartsWith("PBKDF2$", StringComparison.Ordinal))
                 {
                     var nuevoHash = PasswordHasher.HashPBKDF2(password);
-                    using (var up = new SqlCommand("UPDATE login SET Contraseña=@p WHERE Usuario=@u", conn))
+                    using (var cmdUpdate = new SqlCommand("UPDATE login SET Contraseña=@p WHERE Usuario=@u", conn))
                     {
-                        up.Parameters.AddWithValue("@p", nuevoHash);
-                        up.Parameters.AddWithValue("@u", usuario);
-                        up.ExecuteNonQuery();
+                        cmdUpdate.Parameters.AddWithValue("@p", nuevoHash);
+                        cmdUpdate.Parameters.AddWithValue("@u", usuario);
+                        cmdUpdate.ExecuteNonQuery(); // Ejecuta la actualización.
                     }
                 }
-            }
+            } 
 
-            // Setea la sesión para auditoría (triggers)
+            // 6. INICIO DE SESIÓN EXITOSO
             sistema.Infrastructure.Security.Sesion.UsuarioActual = usuario;
-
-            // Abrir principal y cerrar Login cuando principal cierre
             this.Hide();
-            var main = new frmMain();
-            main.FormClosed += (s, args) => this.Close();
-            main.Show();
+            var mainForm = new frmMain();
+            mainForm.FormClosed += (s, args) => this.Close();
+            mainForm.Show();
         }
 
+        /// Maneja el evento de clic para el inicio de sesión con huella dactilar.
         private void btnHuella_Click(object sender, EventArgs e)
         {
             try
             {
-                // Verificar si hay huellas registradas en la base de datos
+                // 1. VERIFICACIÓN PRELIMINAR
                 if (!HayHuellasRegistradasEnBD())
                 {
                     MessageBox.Show("No hay huellas registradas en el sistema. Por favor, use usuario y contraseña.",
@@ -105,20 +112,16 @@ namespace sistema
                     return;
                 }
 
-                // Abrir el formulario de verificación de huella
+                // 2. PROCESO DE VERIFICACIÓN DE HUELLA
                 using (var verificarHuellaForm = new VerificarHuellaForm())
                 {
-                    var resultado = verificarHuellaForm.ShowDialog();
+                    var resultado = verificarHuellaForm.ShowDialog(); 
 
                     if (resultado == DialogResult.OK && verificarHuellaForm.HuellaVerificada)
                     {
-                        // Login exitoso por huella
                         string usuarioVerificado = verificarHuellaForm.UsuarioVerificado;
 
-                        // Actualizar el campo de usuario
-                        txtUsuario.Text = usuarioVerificado;
-
-                        // Verificar el estado del usuario en la base de datos
+                        // 3. VERIFICACIÓN DEL ESTADO DEL USUARIO
                         if (!VerificarEstadoUsuario(usuarioVerificado))
                         {
                             MessageBox.Show("Usuario deshabilitado.", "Acceso denegado",
@@ -126,10 +129,9 @@ namespace sistema
                             return;
                         }
 
-                        // Setea la sesión para auditoría (triggers)
+                        // 4. INICIO DE SESIÓN EXITOSO
+                        txtUsuario.Text = usuarioVerificado;
                         sistema.Infrastructure.Security.Sesion.UsuarioActual = usuarioVerificado;
-
-                        // Abrir principal y cerrar Login cuando principal cierre
                         this.Hide();
                         var main = new frmMain();
                         main.FormClosed += (s, args) => this.Close();
@@ -149,6 +151,7 @@ namespace sistema
             }
         }
 
+        /// Comprueba si hay al menos un usuario con una huella registrada en la base de datos.
         private bool HayHuellasRegistradasEnBD()
         {
             try
@@ -168,6 +171,7 @@ namespace sistema
             }
         }
 
+        /// Verifica si el estado de un usuario específico es "Habilitado".
         private bool VerificarEstadoUsuario(string usuario)
         {
             try
@@ -188,13 +192,8 @@ namespace sistema
 
                         string status = rd.IsDBNull(0) ? null : rd.GetString(0);
 
-                        if (!string.Equals(status, "Habilitado", StringComparison.OrdinalIgnoreCase))
-                        {
-                            MessageBox.Show("Usuario deshabilitado.");
-                            return false;
-                        }
-
-                        return true;
+                        // Devuelve true solo si el estado es "Habilitado".
+                        return string.Equals(status, "Habilitado", StringComparison.OrdinalIgnoreCase);
                     }
                 }
             }

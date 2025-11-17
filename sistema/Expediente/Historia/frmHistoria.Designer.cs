@@ -31,8 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.sataButton1 = new FrameworkTest.SATAButton();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.btnGuardarPadecimiento = new FrameworkTest.SATAButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,6 +70,10 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtPadecimientoActual = new MetroFramework.Controls.MetroTextBox();
             this.toggleOtroPadecimiento = new sistema.Controls.ToggleButton();
             this.toggleOsteoporosis = new sistema.Controls.ToggleButton();
             this.toggleArtritis = new sistema.Controls.ToggleButton();
@@ -90,6 +93,8 @@
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -98,7 +103,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(2, 188);
+            this.panel1.Location = new System.Drawing.Point(2, 257);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1195, 57);
             this.panel1.TabIndex = 1;
@@ -123,84 +128,51 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Antecedentes Patológicos";
             // 
-            // sataButton1
+            // btnGuardarPadecimiento
             // 
-            this.sataButton1.ButtonText = "Guardar";
-            this.sataButton1.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.sataButton1.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton1.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton1.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton1.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton1.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
-            this.sataButton1.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton1.HoverImage = null;
-            this.sataButton1.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton1.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton1.Image = global::sistema.Properties.Resources.Guardar;
-            this.sataButton1.ImageAutoCenter = true;
-            this.sataButton1.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.sataButton1.ImageTint = System.Drawing.Color.White;
-            this.sataButton1.IsToggleButton = false;
-            this.sataButton1.IsToggled = false;
-            this.sataButton1.Location = new System.Drawing.Point(823, 115);
-            this.sataButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.sataButton1.Name = "sataButton1";
-            this.sataButton1.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.sataButton1.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton1.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton1.OutlineThickness = 2F;
-            this.sataButton1.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton1.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton1.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton1.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton1.Rounding = new System.Windows.Forms.Padding(5);
-            this.sataButton1.Size = new System.Drawing.Size(159, 48);
-            this.sataButton1.TabIndex = 2;
-            this.sataButton1.TextAutoCenter = true;
-            this.sataButton1.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // metroTextBox1
-            // 
-            // 
-            // 
-            // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(606, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(123, 123);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(50, 38);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Multiline = true;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "Ingrese los detalles de la consulta...";
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(730, 125);
-            this.metroTextBox1.TabIndex = 3;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "Ingrese los detalles de la consulta...";
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.btnGuardarPadecimiento.ButtonText = "Guardar";
+            this.btnGuardarPadecimiento.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardarPadecimiento.CheckedForeColor = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.CheckedImageTint = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnGuardarPadecimiento.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGuardarPadecimiento.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarPadecimiento.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnGuardarPadecimiento.HoverForeColor = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.HoverImage = null;
+            this.btnGuardarPadecimiento.HoverImageTint = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.HoverOutline = System.Drawing.Color.Empty;
+            this.btnGuardarPadecimiento.Image = global::sistema.Properties.Resources.Guardar;
+            this.btnGuardarPadecimiento.ImageAutoCenter = true;
+            this.btnGuardarPadecimiento.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnGuardarPadecimiento.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnGuardarPadecimiento.ImageTint = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.IsToggleButton = false;
+            this.btnGuardarPadecimiento.IsToggled = false;
+            this.btnGuardarPadecimiento.Location = new System.Drawing.Point(927, 179);
+            this.btnGuardarPadecimiento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnGuardarPadecimiento.Name = "btnGuardarPadecimiento";
+            this.btnGuardarPadecimiento.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardarPadecimiento.NormalForeColor = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.NormalOutline = System.Drawing.Color.Empty;
+            this.btnGuardarPadecimiento.OutlineThickness = 2F;
+            this.btnGuardarPadecimiento.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnGuardarPadecimiento.PressedForeColor = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.PressedImageTint = System.Drawing.Color.White;
+            this.btnGuardarPadecimiento.PressedOutline = System.Drawing.Color.Empty;
+            this.btnGuardarPadecimiento.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnGuardarPadecimiento.Size = new System.Drawing.Size(159, 48);
+            this.btnGuardarPadecimiento.TabIndex = 2;
+            this.btnGuardarPadecimiento.TextAutoCenter = true;
+            this.btnGuardarPadecimiento.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnGuardarPadecimiento.Click += new System.EventHandler(this.btnGuardarPadecimiento_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(59, 277);
+            this.label1.Location = new System.Drawing.Point(65, 336);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 17);
             this.label1.TabIndex = 20;
@@ -211,7 +183,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(218, 277);
+            this.label2.Location = new System.Drawing.Point(224, 336);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 21;
@@ -222,7 +194,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(379, 277);
+            this.label3.Location = new System.Drawing.Point(392, 336);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 22;
@@ -233,7 +205,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(530, 277);
+            this.label4.Location = new System.Drawing.Point(542, 336);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 23;
@@ -244,7 +216,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(681, 277);
+            this.label5.Location = new System.Drawing.Point(694, 336);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 17);
             this.label5.TabIndex = 24;
@@ -255,7 +227,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(820, 277);
+            this.label6.Location = new System.Drawing.Point(831, 336);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 17);
             this.label6.TabIndex = 25;
@@ -266,7 +238,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(59, 368);
+            this.label7.Location = new System.Drawing.Point(65, 412);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 17);
             this.label7.TabIndex = 26;
@@ -277,7 +249,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(218, 368);
+            this.label8.Location = new System.Drawing.Point(233, 412);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 17);
             this.label8.TabIndex = 27;
@@ -288,7 +260,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(381, 368);
+            this.label9.Location = new System.Drawing.Point(392, 412);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 17);
             this.label9.TabIndex = 28;
@@ -299,7 +271,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label10.Location = new System.Drawing.Point(531, 368);
+            this.label10.Location = new System.Drawing.Point(542, 412);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 17);
             this.label10.TabIndex = 29;
@@ -310,7 +282,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(681, 368);
+            this.label11.Location = new System.Drawing.Point(694, 412);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 17);
             this.label11.TabIndex = 30;
@@ -321,7 +293,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(815, 368);
+            this.label12.Location = new System.Drawing.Point(831, 412);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 17);
             this.label12.TabIndex = 31;
@@ -332,7 +304,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(74, 455);
+            this.label13.Location = new System.Drawing.Point(90, 480);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 17);
             this.label13.TabIndex = 32;
@@ -353,7 +325,7 @@
             this.txtPadecimiento.CustomButton.UseSelectable = true;
             this.txtPadecimiento.CustomButton.Visible = false;
             this.txtPadecimiento.Lines = new string[0];
-            this.txtPadecimiento.Location = new System.Drawing.Point(198, 475);
+            this.txtPadecimiento.Location = new System.Drawing.Point(211, 500);
             this.txtPadecimiento.MaxLength = 32767;
             this.txtPadecimiento.Name = "txtPadecimiento";
             this.txtPadecimiento.PasswordChar = '\0';
@@ -376,7 +348,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Location = new System.Drawing.Point(2, 518);
+            this.panel2.Location = new System.Drawing.Point(2, 552);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1195, 57);
             this.panel2.TabIndex = 34;
@@ -397,9 +369,9 @@
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(120)))));
             this.label15.Location = new System.Drawing.Point(44, 13);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(242, 23);
+            this.label15.Size = new System.Drawing.Size(250, 23);
             this.label15.TabIndex = 1;
-            this.label15.Text = "Antecedentes Personales";
+            this.label15.Text = "Personales no Patológicos";
             // 
             // btnGuardarAntecedentes
             // 
@@ -422,7 +394,7 @@
             this.btnGuardarAntecedentes.ImageTint = System.Drawing.Color.White;
             this.btnGuardarAntecedentes.IsToggleButton = false;
             this.btnGuardarAntecedentes.IsToggled = false;
-            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(967, 708);
+            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(967, 667);
             this.btnGuardarAntecedentes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGuardarAntecedentes.Name = "btnGuardarAntecedentes";
             this.btnGuardarAntecedentes.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
@@ -449,7 +421,7 @@
             "A veces",
             "Nunca",
             "Ex-Fumador"});
-            this.cbTabaquismo.Location = new System.Drawing.Point(504, 610);
+            this.cbTabaquismo.Location = new System.Drawing.Point(446, 678);
             this.cbTabaquismo.Name = "cbTabaquismo";
             this.cbTabaquismo.Size = new System.Drawing.Size(146, 21);
             this.cbTabaquismo.TabIndex = 36;
@@ -463,7 +435,7 @@
             "A veces",
             "Nunca",
             "Ex-Alcoholico"});
-            this.cbAlcohol.Location = new System.Drawing.Point(707, 610);
+            this.cbAlcohol.Location = new System.Drawing.Point(621, 678);
             this.cbAlcohol.Name = "cbAlcohol";
             this.cbAlcohol.Size = new System.Drawing.Size(146, 21);
             this.cbAlcohol.TabIndex = 37;
@@ -476,7 +448,7 @@
             "Mala",
             "Regular",
             "Buena"});
-            this.cbVivienda.Location = new System.Drawing.Point(908, 610);
+            this.cbVivienda.Location = new System.Drawing.Point(790, 678);
             this.cbVivienda.Name = "cbVivienda";
             this.cbVivienda.Size = new System.Drawing.Size(146, 21);
             this.cbVivienda.TabIndex = 38;
@@ -527,7 +499,7 @@
             this.groupBox1.Controls.Add(this.toggleLuz);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox1.Location = new System.Drawing.Point(50, 589);
+            this.groupBox1.Location = new System.Drawing.Point(68, 626);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(168, 120);
             this.groupBox1.TabIndex = 42;
@@ -571,7 +543,7 @@
             this.groupBox2.Controls.Add(this.toggleGatos);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox2.Location = new System.Drawing.Point(262, 589);
+            this.groupBox2.Location = new System.Drawing.Point(258, 626);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(160, 120);
             this.groupBox2.TabIndex = 45;
@@ -646,7 +618,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label22.Location = new System.Drawing.Point(501, 589);
+            this.label22.Location = new System.Drawing.Point(443, 654);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 17);
             this.label22.TabIndex = 46;
@@ -657,7 +629,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label23.Location = new System.Drawing.Point(704, 589);
+            this.label23.Location = new System.Drawing.Point(618, 652);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(54, 17);
             this.label23.TabIndex = 47;
@@ -668,16 +640,80 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label24.Location = new System.Drawing.Point(905, 590);
+            this.label24.Location = new System.Drawing.Point(787, 652);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(62, 17);
             this.label24.TabIndex = 48;
             this.label24.Text = "Vivienda";
             // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Location = new System.Drawing.Point(2, 1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1195, 57);
+            this.panel5.TabIndex = 49;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel6.Controls.Add(this.label25);
+            this.panel6.Location = new System.Drawing.Point(0, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1195, 51);
+            this.panel6.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(120)))));
+            this.label25.Location = new System.Drawing.Point(44, 13);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(206, 23);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Padecimiento Actual";
+            // 
+            // txtPadecimientoActual
+            // 
+            // 
+            // 
+            // 
+            this.txtPadecimientoActual.CustomButton.Image = null;
+            this.txtPadecimientoActual.CustomButton.Location = new System.Drawing.Point(609, 1);
+            this.txtPadecimientoActual.CustomButton.Name = "";
+            this.txtPadecimientoActual.CustomButton.Size = new System.Drawing.Size(137, 137);
+            this.txtPadecimientoActual.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPadecimientoActual.CustomButton.TabIndex = 1;
+            this.txtPadecimientoActual.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPadecimientoActual.CustomButton.UseSelectable = true;
+            this.txtPadecimientoActual.CustomButton.Visible = false;
+            this.txtPadecimientoActual.Lines = new string[0];
+            this.txtPadecimientoActual.Location = new System.Drawing.Point(60, 88);
+            this.txtPadecimientoActual.MaxLength = 32767;
+            this.txtPadecimientoActual.Multiline = true;
+            this.txtPadecimientoActual.Name = "txtPadecimientoActual";
+            this.txtPadecimientoActual.PasswordChar = '\0';
+            this.txtPadecimientoActual.PromptText = "Ingrese padecimiento actual...";
+            this.txtPadecimientoActual.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPadecimientoActual.SelectedText = "";
+            this.txtPadecimientoActual.SelectionLength = 0;
+            this.txtPadecimientoActual.SelectionStart = 0;
+            this.txtPadecimientoActual.ShortcutsEnabled = true;
+            this.txtPadecimientoActual.Size = new System.Drawing.Size(747, 139);
+            this.txtPadecimientoActual.TabIndex = 50;
+            this.txtPadecimientoActual.UseSelectable = true;
+            this.txtPadecimientoActual.WaterMark = "Ingrese padecimiento actual...";
+            this.txtPadecimientoActual.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPadecimientoActual.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // toggleOtroPadecimiento
             // 
             this.toggleOtroPadecimiento.AutoSize = true;
-            this.toggleOtroPadecimiento.Location = new System.Drawing.Point(56, 475);
+            this.toggleOtroPadecimiento.Location = new System.Drawing.Point(68, 500);
             this.toggleOtroPadecimiento.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleOtroPadecimiento.Name = "toggleOtroPadecimiento";
             this.toggleOtroPadecimiento.OffBackColor = System.Drawing.Color.Gray;
@@ -691,7 +727,7 @@
             // toggleOsteoporosis
             // 
             this.toggleOsteoporosis.AutoSize = true;
-            this.toggleOsteoporosis.Location = new System.Drawing.Point(818, 388);
+            this.toggleOsteoporosis.Location = new System.Drawing.Point(836, 438);
             this.toggleOsteoporosis.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleOsteoporosis.Name = "toggleOsteoporosis";
             this.toggleOsteoporosis.OffBackColor = System.Drawing.Color.Gray;
@@ -705,7 +741,7 @@
             // toggleArtritis
             // 
             this.toggleArtritis.AutoSize = true;
-            this.toggleArtritis.Location = new System.Drawing.Point(665, 388);
+            this.toggleArtritis.Location = new System.Drawing.Point(686, 438);
             this.toggleArtritis.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleArtritis.Name = "toggleArtritis";
             this.toggleArtritis.OffBackColor = System.Drawing.Color.Gray;
@@ -719,7 +755,7 @@
             // toggleVaricela
             // 
             this.toggleVaricela.AutoSize = true;
-            this.toggleVaricela.Location = new System.Drawing.Point(525, 387);
+            this.toggleVaricela.Location = new System.Drawing.Point(536, 438);
             this.toggleVaricela.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleVaricela.Name = "toggleVaricela";
             this.toggleVaricela.OffBackColor = System.Drawing.Color.Gray;
@@ -733,7 +769,7 @@
             // toggleTosferina
             // 
             this.toggleTosferina.AutoSize = true;
-            this.toggleTosferina.Location = new System.Drawing.Point(374, 388);
+            this.toggleTosferina.Location = new System.Drawing.Point(386, 438);
             this.toggleTosferina.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleTosferina.Name = "toggleTosferina";
             this.toggleTosferina.OffBackColor = System.Drawing.Color.Gray;
@@ -747,7 +783,7 @@
             // toggleRubeola
             // 
             this.toggleRubeola.AutoSize = true;
-            this.toggleRubeola.Location = new System.Drawing.Point(213, 388);
+            this.toggleRubeola.Location = new System.Drawing.Point(227, 438);
             this.toggleRubeola.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleRubeola.Name = "toggleRubeola";
             this.toggleRubeola.OffBackColor = System.Drawing.Color.Gray;
@@ -761,7 +797,7 @@
             // toggleSarampion
             // 
             this.toggleSarampion.AutoSize = true;
-            this.toggleSarampion.Location = new System.Drawing.Point(56, 388);
+            this.toggleSarampion.Location = new System.Drawing.Point(68, 438);
             this.toggleSarampion.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleSarampion.Name = "toggleSarampion";
             this.toggleSarampion.OffBackColor = System.Drawing.Color.Gray;
@@ -775,7 +811,7 @@
             // toggleDislipidemia
             // 
             this.toggleDislipidemia.AutoSize = true;
-            this.toggleDislipidemia.Location = new System.Drawing.Point(818, 297);
+            this.toggleDislipidemia.Location = new System.Drawing.Point(836, 365);
             this.toggleDislipidemia.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleDislipidemia.Name = "toggleDislipidemia";
             this.toggleDislipidemia.OffBackColor = System.Drawing.Color.Gray;
@@ -789,7 +825,7 @@
             // toggleTiroides
             // 
             this.toggleTiroides.AutoSize = true;
-            this.toggleTiroides.Location = new System.Drawing.Point(665, 297);
+            this.toggleTiroides.Location = new System.Drawing.Point(686, 365);
             this.toggleTiroides.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleTiroides.Name = "toggleTiroides";
             this.toggleTiroides.OffBackColor = System.Drawing.Color.Gray;
@@ -803,7 +839,7 @@
             // toggleObesidad
             // 
             this.toggleObesidad.AutoSize = true;
-            this.toggleObesidad.Location = new System.Drawing.Point(521, 297);
+            this.toggleObesidad.Location = new System.Drawing.Point(538, 365);
             this.toggleObesidad.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleObesidad.Name = "toggleObesidad";
             this.toggleObesidad.OffBackColor = System.Drawing.Color.Gray;
@@ -817,7 +853,7 @@
             // toggleDiabetes
             // 
             this.toggleDiabetes.AutoSize = true;
-            this.toggleDiabetes.Location = new System.Drawing.Point(371, 297);
+            this.toggleDiabetes.Location = new System.Drawing.Point(386, 365);
             this.toggleDiabetes.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleDiabetes.Name = "toggleDiabetes";
             this.toggleDiabetes.OffBackColor = System.Drawing.Color.Gray;
@@ -831,7 +867,7 @@
             // toggleTuberculosis
             // 
             this.toggleTuberculosis.AutoSize = true;
-            this.toggleTuberculosis.Location = new System.Drawing.Point(213, 297);
+            this.toggleTuberculosis.Location = new System.Drawing.Point(227, 365);
             this.toggleTuberculosis.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleTuberculosis.Name = "toggleTuberculosis";
             this.toggleTuberculosis.OffBackColor = System.Drawing.Color.Gray;
@@ -845,7 +881,7 @@
             // toggleHipertension
             // 
             this.toggleHipertension.AutoSize = true;
-            this.toggleHipertension.Location = new System.Drawing.Point(62, 297);
+            this.toggleHipertension.Location = new System.Drawing.Point(68, 365);
             this.toggleHipertension.MinimumSize = new System.Drawing.Size(75, 27);
             this.toggleHipertension.Name = "toggleHipertension";
             this.toggleHipertension.OffBackColor = System.Drawing.Color.Gray;
@@ -862,11 +898,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1189, 788);
+            this.Controls.Add(this.txtPadecimientoActual);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbVivienda);
             this.Controls.Add(this.cbAlcohol);
             this.Controls.Add(this.cbTabaquismo);
@@ -899,8 +937,7 @@
             this.Controls.Add(this.toggleDiabetes);
             this.Controls.Add(this.toggleTuberculosis);
             this.Controls.Add(this.toggleHipertension);
-            this.Controls.Add(this.metroTextBox1);
-            this.Controls.Add(this.sataButton1);
+            this.Controls.Add(this.btnGuardarPadecimiento);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmHistoria";
@@ -916,6 +953,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -923,8 +963,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private FrameworkTest.SATAButton sataButton1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private FrameworkTest.SATAButton btnGuardarPadecimiento;
         private Controls.ToggleButton toggleHipertension;
         private Controls.ToggleButton toggleTuberculosis;
         private Controls.ToggleButton toggleDiabetes;
@@ -978,5 +1017,9 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label25;
+        private MetroFramework.Controls.MetroTextBox txtPadecimientoActual;
     }
 }

@@ -3,15 +3,22 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace sistema
 {
     public partial class frmPacientes : Form
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+        // Constantes para tipos de filtro y valores especiales
+        private const string TipoConocido = "Conocido";
+        private const string TipoDesconocido = "Desconocido";
+        private const string TipoConHuella = "Con Huella";
+        private const string CedulaDesconocido = "SIN-CEDULA";
+        private const string PrefijoCedulaDesc = "desc";
 
         public frmPacientes()
         {
@@ -20,45 +27,59 @@ namespace sistema
 
         private void frmPacientes_Load(object sender, EventArgs e)
         {
-            // Asegura autogeneración por si el diseñador no quedó en True
+            ConfigurarGrid();
+            AplicarTemaGrid();
+            InicializarFiltros();
+            CargarPacientes(); // Carga inicial
+        }
+
+        private void ConfigurarGrid()
+        {
             dgvPacientes.AutoGenerateColumns = true;
             dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPacientes.ReadOnly = true;
             dgvPacientes.RowHeadersVisible = false;
             dgvPacientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPacientes.CellDoubleClick += dgvPacientes_CellDoubleClick;
+        }
 
-            AplicarTemaGrid();
+        private void InicializarFiltros()
+        {
+            cbTipoPaciente.Items.Add(TipoConHuella);
+            cbTipoPaciente.SelectedItem = TipoConocido;
 
-            // Establecer "Conocido" como valor por defecto
-            cbTipoPaciente.SelectedItem = "Conocido";
-
-            // Agregar opción para filtrar por huella
-            cbTipoPaciente.Items.Add("Con Huella");
-
-            CargarPacientes(); // carga inicial
-
-            // Conectar eventos de filtrado
             txtBuscar.TextChanged += (s, ev) => AplicarFiltros();
             cbTipoPaciente.SelectedIndexChanged += (s, ev) => AplicarFiltros();
         }
 
-        // Método para aplicar ambos filtros
         private void AplicarFiltros()
         {
-            string textoBusqueda = txtBuscar.Text.Trim();
+            string textoBusqueda = txtBuscar.Text;
             string tipoPaciente = cbTipoPaciente.SelectedItem?.ToString();
-
             CargarPacientes(textoBusqueda, tipoPaciente);
         }
 
-        // Carga con filtros opcionales (búsqueda y tipo de paciente)
         public void CargarPacientes(string search = null, string tipoPaciente = null)
         {
-            try
+            var (query, parameters) = ConstruirConsultaPacientes(search, tipoPaciente);
+            EjecutarConsulta(query, parameters);
+        }
+
+        private void FiltrarPorPacienteId(int pacienteId)
+        {
+            var (query, parameters) = ConstruirConsultaPacientes(pacienteId: pacienteId);
+            var dt = EjecutarConsulta(query, parameters);
+
+            if (dt != null && dt.Rows.Count > 0)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string query = @"
+                dgvPacientes.ClearSelection();
+                dgvPacientes.Rows[0].Selected = true;
+            }
+        }
+
+        private (string, SqlParameter[]) ConstruirConsultaPacientes(string search = null, string tipoPaciente = null, int? pacienteId = null)
+        {
+            const string baseQuery = @"
 SELECT
     PacienteID AS ID,
     Cedula,
@@ -74,51 +95,68 @@ SELECT
 FROM Paciente
 WHERE 1=1";
 
-                    // Filtro para tipo de paciente
-                    if (tipoPaciente == "Conocido")
-                    {
-                        query += " AND Cedula <> 'SIN-CEDULA' AND Cedula NOT LIKE 'desc%'";
-                    }
-                    else if (tipoPaciente == "Desconocido")
-                    {
-                        query += " AND (Cedula = 'SIN-CEDULA' OR Cedula LIKE 'desc%')";
-                    }
-                    else if (tipoPaciente == "Con Huella")
-                    {
-                        query += " AND Huella IS NOT NULL";
-                    }
-                    else // Por defecto (incluye cuando se llama sin parámetros)
-                    {
-                        query += " AND Cedula <> 'SIN-CEDULA' AND Cedula NOT LIKE 'desc%'";
-                    }
+            var conditions = new System.Collections.Generic.List<string>();
+            var parameters = new System.Collections.Generic.List<SqlParameter>();
 
-                    // Filtro de búsqueda por texto
-                    query += @" AND (
-    @q IS NULL
-    OR Nombre  LIKE @q
-    OR Apellido LIKE @q
-    OR Cedula   LIKE @q
-    OR Telefono LIKE @q
-  )
-ORDER BY Nombre, Apellido;";
+            if (pacienteId.HasValue)
+            {
+                conditions.Add("PacienteID = @id");
+                parameters.Add(new SqlParameter("@id", pacienteId.Value));
+            }
+            else
+            {
+                string effectiveTipo = tipoPaciente ?? TipoConocido;
+                switch (effectiveTipo)
+                {
+                    case TipoConocido:
+                        conditions.Add($"Cedula <> '{CedulaDesconocido}' AND Cedula NOT LIKE '{PrefijoCedulaDesc}%'");
+                        break;
+                    case TipoDesconocido:
+                        conditions.Add($"(Cedula = '{CedulaDesconocido}' OR Cedula LIKE '{PrefijoCedulaDesc}%')");
+                        break;
+                    case TipoConHuella:
+                        conditions.Add("Huella IS NOT NULL");
+                        break;
+                }
 
-                    var da = new SqlDataAdapter(query, conn);
-                    da.SelectCommand.Parameters.AddWithValue("@q",
-                        string.IsNullOrWhiteSpace(search) ? (object)DBNull.Value : $"%{search.Trim()}%");
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    conditions.Add("(Nombre LIKE @q OR Apellido LIKE @q OR Cedula LIKE @q OR Telefono LIKE @q)");
+                    parameters.Add(new SqlParameter("@q", $"%{search.Trim()}%"));
+                }
+            }
 
-                    var dt = new DataTable();
-                    da.Fill(dt);
+            string finalQuery = $"{baseQuery} AND {string.Join(" AND ", conditions)} ORDER BY Nombre, Apellido;";
+            return (finalQuery, parameters.ToArray());
+        }
 
-                    dgvPacientes.DataSource = dt; // binding directo
+        private DataTable EjecutarConsulta(string query, SqlParameter[] parameters)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                {
+                    using (var da = new SqlDataAdapter(query, conn))
+                    {
+                        if (parameters != null)
+                        {
+                            da.SelectCommand.Parameters.AddRange(parameters);
+                        }
+
+                        var dt = new DataTable();
+                        da.Fill(dt);
+                        dgvPacientes.DataSource = dt;
+                        return dt;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar pacientes: " + ex.Message);
+                MessageBox.Show("Error al consultar pacientes: " + ex.Message);
+                return null;
             }
         }
 
-        // Tema oscuro consistente con tus formularios (verde de acento)
         private void AplicarTemaGrid()
         {
             var fondo = Color.FromArgb(45, 48, 53);
@@ -178,7 +216,6 @@ ORDER BY Nombre, Apellido;";
             }
         }
 
-        // Nuevo método para el botón de huella
         private void btnHuella_Click(object sender, EventArgs e)
         {
             try
@@ -209,78 +246,10 @@ ORDER BY Nombre, Apellido;";
             }
         }
 
-        // Método para obtener el PacienteID por nombre de usuario
-        private int ObtenerPacienteIdPorUsuario(string usuarioNombre)
-        {
-            try
-            {
-                using (var conn = new SqlConnection(connectionString))
-                using (var cmd = new SqlCommand("SELECT PacienteID FROM Paciente WHERE Nombre = @nombre", conn))
-                {
-                    cmd.Parameters.AddWithValue("@nombre", usuarioNombre);
-                    conn.Open();
-
-                    var result = cmd.ExecuteScalar();
-                    return result != null ? Convert.ToInt32(result) : -1;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al buscar paciente: {ex.Message}");
-                return -1;
-            }
-        }
-
-        // Método para filtrar el DataGridView por PacienteID
-        private void FiltrarPorPacienteId(int pacienteId)
-        {
-            try
-            {
-                using (var conn = new SqlConnection(connectionString))
-                {
-                    string query = @"
-SELECT
-    PacienteID AS ID,
-    Cedula,
-    Nombre,
-    Apellido,
-    DATEDIFF(YEAR, FechaNacimiento, GETDATE()) -
-        CASE WHEN MONTH(FechaNacimiento) > MONTH(GETDATE())
-               OR (MONTH(FechaNacimiento) = MONTH(GETDATE()) AND DAY(FechaNacimiento) > DAY(GETDATE()))
-             THEN 1 ELSE 0 END AS EdadActual,
-    ISNULL(NULLIF(LTRIM(RTRIM(Genero)), ''), 'N/D') AS Genero,
-    Telefono,
-    CASE WHEN Huella IS NOT NULL THEN 'Sí' ELSE 'No' END AS TieneHuella
-FROM Paciente
-WHERE PacienteID = @id";
-
-                    var da = new SqlDataAdapter(query, conn);
-                    da.SelectCommand.Parameters.AddWithValue("@id", pacienteId);
-
-                    var dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgvPacientes.DataSource = dt;
-
-                    // Si se encontró el paciente, seleccionar la fila
-                    if (dt.Rows.Count > 0)
-                    {
-                        dgvPacientes.ClearSelection();
-                        dgvPacientes.Rows[0].Selected = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al filtrar paciente: {ex.Message}");
-            }
-        }
-
-        // Método para limpiar filtros y mostrar todos los pacientes
         public void MostrarTodosLosPacientes()
         {
-            txtBuscar.Text = "";
-            cbTipoPaciente.SelectedItem = "Conocido";
+            txtBuscar.Clear();
+            cbTipoPaciente.SelectedItem = TipoConocido;
             CargarPacientes();
         }
 
@@ -291,46 +260,40 @@ WHERE PacienteID = @id";
             try
             {
                 var fila = dgvPacientes.Rows[e.RowIndex];
-                if (fila.Cells["ID"].Value == null) { MessageBox.Show("Fila sin ID válido."); return; }
-
-                if (!int.TryParse(fila.Cells["ID"].Value.ToString(), out var pacienteId) || pacienteId <= 0)
+                if (!int.TryParse(fila.Cells["ID"].Value?.ToString(), out int pacienteId) || pacienteId <= 0)
                 {
-                    MessageBox.Show("ID de paciente inválido.");
+                    MessageBox.Show("La fila seleccionada no contiene un ID de paciente válido.");
                     return;
                 }
 
                 string cedula = fila.Cells["Cedula"].Value?.ToString() ?? "";
-                string nombre = fila.Cells["Nombre"].Value?.ToString() ?? "";
-                string apellido = fila.Cells["Apellido"].Value?.ToString() ?? "";
-
-                // Verificar si es paciente desconocido
                 if (EsPacienteDesconocido(cedula))
                 {
                     MessageBox.Show("Debe completar los datos del paciente antes de abrir un expediente.",
                         "Paciente Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    // Abrir formulario de edición del paciente
                     using (var context = new Data.DBContext())
                     {
                         var paciente = context.Paciente.FirstOrDefault(p => p.PacienteID == pacienteId);
                         if (paciente != null)
                         {
-                            var formPaciente = new frmDetallePaciente(paciente, this);
-                            formPaciente.Show();
+                            new frmDetallePaciente(paciente, this).Show();
                         }
                     }
                     return;
                 }
 
-                // Si es paciente conocido, abrir expediente normal
+                string nombre = fila.Cells["Nombre"].Value?.ToString() ?? "";
+                string apellido = fila.Cells["Apellido"].Value?.ToString() ?? "";
+
                 var expediente = new sistema.Expediente.frmExpediente
                 {
                     PacienteID = pacienteId,
-                    NombreCompleto = (nombre + " " + apellido).Trim(),
-                    Cedula = cedula
+                    NombreCompleto = $"{nombre} {apellido}".Trim(),
+                    Cedula = cedula,
+                    StartPosition = FormStartPosition.CenterScreen
                 };
 
-                expediente.StartPosition = FormStartPosition.CenterScreen;
                 expediente.Show();
                 expediente.BringToFront();
             }
@@ -340,11 +303,10 @@ WHERE PacienteID = @id";
             }
         }
 
-        // Método para verificar si un paciente es desconocido
         private bool EsPacienteDesconocido(string cedula)
         {
-            return cedula == "SIN-CEDULA" ||
-                   (cedula?.StartsWith("desc", StringComparison.OrdinalIgnoreCase) == true);
+            return cedula == CedulaDesconocido ||
+                   (cedula?.StartsWith(PrefijoCedulaDesc, StringComparison.OrdinalIgnoreCase) == true);
         }
     }
 }

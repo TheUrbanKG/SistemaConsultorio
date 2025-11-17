@@ -13,18 +13,24 @@ namespace sistema.Expediente
 {
     public partial class frmExpediente : Form
     {
+        // Cadena de conexión a la base de datos, leída desde el archivo de configuración App.config.
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+        
+        // Propiedad pública para recibir el ID del paciente desde el formulario que lo abre (ej. frmPacientes).
         public int PacienteID { get; set; }
 
-        // Navegación simple: el botón activo toma el color Hover y los demás vuelven a su color Normal
+        // Arreglo para almacenar los botones de navegación del expediente (Registro, Historia, etc.).
+        // Nos permite gestionarlos en conjunto para el resaltado visual.
         private Control[] _navButtons;
 
         public frmExpediente()
         {
             InitializeComponent();
+            // Prepara los botones de navegación (colores, etc.) en cuanto se crea el formulario.
             InicializarNavegacion();
         }
 
+        // Propiedades para establecer fácilmente el nombre y la cédula en las etiquetas de la UI.
         public string NombreCompleto
         {
             get => lbNombre.Text;
@@ -37,18 +43,22 @@ namespace sistema.Expediente
             set => lbCedulayGenero.Text = value;
         }
 
+        // Este método se ejecuta cuando el formulario se carga por primera vez.
         private void frmExpediente_Load(object sender, EventArgs e)
         {
+            // Si se ha proporcionado un ID de paciente válido, carga su información de cabecera.
             if (PacienteID > 0)
             {
                 CargarCedulaYGenero(PacienteID);
             }
 
+            // Por defecto, abre la sección 'Registro' al entrar al expediente.
             var registro = new frmRegistro { PacienteID = this.PacienteID };
-            abrirFormHijo(registro, btnRegistro); // establece botón activo
-            this.Refresh();
+            abrirFormHijo(registro, btnRegistro); // Llama al método para abrir el form y resaltar el botón.
+            this.Refresh(); // Refresca la UI.
         }
 
+        // Carga la cédula y el género del paciente desde la base de datos para mostrarlos en la cabecera.
         private void CargarCedulaYGenero(int pacienteId)
         {
             string cedula = null;
@@ -63,15 +73,19 @@ namespace sistema.Expediente
                     conn.Open();
                     using (var r = cmd.ExecuteReader())
                     {
-                        if (r.Read())
+                        if (r.Read()) // Si se encuentra el paciente...
                         {
+                            // ...lee sus datos.
                             cedula = r["Cedula"]?.ToString();
                             genero = r["Genero"]?.ToString();
                         }
                     }
                 }
 
+                // Limpia y formatea el valor del género para mostrarlo de forma consistente.
                 genero = NormalizarGenero(genero);
+                
+                // Construye el texto final para la etiqueta.
                 if (string.IsNullOrWhiteSpace(cedula) && genero == "N/D")
                     lbCedulayGenero.Text = "Datos de identificación no disponibles.";
                 else
@@ -79,60 +93,61 @@ namespace sistema.Expediente
             }
             catch
             {
+                // Si algo falla, muestra un mensaje de error genérico en la etiqueta.
                 lbCedulayGenero.Text = "Error al cargar identificación.";
             }
         }
 
+        // Método de utilidad para estandarizar el valor del género.
         private string NormalizarGenero(string genero)
         {
-            if (string.IsNullOrWhiteSpace(genero)) return "N/D";
-            switch (genero.Trim().ToUpperInvariant())
+            if (string.IsNullOrWhiteSpace(genero)) return "N/D"; // Si es nulo o vacío, devuelve "No disponible".
+            switch (genero.Trim().ToUpperInvariant()) // Convierte a mayúsculas y quita espacios.
             {
                 case "M":
                 case "MASCULINO": return "Masculino";
                 case "F":
                 case "FEMENINO": return "Femenino";
-                default: return "N/D";
+                default: return "N/D"; // Para cualquier otro valor.
             }
         }
 
-        // Configura botones: guardamos colores "normales" en Tag y usaremos Hover como activo
+        // --- LÓGICA DE NAVEGACIÓN Y RESALTADO DE BOTONES ---
+
+        // Configura los botones de navegación la primera vez que se carga el formulario.
         private void InicializarNavegacion()
         {
+            // Agrupa todos los botones de navegación en un arreglo para manejarlos fácilmente.
             _navButtons = new Control[] { btnRegistro, btnHistoria, btnFisico, btnCuadros, btnAlergias, btnRecetas };
 
             foreach (var c in _navButtons)
             {
-                if (c == null) continue;
+                if (c == null) continue; // Ignora si algún botón no existe.
 
-                // SATAButton
+                // Manejo especial para botones del tipo SATAButton.
                 var sb = c as FrameworkTest.SATAButton;
                 if (sb != null)
                 {
-                    // Guarda NormalBackground como "original"
-                    if (sb.Tag == null) sb.Tag = sb.NormalBackground;
-
-                    // Si no tiene Hover definido, creamos uno a partir del normal
-                    if (sb.HoverBackground.IsEmpty)
+                    if (sb.Tag == null) sb.Tag = sb.NormalBackground; // Guarda el color original.
+                    if (sb.HoverBackground.IsEmpty) // Si no tiene color de hover, lo calcula.
                         sb.HoverBackground = ControlPaint.Light((Color)sb.Tag);
-
-                    continue;
+                    continue; // Pasa al siguiente control.
                 }
 
-                // Button estándar
+                // Manejo para botones estándar de Windows Forms.
                 var btn = c as Button;
                 if (btn != null)
                 {
                     btn.FlatStyle = FlatStyle.Flat;
                     btn.UseVisualStyleBackColor = false;
-                    if (btn.Tag == null) btn.Tag = btn.BackColor; // original
-                    if (btn.FlatAppearance.MouseOverBackColor.IsEmpty)
+                    if (btn.Tag == null) btn.Tag = btn.BackColor; // Guarda el color original.
+                    if (btn.FlatAppearance.MouseOverBackColor.IsEmpty) // Si no tiene color de hover, lo calcula.
                         btn.FlatAppearance.MouseOverBackColor = ControlPaint.Light((Color)btn.Tag);
                 }
             }
         }
 
-        // Activa un botón (colorea con Hover) y restaura el resto a su color "normal" guardado
+        // Cambia el estilo del botón activo y restaura el de los demás.
         private void SetActiveNavButton(Control active)
         {
             if (_navButtons == null) return;
@@ -141,18 +156,18 @@ namespace sistema.Expediente
             {
                 if (c == null) continue;
 
+                // Lógica para SATAButton.
                 var sb = c as FrameworkTest.SATAButton;
                 if (sb != null)
                 {
                     var normal = (Color)(sb.Tag ?? sb.NormalBackground);
+                    // Si es el botón activo, le pone el color de hover.
                     if (c == active)
                     {
-                        // Fuerza el color activo asignando el Hover al Normal para que se vea inmediatamente
                         sb.NormalBackground = sb.HoverBackground.IsEmpty ? ControlPaint.Light(normal) : sb.HoverBackground;
                     }
-                    else
+                    else // Si no, le devuelve su color original.
                     {
-                        // Restaura el color original
                         sb.NormalBackground = normal;
                     }
                     sb.Invalidate();
@@ -160,6 +175,7 @@ namespace sistema.Expediente
                     continue;
                 }
 
+                // Lógica para Button estándar.
                 var btn = c as Button;
                 if (btn != null)
                 {
@@ -184,31 +200,36 @@ namespace sistema.Expediente
             }
         }
 
-        // Sobrecarga que además resalta el botón que abrió el formulario
+        // --- MANEJADORES DE EVENTOS PARA ABRIR SECCIONES ---
+
+        // Método principal para abrir un formulario hijo y resaltar el botón correspondiente.
         private void abrirFormHijo(Form formHijo, Control originButton)
         {
-            abrirFormHijo(formHijo);
-            SetActiveNavButton(originButton);
+            abrirFormHijo(formHijo); // Llama al método base para cargar el formulario.
+            SetActiveNavButton(originButton); // Resalta el botón que lo invocó.
         }
 
+        // Carga un formulario dentro del 'panelContenedor'.
         private void abrirFormHijo(Form formHijo)
         {
+            // Si ya hay un control en el panel, lo elimina.
             if (panelContenedor.Controls.Count > 0)
                 panelContenedor.Controls.RemoveAt(0);
 
-            formHijo.TopLevel = false;
-            formHijo.Dock = DockStyle.None;
-            formHijo.Width = panelContenedor.ClientSize.Width;
-            panelContenedor.Controls.Add(formHijo);
-            panelContenedor.Tag = formHijo;
-            formHijo.Show();
+            formHijo.TopLevel = false; // No es una ventana independiente.
+            formHijo.Dock = DockStyle.None; // Se ajustará manualmente.
+            formHijo.Width = panelContenedor.ClientSize.Width; // Ajusta el ancho al del panel.
+            panelContenedor.Controls.Add(formHijo); // Lo añade al panel.
+            formHijo.Show(); // Lo muestra.
 
+            // Configura el scroll del panel.
             panelContenedor.AutoScroll = true;
             panelContenedor.HorizontalScroll.Enabled = false;
             panelContenedor.HorizontalScroll.Visible = false;
-            panelContenedor.HorizontalScroll.Maximum = 0;
-            panelContenedor.PerformLayout();
         }
+
+        // Cada uno de estos métodos crea una instancia del formulario de la sección
+        // y lo abre, pasando el ID del paciente.
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
@@ -250,19 +271,21 @@ namespace sistema.Expediente
             abrirFormHijo(fisica, btnFisico);
         }
 
+        // --- BOTONES DE ACCIÓN DE LA VENTANA ---
+
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            this.ExportarExpedienteAPdf();
+            this.ExportarExpedienteAPdf(); 
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); // Cierra el formulario del expediente.
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized; // Minimiza la ventana.
         }
     }
 }

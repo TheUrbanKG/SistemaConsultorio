@@ -278,7 +278,7 @@
             "Disminución leve",
             "Disminución moderada",
             "Disminución severa",
-            "Sordera",
+            "Sin Olfato",
             "No evaluado"});
             this.cbOlfato.Location = new System.Drawing.Point(450, 493);
             this.cbOlfato.Name = "cbOlfato";

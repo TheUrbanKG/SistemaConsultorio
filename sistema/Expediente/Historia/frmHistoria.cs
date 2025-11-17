@@ -176,7 +176,7 @@ else
                 }
             }
         }
-        // GUARDAR ANTECEDENTES PERSONALES
+        // CARGAR ANTECEDENTES PERSONALES
         private void CargarAntecedentePersonal(int pacienteId)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -211,6 +211,37 @@ else
             }
         }
 
+        // CARGAR DETALLES DEL PACIENTE
+        private void CargarDetallesPaciente()
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                {
+                    // Consulta para obtener únicamente el contenido de la columna 'Detalles'.
+                    const string sql = "SELECT Detalles FROM Paciente WHERE PacienteID = @PacienteID;";
+                    using (var cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
+                        conn.Open();
+
+                        // ExecuteScalar es muy eficiente para obtener un solo valor.
+                        object resultado = cmd.ExecuteScalar();
+
+                        // Si el resultado no es nulo ni DBNull, lo asignamos al TextBox.
+                        if (resultado != null && resultado != DBNull.Value)
+                        {
+                            txtPadecimientoActual.Text = resultado.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los detalles del paciente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void frmHistoria_Load(object sender, EventArgs e)
         {
             if (this.PacienteID <= 0)
@@ -222,12 +253,62 @@ else
 
             CargarAntecedentePatologico(PacienteID);
             CargarAntecedentePersonal(PacienteID);
+            CargarDetallesPaciente();
         }
 
         private void btnGuardarAntecedentes_Click(object sender, EventArgs e)
         {
             GuardarAntecedentePatologico(PacienteID);
             GuardarAntecedentePersonal(PacienteID);
+        }
+
+        private void btnGuardarPadecimiento_Click(object sender, EventArgs e)
+        {
+            // Validamos que tengamos un paciente seleccionado.
+            if (this.PacienteID <= 0)
+            {
+                MessageBox.Show("No se ha seleccionado un paciente válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obtenemos el texto del TextBox.
+            string detalles = txtPadecimientoActual.Text.Trim();
+
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                {
+                    // Consulta para ACTUALIZAR (UPDATE) el registro del paciente existente.
+                    const string sql = "UPDATE Paciente SET Detalles = @Detalles WHERE PacienteID = @PacienteID;";
+                    using (var cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        // Establece el contexto de sesión para la auditoría, si la tienes configurada.
+                        sistema.Infrastructure.Sql.SqlSessionContext.SetAppUser(conn, sistema.Infrastructure.Security.Sesion.UsuarioActual);
+
+                        // Usamos parámetros para seguridad y para manejar correctamente los nulos.
+                        // Si el texto está vacío, guardamos un DBNull.Value en la base de datos.
+                        cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrWhiteSpace(detalles) ? (object)DBNull.Value : detalles);
+                        cmd.Parameters.AddWithValue("@PacienteID", this.PacienteID);
+
+                        // Ejecutamos el comando de actualización.
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+
+                        if (filasAfectadas > 0)
+                        {
+                            MessageBox.Show("Los detalles del paciente se han guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró al paciente para actualizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
