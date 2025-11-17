@@ -108,5 +108,61 @@ namespace sistema.Expediente.Registro
                 }
             }
         }
+
+        private void btnNueva_Click(object sender, EventArgs e)
+        {
+            // Abre el formulario para una nueva cita llamado AgendarCita
+            if (this.PacienteID <= 0)
+            {
+                MessageBox.Show("No se ha especificado un paciente válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("SELECT Nombre, FechaNacimiento, Genero, GrupoSanguineo FROM Paciente WHERE PacienteID = @id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", this.PacienteID);
+                    conn.Open();
+                    using (SqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        if (!rd.Read())
+                        {
+                            MessageBox.Show($"Paciente con ID {this.PacienteID} no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        var paciente = new sistema.PacientePreview
+                        {
+                            PacienteID = this.PacienteID,
+                            Nombre = rd.IsDBNull(0) ? "" : rd.GetString(0),
+                            Genero = rd.IsDBNull(2) ? null : rd.GetString(2),
+                            GrupoSanguineo = rd.IsDBNull(3) ? null : rd.GetString(3)
+                        };
+
+                        if (!rd.IsDBNull(1))
+                        {
+                            DateTime fn = rd.GetDateTime(1).Date;
+                            DateTime hoy = DateTime.Today;
+                            int edad = hoy.Year - fn.Year;
+                            if (new DateTime(hoy.Year, fn.Month, fn.Day) > hoy) edad--;
+                            paciente.Edad = (edad >= 0) ? ((edad == 1) ? "1 año" : $"{edad} años") : "";
+                        }
+
+                        var frm = new sistema.AgendarCita();
+                        frm.FechaSeleccionada = DateTime.Today; // puedes cambiar la fecha por defecto
+                        frm.SetPaciente(paciente);
+                        frm.SetFechaCita(frm.FechaSeleccionada);
+                        frm.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir AgendarCita: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
