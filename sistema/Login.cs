@@ -66,10 +66,6 @@ namespace sistema
                         // Compara la contraseña ingresada con el hash almacenado.
                         passwordValida = PasswordHasher.VerifyPBKDF2(password, storedHash);
                     }
-                    else
-                    {
-                        passwordValida = string.Equals(storedHash, password);
-                    }
 
                     if (!passwordValida)
                     {
@@ -78,17 +74,7 @@ namespace sistema
                     }
                 } 
 
-                // 5. MIGRACIÓN AUTOMÁTICA DE CONTRASEÑA 
-                if (!string.IsNullOrEmpty(storedHash) && !storedHash.StartsWith("PBKDF2$", StringComparison.Ordinal))
-                {
-                    var nuevoHash = PasswordHasher.HashPBKDF2(password);
-                    using (var cmdUpdate = new SqlCommand("UPDATE login SET Contraseña=@p WHERE Usuario=@u", conn))
-                    {
-                        cmdUpdate.Parameters.AddWithValue("@p", nuevoHash);
-                        cmdUpdate.Parameters.AddWithValue("@u", usuario);
-                        cmdUpdate.ExecuteNonQuery(); // Ejecuta la actualización.
-                    }
-                }
+
             } 
 
             // 6. INICIO DE SESIÓN EXITOSO

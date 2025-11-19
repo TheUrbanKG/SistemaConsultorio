@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCuentas));
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -44,7 +44,7 @@
             this.btnModificarUsuario = new FrameworkTest.SATAButton();
             this.btnHistorial = new FrameworkTest.SATAButton();
             this.panelTopAccent = new System.Windows.Forms.Panel();
-            this.btnDesabilitar = new FrameworkTest.SATAButton();
+            this.btnBackup = new FrameworkTest.SATAButton();
             this.sataPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -57,11 +57,11 @@
             this.sataPanel1.BackColor = System.Drawing.Color.LightSalmon;
             this.sataPanel1.BackColor2 = System.Drawing.Color.LightSalmon;
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 10;
-            borderRadius1.BottomRight = 10;
-            borderRadius1.TopLeft = 10;
-            borderRadius1.TopRight = 10;
-            this.sataPanel1.BorderRadius = borderRadius1;
+            borderRadius2.BottomLeft = 10;
+            borderRadius2.BottomRight = 10;
+            borderRadius2.TopLeft = 10;
+            borderRadius2.TopRight = 10;
+            this.sataPanel1.BorderRadius = borderRadius2;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.dgvUsuarios);
             this.sataPanel1.Location = new System.Drawing.Point(73, 79);
@@ -83,41 +83,41 @@
             this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Usuario,
             this.Nombre,
             this.Apellido,
             this.Rol,
             this.Status});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSalmon;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSalmon;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvUsuarios.EnableHeadersVisualStyles = false;
             this.dgvUsuarios.Location = new System.Drawing.Point(5, 1);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.RowHeadersWidth = 30;
             this.dgvUsuarios.RowTemplate.Height = 30;
@@ -284,45 +284,45 @@
             this.panelTopAccent.Size = new System.Drawing.Size(1173, 3);
             this.panelTopAccent.TabIndex = 101;
             // 
-            // btnDesabilitar
+            // btnBackup
             // 
-            this.btnDesabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDesabilitar.ButtonText = "Desabilitar/Habilitar Usuario";
-            this.btnDesabilitar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.btnDesabilitar.CheckedForeColor = System.Drawing.Color.White;
-            this.btnDesabilitar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnDesabilitar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnDesabilitar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesabilitar.HoverBackground = System.Drawing.Color.Firebrick;
-            this.btnDesabilitar.HoverForeColor = System.Drawing.Color.White;
-            this.btnDesabilitar.HoverImage = null;
-            this.btnDesabilitar.HoverImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.HoverOutline = System.Drawing.Color.Empty;
-            this.btnDesabilitar.Image = null;
-            this.btnDesabilitar.ImageAutoCenter = true;
-            this.btnDesabilitar.ImageExpand = new System.Drawing.Point(5, 5);
-            this.btnDesabilitar.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnDesabilitar.ImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.IsToggleButton = false;
-            this.btnDesabilitar.IsToggled = false;
-            this.btnDesabilitar.Location = new System.Drawing.Point(886, 266);
-            this.btnDesabilitar.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.btnDesabilitar.Name = "btnDesabilitar";
-            this.btnDesabilitar.NormalBackground = System.Drawing.Color.Crimson;
-            this.btnDesabilitar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDesabilitar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnDesabilitar.OutlineThickness = 2F;
-            this.btnDesabilitar.PressedBackground = System.Drawing.Color.Firebrick;
-            this.btnDesabilitar.PressedForeColor = System.Drawing.Color.White;
-            this.btnDesabilitar.PressedImageTint = System.Drawing.Color.White;
-            this.btnDesabilitar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnDesabilitar.Rounding = new System.Windows.Forms.Padding(20);
-            this.btnDesabilitar.Size = new System.Drawing.Size(240, 47);
-            this.btnDesabilitar.TabIndex = 44;
-            this.btnDesabilitar.TextAutoCenter = true;
-            this.btnDesabilitar.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnDesabilitar.Click += new System.EventHandler(this.btnDesabilitar_Click);
+            this.btnBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackup.ButtonText = "Crear Backup Local";
+            this.btnBackup.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnBackup.CheckedForeColor = System.Drawing.Color.White;
+            this.btnBackup.CheckedImageTint = System.Drawing.Color.White;
+            this.btnBackup.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnBackup.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBackup.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.HoverBackground = System.Drawing.Color.Firebrick;
+            this.btnBackup.HoverForeColor = System.Drawing.Color.White;
+            this.btnBackup.HoverImage = null;
+            this.btnBackup.HoverImageTint = System.Drawing.Color.White;
+            this.btnBackup.HoverOutline = System.Drawing.Color.Empty;
+            this.btnBackup.Image = null;
+            this.btnBackup.ImageAutoCenter = true;
+            this.btnBackup.ImageExpand = new System.Drawing.Point(5, 5);
+            this.btnBackup.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnBackup.ImageTint = System.Drawing.Color.White;
+            this.btnBackup.IsToggleButton = false;
+            this.btnBackup.IsToggled = false;
+            this.btnBackup.Location = new System.Drawing.Point(886, 266);
+            this.btnBackup.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.NormalBackground = System.Drawing.Color.Crimson;
+            this.btnBackup.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnBackup.NormalOutline = System.Drawing.Color.Empty;
+            this.btnBackup.OutlineThickness = 2F;
+            this.btnBackup.PressedBackground = System.Drawing.Color.Firebrick;
+            this.btnBackup.PressedForeColor = System.Drawing.Color.White;
+            this.btnBackup.PressedImageTint = System.Drawing.Color.White;
+            this.btnBackup.PressedOutline = System.Drawing.Color.Empty;
+            this.btnBackup.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnBackup.Size = new System.Drawing.Size(240, 47);
+            this.btnBackup.TabIndex = 44;
+            this.btnBackup.TextAutoCenter = true;
+            this.btnBackup.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // frmCuentas
             // 
@@ -332,7 +332,7 @@
             this.ClientSize = new System.Drawing.Size(1173, 692);
             this.Controls.Add(this.panelTopAccent);
             this.Controls.Add(this.btnHistorial);
-            this.Controls.Add(this.btnDesabilitar);
+            this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnAñadirUsuario);
             this.Controls.Add(this.sataPanel1);
@@ -359,6 +359,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private FrameworkTest.SATAButton btnHistorial;
         private System.Windows.Forms.Panel panelTopAccent;
-        private FrameworkTest.SATAButton btnDesabilitar;
+        private FrameworkTest.SATAButton btnBackup;
     }
 }

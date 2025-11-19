@@ -20,13 +20,11 @@ namespace sistema.Expediente
         public int PacienteID { get; set; }
 
         // Arreglo para almacenar los botones de navegación del expediente (Registro, Historia, etc.).
-        // Nos permite gestionarlos en conjunto para el resaltado visual.
         private Control[] _navButtons;
 
         public frmExpediente()
         {
             InitializeComponent();
-            // Prepara los botones de navegación (colores, etc.) en cuanto se crea el formulario.
             InicializarNavegacion();
         }
 

@@ -72,7 +72,6 @@ namespace sistema
                 h.Tabla,
                 RegistroId = h.RegistroId,
                 h.Host,
-                h.App,
                 Anterior = h.ValoresAnteriores,
                 Nuevo = h.ValoresNuevos,
                 Fecha = h.Fecha.ToLocalTime().ToString("dd/MM/yyyy HH:mm")

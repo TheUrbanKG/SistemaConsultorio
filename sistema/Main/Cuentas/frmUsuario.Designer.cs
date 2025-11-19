@@ -208,7 +208,7 @@
             this.btnAñadirUsuario.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnAñadirUsuario.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAñadirUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAñadirUsuario.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(83)))));
+            this.btnAñadirUsuario.HoverBackground = System.Drawing.Color.DarkTurquoise;
             this.btnAñadirUsuario.HoverForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.HoverImage = null;
             this.btnAñadirUsuario.HoverImageTint = System.Drawing.Color.White;
@@ -227,7 +227,7 @@
             this.btnAñadirUsuario.NormalForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.NormalOutline = System.Drawing.Color.Empty;
             this.btnAñadirUsuario.OutlineThickness = 2F;
-            this.btnAñadirUsuario.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.btnAñadirUsuario.PressedBackground = System.Drawing.Color.DarkTurquoise;
             this.btnAñadirUsuario.PressedForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.PressedImageTint = System.Drawing.Color.White;
             this.btnAñadirUsuario.PressedOutline = System.Drawing.Color.Empty;

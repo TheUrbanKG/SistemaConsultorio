@@ -255,9 +255,37 @@ namespace sistema
             }
         }
 
-        private void btnDesabilitar_Click(object sender, EventArgs e)
+        private void btnBackup_Click(object sender, EventArgs e)
         {
-            // Tu código existente para deshabilitar/habilitar
+            // Pide al usuario que elija dónde guardar el archivo.
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos de Backup (*.bak)|*.bak";
+            saveFileDialog.FileName = $"tesis_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
+            saveFileDialog.Title = "Guardar copia de seguridad de la base de datos";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string rutaArchivo = saveFileDialog.FileName;
+                try
+                {
+                    using (var conn = new SqlConnection(connectionString))
+                    {
+                        // El comando BACKUP DATABASE debe ejecutarse en su propio lote.
+                        string sql = $"BACKUP DATABASE tesis TO DISK = @ruta";
+                        using (var cmd = new SqlCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ruta", rutaArchivo);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    MessageBox.Show("Copia de seguridad creada exitosamente en:\n" + rutaArchivo, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al crear la copia de seguridad:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

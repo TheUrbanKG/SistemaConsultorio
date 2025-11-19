@@ -94,18 +94,6 @@ namespace sistema
                         existente = context.Paciente.FirstOrDefault(p => p.PacienteID == _paciente.PacienteID);
                     }
 
-                    // DEBUG: Verificar que la huella llega al segundo formulario
-                    if (_huellaTemporal != null)
-                    {
-                        MessageBox.Show($"Huella recibida en paso 2: {_huellaTemporal.Length} bytes",
-                            "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se recibió huella en el paso 2",
-                            "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
                     if (existente != null)
                     {
                         // Actualizar paciente existente
@@ -260,14 +248,6 @@ namespace sistema
         private string ObtenerValorOpcional(string valor)
         {
             return string.IsNullOrWhiteSpace(valor) ? null : valor;
-        }
-
-        private string CapitalizarTexto(string texto)
-        {
-            if (string.IsNullOrWhiteSpace(texto))
-                return texto;
-
-            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(texto.ToLower());
         }
 
         private void EjecutarComandoContexto(Data.DBContext context)

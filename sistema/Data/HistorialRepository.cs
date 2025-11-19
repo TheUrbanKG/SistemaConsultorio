@@ -21,7 +21,6 @@ SELECT
     Tabla,
     RegistroId,
     Host,
-    App,
     ValoresAnteriores,
     ValoresNuevos
 FROM dbo.HistorialUsuarios
@@ -58,7 +57,6 @@ ORDER BY Fecha DESC;";
                     int iTabla = rd.GetOrdinal("Tabla");
                     int iRegistroId = rd.GetOrdinal("RegistroId");
                     int iHost = rd.GetOrdinal("Host");
-                    int iApp = rd.GetOrdinal("App");
                     int iValAnt = rd.GetOrdinal("ValoresAnteriores");
                     int iValNue = rd.GetOrdinal("ValoresNuevos");
 
@@ -73,7 +71,6 @@ ORDER BY Fecha DESC;";
                             Tabla = rd.IsDBNull(iTabla) ? null : rd.GetString(iTabla),
                             RegistroId = rd.IsDBNull(iRegistroId) ? null : rd.GetString(iRegistroId),
                             Host = rd.IsDBNull(iHost) ? null : rd.GetString(iHost),
-                            App = rd.IsDBNull(iApp) ? null : rd.GetString(iApp),
                             ValoresAnteriores = rd.IsDBNull(iValAnt) ? null : rd.GetString(iValAnt),
                             ValoresNuevos = rd.IsDBNull(iValNue) ? null : rd.GetString(iValNue),
                         });
