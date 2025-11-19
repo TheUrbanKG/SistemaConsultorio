@@ -70,7 +70,31 @@ namespace sistema
                 ContrasenaOpcional = false
             };
 
-            if (dlg.ShowDialog(this) != DialogResult.OK) return;
+            DialogResult dr;
+            try
+            {
+                dr = dlg.ShowDialog(this);
+            }
+            catch (DllNotFoundException ex)
+            {
+                MessageBox.Show("Lector de huellas no disponible o falta una DLL necesaria:\n" + ex.Message,
+                    "Lector no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (BadImageFormatException ex)
+            {
+                MessageBox.Show("Error al cargar la librería del lector de huellas (formato inválido):\n" + ex.Message,
+                    "Error de librería", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el diálogo de usuario:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (dr != DialogResult.OK) return;
 
             try
             {
@@ -78,8 +102,8 @@ namespace sistema
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                    INSERT INTO login (Usuario, Contraseña, Nombre, Apellido, Rol, Status, Huella)
-                    VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status, @Huella);";
+                INSERT INTO login (Usuario, Contraseña, Nombre, Apellido, Rol, Status, Huella)
+                VALUES (@Usuario, @Contrasena, @Nombre, @Apellido, @Rol, @Status, @Huella);";
 
                     cmd.Parameters.AddWithValue("@Usuario", dlg.Usuario);
                     cmd.Parameters.AddWithValue("@Contrasena", PasswordHasher.HashPBKDF2(dlg.Contrasena ?? string.Empty));
@@ -88,15 +112,11 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@Rol", dlg.Rol);
                     cmd.Parameters.AddWithValue("@Status", dlg.Status);
 
-                    // AGREGAR PARÁMETRO DE HUELLA
-                    if (dlg.HuellaCapturada != null && dlg.HuellaCapturada.Length > 0)
-                    {
-                        cmd.Parameters.AddWithValue("@Huella", dlg.HuellaCapturada);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Huella", DBNull.Value);
-                    }
+                    // Parám. Huella con tipo explícito varbinary(max)
+                    var pHuella = cmd.Parameters.Add("@Huella", System.Data.SqlDbType.VarBinary, -1);
+                    pHuella.Value = (dlg.HuellaCapturada != null && dlg.HuellaCapturada.Length > 0)
+                        ? (object)dlg.HuellaCapturada
+                        : DBNull.Value;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -104,13 +124,12 @@ namespace sistema
 
                 CargarUsuarios();
 
-                // Mensaje informativo sobre la huella
                 string mensajeHuella = dlg.HuellaCapturada != null ?
                     " con huella digital registrada" : " sin huella digital";
 
                 MessageBox.Show($"Usuario creado correctamente{mensajeHuella}.");
             }
-            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601) // PK/UNIQUE
+            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 MessageBox.Show("El usuario ya existe.");
             }
@@ -150,7 +169,31 @@ namespace sistema
                 ContrasenaOpcional = true     // contraseña opcional
             };
 
-            if (dlg.ShowDialog(this) != DialogResult.OK) return;
+            DialogResult dr;
+            try
+            {
+                dr = dlg.ShowDialog(this);
+            }
+            catch (DllNotFoundException ex)
+            {
+                MessageBox.Show("Lector de huellas no disponible o falta una DLL necesaria:\n" + ex.Message,
+                    "Lector no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (BadImageFormatException ex)
+            {
+                MessageBox.Show("Error al cargar la librería del lector de huellas (formato inválido):\n" + ex.Message,
+                    "Error de librería", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el diálogo de usuario:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (dr != DialogResult.OK) return;
 
             try
             {
@@ -179,13 +222,14 @@ namespace sistema
                         cmd.Parameters.AddWithValue("@Contrasena", DBNull.Value);
 
                     // MANEJO DE HUELLA: Si se capturó nueva huella, usar esa; sino mantener la actual
+                    var pHuella = cmd.Parameters.Add("@Huella", System.Data.SqlDbType.VarBinary, -1);
                     if (dlg.HuellaCapturada != null && dlg.HuellaCapturada.Length > 0)
                     {
-                        cmd.Parameters.AddWithValue("@Huella", dlg.HuellaCapturada);
+                        pHuella.Value = dlg.HuellaCapturada;
                     }
                     else
                     {
-                        cmd.Parameters.AddWithValue("@Huella", huellaActual ?? (object)DBNull.Value);
+                        pHuella.Value = huellaActual ?? (object)DBNull.Value;
                     }
 
                     conn.Open();
@@ -255,36 +299,59 @@ namespace sistema
             }
         }
 
-        private void btnBackup_Click(object sender, EventArgs e)
+        private void btnDesabilitar_Click(object sender, EventArgs e)
         {
-            // Pide al usuario que elija dónde guardar el archivo.
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Archivos de Backup (*.bak)|*.bak";
-            saveFileDialog.FileName = $"tesis_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
-            saveFileDialog.Title = "Guardar copia de seguridad de la base de datos";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (dgvUsuarios.SelectedRows.Count == 0)
             {
-                string rutaArchivo = saveFileDialog.FileName;
-                try
+                MessageBox.Show("Selecciona un usuario.");
+                return;
+            }
+
+            var row = dgvUsuarios.SelectedRows[0];
+            string usuarioSel = row.Cells[0].Value?.ToString();
+            string statusSel = row.Cells[4].Value?.ToString();
+
+            if (string.IsNullOrWhiteSpace(usuarioSel))
+            {
+                MessageBox.Show("Usuario inválido.");
+                return;
+            }
+
+            // Determinar nuevo estado: si contiene "habil" => deshabilitar, sino habilitar
+            string nuevoStatus;
+            if (!string.IsNullOrWhiteSpace(statusSel) && statusSel.IndexOf("habil", StringComparison.OrdinalIgnoreCase) >= 0)
+                nuevoStatus = "Deshabilitado";
+            else
+                nuevoStatus = "Habilitado";
+
+            var confirmar = MessageBox.Show($"Cambiar estado de '{usuarioSel}' de '{statusSel}' a '{nuevoStatus}'?", "Confirmar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmar != DialogResult.Yes) return;
+
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = conn.CreateCommand())
                 {
-                    using (var conn = new SqlConnection(connectionString))
+                    cmd.CommandText = "UPDATE login SET Status = @Status WHERE Usuario = @Usuario";
+                    cmd.Parameters.AddWithValue("@Status", nuevoStatus);
+                    cmd.Parameters.AddWithValue("@Usuario", usuarioSel);
+
+                    conn.Open();
+                    int afectados = cmd.ExecuteNonQuery();
+                    if (afectados == 0)
                     {
-                        // El comando BACKUP DATABASE debe ejecutarse en su propio lote.
-                        string sql = $"BACKUP DATABASE tesis TO DISK = @ruta";
-                        using (var cmd = new SqlCommand(sql, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@ruta", rutaArchivo);
-                            conn.Open();
-                            cmd.ExecuteNonQuery();
-                        }
+                        MessageBox.Show("No se encontró el usuario para actualizar.");
+                        return;
                     }
-                    MessageBox.Show("Copia de seguridad creada exitosamente en:\n" + rutaArchivo, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al crear la copia de seguridad:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                CargarUsuarios();
+                MessageBox.Show($"Estado actualizado a '{nuevoStatus}' para el usuario '{usuarioSel}'.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar estado: " + ex.Message);
             }
         }
     }

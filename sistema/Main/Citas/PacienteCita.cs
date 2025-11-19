@@ -531,11 +531,13 @@ namespace sistema
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 string query = @"INSERT INTO Paciente
-                    (Cedula, Nombre, Apellido, FechaNacimiento, Genero, EstadoCivil, Ocupacion, Escolaridad, Direccion, Telefono, GrupoSanguineo, TipoPaciente, Detalles, Correo)
+                    (Cedula, Nombre, Apellido, FechaNacimiento, Genero, EstadoCivil, Ocupacion, Escolaridad, Direccion, Telefono, GrupoSanguineo, TipoPaciente, Detalles, Correo, FechaRegistro)
                     VALUES
-                    (@Cedula, @Nombre, @Apellido, @FechaNacimiento, @Genero, @EstadoCivil, @Ocupacion, @Escolaridad, @Direccion, @Telefono, @GrupoSanguineo, @TipoPaciente, @Detalles, @Correo)";
+                    (@Cedula, @Nombre, @Apellido, @FechaNacimiento, @Genero, @EstadoCivil, @Ocupacion, @Escolaridad, @Direccion, @Telefono, @GrupoSanguineo, @TipoPaciente, @Detalles, @Correo, @FechaRegistro)";
 
                 SqlCommand cmd = new SqlCommand(query, conexion);
+
+                DateTime fechaRegistro = DateTime.Now;
 
                 if (panelConocido.Visible)
                 {
@@ -553,6 +555,7 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@TipoPaciente", "Conocido");
                     cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrWhiteSpace(txtDetalles.Text) ? DBNull.Value : (object)txtDetalles.Text.Trim());
                     cmd.Parameters.AddWithValue("@Correo", string.IsNullOrWhiteSpace(txtCorreo.Text) ? DBNull.Value : (object)txtCorreo.Text.Trim().ToLower());
+                    cmd.Parameters.AddWithValue("@FechaRegistro", fechaRegistro);
                 }
                 else if (panelDesconocido.Visible)
                 {
@@ -572,6 +575,7 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@TipoPaciente", "Desconocido");
                     cmd.Parameters.AddWithValue("@Detalles", string.IsNullOrWhiteSpace(txtDetallesDesconocido.Text) ? DBNull.Value : (object)txtDetallesDesconocido.Text.Trim());
                     cmd.Parameters.AddWithValue("@Correo", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FechaRegistro", fechaRegistro);
                 }
 
                 try

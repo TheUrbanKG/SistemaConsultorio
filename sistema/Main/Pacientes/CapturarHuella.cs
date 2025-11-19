@@ -17,12 +17,41 @@ namespace sistema.Main.Pacientes
         public event OnTemplateEventHandler OnTemplate;
 
         private DPFP.Processing.Enrollment Enroller;
+        private bool fingerprintAvailable = true; // indica si la librería/lector está disponible
 
         protected override void Init()
         {
             base.Init();
             base.Text = "Captura de Huella";
-            Enroller = new DPFP.Processing.Enrollment();            // Create an enrollment.
+
+            try
+            {
+                Enroller = new DPFP.Processing.Enrollment(); // Create an enrollment.
+                fingerprintAvailable = true;
+            }
+            catch (DllNotFoundException ex)
+            {
+                fingerprintAvailable = false;
+                MakeReport("Lector de huellas no disponible ( DLL nativa no encontrada ).");
+                SetPrompt("Lector desconectado. Comprueba conexión/instalación.");
+                Stop();
+                // opcional: loggear ex.Message si hay un logger
+            }
+            catch (BadImageFormatException ex)
+            {
+                fingerprintAvailable = false;
+                MakeReport("Error al cargar la librería del lector (formato inválido).");
+                SetPrompt("Lector con librería inválida. Reinstala controladores.");
+                Stop();
+            }
+            catch (Exception ex)
+            {
+                fingerprintAvailable = false;
+                MakeReport("Error al inicializar lector de huellas: " + ex.Message);
+                SetPrompt("Lector no disponible.");
+                Stop();
+            }
+
             UpdateStatus();
         }
 
@@ -30,14 +59,45 @@ namespace sistema.Main.Pacientes
         {
             base.Process(Sample);
 
+            if (!fingerprintAvailable)
+            {
+                // Evitar procesar si no hay librería/lector
+                return;
+            }
+
             // Process the sample and create a feature set for the enrollment purpose.
             DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Enrollment);
 
             // Check quality of the sample and add to enroller if it's good
-            if (features != null) try
+            if (features != null)
+            {
+                try
                 {
                     MakeReport("La muestra de la Huella Digital ha sido creada.");
                     Enroller.AddFeatures(features);     // Add feature set to template.
+                }
+                catch (DllNotFoundException ex)
+                {
+                    // Si ocurre una DLL faltante en tiempo de ejecución por alguna llamada interna
+                    fingerprintAvailable = false;
+                    MakeReport("Lector de huellas dejó de estar disponible.");
+                    SetPrompt("Lector desconectado.");
+                    Stop();
+                    OnTemplate?.Invoke(null);
+                    return;
+                }
+                catch (BadImageFormatException)
+                {
+                    fingerprintAvailable = false;
+                    MakeReport("Error de formato en la librería del lector.");
+                    SetPrompt("Lector no funcional.");
+                    Stop();
+                    OnTemplate?.Invoke(null);
+                    return;
+                }
+                catch (Exception)
+                {
+                    // continuar al finally para manejar estado del enroller
                 }
                 finally
                 {
@@ -47,7 +107,7 @@ namespace sistema.Main.Pacientes
                     switch (Enroller.TemplateStatus)
                     {
                         case DPFP.Processing.Enrollment.Status.Ready:   // report success and stop capturing
-                            OnTemplate(Enroller.Template);
+                            OnTemplate?.Invoke(Enroller.Template);
                             SetPrompt("Click Close, and then click Fingerprint Verification.");
                             Stop();
                             break;
@@ -56,17 +116,33 @@ namespace sistema.Main.Pacientes
                             Enroller.Clear();
                             Stop();
                             UpdateStatus();
-                            OnTemplate(null);
+                            OnTemplate?.Invoke(null);
                             Start();
                             break;
                     }
                 }
+            }
         }
 
         private void UpdateStatus()
         {
-            // Show number of samples needed.
-            SetStatus(String.Format("Muestra de Huellas necesarias: {0}", Enroller.FeaturesNeeded));
+            if (!fingerprintAvailable)
+            {
+                SetStatus("Lector de huellas no disponible.");
+                return;
+            }
+
+            try
+            {
+                // Show number of samples needed.
+                SetStatus(string.Format("Muestra de Huellas necesarias: {0}", Enroller.FeaturesNeeded));
+            }
+            catch (Exception)
+            {
+                // Si algo falla al consultar Enroller (por seguridad), marcar no disponible.
+                fingerprintAvailable = false;
+                SetStatus("Lector de huellas no disponible.");
+            }
         }
 
         public CapturarHuella()

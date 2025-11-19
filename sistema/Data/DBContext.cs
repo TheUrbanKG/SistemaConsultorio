@@ -13,14 +13,6 @@ namespace sistema.Data
         // Un DbSet por cada entidad que quieres mapear a una tabla
         public DbSet<Paciente> Paciente { get; set; }
 
-
-
-        // Configura detalles adicionales del modelo
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Paciente>().HasKey(p => p.PacienteID);
-            // Aquí puedes configurar reglas adicionales, restricciones, etc.
-        }
     }
 }
 
