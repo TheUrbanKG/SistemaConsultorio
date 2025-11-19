@@ -299,59 +299,36 @@ namespace sistema
             }
         }
 
-        private void btnDesabilitar_Click(object sender, EventArgs e)
+        private void btnBackup_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.SelectedRows.Count == 0)
+            // Pide al usuario que elija dónde guardar el archivo.
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos de Backup (*.bak)|*.bak";
+            saveFileDialog.FileName = $"tesis_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
+            saveFileDialog.Title = "Guardar copia de seguridad de la base de datos";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Selecciona un usuario.");
-                return;
-            }
-
-            var row = dgvUsuarios.SelectedRows[0];
-            string usuarioSel = row.Cells[0].Value?.ToString();
-            string statusSel = row.Cells[4].Value?.ToString();
-
-            if (string.IsNullOrWhiteSpace(usuarioSel))
-            {
-                MessageBox.Show("Usuario inválido.");
-                return;
-            }
-
-            // Determinar nuevo estado: si contiene "habil" => deshabilitar, sino habilitar
-            string nuevoStatus;
-            if (!string.IsNullOrWhiteSpace(statusSel) && statusSel.IndexOf("habil", StringComparison.OrdinalIgnoreCase) >= 0)
-                nuevoStatus = "Deshabilitado";
-            else
-                nuevoStatus = "Habilitado";
-
-            var confirmar = MessageBox.Show($"Cambiar estado de '{usuarioSel}' de '{statusSel}' a '{nuevoStatus}'?", "Confirmar",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirmar != DialogResult.Yes) return;
-
-            try
-            {
-                using (var conn = new SqlConnection(connectionString))
-                using (var cmd = conn.CreateCommand())
+                string rutaArchivo = saveFileDialog.FileName;
+                try
                 {
-                    cmd.CommandText = "UPDATE login SET Status = @Status WHERE Usuario = @Usuario";
-                    cmd.Parameters.AddWithValue("@Status", nuevoStatus);
-                    cmd.Parameters.AddWithValue("@Usuario", usuarioSel);
-
-                    conn.Open();
-                    int afectados = cmd.ExecuteNonQuery();
-                    if (afectados == 0)
+                    using (var conn = new SqlConnection(connectionString))
                     {
-                        MessageBox.Show("No se encontró el usuario para actualizar.");
-                        return;
+                        // El comando BACKUP DATABASE debe ejecutarse en su propio lote.
+                        string sql = $"BACKUP DATABASE tesis TO DISK = @ruta";
+                        using (var cmd = new SqlCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ruta", rutaArchivo);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                        }
                     }
+                    MessageBox.Show("Copia de seguridad creada exitosamente en:\n" + rutaArchivo, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                CargarUsuarios();
-                MessageBox.Show($"Estado actualizado a '{nuevoStatus}' para el usuario '{usuarioSel}'.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar estado: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al crear la copia de seguridad:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

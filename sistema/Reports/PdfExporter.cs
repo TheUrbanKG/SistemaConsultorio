@@ -136,11 +136,11 @@ namespace sistema.Reports
         {
             // Antecedentes patológicos: lee la primera fila y añade entradas para cada condición marcada.
             using (var cmd = new SqlCommand(@"
-            SELECT TOP (1)
-            Hipertension, Tuberculosis, Diabetes, Obesidad, Tiroides, Dislipidemia,
-            Sarampion, Rubeola, Tosferina, Varicela, Artritis, Osteoporosis,
-            OtroPadecimiento, Padecimiento
-            FROM AntecedentePatologico WHERE PacienteID = @Id;", conn))
+                SELECT TOP (1)
+                Hipertension, Tuberculosis, Diabetes, Obesidad, Tiroides, Dislipidemia,
+                Sarampion, Rubeola, Tosferina, Varicela, Artritis, Osteoporosis,
+                OtroPadecimiento, Padecimiento
+                FROM AntecedentePatologico WHERE PacienteID = @Id;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -187,10 +187,10 @@ namespace sistema.Reports
                 }
             }
 
-            // Antecedentes personales: similar, pero con otras banderas y una posible fecha de actualización
+            // Antecedentes personales: manejar como campos textuales (no sólo booleanos)
             using (var cmd = new SqlCommand(@"
-            SELECT TOP (1) Tabaco, Alcohol, Mascotas, Servicios, Vivienda, FechaActualizacion
-            FROM AntecedentePersonal WHERE PacienteID = @Id;", conn))
+                SELECT TOP (1) Tabaco, Alcohol, Mascotas, Servicios, Vivienda, FechaActualizacion
+                FROM AntecedentePersonal WHERE PacienteID = @Id;", conn))
             {
                 cmd.Parameters.AddWithValue("@Id", pacienteId);
                 using (var da = new SqlDataAdapter(cmd))
@@ -213,18 +213,27 @@ namespace sistema.Reports
                         if (fecha != null)
                             sec.AddParagraph("Última actualización: " + fecha);
 
-                        // Añade líneas por cada flag verdadero
-                        void addFlag(string campo, string etiqueta)
-                        {
-                            if (AsBool(r[campo]))
-                                sec.AddParagraph("• " + etiqueta);
-                        }
+                        // Leer como strings y mostrarlos si contienen valor
+                        string tabaco = r["Tabaco"] == DBNull.Value ? null : r["Tabaco"].ToString().Trim();
+                        string alcohol = r["Alcohol"] == DBNull.Value ? null : r["Alcohol"].ToString().Trim();
+                        string mascotas = r["Mascotas"] == DBNull.Value ? null : r["Mascotas"].ToString().Trim();
+                        string servicios = r["Servicios"] == DBNull.Value ? null : r["Servicios"].ToString().Trim();
+                        string vivienda = r["Vivienda"] == DBNull.Value ? null : r["Vivienda"].ToString().Trim();
 
-                        addFlag("Tabaco", "Consumo de tabaco");
-                        addFlag("Alcohol", "Consumo de alcohol");
-                        addFlag("Mascotas", "Mascotas en casa");
-                        addFlag("Servicios", "Servicios básicos completos");
-                        addFlag("Vivienda", "Vivienda adecuada");
+                        if (!string.IsNullOrWhiteSpace(tabaco))
+                            sec.AddParagraph("• Tabaco: " + tabaco);
+
+                        if (!string.IsNullOrWhiteSpace(alcohol))
+                            sec.AddParagraph("• Alcohol: " + alcohol);
+
+                        if (!string.IsNullOrWhiteSpace(mascotas))
+                            sec.AddParagraph("• Mascotas: " + mascotas);
+
+                        if (!string.IsNullOrWhiteSpace(servicios))
+                            sec.AddParagraph("• Servicios: " + servicios);
+
+                        if (!string.IsNullOrWhiteSpace(vivienda))
+                            sec.AddParagraph("• Vivienda: " + vivienda);
                     }
                 }
             }

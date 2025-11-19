@@ -38,7 +38,6 @@ namespace sistema
             SetActiveNavButton(BTNInicio);
         }
 
-        // Método central para abrir formularios hijos dentro del panel principal 'panelContenedor'.
         public void abrirFormHijo(object formHijo)
         {
             // Si ya hay un formulario en el panel, lo elimina para dar paso al nuevo.
