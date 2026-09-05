@@ -208,6 +208,7 @@
     <Compile Include="Data\DBContext.cs" />
     <Compile Include="Data\HistorialRepository.cs" />
     <Compile Include="Data\NotasRepository.cs" />
+    <Compile Include="Infrastructure\BackupService.cs" />
     <Compile Include="Expediente\Alergias\frmAlergias.cs">
       <SubType>Form</SubType>
     </Compile>

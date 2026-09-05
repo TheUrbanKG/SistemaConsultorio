@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Drawing;
@@ -25,6 +25,7 @@ namespace sistema
         // Este método se ejecuta cuando el formulario principal se ha cargado completamente.
         private void frmMain_Load(object sender, EventArgs e)
         {
+            this.FormClosing += FrmMain_FormClosing;
             // Abre el formulario de 'Inicio' por defecto dentro del panel contenedor.
             abrirFormHijo(new frmInicio(this));
             // Establece el título y el ícono en la barra superior para que coincidan con la sección 'Inicio'.
@@ -36,6 +37,72 @@ namespace sistema
 
             // Resalta visualmente el botón 'Inicio' para indicar que es la sección activa.
             SetActiveNavButton(BTNInicio);
+
+            ConfigurarBotonRespaldo();
+        }
+
+        private void ConfigurarBotonRespaldo()
+        {
+            Button btnRespaldo = new Button();
+            btnRespaldo.Text = " Respaldos";
+            btnRespaldo.Size = new Size(130, 40);
+            
+            // Lo posicionamos en la barra superior (panelSuperior) alineado a la derecha
+            btnRespaldo.Location = new Point(this.panelSuperior.Width - 150, 32); 
+            btnRespaldo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            
+            // Estilos estéticos acordes al diseño oscuro y verde/turquesa de la app
+            btnRespaldo.FlatStyle = FlatStyle.Flat;
+            btnRespaldo.FlatAppearance.BorderSize = 1;
+            btnRespaldo.FlatAppearance.BorderColor = Color.FromArgb(0, 218, 157); // Color verde turquesa del menú
+            btnRespaldo.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 218, 157);
+            btnRespaldo.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 180, 130);
+            btnRespaldo.BackColor = Color.FromArgb(21, 21, 21); // Color de fondo del panel superior
+            btnRespaldo.ForeColor = Color.White;
+            btnRespaldo.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            btnRespaldo.Cursor = Cursors.Hand;
+            
+            // Efecto hover para cambiar el color del texto cuando el mouse pasa por encima
+            btnRespaldo.MouseEnter += (s, e) => btnRespaldo.ForeColor = Color.Black;
+            btnRespaldo.MouseLeave += (s, e) => btnRespaldo.ForeColor = Color.White;
+
+            btnRespaldo.Click += BtnRespaldo_Click;
+
+            this.panelSuperior.Controls.Add(btnRespaldo);
+            btnRespaldo.BringToFront();
+        }
+
+        private void BtnRespaldo_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            {
+                fbd.Description = "Seleccione la carpeta o memoria USB para guardar los respaldos";
+                string rutaActual = sistema.Infrastructure.BackupService.ObtenerRutaConfigurada();
+                if (!string.IsNullOrEmpty(rutaActual) && System.IO.Directory.Exists(rutaActual))
+                {
+                    fbd.SelectedPath = rutaActual;
+                }
+
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string rutaSeleccionada = fbd.SelectedPath;
+                        sistema.Infrastructure.BackupService.GuardarRutaConfigurada(rutaSeleccionada);
+
+                        MessageBox.Show("Realizando respaldo, por favor espere...", "Respaldo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        var backupService = new sistema.Infrastructure.BackupService();
+                        backupService.RealizarRespaldo(rutaSeleccionada);
+
+                        MessageBox.Show(string.Format("Respaldo completado con éxito en:\n{0}", rutaSeleccionada), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Ocurrió un error al realizar el respaldo:\n{0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         public void abrirFormHijo(object formHijo)
@@ -230,6 +297,24 @@ namespace sistema
                 // Invalida y refresca el botón para forzar que se redibuje con los nuevos colores.
                 sb.Invalidate();
                 sb.Refresh();
+            }
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                string rutaActual = sistema.Infrastructure.BackupService.ObtenerRutaConfigurada();
+                if (!string.IsNullOrEmpty(rutaActual) && System.IO.Directory.Exists(rutaActual))
+                {
+                    var backupService = new sistema.Infrastructure.BackupService();
+                    backupService.RealizarRespaldo(rutaActual);
+                }
+            }
+            catch
+            {
+                // Si falla el respaldo automático, ignorarlo silenciosamente para no impedir que la app se cierre,
+                // o se podría registrar en un log si existiera.
             }
         }
     }
