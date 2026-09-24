@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmAgenda
     {
@@ -28,9 +28,12 @@
             this.lblMes = new System.Windows.Forms.Label();
             this.dtpMesEspecifico = new System.Windows.Forms.DateTimePicker();
             this.btnAplicarFiltro = new System.Windows.Forms.Button();
+            this.btnExportarPDF = new System.Windows.Forms.Button();
             this.flowPanelCitas = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.lblEstadoCita = new System.Windows.Forms.Label();
+            this.cmbEstadoCita = new System.Windows.Forms.ComboBox();
             this.panelTopAccent = new System.Windows.Forms.Panel();
             this.panelFiltros.SuspendLayout();
             this.panelDiaEspecifico.SuspendLayout();
@@ -60,8 +63,11 @@
             this.panelFiltros.Controls.Add(this.panelMesEspecifico);
             this.panelFiltros.Controls.Add(this.lblFiltro);
             this.panelFiltros.Controls.Add(this.cmbFiltro);
+            this.panelFiltros.Controls.Add(this.cmbEstadoCita);
+            this.panelFiltros.Controls.Add(this.lblEstadoCita);
             this.panelFiltros.Controls.Add(this.panelDiaEspecifico);
             this.panelFiltros.Controls.Add(this.btnAplicarFiltro);
+            this.panelFiltros.Controls.Add(this.btnExportarPDF);
             this.panelFiltros.Location = new System.Drawing.Point(36, 89);
             this.panelFiltros.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.panelFiltros.Name = "panelFiltros";
@@ -173,6 +179,19 @@
             this.btnAplicarFiltro.Text = "Aplicar Filtro";
             this.btnAplicarFiltro.UseVisualStyleBackColor = false;
             // 
+            // btnExportarPDF
+            // 
+            this.btnExportarPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarPDF.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarPDF.ForeColor = System.Drawing.Color.White;
+            this.btnExportarPDF.Location = new System.Drawing.Point(880, 57);
+            this.btnExportarPDF.Name = "btnExportarPDF";
+            this.btnExportarPDF.Size = new System.Drawing.Size(140, 35);
+            this.btnExportarPDF.TabIndex = 10;
+            this.btnExportarPDF.Text = "Exportar PDF";
+            this.btnExportarPDF.UseVisualStyleBackColor = false;
+            // 
             // flowPanelCitas
             // 
             this.flowPanelCitas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -205,7 +224,40 @@
             this.txtBuscar.Location = new System.Drawing.Point(165, 24);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(269, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(269, 22);
             this.txtBuscar.TabIndex = 7;
+            // 
+            // lblEstadoCita
+            // 
+            this.lblEstadoCita.AutoSize = true;
+            this.lblEstadoCita.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoCita.ForeColor = System.Drawing.Color.LightGray;
+            this.lblEstadoCita.Location = new System.Drawing.Point(165, 62);
+            this.lblEstadoCita.Name = "lblEstadoCita";
+            this.lblEstadoCita.Size = new System.Drawing.Size(53, 19);
+            this.lblEstadoCita.TabIndex = 8;
+            this.lblEstadoCita.Text = "Estado:";
+            // 
+            // cmbEstadoCita
+            // 
+            this.cmbEstadoCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.cmbEstadoCita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbEstadoCita.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstadoCita.ForeColor = System.Drawing.Color.White;
+            this.cmbEstadoCita.FormattingEnabled = true;
+            this.cmbEstadoCita.Items.AddRange(new object[] {
+            "Todos",
+            "Programada",
+            "Confirmada",
+            "Completada",
+            "Cancelada",
+            "No asistió",
+            "Reprogramada"});
+            this.cmbEstadoCita.Location = new System.Drawing.Point(225, 59);
+            this.cmbEstadoCita.Name = "cmbEstadoCita";
+            this.cmbEstadoCita.Size = new System.Drawing.Size(150, 25);
+            this.cmbEstadoCita.TabIndex = 9;
             // 
             // panelTopAccent
             // 
@@ -257,6 +309,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowPanelCitas;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEstadoCita;
+        private System.Windows.Forms.ComboBox cmbEstadoCita;
         private System.Windows.Forms.Panel panelTopAccent;
+        private System.Windows.Forms.Button btnExportarPDF;
     }
 }

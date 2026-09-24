@@ -1,15 +1,24 @@
-﻿using System;
+using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using sistema.Data;
+using sistema.Reports;
 
 namespace sistema
 {
     public partial class frmAgenda : Form
     {
+        private DataTable dtCitasActuales;
+        private CitaRepository _citaRepo;
+        
         public frmAgenda()
         {
             InitializeComponent();
+            _citaRepo = new CitaRepository();
 
             // Ajustes para embebido
             this.TopLevel = false;
@@ -23,7 +32,11 @@ namespace sistema
         private void ConfigurarEventos()
         {
             cmbFiltro.SelectedIndexChanged += CmbFiltro_SelectedIndexChanged;
+            if (cmbEstadoCita != null)
+                cmbEstadoCita.SelectedIndexChanged += (s, e) => AplicarFiltro();
             btnAplicarFiltro.Click += BtnAplicarFiltro_Click;
+            if (btnExportarPDF != null)
+                btnExportarPDF.Click += BtnExportarPDF_Click;
             dtpFecha.ValueChanged += DtpFecha_ValueChanged;
             this.Load += frmAgenda_Load;
             txtBuscar.KeyDown += (s, e) =>
@@ -68,31 +81,18 @@ namespace sistema
 
         private void CargarCitasPorFecha(DateTime fecha)
         {
-            flowPanelCitas.Controls.Clear();
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
-            using (SqlConnection conexion = new SqlConnection(connectionString))
-            {
-                string query = @"
-            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status,
-                   p.Nombre, p.Apellido, p.Telefono
-            FROM Cita c
-            INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
-            WHERE c.FechaCita = @FechaCita
-              AND (p.Nombre + ' ' + p.Apellido) LIKE @FiltroNombre
-            ORDER BY c.HoraCita";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("@FechaCita", fecha);
-                string filtroNombre = string.IsNullOrWhiteSpace(txtBuscar.Text) ? "%" : $"%{txtBuscar.Text.Trim()}%";
-                cmd.Parameters.AddWithValue("@FiltroNombre", filtroNombre);
-                conexion.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                        CrearPanelCita(reader);
-                }
-            }
+            LimpiarPanelCitas();
+            string filtroNombre = txtBuscar.Text;
+            string statusFiltro = cmbEstadoCita.SelectedItem?.ToString() ?? "Todos";
+            
+            dtCitasActuales = _citaRepo.ObtenerCitasPorFecha(fecha, filtroNombre, statusFiltro);
+            
+            foreach (DataRow row in dtCitasActuales.Rows)
+                CrearPanelCita(row);
+
             ActualizarTitulo($"Citas del día: {fecha:dd/MM/yyyy}");
             MostrarMensajeVacio();
+            AjustarTamañoPaneles();
         }
 
         private void CargarCitasDelMesActual()
@@ -113,29 +113,15 @@ namespace sistema
 
         private void CargarCitasPorRango(DateTime fechaInicio, DateTime fechaFin, string titulo)
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
-            using (SqlConnection conexion = new SqlConnection(connectionString))
-            {
-                string query = @"
-            SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status,
-                   p.Nombre, p.Apellido, p.Telefono
-            FROM Cita c
-            INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
-            WHERE c.FechaCita BETWEEN @FechaInicio AND @FechaFin
-              AND (p.Nombre + ' ' + p.Apellido) LIKE @FiltroNombre
-            ORDER BY c.FechaCita, c.HoraCita";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                cmd.Parameters.AddWithValue("@FechaFin", fechaFin);
-                string filtroNombre = string.IsNullOrWhiteSpace(txtBuscar.Text) ? "%" : $"%{txtBuscar.Text.Trim()}%";
-                cmd.Parameters.AddWithValue("@FiltroNombre", filtroNombre);
-                conexion.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                        CrearPanelCita(reader);
-                }
-            }
+            LimpiarPanelCitas();
+            string filtroNombre = txtBuscar.Text;
+            string statusFiltro = cmbEstadoCita.SelectedItem?.ToString() ?? "Todos";
+
+            dtCitasActuales = _citaRepo.ObtenerCitasPorRango(fechaInicio, fechaFin, filtroNombre, statusFiltro);
+
+            foreach (DataRow row in dtCitasActuales.Rows)
+                CrearPanelCita(row);
+
             ActualizarTitulo(titulo);
             MostrarMensajeVacio();
             AjustarTamañoPaneles();
@@ -144,11 +130,17 @@ namespace sistema
         private void LimpiarPanelCitas()
         {
             flowPanelCitas.SuspendLayout();
-            flowPanelCitas.Controls.Clear();
+            // Evitar fugas de memoria (GDI handles) llamando a Dispose en cada control
+            while (flowPanelCitas.Controls.Count > 0)
+            {
+                Control c = flowPanelCitas.Controls[0];
+                flowPanelCitas.Controls.Remove(c);
+                c.Dispose();
+            }
             flowPanelCitas.ResumeLayout();
         }
 
-        private void CrearPanelCita(SqlDataReader reader)
+        private void CrearPanelCita(DataRow reader)
         {
             Panel panelCita = new Panel();
             panelCita.Width = flowPanelCitas.ClientSize.Width - 25;
@@ -308,30 +300,19 @@ namespace sistema
 
         private void EliminarCita(int citaID)
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            try
             {
-                string query = "DELETE FROM Cita WHERE CitaID = @CitaID";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("@CitaID", citaID);
-
-                try
+                if (_citaRepo.EliminarCita(citaID))
                 {
-                    conexion.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Cita eliminada correctamente.", "Éxito",
-                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        AplicarFiltro();
-                    }
+                    MessageBox.Show("Cita eliminada correctamente.", "Éxito",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AplicarFiltro();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al eliminar la cita: {ex.Message}", "Error",
-                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar la cita: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -363,6 +344,12 @@ namespace sistema
 
         private void frmAgenda_Load(object sender, EventArgs e)
         {
+            if (cmbFiltro.Items.Count > 1 && cmbFiltro.SelectedIndex == -1)
+                cmbFiltro.SelectedIndex = 1; // Mes actual por defecto
+
+            if (cmbEstadoCita.Items.Count > 0 && cmbEstadoCita.SelectedIndex == -1)
+                cmbEstadoCita.SelectedIndex = 0; // Seleccionar 'Todos' por defecto
+            
             AplicarFiltro();
         }
 
@@ -373,27 +360,59 @@ namespace sistema
             if (cmb != null && cmb.Tag is int citaID)
             {
                 string nuevoStatus = cmb.SelectedItem.ToString();
-                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
-
-                using (SqlConnection conexion = new SqlConnection(connectionString))
+                try
                 {
-                    string query = "UPDATE Cita SET Status = @Status WHERE CitaID = @CitaID";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@Status", nuevoStatus);
-                    cmd.Parameters.AddWithValue("@CitaID", citaID);
-
-                    try
+                    if (_citaRepo.ActualizarEstado(citaID, nuevoStatus))
                     {
-                        conexion.Open();
-                        cmd.ExecuteNonQuery();
                         MessageBox.Show("Estado de la cita actualizado correctamente.", "Éxito",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al actualizar el estado: {ex.Message}", "Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al actualizar el estado: {ex.Message}", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private async void BtnExportarPDF_Click(object sender, EventArgs e)
+        {
+            if (dtCitasActuales == null || dtCitasActuales.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay citas para exportar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string status = cmbEstadoCita.SelectedItem?.ToString() ?? "Todos";
+            string titulo = $"Reporte de Citas - Estado: {status}";
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+            sfd.FileName = $"ReporteCitas_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string path = sfd.FileName;
+                btnExportarPDF.Enabled = false;
+                btnExportarPDF.Text = "Generando...";
+
+                try
+                {
+                    DataTable dtCopy = dtCitasActuales.Copy();
+                    await Task.Run(() => PdfExporter.ExportReporteCitas(dtCopy, titulo, path));
+                    
+                    MessageBox.Show("Reporte generado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(path);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al generar el reporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    btnExportarPDF.Enabled = true;
+                    btnExportarPDF.Text = "Exportar PDF";
                 }
             }
         }
