@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente.Registro
+namespace sistema.Expediente.Registro
 {
     partial class frmDetalleRegistro
     {
@@ -83,22 +83,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label1.Location = new System.Drawing.Point(36, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 17);
+            this.label1.Size = new System.Drawing.Size(155, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ingrese la Altura (Cm.)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(36, 187);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 17);
+            this.label2.Size = new System.Drawing.Size(141, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Ingrese el Peso (Kg.)";
             // 
@@ -137,13 +137,13 @@
             // btnGuardar
             // 
             this.btnGuardar.ButtonText = "Guardar";
-            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(72)))), ((int)(((byte)(119)))));
+            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.CheckedForeColor = System.Drawing.Color.White;
             this.btnGuardar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnGuardar.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnGuardar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(92)))), ((int)(((byte)(139)))));
+            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(74)))));
             this.btnGuardar.HoverForeColor = System.Drawing.Color.White;
             this.btnGuardar.HoverImage = null;
             this.btnGuardar.HoverImageTint = System.Drawing.Color.White;
@@ -158,15 +158,15 @@
             this.btnGuardar.Location = new System.Drawing.Point(39, 277);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(82)))), ((int)(((byte)(129)))));
+            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.NormalForeColor = System.Drawing.Color.White;
             this.btnGuardar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnGuardar.OutlineThickness = 2F;
-            this.btnGuardar.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnGuardar.OutlineThickness = 0F;
+            this.btnGuardar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(60)))));
             this.btnGuardar.PressedForeColor = System.Drawing.Color.White;
             this.btnGuardar.PressedImageTint = System.Drawing.Color.White;
             this.btnGuardar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnGuardar.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnGuardar.Rounding = new System.Windows.Forms.Padding(10);
             this.btnGuardar.Size = new System.Drawing.Size(159, 44);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.TextAutoCenter = true;
@@ -186,9 +186,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmDetalleRegistro";
             this.Resizable = false;
-            this.Style = MetroFramework.MetroColorStyle.Pink;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Ingrese los detalles";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -7,6 +7,11 @@ using sistema.Models;
 
 namespace sistema.Data
 {
+    /// <summary>
+    /// Repositorio encargado de las operaciones CRUD sobre la tabla `Notas`.
+    /// Proporciona métodos para crear, actualizar, eliminar y listar notas asociadas
+    /// a usuarios y pacientes, además de una utilidad para listar pacientes para un combo.
+    /// </summary>
     public class NotasRepository
     {
         private readonly string _cs = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
@@ -19,6 +24,8 @@ INSERT INTO dbo.Notas(Usuario, Tipo, Titulo, Contenido, PacienteID, PacienteNomb
 OUTPUT INSERTED.NotaID
 VALUES (@Usuario, @Tipo, @Titulo, @Contenido, @PacienteID, @PacienteNombre);", cn))
             {
+                // Inserta una nueva nota y devuelve la clave primaria generada (NotaID).
+                // Se usan parámetros para evitar inyección SQL.
                 cmd.Parameters.AddWithValue("@Usuario", n.Usuario);
                 cmd.Parameters.AddWithValue("@Tipo", n.Tipo);
                 cmd.Parameters.AddWithValue("@Titulo", n.Titulo);
@@ -40,6 +47,8 @@ UPDATE dbo.Notas
        ActualizadoEn=SYSUTCDATETIME()
  WHERE NotaID=@NotaID AND Usuario=@Usuario;", cn))
             {
+                // Actualiza una nota existente. El WHERE incluye Usuario para asegurar
+                // que solo el propietario pueda modificar su nota.
                 cmd.Parameters.AddWithValue("@NotaID", n.NotaID);
                 cmd.Parameters.AddWithValue("@Usuario", n.Usuario);
                 cmd.Parameters.AddWithValue("@Tipo", n.Tipo);
@@ -57,6 +66,7 @@ UPDATE dbo.Notas
             using (var cn = new SqlConnection(_cs))
             using (var cmd = new SqlCommand("DELETE FROM dbo.Notas WHERE NotaID=@Id AND Usuario=@Usuario;", cn))
             {
+                // Elimina una nota por Id pero sólo si pertenece al usuario proporcionado.
                 cmd.Parameters.AddWithValue("@Id", notaId);
                 cmd.Parameters.AddWithValue("@Usuario", usuario);
                 cn.Open();
@@ -77,6 +87,8 @@ SELECT NotaID, Usuario, Tipo, Titulo, Contenido, PacienteID, PacienteNombre, Cre
    AND (@Search IS NULL OR (Titulo LIKE @Search OR Contenido LIKE @Search))
  ORDER BY CreadoEn DESC;", cn))
             {
+                // Lista las notas del usuario aplicando filtros opcionales: tipo, paciente y búsqueda libre.
+                // Si un filtro es null se transforma a DBNull.Value para que la condición del WHERE lo ignore.
                 cmd.Parameters.AddWithValue("@Usuario", usuario);
                 cmd.Parameters.AddWithValue("@Tipo", (object)tipo ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@PacienteID", (object)pacienteId ?? DBNull.Value);
@@ -111,6 +123,7 @@ SELECT NotaID, Usuario, Tipo, Titulo, Contenido, PacienteID, PacienteNombre, Cre
             using (var cn = new SqlConnection(_cs))
             using (var cmd = new SqlCommand("SELECT PacienteID AS Id, Nombre FROM Paciente ORDER BY Nombre;", cn))
             {
+                // Devuelve una lista ligera de pacientes (id y nombre) para poblar combos o selects.
                 cn.Open();
                 using (var rd = cmd.ExecuteReader())
                 {

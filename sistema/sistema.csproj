@@ -15,6 +15,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +50,36 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DPFPCtlXTypeLibNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXTypeLibNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPCtlXWrapperNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXWrapperNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPVerNET.dll</HintPath>
+    </Reference>
     <Reference Include="DPUruNet, Version=1.0.0.1, Culture=neutral, PublicKeyToken=7f32ef930fec5e5f, processorArchitecture=MSIL">
       <HintPath>..\packages\DPUruNet.1.0.0.1\lib\DPUruNet.dll</HintPath>
     </Reference>
@@ -112,6 +156,9 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Ports, Version=9.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Ports.9.0.10\lib\net462\System.IO.Ports.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -143,16 +190,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgendarCita.cs">
+    <Compile Include="Main\Citas\AgendarCita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgendarCita.Designer.cs">
+    <Compile Include="Main\Citas\AgendarCita.Designer.cs">
       <DependentUpon>AgendarCita.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarCitas.cs">
+    <Compile Include="Main\Citas\AgregarCitas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarCitas.Designer.cs">
+    <Compile Include="Main\Citas\AgregarCitas.Designer.cs">
       <DependentUpon>AgregarCitas.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ToggleButton.cs">
@@ -161,6 +208,8 @@
     <Compile Include="Data\DBContext.cs" />
     <Compile Include="Data\HistorialRepository.cs" />
     <Compile Include="Data\NotasRepository.cs" />
+    <Compile Include="Data\CitaRepository.cs" />
+    <Compile Include="Infrastructure\BackupService.cs" />
     <Compile Include="Expediente\Alergias\frmAlergias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,12 +233,6 @@
     </Compile>
     <Compile Include="Expediente\Cuadros\frmDetalleCuadros.Designer.cs">
       <DependentUpon>frmDetalleCuadros.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Expediente\Documentos\frmDocumentos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Expediente\Documentos\frmDocumentos.Designer.cs">
-      <DependentUpon>frmDocumentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Expediente\ExploracionFisica\frmExploracionFisica.cs">
       <SubType>Form</SubType>
@@ -239,70 +282,82 @@
     <Compile Include="Expediente\Registro\frmRegistro.Designer.cs">
       <DependentUpon>frmRegistro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAgenda.cs">
+    <Compile Include="Main\Agenda\frmAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAgenda.Designer.cs">
+    <Compile Include="Main\Agenda\frmAgenda.Designer.cs">
       <DependentUpon>frmAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCitas.cs">
+    <Compile Include="Main\Citas\frmCitas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCitas.Designer.cs">
+    <Compile Include="Main\Citas\frmCitas.Designer.cs">
       <DependentUpon>frmCitas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCuentas.cs">
+    <Compile Include="Main\Cuentas\frmCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCuentas.Designer.cs">
+    <Compile Include="Main\Cuentas\frmCuentas.Designer.cs">
       <DependentUpon>frmCuentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDetallePaciente.cs">
+    <Compile Include="Main\Pacientes\CapturarHuella.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDetallePaciente.Designer.cs">
+    <Compile Include="Main\Pacientes\CapturarHuella.Designer.cs">
+      <DependentUpon>CapturarHuella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Pacientes\CaptureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Pacientes\CaptureForm.Designer.cs">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Pacientes\frmDetallePaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Pacientes\frmDetallePaciente.Designer.cs">
       <DependentUpon>frmDetallePaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDetallePaciente2.cs">
+    <Compile Include="Main\Pacientes\frmDetallePaciente2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDetallePaciente2.Designer.cs">
+    <Compile Include="Main\Pacientes\frmDetallePaciente2.Designer.cs">
       <DependentUpon>frmDetallePaciente2.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHistorialUsuario.cs">
+    <Compile Include="Main\Cuentas\frmHistorialUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHistorialUsuario.Designer.cs">
+    <Compile Include="Main\Cuentas\frmHistorialUsuario.Designer.cs">
       <DependentUpon>frmHistorialUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmInicio.cs">
+    <Compile Include="Main\Inicio\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInicio.Designer.cs">
+    <Compile Include="Main\Inicio\frmInicio.Designer.cs">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Main\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Main\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNotas.cs">
+    <Compile Include="Main\Notas\frmNotas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNotas.Designer.cs">
+    <Compile Include="Main\Notas\frmNotas.Designer.cs">
       <DependentUpon>frmNotas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPacientes.cs">
+    <Compile Include="Main\Pacientes\frmPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPacientes.Designer.cs">
+    <Compile Include="Main\Pacientes\frmPacientes.Designer.cs">
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUsuario.cs">
+    <Compile Include="Main\Cuentas\frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUsuario.Designer.cs">
+    <Compile Include="Main\Cuentas\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Security\PasswordHasher.cs" />
@@ -314,17 +369,23 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Pacientes\VerificarHuellaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Pacientes\VerificarHuellaPaciente.Designer.cs">
+      <DependentUpon>VerificarHuellaPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Alergia.cs" />
     <Compile Include="Models\HistorialUsuario.cs" />
     <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Paciente.cs" />
-    <Compile Include="PacienteCita.cs">
+    <Compile Include="Main\Citas\PacienteCita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PacienteCita.Designer.cs">
+    <Compile Include="Main\Citas\PacienteCita.Designer.cs">
       <DependentUpon>PacienteCita.cs</DependentUpon>
     </Compile>
-    <Compile Include="PacientePreview.cs" />
+    <Compile Include="Main\Citas\PacientePreview.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\UserControlBlank.cs">
@@ -340,10 +401,16 @@
       <DependentUpon>UserControlDias.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PdfExporter.cs" />
-    <EmbeddedResource Include="AgendarCita.resx">
+    <Compile Include="VerificarHuellaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerificarHuellaForm.Designer.cs">
+      <DependentUpon>VerificarHuellaForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Main\Citas\AgendarCita.resx">
       <DependentUpon>AgendarCita.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarCitas.resx">
+    <EmbeddedResource Include="Main\Citas\AgregarCitas.resx">
       <DependentUpon>AgregarCitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente\Alergias\frmAlergias.resx">
@@ -357,9 +424,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente\Cuadros\frmDetalleCuadros.resx">
       <DependentUpon>frmDetalleCuadros.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Expediente\Documentos\frmDocumentos.resx">
-      <DependentUpon>frmDocumentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expediente\ExploracionFisica\frmExploracionFisica.resx">
       <DependentUpon>frmExploracionFisica.cs</DependentUpon>
@@ -382,43 +446,46 @@
     <EmbeddedResource Include="Expediente\Registro\frmRegistro.resx">
       <DependentUpon>frmRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAgenda.resx">
+    <EmbeddedResource Include="Main\Agenda\frmAgenda.resx">
       <DependentUpon>frmAgenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCitas.resx">
+    <EmbeddedResource Include="Main\Citas\frmCitas.resx">
       <DependentUpon>frmCitas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCuentas.resx">
+    <EmbeddedResource Include="Main\Cuentas\frmCuentas.resx">
       <DependentUpon>frmCuentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDetallePaciente.resx">
+    <EmbeddedResource Include="Main\Pacientes\CaptureForm.resx">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Pacientes\frmDetallePaciente.resx">
       <DependentUpon>frmDetallePaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDetallePaciente2.resx">
+    <EmbeddedResource Include="Main\Pacientes\frmDetallePaciente2.resx">
       <DependentUpon>frmDetallePaciente2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHistorialUsuario.resx">
+    <EmbeddedResource Include="Main\Cuentas\frmHistorialUsuario.resx">
       <DependentUpon>frmHistorialUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInicio.resx">
+    <EmbeddedResource Include="Main\Inicio\frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Main\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNotas.resx">
+    <EmbeddedResource Include="Main\Notas\frmNotas.resx">
       <DependentUpon>frmNotas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPacientes.resx">
+    <EmbeddedResource Include="Main\Pacientes\frmPacientes.resx">
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuario.resx">
+    <EmbeddedResource Include="Main\Cuentas\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PacienteCita.resx">
+    <EmbeddedResource Include="Main\Citas\PacienteCita.resx">
       <DependentUpon>PacienteCita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -490,7 +557,33 @@
   <ItemGroup>
     <None Include="Resources\usuario.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\huella_registrada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella_vacia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

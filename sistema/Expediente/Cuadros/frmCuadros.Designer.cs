@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente
+namespace sistema.Expediente
 {
     partial class frmCuadros
     {
@@ -52,7 +52,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnNuevoCuadro);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -70,7 +70,7 @@
             this.btnNuevoCuadro.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnNuevoCuadro.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNuevoCuadro.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoCuadro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnNuevoCuadro.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(78)))));
             this.btnNuevoCuadro.HoverForeColor = System.Drawing.Color.White;
             this.btnNuevoCuadro.HoverImage = null;
             this.btnNuevoCuadro.HoverImageTint = System.Drawing.Color.White;
@@ -85,8 +85,8 @@
             this.btnNuevoCuadro.Location = new System.Drawing.Point(26, 24);
             this.btnNuevoCuadro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevoCuadro.Name = "btnNuevoCuadro";
-            this.btnNuevoCuadro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.btnNuevoCuadro.NormalForeColor = System.Drawing.Color.Black;
+            this.btnNuevoCuadro.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnNuevoCuadro.NormalForeColor = System.Drawing.Color.White;
             this.btnNuevoCuadro.NormalOutline = System.Drawing.Color.Empty;
             this.btnNuevoCuadro.OutlineThickness = 2F;
             this.btnNuevoCuadro.PressedBackground = System.Drawing.Color.RoyalBlue;
@@ -103,6 +103,7 @@
             // flpCuadros
             // 
             this.flpCuadros.AutoScroll = true;
+            this.flpCuadros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.flpCuadros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpCuadros.Location = new System.Drawing.Point(0, 87);
             this.flpCuadros.Name = "flpCuadros";
@@ -115,11 +116,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbCuadros.AutoSize = true;
-            this.lbCuadros.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCuadros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(162)))), ((int)(((byte)(203)))));
-            this.lbCuadros.Location = new System.Drawing.Point(502, 406);
+            this.lbCuadros.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCuadros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lbCuadros.Location = new System.Drawing.Point(488, 406);
             this.lbCuadros.Name = "lbCuadros";
-            this.lbCuadros.Size = new System.Drawing.Size(230, 25);
+            this.lbCuadros.Size = new System.Drawing.Size(264, 28);
             this.lbCuadros.TabIndex = 4;
             this.lbCuadros.Text = "No Registros Actuales";
             // 
@@ -129,9 +130,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbCuadros.Image = ((System.Drawing.Image)(resources.GetObject("pbCuadros.Image")));
-            this.pbCuadros.Location = new System.Drawing.Point(439, 162);
+            this.pbCuadros.Location = new System.Drawing.Point(449, 119);
             this.pbCuadros.Name = "pbCuadros";
-            this.pbCuadros.Size = new System.Drawing.Size(331, 241);
+            this.pbCuadros.Size = new System.Drawing.Size(331, 291);
             this.pbCuadros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCuadros.TabIndex = 3;
             this.pbCuadros.TabStop = false;
@@ -140,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1180, 513);
             this.Controls.Add(this.lbCuadros);
             this.Controls.Add(this.pbCuadros);

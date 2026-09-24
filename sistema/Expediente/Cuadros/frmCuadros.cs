@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -79,9 +79,9 @@ namespace sistema.Expediente
                 {
                     Width = flpCuadros.Width - 5,
                     Height = 110,
-                    BackColor = Color.FromArgb(62, 62, 62),
+                    BackColor = Color.White,
                     BorderStyle = BorderStyle.None,
-                    Margin = new Padding(0, 0, 0, 0)
+                    Margin = new Padding(0, 0, 0, 8)
                 };
 
                 // Línea superior verde
@@ -89,7 +89,7 @@ namespace sistema.Expediente
                 {
                     Height = 3,
                     Dock = DockStyle.Top,
-                    BackColor = Color.FromArgb(0, 167, 110)
+                    BackColor = Color.FromArgb(0, 168, 89)
                 };
                 panel.Controls.Add(topLine);
 
@@ -99,14 +99,14 @@ namespace sistema.Expediente
                     Font = new Font("Century Gothic", 12, FontStyle.Bold),
                     Location = new Point(10, 10),
                     AutoSize = true,
-                    ForeColor = Color.White
+                    ForeColor = Color.FromArgb(30, 41, 59)
                 };
                 panel.Controls.Add(lblNombre);
 
                 Label lblImpresiones = new Label
                 {
                     Text = "Impresiones: " + cuadro.Impresiones,
-                    ForeColor = Color.LightGray,
+                    ForeColor = Color.FromArgb(71, 85, 105),
                     Location = new Point(10, 35),
                     AutoSize = true,
                     Font = new Font("Century Gothic", 9, FontStyle.Regular)
@@ -116,7 +116,7 @@ namespace sistema.Expediente
                 Label lblFechas = new Label
                 {
                     Text = $"Inicio: {cuadro.FechaInicio:dd/MM/yyyy}  Fin: {cuadro.FechaFin:dd/MM/yyyy}",
-                    ForeColor = Color.FromArgb(0, 220, 100),
+                    ForeColor = Color.FromArgb(16, 185, 129),
                     Location = new Point(10, 60),
                     AutoSize = true,
                     Font = new Font("Century Gothic", 9, FontStyle.Italic)
@@ -136,16 +136,16 @@ namespace sistema.Expediente
                 Button btnModificar = new Button
                 {
                     Text = "Modificar",
-                    BackColor = Color.FromArgb(255, 220, 37),
-                    ForeColor = Color.Black,
+                    BackColor = Color.FromArgb(37, 99, 235),
+                    ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
                     Height = 32,
                     Width = 100,
                     Font = new Font("Century Gothic", 10, FontStyle.Bold),
                     Location = new Point(0, 0)
                 };
-                btnModificar.FlatAppearance.BorderColor = Color.FromArgb(255, 220, 37);
-                btnModificar.FlatAppearance.BorderSize = 2;
+                btnModificar.FlatAppearance.BorderColor = Color.FromArgb(37, 99, 235);
+                btnModificar.FlatAppearance.BorderSize = 0;
                 btnModificar.Click += (s, e) =>
                 {
                     var frmDetalle = new sistema.Expediente.Cuadros.frmDetalleCuadros();
@@ -160,7 +160,7 @@ namespace sistema.Expediente
                 Button btnEliminar = new Button
                 {
                     Text = "Eliminar",
-                    BackColor = Color.FromArgb(255, 71, 87),
+                    BackColor = Color.FromArgb(220, 38, 38),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
                     Height = 32,
@@ -168,8 +168,8 @@ namespace sistema.Expediente
                     Font = new Font("Century Gothic", 10, FontStyle.Bold),
                     Location = new Point(110, 0)
                 };
-                btnEliminar.FlatAppearance.BorderColor = Color.FromArgb(255, 71, 87);
-                btnEliminar.FlatAppearance.BorderSize = 2;
+                btnEliminar.FlatAppearance.BorderColor = Color.FromArgb(220, 38, 38);
+                btnEliminar.FlatAppearance.BorderSize = 0;
                 btnEliminar.Click += (s, e) =>
                 {
                     var confirm = MessageBox.Show("¿Seguro que deseas eliminar este cuadro clínico?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

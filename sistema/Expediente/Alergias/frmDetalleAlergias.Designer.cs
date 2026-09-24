@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente.Alergias
+namespace sistema.Expediente.Alergias
 {
     partial class frmDetalleAlergias
     {
@@ -85,7 +85,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label1.Location = new System.Drawing.Point(36, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 16);
@@ -96,7 +96,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(36, 229);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 16);
@@ -107,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label3.Location = new System.Drawing.Point(37, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 16);
@@ -141,21 +141,22 @@
             this.txtNombre.ShortcutsEnabled = true;
             this.txtNombre.Size = new System.Drawing.Size(260, 23);
             this.txtNombre.TabIndex = 7;
+            this.txtNombre.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtNombre.UseSelectable = true;
             this.txtNombre.WaterMark = "Indica Agente Alergeno";
-            this.txtNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
             this.txtNombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // btnGuardar
             // 
             this.btnGuardar.ButtonText = "Guardar Cambios";
-            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.CheckedForeColor = System.Drawing.Color.White;
             this.btnGuardar.CheckedImageTint = System.Drawing.Color.White;
             this.btnGuardar.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnGuardar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(78)))));
             this.btnGuardar.HoverForeColor = System.Drawing.Color.White;
             this.btnGuardar.HoverImage = null;
             this.btnGuardar.HoverImageTint = System.Drawing.Color.White;
@@ -170,7 +171,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(39, 363);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.NormalForeColor = System.Drawing.Color.White;
             this.btnGuardar.NormalOutline = System.Drawing.Color.Empty;
             this.btnGuardar.OutlineThickness = 2F;
@@ -205,7 +206,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label5.Location = new System.Drawing.Point(36, 165);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 16);
@@ -231,7 +232,7 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Detalles de la Alergia";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Load += new System.EventHandler(this.frmDetalleAlergias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
