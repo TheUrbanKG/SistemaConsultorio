@@ -37,6 +37,8 @@ namespace sistema.Expediente
             this.btnCerrar = new FrameworkTest.SATAButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnPDF = new FrameworkTest.SATAButton();
+            this.panelImagenes = new System.Windows.Forms.Panel();
+            this.btnImagenes = new FrameworkTest.SATAButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnRecetas = new FrameworkTest.SATAButton();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -55,6 +57,7 @@ namespace sistema.Expediente
             this.panel1.SuspendLayout();
             this.sataPanel1.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panelImagenes.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -92,6 +95,7 @@ namespace sistema.Expediente
             this.sataPanel1.Controls.Add(this.btnMinimizar);
             this.sataPanel1.Controls.Add(this.btnCerrar);
             this.sataPanel1.Controls.Add(this.panel8);
+            this.sataPanel1.Controls.Add(this.panelImagenes);
             this.sataPanel1.Controls.Add(this.panel7);
             this.sataPanel1.Controls.Add(this.panel5);
             this.sataPanel1.Controls.Add(this.panel4);
@@ -234,14 +238,64 @@ namespace sistema.Expediente
             this.btnPDF.TextOffset = new System.Drawing.Point(0, 0);
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
+            // panelImagenes
+            // 
+            this.panelImagenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelImagenes.Controls.Add(this.btnImagenes);
+            this.panelImagenes.Location = new System.Drawing.Point(953, 100);
+            this.panelImagenes.Name = "panelImagenes";
+            this.panelImagenes.Padding = new System.Windows.Forms.Padding(2);
+            this.panelImagenes.Size = new System.Drawing.Size(154, 57);
+            this.panelImagenes.TabIndex = 4;
+            // 
+            // btnImagenes
+            // 
+            this.btnImagenes.ButtonText = "Imágenes";
+            this.btnImagenes.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnImagenes.CheckedForeColor = System.Drawing.Color.White;
+            this.btnImagenes.CheckedImageTint = System.Drawing.Color.White;
+            this.btnImagenes.CheckedOutline = System.Drawing.Color.Empty;
+            this.btnImagenes.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnImagenes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImagenes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImagenes.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
+            this.btnImagenes.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btnImagenes.HoverImage = null;
+            this.btnImagenes.HoverImageTint = System.Drawing.Color.White;
+            this.btnImagenes.HoverOutline = System.Drawing.Color.Empty;
+            this.btnImagenes.Image = null;
+            this.btnImagenes.ImageAutoCenter = true;
+            this.btnImagenes.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnImagenes.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnImagenes.ImageTint = System.Drawing.Color.White;
+            this.btnImagenes.IsToggleButton = false;
+            this.btnImagenes.IsToggled = false;
+            this.btnImagenes.Location = new System.Drawing.Point(2, 2);
+            this.btnImagenes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnImagenes.Name = "btnImagenes";
+            this.btnImagenes.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.btnImagenes.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnImagenes.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(213)))), ((int)(((byte)(225)))));
+            this.btnImagenes.OutlineThickness = 1F;
+            this.btnImagenes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnImagenes.PressedForeColor = System.Drawing.Color.White;
+            this.btnImagenes.PressedImageTint = System.Drawing.Color.White;
+            this.btnImagenes.PressedOutline = System.Drawing.Color.Empty;
+            this.btnImagenes.Rounding = new System.Windows.Forms.Padding(6);
+            this.btnImagenes.Size = new System.Drawing.Size(150, 53);
+            this.btnImagenes.TabIndex = 0;
+            this.btnImagenes.TextAutoCenter = true;
+            this.btnImagenes.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnImagenes.Click += new System.EventHandler(this.btnImagenes_Click);
+            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel7.Controls.Add(this.btnRecetas);
-            this.panel7.Location = new System.Drawing.Point(837, 100);
+            this.panel7.Location = new System.Drawing.Point(795, 100);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(167, 57);
+            this.panel7.Size = new System.Drawing.Size(154, 57);
             this.panel7.TabIndex = 3;
             // 
             // btnRecetas
@@ -288,10 +342,10 @@ namespace sistema.Expediente
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel5.Controls.Add(this.btnAlergias);
-            this.panel5.Location = new System.Drawing.Point(669, 100);
+            this.panel5.Location = new System.Drawing.Point(637, 100);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(2);
-            this.panel5.Size = new System.Drawing.Size(167, 57);
+            this.panel5.Size = new System.Drawing.Size(154, 57);
             this.panel5.TabIndex = 1;
             // 
             // btnAlergias
@@ -338,10 +392,10 @@ namespace sistema.Expediente
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel4.Controls.Add(this.btnCuadros);
-            this.panel4.Location = new System.Drawing.Point(503, 100);
+            this.panel4.Location = new System.Drawing.Point(479, 100);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(2);
-            this.panel4.Size = new System.Drawing.Size(167, 57);
+            this.panel4.Size = new System.Drawing.Size(154, 57);
             this.panel4.TabIndex = 2;
             // 
             // btnCuadros
@@ -388,10 +442,10 @@ namespace sistema.Expediente
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel6.Controls.Add(this.btnFisico);
-            this.panel6.Location = new System.Drawing.Point(335, 100);
+            this.panel6.Location = new System.Drawing.Point(321, 100);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(2);
-            this.panel6.Size = new System.Drawing.Size(167, 57);
+            this.panel6.Size = new System.Drawing.Size(154, 57);
             this.panel6.TabIndex = 2;
             // 
             // btnFisico
@@ -460,10 +514,10 @@ namespace sistema.Expediente
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel3.Controls.Add(this.btnHistoria);
-            this.panel3.Location = new System.Drawing.Point(168, 100);
+            this.panel3.Location = new System.Drawing.Point(163, 100);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(2);
-            this.panel3.Size = new System.Drawing.Size(167, 57);
+            this.panel3.Size = new System.Drawing.Size(154, 57);
             this.panel3.TabIndex = 1;
             // 
             // btnHistoria
@@ -510,10 +564,10 @@ namespace sistema.Expediente
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
             this.panel2.Controls.Add(this.btnRegistro);
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(5, 100);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(167, 57);
+            this.panel2.Size = new System.Drawing.Size(154, 57);
             this.panel2.TabIndex = 0;
             // 
             // btnRegistro
@@ -583,6 +637,7 @@ namespace sistema.Expediente
             this.sataPanel1.ResumeLayout(false);
             this.sataPanel1.PerformLayout();
             this.panel8.ResumeLayout(false);
+            this.panelImagenes.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -615,6 +670,8 @@ namespace sistema.Expediente
         private FrameworkTest.SATAButton btnFisico;
         private System.Windows.Forms.Panel panel8;
         private FrameworkTest.SATAButton btnPDF;
+        private System.Windows.Forms.Panel panelImagenes;
+        private FrameworkTest.SATAButton btnImagenes;
         private FrameworkTest.SATAButton btnCerrar;
         private FrameworkTest.SATAButton btnMinimizar;
     }

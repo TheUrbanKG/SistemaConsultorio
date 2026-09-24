@@ -209,7 +209,26 @@
     <Compile Include="Data\HistorialRepository.cs" />
     <Compile Include="Data\NotasRepository.cs" />
     <Compile Include="Data\CitaRepository.cs" />
+    <Compile Include="Data\ImagenPacienteRepository.cs" />
     <Compile Include="Infrastructure\BackupService.cs" />
+    <Compile Include="Expediente\Imagenes\frmImagenesPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Imagenes\frmImagenesPaciente.Designer.cs">
+      <DependentUpon>frmImagenesPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expediente\Imagenes\frmDetalleImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Imagenes\frmDetalleImagen.Designer.cs">
+      <DependentUpon>frmDetalleImagen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expediente\Imagenes\frmVisorImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Imagenes\frmVisorImagen.Designer.cs">
+      <DependentUpon>frmVisorImagen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expediente\Alergias\frmAlergias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +398,7 @@
     <Compile Include="Models\HistorialUsuario.cs" />
     <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Paciente.cs" />
+    <Compile Include="Models\ImagenPaciente.cs" />
     <Compile Include="Main\Citas\PacienteCita.cs">
       <SubType>Form</SubType>
     </Compile>
