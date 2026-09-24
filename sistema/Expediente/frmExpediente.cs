@@ -1,4 +1,4 @@
-﻿using sistema.Expediente.ExploracionFisica;
+using sistema.Expediente.ExploracionFisica;
 using sistema.Expediente.Historia;
 using sistema.Expediente.Recetas;
 using sistema.Expediente.Registro;
@@ -158,15 +158,22 @@ namespace sistema.Expediente
                 var sb = c as FrameworkTest.SATAButton;
                 if (sb != null)
                 {
-                    var normal = (Color)(sb.Tag ?? sb.NormalBackground);
-                    // Si es el botón activo, le pone el color de hover.
+                    // Si es el botón activo, se resalta en verde esmeralda con texto blanco
                     if (c == active)
                     {
-                        sb.NormalBackground = sb.HoverBackground.IsEmpty ? ControlPaint.Light(normal) : sb.HoverBackground;
+                        sb.NormalBackground = Color.FromArgb(0, 168, 89);
+                        sb.HoverBackground = Color.FromArgb(0, 140, 74);
+                        sb.NormalOutline = Color.FromArgb(0, 168, 89);
+                        sb.NormalForeColor = Color.White;
+                        sb.HoverForeColor = Color.White;
                     }
-                    else // Si no, le devuelve su color original.
+                    else // Si no, estilo inactivo claro
                     {
-                        sb.NormalBackground = normal;
+                        sb.NormalBackground = Color.FromArgb(248, 250, 252);
+                        sb.HoverBackground = Color.FromArgb(226, 232, 240);
+                        sb.NormalOutline = Color.FromArgb(203, 213, 225);
+                        sb.NormalForeColor = Color.FromArgb(51, 65, 85);
+                        sb.HoverForeColor = Color.FromArgb(15, 23, 42);
                     }
                     sb.Invalidate();
                     sb.Refresh();

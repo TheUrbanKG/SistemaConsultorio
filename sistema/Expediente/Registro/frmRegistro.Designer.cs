@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente.Registro
+namespace sistema.Expediente.Registro
 {
     partial class frmRegistro
     {
@@ -75,15 +75,15 @@
             // 
             // sataPanel1
             // 
-            this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.sataPanel1.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel1.BackColor = System.Drawing.Color.White;
+            this.sataPanel1.BackColor2 = System.Drawing.Color.White;
+            this.sataPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius5.BottomLeft = 15;
             borderRadius5.BottomRight = 15;
             borderRadius5.TopLeft = 15;
             borderRadius5.TopRight = 15;
             this.sataPanel1.BorderRadius = borderRadius5;
-            this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.BorderThickness = 1;
             this.sataPanel1.Controls.Add(this.lbEdad);
             this.sataPanel1.Controls.Add(this.label1);
             this.sataPanel1.Controls.Add(this.panel1);
@@ -95,9 +95,9 @@
             // lbEdad
             // 
             this.lbEdad.AutoSize = true;
-            this.lbEdad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lbEdad.BackColor = System.Drawing.Color.White;
             this.lbEdad.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEdad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.lbEdad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.lbEdad.Location = new System.Drawing.Point(127, 56);
             this.lbEdad.Name = "lbEdad";
             this.lbEdad.Size = new System.Drawing.Size(68, 36);
@@ -107,18 +107,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label1.Location = new System.Drawing.Point(130, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 16);
+            this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Edad";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumPurple;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -138,15 +138,15 @@
             // 
             // sataPanel2
             // 
-            this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.sataPanel2.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel2.BackColor = System.Drawing.Color.White;
+            this.sataPanel2.BackColor2 = System.Drawing.Color.White;
+            this.sataPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius6.BottomLeft = 15;
             borderRadius6.BottomRight = 15;
             borderRadius6.TopLeft = 15;
             borderRadius6.TopRight = 15;
             this.sataPanel2.BorderRadius = borderRadius6;
-            this.sataPanel2.BorderThickness = 0;
+            this.sataPanel2.BorderThickness = 1;
             this.sataPanel2.Controls.Add(this.lbPeso);
             this.sataPanel2.Controls.Add(this.label4);
             this.sataPanel2.Controls.Add(this.panel4);
@@ -158,9 +158,9 @@
             // lbPeso
             // 
             this.lbPeso.AutoSize = true;
-            this.lbPeso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lbPeso.BackColor = System.Drawing.Color.White;
             this.lbPeso.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPeso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.lbPeso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.lbPeso.Location = new System.Drawing.Point(121, 56);
             this.lbPeso.Name = "lbPeso";
             this.lbPeso.Size = new System.Drawing.Size(83, 36);
@@ -170,18 +170,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label4.Location = new System.Drawing.Point(137, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 16);
+            this.label4.Size = new System.Drawing.Size(37, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Peso";
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -201,15 +201,15 @@
             // 
             // sataPanel3
             // 
-            this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.sataPanel3.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel3.BackColor = System.Drawing.Color.White;
+            this.sataPanel3.BackColor2 = System.Drawing.Color.White;
+            this.sataPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius7.BottomLeft = 15;
             borderRadius7.BottomRight = 15;
             borderRadius7.TopLeft = 15;
             borderRadius7.TopRight = 15;
             this.sataPanel3.BorderRadius = borderRadius7;
-            this.sataPanel3.BorderThickness = 0;
+            this.sataPanel3.BorderThickness = 1;
             this.sataPanel3.Controls.Add(this.lbIMC);
             this.sataPanel3.Controls.Add(this.label2);
             this.sataPanel3.Controls.Add(this.panel2);
@@ -221,9 +221,9 @@
             // lbIMC
             // 
             this.lbIMC.AutoSize = true;
-            this.lbIMC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lbIMC.BackColor = System.Drawing.Color.White;
             this.lbIMC.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIMC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.lbIMC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.lbIMC.Location = new System.Drawing.Point(118, 60);
             this.lbIMC.Name = "lbIMC";
             this.lbIMC.Size = new System.Drawing.Size(71, 36);
@@ -233,18 +233,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label2.Location = new System.Drawing.Point(126, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 16);
+            this.label2.Size = new System.Drawing.Size(164, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Índice de Masa Corporal";
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(185)))), ((int)(((byte)(120)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.panel2.Controls.Add(this.pictureBox5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -264,15 +264,15 @@
             // 
             // sataPanel4
             // 
-            this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.sataPanel4.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel4.BackColor = System.Drawing.Color.White;
+            this.sataPanel4.BackColor2 = System.Drawing.Color.White;
+            this.sataPanel4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius8.BottomLeft = 15;
             borderRadius8.BottomRight = 15;
             borderRadius8.TopLeft = 15;
             borderRadius8.TopRight = 15;
             this.sataPanel4.BorderRadius = borderRadius8;
-            this.sataPanel4.BorderThickness = 0;
+            this.sataPanel4.BorderThickness = 1;
             this.sataPanel4.Controls.Add(this.lbAltura);
             this.sataPanel4.Controls.Add(this.label3);
             this.sataPanel4.Controls.Add(this.panel3);
@@ -284,9 +284,9 @@
             // lbAltura
             // 
             this.lbAltura.AutoSize = true;
-            this.lbAltura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lbAltura.BackColor = System.Drawing.Color.White;
             this.lbAltura.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAltura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.lbAltura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.lbAltura.Location = new System.Drawing.Point(119, 67);
             this.lbAltura.Name = "lbAltura";
             this.lbAltura.Size = new System.Drawing.Size(85, 36);
@@ -296,18 +296,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label3.Location = new System.Drawing.Point(137, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 16);
+            this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Altura";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(105)))), ((int)(((byte)(219)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -331,10 +331,10 @@
             this.btnNueva.CheckedBackground = System.Drawing.Color.CornflowerBlue;
             this.btnNueva.CheckedForeColor = System.Drawing.Color.White;
             this.btnNueva.CheckedImageTint = System.Drawing.Color.White;
-            this.btnNueva.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(139)))), ((int)(((byte)(237)))));
+            this.btnNueva.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnNueva.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNueva.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNueva.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(159)))), ((int)(((byte)(237)))));
+            this.btnNueva.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
             this.btnNueva.HoverForeColor = System.Drawing.Color.White;
             this.btnNueva.HoverImage = null;
             this.btnNueva.HoverImageTint = System.Drawing.Color.White;
@@ -349,15 +349,15 @@
             this.btnNueva.Location = new System.Drawing.Point(89, 385);
             this.btnNueva.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnNueva.Name = "btnNueva";
-            this.btnNueva.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(139)))), ((int)(((byte)(237)))));
-            this.btnNueva.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNueva.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnNueva.NormalForeColor = System.Drawing.Color.White;
             this.btnNueva.NormalOutline = System.Drawing.Color.Empty;
-            this.btnNueva.OutlineThickness = 2F;
-            this.btnNueva.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnNueva.OutlineThickness = 0F;
+            this.btnNueva.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(64)))), ((int)(((byte)(175)))));
             this.btnNueva.PressedForeColor = System.Drawing.Color.White;
             this.btnNueva.PressedImageTint = System.Drawing.Color.White;
             this.btnNueva.PressedOutline = System.Drawing.Color.Empty;
-            this.btnNueva.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnNueva.Rounding = new System.Windows.Forms.Padding(12);
             this.btnNueva.Size = new System.Drawing.Size(240, 47);
             this.btnNueva.TabIndex = 41;
             this.btnNueva.TextAutoCenter = true;
@@ -367,13 +367,13 @@
             // btnModificar
             // 
             this.btnModificar.ButtonText = "Modificar";
-            this.btnModificar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnModificar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnModificar.CheckedForeColor = System.Drawing.Color.White;
             this.btnModificar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnModificar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnModificar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnModificar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(99)))));
+            this.btnModificar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(74)))));
             this.btnModificar.HoverForeColor = System.Drawing.Color.White;
             this.btnModificar.HoverImage = null;
             this.btnModificar.HoverImageTint = System.Drawing.Color.White;
@@ -388,15 +388,15 @@
             this.btnModificar.Location = new System.Drawing.Point(89, 332);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.btnModificar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModificar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnModificar.NormalForeColor = System.Drawing.Color.White;
             this.btnModificar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnModificar.OutlineThickness = 2F;
-            this.btnModificar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnModificar.OutlineThickness = 0F;
+            this.btnModificar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(60)))));
             this.btnModificar.PressedForeColor = System.Drawing.Color.White;
             this.btnModificar.PressedImageTint = System.Drawing.Color.White;
             this.btnModificar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnModificar.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnModificar.Rounding = new System.Windows.Forms.Padding(12);
             this.btnModificar.Size = new System.Drawing.Size(240, 47);
             this.btnModificar.TabIndex = 40;
             this.btnModificar.TextAutoCenter = true;
@@ -416,9 +416,9 @@
             // lbFechaRegistro
             // 
             this.lbFechaRegistro.AutoSize = true;
-            this.lbFechaRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.lbFechaRegistro.BackColor = System.Drawing.Color.Transparent;
             this.lbFechaRegistro.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFechaRegistro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.lbFechaRegistro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lbFechaRegistro.Location = new System.Drawing.Point(1015, 448);
             this.lbFechaRegistro.Name = "lbFechaRegistro";
             this.lbFechaRegistro.Size = new System.Drawing.Size(108, 21);
@@ -428,9 +428,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.label5.Location = new System.Drawing.Point(865, 450);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(150, 19);
@@ -441,7 +441,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1180, 531);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbFechaRegistro);

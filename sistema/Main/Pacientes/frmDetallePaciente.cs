@@ -1,4 +1,4 @@
-﻿
+
 using DPFP;
 using sistema.Main.Pacientes;
 using sistema.Models;
@@ -49,7 +49,7 @@ namespace sistema
 
             pictureBoxHuella.Cursor = Cursors.Hand;
             pictureBoxHuella.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxHuella.Image = Properties.Resources.huella_vacia;
+            pictureBoxHuella.Image = TintImage(Properties.Resources.huella_vacia, Color.FromArgb(100, 116, 139));
             toolTip1.SetToolTip(pictureBoxHuella, "Click para registrar huella");
         }
 
@@ -68,7 +68,9 @@ namespace sistema
                 Template = template;
                 lblHuella.Enabled = (Template != null);
                 lblHuella.Visible = (Template != null);
-                pictureBoxHuella.Image = Properties.Resources.huella_registrada;
+                pictureBoxHuella.Image = (Template != null)
+                    ? TintImage(Properties.Resources.huella_registrada, Color.FromArgb(0, 168, 89))
+                    : TintImage(Properties.Resources.huella_vacia, Color.FromArgb(100, 116, 139));
                 if (Template != null)
                 {
                     // Convertir inmediatamente a bytes y guardar en la variable
@@ -163,6 +165,14 @@ namespace sistema
 
             if (!string.IsNullOrWhiteSpace(paciente.Genero) && cbSexo.Items.Contains(paciente.Genero))
                 cbSexo.SelectedItem = paciente.Genero;
+
+            if (paciente.Huella != null && paciente.Huella.Length > 0)
+            {
+                _huellaTemporal = paciente.Huella;
+                lblHuella.Visible = true;
+                lblHuella.Enabled = true;
+                pictureBoxHuella.Image = TintImage(Properties.Resources.huella_registrada, Color.FromArgb(0, 168, 89));
+            }
         }
 
         private void ConfigurarEventosValidacion()
@@ -293,6 +303,35 @@ namespace sistema
         {
             _paciente = paciente ?? new Paciente();
             CargarDatosDesdePaciente(_paciente);
+        }
+
+        private Image TintImage(Image sourceImage, Color tintColor)
+        {
+            if (sourceImage == null) return null;
+            Bitmap bmp = new Bitmap(sourceImage.Width, sourceImage.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                float r = tintColor.R / 255f;
+                float gVal = tintColor.G / 255f;
+                float b = tintColor.B / 255f;
+                float a = tintColor.A / 255f;
+
+                System.Drawing.Imaging.ColorMatrix matrix = new System.Drawing.Imaging.ColorMatrix(new float[][]
+                {
+                    new float[] { 0, 0, 0, 0, 0 },
+                    new float[] { 0, 0, 0, 0, 0 },
+                    new float[] { 0, 0, 0, 0, 0 },
+                    new float[] { 0, 0, 0, a, 0 },
+                    new float[] { r, gVal, b, 0, 1 }
+                });
+
+                using (System.Drawing.Imaging.ImageAttributes attributes = new System.Drawing.Imaging.ImageAttributes())
+                {
+                    attributes.SetColorMatrix(matrix, System.Drawing.Imaging.ColorMatrixFlag.Default, System.Drawing.Imaging.ColorAdjustType.Bitmap);
+                    g.DrawImage(sourceImage, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, sourceImage.Width, sourceImage.Height, GraphicsUnit.Pixel, attributes);
+                }
+            }
+            return bmp;
         }
     }
 }

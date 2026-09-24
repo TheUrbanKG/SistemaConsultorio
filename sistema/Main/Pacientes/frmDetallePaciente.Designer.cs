@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmDetallePaciente
     {
@@ -75,9 +75,16 @@
             this.txtCedula.ShortcutsEnabled = true;
             this.txtCedula.Size = new System.Drawing.Size(202, 23);
             this.txtCedula.TabIndex = 0;
+            this.txtCedula.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtCedula.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtCedula.UseCustomBackColor = true;
+            this.txtCedula.UseCustomForeColor = true;
+            this.txtCedula.BackColor = System.Drawing.Color.White;
+            this.txtCedula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.txtCedula.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtCedula.UseSelectable = true;
-            this.txtCedula.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtCedula.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCedula.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtCedula.WaterMarkFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // txtNombre
             // 
@@ -105,9 +112,16 @@
             this.txtNombre.ShortcutsEnabled = true;
             this.txtNombre.Size = new System.Drawing.Size(202, 23);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNombre.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtNombre.UseCustomBackColor = true;
+            this.txtNombre.UseCustomForeColor = true;
+            this.txtNombre.BackColor = System.Drawing.Color.White;
+            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.txtNombre.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtNombre.UseSelectable = true;
-            this.txtNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtNombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtNombre.WaterMarkFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // txtApellido
             // 
@@ -135,38 +149,50 @@
             this.txtApellido.ShortcutsEnabled = true;
             this.txtApellido.Size = new System.Drawing.Size(202, 23);
             this.txtApellido.TabIndex = 2;
+            this.txtApellido.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtApellido.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtApellido.UseCustomBackColor = true;
+            this.txtApellido.UseCustomForeColor = true;
+            this.txtApellido.BackColor = System.Drawing.Color.White;
+            this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.txtApellido.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtApellido.UseSelectable = true;
-            this.txtApellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtApellido.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtApellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtApellido.WaterMarkFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // cbSexo
             // 
+            this.cbSexo.BackColor = System.Drawing.Color.White;
             this.cbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSexo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSexo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Location = new System.Drawing.Point(51, 305);
             this.cbSexo.Name = "cbSexo";
-            this.cbSexo.Size = new System.Drawing.Size(202, 21);
+            this.cbSexo.Size = new System.Drawing.Size(202, 25);
             this.cbSexo.TabIndex = 3;
             // 
             // dtpFechaNacimiento
             // 
+            this.dtpFechaNacimiento.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(51, 256);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(202, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(202, 22);
             this.dtpFechaNacimiento.TabIndex = 4;
             // 
             // btnSiguiente
             // 
             this.btnSiguiente.ButtonText = "Siguiente";
-            this.btnSiguiente.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(89)))));
-            this.btnSiguiente.CheckedForeColor = System.Drawing.Color.Black;
+            this.btnSiguiente.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnSiguiente.CheckedForeColor = System.Drawing.Color.White;
             this.btnSiguiente.CheckedImageTint = System.Drawing.Color.White;
-            this.btnSiguiente.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(207)))), ((int)(((byte)(89)))));
+            this.btnSiguiente.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnSiguiente.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSiguiente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSiguiente.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btnSiguiente.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(207)))), ((int)(((byte)(89)))));
-            this.btnSiguiente.HoverForeColor = System.Drawing.Color.Black;
+            this.btnSiguiente.ForeColor = System.Drawing.Color.White;
+            this.btnSiguiente.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(77)))));
+            this.btnSiguiente.HoverForeColor = System.Drawing.Color.White;
             this.btnSiguiente.HoverImage = null;
             this.btnSiguiente.HoverImageTint = System.Drawing.Color.White;
             this.btnSiguiente.HoverOutline = System.Drawing.Color.Empty;
@@ -177,18 +203,18 @@
             this.btnSiguiente.ImageTint = System.Drawing.Color.White;
             this.btnSiguiente.IsToggleButton = false;
             this.btnSiguiente.IsToggled = false;
-            this.btnSiguiente.Location = new System.Drawing.Point(425, 310);
+            this.btnSiguiente.Location = new System.Drawing.Point(425, 305);
             this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(89)))));
-            this.btnSiguiente.NormalForeColor = System.Drawing.Color.Black;
+            this.btnSiguiente.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnSiguiente.NormalForeColor = System.Drawing.Color.White;
             this.btnSiguiente.NormalOutline = System.Drawing.Color.Empty;
-            this.btnSiguiente.OutlineThickness = 2F;
-            this.btnSiguiente.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnSiguiente.OutlineThickness = 0F;
+            this.btnSiguiente.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(67)))));
             this.btnSiguiente.PressedForeColor = System.Drawing.Color.White;
             this.btnSiguiente.PressedImageTint = System.Drawing.Color.White;
             this.btnSiguiente.PressedOutline = System.Drawing.Color.Empty;
-            this.btnSiguiente.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnSiguiente.Rounding = new System.Windows.Forms.Padding(6);
             this.btnSiguiente.Size = new System.Drawing.Size(131, 42);
             this.btnSiguiente.TabIndex = 5;
             this.btnSiguiente.TextAutoCenter = true;
@@ -202,55 +228,55 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label1.Location = new System.Drawing.Point(48, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Cedula";
+            this.label1.Text = "Cédula";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(48, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.Size = new System.Drawing.Size(55, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Nombre";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label3.Location = new System.Drawing.Point(48, 183);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 16);
+            this.label3.Size = new System.Drawing.Size(57, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Apellido";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label4.Location = new System.Drawing.Point(48, 237);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 16);
+            this.label4.Size = new System.Drawing.Size(133, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Fecha de Nacimiento";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label5.Location = new System.Drawing.Point(48, 286);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 16);
+            this.label5.Size = new System.Drawing.Size(36, 16);
             this.label5.TabIndex = 10;
             this.label5.Text = "Sexo";
             // 
@@ -269,11 +295,11 @@
             // lblHuella
             // 
             this.lblHuella.AutoSize = true;
-            this.lblHuella.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHuella.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(239)))), ((int)(((byte)(208)))));
+            this.lblHuella.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHuella.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.lblHuella.Location = new System.Drawing.Point(396, 246);
             this.lblHuella.Name = "lblHuella";
-            this.lblHuella.Size = new System.Drawing.Size(109, 17);
+            this.lblHuella.Size = new System.Drawing.Size(111, 16);
             this.lblHuella.TabIndex = 13;
             this.lblHuella.Text = "Huella Guardada";
             this.lblHuella.Visible = false;
@@ -300,7 +326,7 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Agregar Paciente";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHuella)).EndInit();
             this.ResumeLayout(false);

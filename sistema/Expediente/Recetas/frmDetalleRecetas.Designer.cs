@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente.Recetas
+namespace sistema.Expediente.Recetas
 {
     partial class frmDetalleRecetas
     {
@@ -55,10 +55,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label1.Location = new System.Drawing.Point(23, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(42, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Título";
             // 
@@ -69,7 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(23, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 16);
@@ -79,7 +79,7 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnAgregarArticulo);
             this.panel1.Location = new System.Drawing.Point(16, 320);
@@ -90,11 +90,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(41, 16);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.label3.Location = new System.Drawing.Point(20, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 23);
+            this.label3.Size = new System.Drawing.Size(76, 19);
             this.label3.TabIndex = 5;
             this.label3.Text = "Artículos";
             // 
@@ -107,8 +107,8 @@
             this.btnAgregarArticulo.CheckedImageTint = System.Drawing.Color.White;
             this.btnAgregarArticulo.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnAgregarArticulo.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAgregarArticulo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarArticulo.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(194)))), ((int)(((byte)(229)))));
+            this.btnAgregarArticulo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarArticulo.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
             this.btnAgregarArticulo.HoverForeColor = System.Drawing.Color.White;
             this.btnAgregarArticulo.HoverImage = null;
             this.btnAgregarArticulo.HoverImageTint = System.Drawing.Color.White;
@@ -120,18 +120,18 @@
             this.btnAgregarArticulo.ImageTint = System.Drawing.Color.White;
             this.btnAgregarArticulo.IsToggleButton = false;
             this.btnAgregarArticulo.IsToggled = false;
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(650, 8);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(665, 8);
             this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
-            this.btnAgregarArticulo.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            this.btnAgregarArticulo.NormalForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAgregarArticulo.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnAgregarArticulo.NormalForeColor = System.Drawing.Color.White;
             this.btnAgregarArticulo.NormalOutline = System.Drawing.Color.Empty;
-            this.btnAgregarArticulo.OutlineThickness = 2F;
-            this.btnAgregarArticulo.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(164)))), ((int)(((byte)(209)))));
+            this.btnAgregarArticulo.OutlineThickness = 0F;
+            this.btnAgregarArticulo.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(64)))), ((int)(((byte)(175)))));
             this.btnAgregarArticulo.PressedForeColor = System.Drawing.Color.White;
             this.btnAgregarArticulo.PressedImageTint = System.Drawing.Color.White;
             this.btnAgregarArticulo.PressedOutline = System.Drawing.Color.Empty;
-            this.btnAgregarArticulo.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnAgregarArticulo.Rounding = new System.Windows.Forms.Padding(8);
             this.btnAgregarArticulo.Size = new System.Drawing.Size(121, 37);
             this.btnAgregarArticulo.TabIndex = 7;
             this.btnAgregarArticulo.TextAutoCenter = true;
@@ -153,10 +153,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label4.Location = new System.Drawing.Point(445, 95);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 16);
+            this.label4.Size = new System.Drawing.Size(107, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Cuadro Clínico";
             // 
@@ -165,6 +165,7 @@
             this.flpArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flpArticulos.AutoScroll = true;
+            this.flpArticulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.flpArticulos.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpArticulos.Location = new System.Drawing.Point(16, 385);
             this.flpArticulos.Name = "flpArticulos";
@@ -177,13 +178,13 @@
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardar.ButtonText = "";
-            this.btnGuardar.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.CheckedForeColor = System.Drawing.Color.White;
             this.btnGuardar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnGuardar.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnGuardar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(74)))));
             this.btnGuardar.HoverForeColor = System.Drawing.Color.White;
             this.btnGuardar.HoverImage = null;
             this.btnGuardar.HoverImageTint = System.Drawing.Color.White;
@@ -198,15 +199,15 @@
             this.btnGuardar.Location = new System.Drawing.Point(727, 243);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.btnGuardar.NormalForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnGuardar.NormalForeColor = System.Drawing.Color.White;
             this.btnGuardar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnGuardar.OutlineThickness = 2F;
-            this.btnGuardar.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnGuardar.OutlineThickness = 0F;
+            this.btnGuardar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(60)))));
             this.btnGuardar.PressedForeColor = System.Drawing.Color.White;
             this.btnGuardar.PressedImageTint = System.Drawing.Color.White;
             this.btnGuardar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnGuardar.Rounding = new System.Windows.Forms.Padding(5);
+            this.btnGuardar.Rounding = new System.Windows.Forms.Padding(8);
             this.btnGuardar.Size = new System.Drawing.Size(60, 44);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.TextAutoCenter = true;
@@ -229,8 +230,9 @@
             this.Controls.Add(this.txtTitulo);
             this.Name = "frmDetalleRecetas";
             this.Resizable = false;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Plan Terapeutico";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

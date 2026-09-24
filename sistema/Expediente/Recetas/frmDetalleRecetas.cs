@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -185,8 +185,8 @@ ORDER BY Orden;", conn))
                 Name = $"filaArticulo_{articuloIndex}",
                 Tag = "filaArticulo",
                 Height = 130,
-                BackColor = Color.FromArgb(17, 17, 17),
-                Margin = new Padding(0, 0, 0, 0)
+                BackColor = Color.White,
+                Margin = new Padding(0, 0, 0, 4)
             };
 
             AjustarAnchoFila(fila);
@@ -199,14 +199,17 @@ ORDER BY Orden;", conn))
                 Anchor = AnchorStyles.Top | AnchorStyles.Left,
                 PromptText = "Nombre del artículo",
                 ShowClearButton = false,
-                UseSelectable = true
+                UseSelectable = true,
+                Theme = MetroFramework.MetroThemeStyle.Light,
+                CustomButton = { Style = MetroFramework.MetroColorStyle.Green }
             };
             fila.Controls.Add(txtNombreMetro);
 
             var lblIndicaciones = new Label
             {
                 Text = "Indicaciones",
-                ForeColor = Color.White,
+                ForeColor = Color.FromArgb(51, 65, 85),
+                Font = new Font("Century Gothic", 9, FontStyle.Bold),
                 Location = new Point(10, 40),
                 AutoSize = true
             };
@@ -223,22 +226,25 @@ ORDER BY Orden;", conn))
                 PromptText = "Indicaciones para el artículo...",
                 ScrollBars = ScrollBars.Vertical,
                 ShowClearButton = false,
-                UseSelectable = true
+                UseSelectable = true,
+                Theme = MetroFramework.MetroThemeStyle.Light,
+                CustomButton = { Style = MetroFramework.MetroColorStyle.Green }
             };
             fila.Controls.Add(txtIndicacionesMetro);
 
             var btnRemover = new Button
             {
                 Text = "Remover",
-                BackColor = Color.FromArgb(255, 71, 87),
+                BackColor = Color.FromArgb(220, 38, 38),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Height = 28,
                 Width = 90,
-                Location = new Point(fila.Width - 100, 8)
+                Location = new Point(fila.Width - 100, 8),
+                Font = new Font("Century Gothic", 8.5F, FontStyle.Bold),
+                Cursor = Cursors.Hand
             };
-            btnRemover.FlatAppearance.BorderColor = Color.FromArgb(255, 71, 87);
-            btnRemover.FlatAppearance.BorderSize = 2;
+            btnRemover.FlatAppearance.BorderSize = 0;
             fila.Controls.Add(btnRemover);
 
             // Asignar a los out como Control (compatible con MetroTextBox)

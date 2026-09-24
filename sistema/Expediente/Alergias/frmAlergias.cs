@@ -1,4 +1,4 @@
-﻿using sistema.Models;
+using sistema.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -82,9 +82,9 @@ namespace sistema.Expediente
                 {
                     Width = flpAlergias.Width - 2,
                     Height = 110,
-                    BackColor = Color.FromArgb(62, 62, 62),
+                    BackColor = Color.White,
                     BorderStyle = BorderStyle.None,
-                    Margin = new Padding(0, 0, 0, 1) // Espacio entre paneles
+                    Margin = new Padding(0, 0, 0, 8) // Espacio entre paneles
                 };
 
                 // Línea superior verde
@@ -92,7 +92,7 @@ namespace sistema.Expediente
                 {
                     Height = 3,
                     Dock = DockStyle.Top,
-                    BackColor = Color.FromArgb(0, 167, 110)
+                    BackColor = Color.FromArgb(0, 168, 89)
                 };
                 panel.Controls.Add(topLine);
 
@@ -102,14 +102,14 @@ namespace sistema.Expediente
                     Font = new Font("Century Gothic", 12, FontStyle.Bold),
                     Location = new Point(10, 10),
                     AutoSize = true,
-                    ForeColor = Color.White
+                    ForeColor = Color.FromArgb(30, 41, 59)
                 };
                 panel.Controls.Add(lblNombre);
 
                 Label lblEstado = new Label
                 {
                     Text = "Estado clínico: " + alergia.EstadoClinico,
-                    ForeColor = Color.FromArgb(0, 220, 100),
+                    ForeColor = Color.FromArgb(71, 85, 105),
                     Location = new Point(10, 35),
                     AutoSize = true,
                     Font = new Font("Century Gothic", 9, FontStyle.Regular)
@@ -120,43 +120,62 @@ namespace sistema.Expediente
                 Button btnTipo = new Button
                 {
                     Text = alergia.Tipo?.ToUpper(),
-                    BackColor = Color.White,
-                    ForeColor = Color.FromArgb(0, 180, 255),
+                    BackColor = Color.FromArgb(241, 245, 249),
+                    ForeColor = Color.FromArgb(0, 168, 89),
                     FlatStyle = FlatStyle.Flat,
                     Location = new Point(10, 65),
                     Height = 32,
                     Width = 120,
                     Font = new Font("Century Gothic", 10, FontStyle.Bold)
                 };
-                btnTipo.FlatAppearance.BorderColor = Color.FromArgb(0, 180, 255);
-                btnTipo.FlatAppearance.BorderSize = 2;
+                btnTipo.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
+                btnTipo.FlatAppearance.BorderSize = 1;
                 panel.Controls.Add(btnTipo);
 
                 Label lblFecha = new Label
                 {
                     Text = "Última modificación: " + alergia.FechaUltimaModificacion.ToString("dd/MM/yyyy HH:mm"),
-                    ForeColor = Color.FromArgb(0, 220, 100),
+                    ForeColor = Color.FromArgb(100, 116, 139),
                     Location = new Point(280, 75),
                     AutoSize = true,
                     Font = new Font("Century Gothic", 10, FontStyle.Italic)
                 };
                 panel.Controls.Add(lblFecha);
 
+                Color badgeBack, badgeFore, badgeBorder;
+                string sev = alergia.Severidad?.ToUpper();
+                if (sev == "MODERADA")
+                {
+                    badgeBack = Color.FromArgb(254, 243, 199);
+                    badgeFore = Color.FromArgb(217, 119, 6);
+                    badgeBorder = Color.FromArgb(251, 191, 36);
+                }
+                else if (sev == "LIGERA")
+                {
+                    badgeBack = Color.FromArgb(240, 253, 244);
+                    badgeFore = Color.FromArgb(22, 101, 52);
+                    badgeBorder = Color.FromArgb(187, 247, 208);
+                }
+                else
+                {
+                    badgeBack = Color.FromArgb(254, 226, 226);
+                    badgeFore = Color.FromArgb(220, 38, 38);
+                    badgeBorder = Color.FromArgb(254, 202, 202);
+                }
+
                 Button btnSeveridad = new Button
                 {
                     Text = alergia.Severidad?.ToUpper(),
-                    BackColor = Color.White,
-                    ForeColor = alergia.Severidad?.ToUpper() == "MODERADA"
-                        ? Color.FromArgb(255, 193, 7)
-                        : Color.FromArgb(255, 71, 87),
+                    BackColor = badgeBack,
+                    ForeColor = badgeFore,
                     FlatStyle = FlatStyle.Flat,
                     Location = new Point(140, 65),
                     Height = 32,
                     Width = 120,
                     Font = new Font("Century Gothic", 10, FontStyle.Bold)
                 };
-                btnSeveridad.FlatAppearance.BorderColor = btnSeveridad.ForeColor;
-                btnSeveridad.FlatAppearance.BorderSize = 2;
+                btnSeveridad.FlatAppearance.BorderColor = badgeBorder;
+                btnSeveridad.FlatAppearance.BorderSize = 1;
                 panel.Controls.Add(btnSeveridad);
 
                 Panel panelBotones = new Panel
@@ -171,16 +190,16 @@ namespace sistema.Expediente
                 Button btnModificar = new Button
                 {
                     Text = "Modificar",
-                    BackColor = Color.FromArgb(255, 220, 37),
-                    ForeColor = Color.Black,
+                    BackColor = Color.FromArgb(37, 99, 235),
+                    ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
                     Height = 32,
                     Width = 100,
                     Font = new Font("Century Gothic", 10, FontStyle.Bold),
                     Location = new Point(0, 0)
                 };
-                btnModificar.FlatAppearance.BorderColor = Color.FromArgb(255, 220, 37);
-                btnModificar.FlatAppearance.BorderSize = 2;
+                btnModificar.FlatAppearance.BorderColor = Color.FromArgb(37, 99, 235);
+                btnModificar.FlatAppearance.BorderSize = 0;
                 btnModificar.Click += (s, e) =>
                 {
                     var frmDetalle = new sistema.Expediente.Alergias.frmDetalleAlergias();

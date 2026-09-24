@@ -47,6 +47,11 @@ namespace sistema
                     e.SuppressKeyPress = true;
                 }
             };
+            flowPanelCitas.Resize += (s, e) => AjustarTamañoPaneles();
+            panelFiltros.Paint += (s, e) =>
+            {
+                ControlPaint.DrawBorder(e.Graphics, panelFiltros.ClientRectangle, Color.FromArgb(226, 232, 240), ButtonBorderStyle.Solid);
+            };
         }
 
         private void CmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,10 +149,14 @@ namespace sistema
         {
             Panel panelCita = new Panel();
             panelCita.Width = flowPanelCitas.ClientSize.Width - 25;
-            panelCita.Height = 130;
-            panelCita.BackColor = Color.FromArgb(55, 55, 58);
+            panelCita.Height = 125;
+            panelCita.BackColor = Color.White;
             panelCita.Margin = new Padding(0, 0, 0, 10);
             panelCita.Padding = new Padding(10);
+            panelCita.Paint += (s, e) =>
+            {
+                ControlPaint.DrawBorder(e.Graphics, panelCita.ClientRectangle, Color.FromArgb(226, 232, 240), ButtonBorderStyle.Solid);
+            };
 
             DateTime fechaCita = Convert.ToDateTime(reader["FechaCita"]);
             TimeSpan horaCita = (TimeSpan)reader["HoraCita"];
@@ -155,28 +164,28 @@ namespace sistema
             int citaID = Convert.ToInt32(reader["CitaID"]);
             string statusActual = reader["Status"].ToString();
 
-            // Panel izquierdo: fecha y hora
+            // Panel izquierdo: fecha y hora estilo badge institucional
             Panel panelInfo = new Panel();
-            panelInfo.Size = new Size(100, 110);
-            panelInfo.Location = new Point(10, 10);
-            panelInfo.BackColor = Color.FromArgb(0, 122, 204);
+            panelInfo.Size = new Size(95, 103);
+            panelInfo.Location = new Point(10, 11);
+            panelInfo.BackColor = Color.FromArgb(0, 168, 89);
 
             Label lblFecha = new Label();
             lblFecha.Text = fechaCita.ToString("dd\nMMM").ToUpper();
-            lblFecha.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            lblFecha.Size = new Size(80, 40);
-            lblFecha.Location = new Point(10, 15);
+            lblFecha.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblFecha.Size = new Size(85, 42);
+            lblFecha.Location = new Point(5, 12);
             lblFecha.TextAlign = ContentAlignment.MiddleCenter;
             lblFecha.ForeColor = Color.White;
             panelInfo.Controls.Add(lblFecha);
 
             Label lblHora = new Label();
             lblHora.Text = $"{horaCita:hh\\:mm}\n{periodo}";
-            lblHora.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-            lblHora.Size = new Size(80, 30);
-            lblHora.Location = new Point(10, 55);
+            lblHora.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblHora.Size = new Size(85, 32);
+            lblHora.Location = new Point(5, 54);
             lblHora.TextAlign = ContentAlignment.MiddleCenter;
-            lblHora.ForeColor = Color.White;
+            lblHora.ForeColor = Color.FromArgb(220, 252, 231);
             panelInfo.Controls.Add(lblHora);
 
             panelCita.Controls.Add(panelInfo);
@@ -184,33 +193,46 @@ namespace sistema
             // Información del paciente
             Label lblPaciente = new Label();
             lblPaciente.Text = $"{reader["Nombre"]} {reader["Apellido"]}";
-            lblPaciente.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            lblPaciente.Size = new Size(300, 25);
-            lblPaciente.Location = new Point(120, 15);
-            lblPaciente.ForeColor = Color.White;
+            lblPaciente.Font = new Font("Segoe UI", 11.5F, FontStyle.Bold);
+            lblPaciente.Size = new Size(350, 24);
+            lblPaciente.Location = new Point(120, 12);
+            lblPaciente.ForeColor = Color.FromArgb(30, 41, 59);
             panelCita.Controls.Add(lblPaciente);
 
             // Teléfono
             Label lblTelefono = new Label();
-            lblTelefono.Text = $"📞 {reader["Telefono"]}";
-            lblTelefono.Font = new Font("Segoe UI", 10);
-            lblTelefono.Size = new Size(200, 20);
-            lblTelefono.Location = new Point(120, 45);
-            lblTelefono.ForeColor = Color.LightGray;
+            lblTelefono.Text = $"Teléfono:  {reader["Telefono"]}";
+            lblTelefono.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
+            lblTelefono.Size = new Size(250, 20);
+            lblTelefono.Location = new Point(120, 38);
+            lblTelefono.ForeColor = Color.FromArgb(100, 116, 139);
             panelCita.Controls.Add(lblTelefono);
 
             // Motivo
             Label lblMotivo = new Label();
-            lblMotivo.Text = $"📋 {reader["Motivo"]}";
-            lblMotivo.Font = new Font("Segoe UI", 10);
-            lblMotivo.Size = new Size(350, 20);
-            lblMotivo.Location = new Point(120, 70);
-            lblMotivo.ForeColor = Color.LightGray;
+            lblMotivo.Text = $"Motivo:  {reader["Motivo"]}";
+            lblMotivo.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
+            lblMotivo.Size = new Size(450, 20);
+            lblMotivo.Location = new Point(120, 62);
+            lblMotivo.ForeColor = Color.FromArgb(71, 85, 105);
             panelCita.Controls.Add(lblMotivo);
+
+            // Etiqueta de Status
+            Label lblStatusTag = new Label();
+            lblStatusTag.Text = "Estado:";
+            lblStatusTag.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStatusTag.ForeColor = Color.FromArgb(100, 116, 139);
+            lblStatusTag.Location = new Point(120, 89);
+            lblStatusTag.Size = new Size(52, 22);
+            panelCita.Controls.Add(lblStatusTag);
 
             // ComboBox para Status
             ComboBox cmbStatus = new ComboBox();
             cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.FlatStyle = FlatStyle.Flat;
+            cmbStatus.BackColor = Color.White;
+            cmbStatus.ForeColor = Color.FromArgb(30, 41, 59);
+            cmbStatus.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
             cmbStatus.Items.AddRange(new object[] {
                 "Programada",
                 "Confirmada",
@@ -220,20 +242,19 @@ namespace sistema
                 "Reprogramada"
             });
             cmbStatus.SelectedItem = statusActual;
-            cmbStatus.Location = new Point(120, 95);
-            cmbStatus.Size = new Size(150, 25);
+            cmbStatus.Location = new Point(175, 86);
+            cmbStatus.Size = new Size(140, 24);
             cmbStatus.Tag = citaID; // guardar el ID de la cita
             cmbStatus.SelectedIndexChanged += CmbStatus_SelectedIndexChanged;
-            cmbStatus.Font = new Font("Segoe UI", 9);
             panelCita.Controls.Add(cmbStatus);
 
             // Botón Eliminar
             Button btnEliminar = new Button();
-            btnEliminar.Size = new Size(80, 30);
-            btnEliminar.Location = new Point(panelCita.Width - btnEliminar.Width - 10, 70);
+            btnEliminar.Size = new Size(85, 30);
+            btnEliminar.Location = new Point(panelCita.Width - 97, 75);
             btnEliminar.Text = "Eliminar";
-            btnEliminar.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-            btnEliminar.BackColor = Color.FromArgb(220, 53, 69);
+            btnEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnEliminar.BackColor = Color.FromArgb(220, 38, 38);
             btnEliminar.ForeColor = Color.White;
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.FlatAppearance.BorderSize = 0;
@@ -246,10 +267,10 @@ namespace sistema
             // Año
             Label lblAnio = new Label();
             lblAnio.Text = $"Año: {fechaCita:yyyy}";
-            lblAnio.Font = new Font("Segoe UI", 9);
-            lblAnio.Size = new Size(60, 20);
-            lblAnio.Location = new Point(panelCita.Width - lblAnio.Width - 10, 15);
-            lblAnio.ForeColor = Color.LightGray;
+            lblAnio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblAnio.Size = new Size(70, 20);
+            lblAnio.Location = new Point(panelCita.Width - lblAnio.Width - 12, 12);
+            lblAnio.ForeColor = Color.FromArgb(148, 163, 184);
             lblAnio.TextAlign = ContentAlignment.MiddleRight;
             lblAnio.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panelCita.Controls.Add(lblAnio);
@@ -259,21 +280,24 @@ namespace sistema
 
         private void AjustarTamañoPaneles()
         {
+            int targetWidth = flowPanelCitas.ClientSize.Width - 25;
+            if (targetWidth < 300) targetWidth = 300;
+
             foreach (Control control in flowPanelCitas.Controls)
             {
                 if (control is Panel panelCita)
                 {
-                    panelCita.Width = flowPanelCitas.ClientSize.Width - 25;
+                    panelCita.Width = targetWidth;
 
                     foreach (Control innerControl in panelCita.Controls)
                     {
                         if (innerControl is Button btn && btn.Text == "Eliminar")
                         {
-                            btn.Location = new Point(panelCita.Width - 90, 70);
+                            btn.Location = new Point(panelCita.Width - btn.Width - 12, 75);
                         }
                         else if (innerControl is Label lbl && lbl.Text.StartsWith("Año"))
                         {
-                            lbl.Location = new Point(panelCita.Width - lbl.Width - 10, 15);
+                            lbl.Location = new Point(panelCita.Width - lbl.Width - 12, 12);
                         }
                     }
                 }
@@ -323,12 +347,17 @@ namespace sistema
                 Panel placeholder = new Panel();
                 placeholder.Width = flowPanelCitas.ClientSize.Width - 25;
                 placeholder.Height = 100;
-                placeholder.BackColor = Color.FromArgb(45, 45, 48);
+                placeholder.BackColor = Color.White;
+                placeholder.Margin = new Padding(0, 10, 0, 0);
+                placeholder.Paint += (s, e) =>
+                {
+                    ControlPaint.DrawBorder(e.Graphics, placeholder.ClientRectangle, Color.FromArgb(226, 232, 240), ButtonBorderStyle.Solid);
+                };
 
                 Label lblVacio = new Label();
-                lblVacio.Text = "No hay citas para esta fecha.";
-                lblVacio.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-                lblVacio.ForeColor = Color.Gray;
+                lblVacio.Text = "No hay citas registradas para los filtros seleccionados.";
+                lblVacio.Font = new Font("Segoe UI", 11, FontStyle.Italic);
+                lblVacio.ForeColor = Color.FromArgb(148, 163, 184);
                 lblVacio.Dock = DockStyle.Fill;
                 lblVacio.TextAlign = ContentAlignment.MiddleCenter;
 

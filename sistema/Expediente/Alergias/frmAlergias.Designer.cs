@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente
+namespace sistema.Expediente
 {
     partial class frmAlergias
     {
@@ -47,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSinAlergias.AutoSize = true;
             this.lblSinAlergias.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSinAlergias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.lblSinAlergias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblSinAlergias.Location = new System.Drawing.Point(468, 404);
             this.lblSinAlergias.Name = "lblSinAlergias";
             this.lblSinAlergias.Size = new System.Drawing.Size(296, 32);
@@ -66,7 +66,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnNuevaAlergia);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -84,7 +84,7 @@
             this.btnNuevaAlergia.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnNuevaAlergia.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNuevaAlergia.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevaAlergia.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnNuevaAlergia.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(78)))));
             this.btnNuevaAlergia.HoverForeColor = System.Drawing.Color.White;
             this.btnNuevaAlergia.HoverImage = null;
             this.btnNuevaAlergia.HoverImageTint = System.Drawing.Color.White;
@@ -99,8 +99,8 @@
             this.btnNuevaAlergia.Location = new System.Drawing.Point(26, 24);
             this.btnNuevaAlergia.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevaAlergia.Name = "btnNuevaAlergia";
-            this.btnNuevaAlergia.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.btnNuevaAlergia.NormalForeColor = System.Drawing.Color.Black;
+            this.btnNuevaAlergia.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnNuevaAlergia.NormalForeColor = System.Drawing.Color.White;
             this.btnNuevaAlergia.NormalOutline = System.Drawing.Color.Empty;
             this.btnNuevaAlergia.OutlineThickness = 2F;
             this.btnNuevaAlergia.PressedBackground = System.Drawing.Color.RoyalBlue;
@@ -117,6 +117,7 @@
             // flpAlergias
             // 
             this.flpAlergias.AutoScroll = true;
+            this.flpAlergias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.flpAlergias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpAlergias.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpAlergias.Location = new System.Drawing.Point(0, 88);
@@ -142,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1180, 513);
             this.Controls.Add(this.pbAlergias);
             this.Controls.Add(this.lblSinAlergias);

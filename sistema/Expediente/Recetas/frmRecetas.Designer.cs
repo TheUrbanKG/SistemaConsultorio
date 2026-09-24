@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente.Recetas
+namespace sistema.Expediente.Recetas
 {
     partial class frmRecetas
     {
@@ -42,6 +42,7 @@
             // 
             // flpRecetas
             // 
+            this.flpRecetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.flpRecetas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpRecetas.Location = new System.Drawing.Point(0, 87);
             this.flpRecetas.Name = "flpRecetas";
@@ -60,7 +61,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnNuevaReceta);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -72,13 +73,13 @@
             // 
             this.btnNuevaReceta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevaReceta.ButtonText = "Nueva Receta";
-            this.btnNuevaReceta.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnNuevaReceta.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnNuevaReceta.CheckedForeColor = System.Drawing.Color.White;
             this.btnNuevaReceta.CheckedImageTint = System.Drawing.Color.White;
-            this.btnNuevaReceta.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnNuevaReceta.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnNuevaReceta.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnNuevaReceta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevaReceta.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnNuevaReceta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaReceta.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(74)))));
             this.btnNuevaReceta.HoverForeColor = System.Drawing.Color.White;
             this.btnNuevaReceta.HoverImage = null;
             this.btnNuevaReceta.HoverImageTint = System.Drawing.Color.White;
@@ -93,16 +94,16 @@
             this.btnNuevaReceta.Location = new System.Drawing.Point(26, 24);
             this.btnNuevaReceta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevaReceta.Name = "btnNuevaReceta";
-            this.btnNuevaReceta.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.btnNuevaReceta.NormalForeColor = System.Drawing.Color.Black;
+            this.btnNuevaReceta.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnNuevaReceta.NormalForeColor = System.Drawing.Color.White;
             this.btnNuevaReceta.NormalOutline = System.Drawing.Color.Empty;
-            this.btnNuevaReceta.OutlineThickness = 2F;
-            this.btnNuevaReceta.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnNuevaReceta.OutlineThickness = 0F;
+            this.btnNuevaReceta.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(60)))));
             this.btnNuevaReceta.PressedForeColor = System.Drawing.Color.White;
             this.btnNuevaReceta.PressedImageTint = System.Drawing.Color.White;
             this.btnNuevaReceta.PressedOutline = System.Drawing.Color.Empty;
-            this.btnNuevaReceta.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnNuevaReceta.Size = new System.Drawing.Size(121, 37);
+            this.btnNuevaReceta.Rounding = new System.Windows.Forms.Padding(8);
+            this.btnNuevaReceta.Size = new System.Drawing.Size(140, 40);
             this.btnNuevaReceta.TabIndex = 1;
             this.btnNuevaReceta.TextAutoCenter = true;
             this.btnNuevaReceta.TextOffset = new System.Drawing.Point(0, 0);
@@ -112,7 +113,7 @@
             // 
             this.lbRecetas.AutoSize = true;
             this.lbRecetas.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRecetas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(182)))), ((int)(((byte)(203)))));
+            this.lbRecetas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lbRecetas.Location = new System.Drawing.Point(461, 412);
             this.lbRecetas.Name = "lbRecetas";
             this.lbRecetas.Size = new System.Drawing.Size(327, 28);
@@ -133,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1180, 513);
             this.Controls.Add(this.lbRecetas);
             this.Controls.Add(this.pbRecetas);

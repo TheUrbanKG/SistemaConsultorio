@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -102,53 +102,53 @@ namespace sistema.Expediente.Recetas
                 {
                     Width = flpRecetas.Width - 1,
                     Height = 110,
-                    BackColor = Color.FromArgb(62, 62, 62),
+                    BackColor = Color.White,
                     BorderStyle = BorderStyle.None,
-                    Margin = new Padding(0, 0, 0, 0),
+                    Margin = new Padding(0, 0, 0, 8),
                     Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
 
-                // Línea superior verde
+                // Línea superior verde esmeralda
                 var topLine = new Panel
                 {
                     Height = 3,
                     Dock = DockStyle.Top,
-                    BackColor = Color.FromArgb(0, 167, 110)
+                    BackColor = Color.FromArgb(0, 168, 89)
                 };
                 panel.Controls.Add(topLine);
 
-                // Título
+                // Título en slate oscuro
                 var lblTitulo = new Label
                 {
                     Text = p.Titulo?.ToUpper(),
                     Font = new Font("Century Gothic", 12, FontStyle.Bold),
-                    Location = new Point(10, 10),
+                    Location = new Point(14, 14),
                     AutoSize = true,
-                    ForeColor = Color.White
+                    ForeColor = Color.FromArgb(30, 41, 59)
                 };
                 panel.Controls.Add(lblTitulo);
 
-                // Descripción (verde como en alergias)
+                // Descripción
                 var lblDesc = new Label
                 {
                     Text = p.Descripcion,
-                    ForeColor = Color.FromArgb(0, 220, 100),
-                    Location = new Point(10, 35),
+                    ForeColor = Color.FromArgb(71, 85, 105),
+                    Location = new Point(14, 40),
                     AutoSize = true,
                     Font = new Font("Century Gothic", 9, FontStyle.Regular)
                 };
                 panel.Controls.Add(lblDesc);
 
-                // Fecha (estilo badge morada)
+                // Fecha (badge suave)
                 var lblFecha = new Label
                 {
                     Text = p.FechaCreacion.ToString("dd/MM/yyyy HH:mm"),
-                    ForeColor = Color.MediumPurple,
-                    Location = new Point(10, 65),
+                    ForeColor = Color.FromArgb(109, 40, 217),
+                    Location = new Point(14, 70),
                     AutoSize = true,
                     Font = new Font("Century Gothic", 9, FontStyle.Bold),
-                    BackColor = Color.FromArgb(45, 45, 45),
-                    Padding = new Padding(6, 3, 6, 3)
+                    BackColor = Color.FromArgb(243, 232, 255),
+                    Padding = new Padding(8, 4, 8, 4)
                 };
                 panel.Controls.Add(lblFecha);
 
@@ -164,16 +164,16 @@ namespace sistema.Expediente.Recetas
                 var btnConsultar = new Button
                 {
                     Text = "Consultar",
-                    BackColor = Color.FromArgb(0, 122, 204),
+                    BackColor = Color.FromArgb(37, 99, 235),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
                     Height = 32,
                     Width = 110,
-                    Font = new Font("Century Gothic", 10, FontStyle.Bold),
-                    Location = new Point(0, 0)
+                    Font = new Font("Century Gothic", 9.75F, FontStyle.Bold),
+                    Location = new Point(0, 0),
+                    Cursor = Cursors.Hand
                 };
-                btnConsultar.FlatAppearance.BorderColor = Color.FromArgb(0, 122, 204);
-                btnConsultar.FlatAppearance.BorderSize = 2;
+                btnConsultar.FlatAppearance.BorderSize = 0;
                 btnConsultar.Click += (s, e) =>
                 {
                     var frm = new frmDetalleRecetas();

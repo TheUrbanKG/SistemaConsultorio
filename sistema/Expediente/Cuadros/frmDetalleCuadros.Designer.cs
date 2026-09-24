@@ -1,4 +1,4 @@
-﻿namespace sistema.Expediente.Cuadros
+namespace sistema.Expediente.Cuadros
 {
     partial class frmDetalleCuadros
     {
@@ -72,11 +72,12 @@
             this.dtFin.Size = new System.Drawing.Size(200, 29);
             this.dtFin.TabIndex = 3;
             // 
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label1.Location = new System.Drawing.Point(47, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 16);
@@ -87,7 +88,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(47, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 16);
@@ -98,7 +99,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label3.Location = new System.Drawing.Point(50, 323);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 16);
@@ -109,7 +110,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label4.Location = new System.Drawing.Point(439, 323);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 16);
@@ -119,13 +120,13 @@
             // btnGuardar
             // 
             this.btnGuardar.ButtonText = "Guardar Cambios";
-            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.CheckedForeColor = System.Drawing.Color.White;
             this.btnGuardar.CheckedImageTint = System.Drawing.Color.White;
             this.btnGuardar.CheckedOutline = System.Drawing.Color.DodgerBlue;
             this.btnGuardar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnGuardar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(78)))));
             this.btnGuardar.HoverForeColor = System.Drawing.Color.White;
             this.btnGuardar.HoverImage = null;
             this.btnGuardar.HoverImageTint = System.Drawing.Color.White;
@@ -140,7 +141,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(50, 405);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnGuardar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.NormalForeColor = System.Drawing.Color.White;
             this.btnGuardar.NormalOutline = System.Drawing.Color.Empty;
             this.btnGuardar.OutlineThickness = 2F;
@@ -173,7 +174,7 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Detalles del Cuadro Clinico";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.ResumeLayout(false);
             this.PerformLayout();
 
