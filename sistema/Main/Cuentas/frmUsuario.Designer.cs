@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmUsuario
     {
@@ -113,10 +113,11 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.checkBox1.Location = new System.Drawing.Point(72, 270);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(118, 17);
+            this.checkBox1.Size = new System.Drawing.Size(133, 20);
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Mostrar Contraseña";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -125,7 +126,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label1.Location = new System.Drawing.Point(69, 225);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
@@ -136,7 +137,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(440, 225);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 16);
@@ -147,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label3.Location = new System.Drawing.Point(69, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 16);
@@ -158,7 +159,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label4.Location = new System.Drawing.Point(69, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 16);
@@ -169,7 +170,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label5.Location = new System.Drawing.Point(441, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 16);
@@ -180,7 +181,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label6.Location = new System.Drawing.Point(440, 158);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 16);
@@ -191,7 +192,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.label7.Location = new System.Drawing.Point(597, 157);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 16);
@@ -202,13 +203,13 @@
             // 
             this.btnAñadirUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAñadirUsuario.ButtonText = "Confirmar";
-            this.btnAñadirUsuario.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnAñadirUsuario.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnAñadirUsuario.CheckedForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.CheckedImageTint = System.Drawing.Color.White;
-            this.btnAñadirUsuario.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnAñadirUsuario.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnAñadirUsuario.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAñadirUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAñadirUsuario.HoverBackground = System.Drawing.Color.DarkTurquoise;
+            this.btnAñadirUsuario.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(77)))));
             this.btnAñadirUsuario.HoverForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.HoverImage = null;
             this.btnAñadirUsuario.HoverImageTint = System.Drawing.Color.White;
@@ -223,11 +224,11 @@
             this.btnAñadirUsuario.Location = new System.Drawing.Point(591, 310);
             this.btnAñadirUsuario.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnAñadirUsuario.Name = "btnAñadirUsuario";
-            this.btnAñadirUsuario.NormalBackground = System.Drawing.Color.DarkTurquoise;
+            this.btnAñadirUsuario.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnAñadirUsuario.NormalForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.NormalOutline = System.Drawing.Color.Empty;
             this.btnAñadirUsuario.OutlineThickness = 2F;
-            this.btnAñadirUsuario.PressedBackground = System.Drawing.Color.DarkTurquoise;
+            this.btnAñadirUsuario.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(67)))));
             this.btnAñadirUsuario.PressedForeColor = System.Drawing.Color.White;
             this.btnAñadirUsuario.PressedImageTint = System.Drawing.Color.White;
             this.btnAñadirUsuario.PressedOutline = System.Drawing.Color.Empty;
@@ -241,13 +242,13 @@
             // 
             this.sataButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sataButton1.ButtonText = "Cancelar";
-            this.sataButton1.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.sataButton1.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.sataButton1.CheckedForeColor = System.Drawing.Color.White;
             this.sataButton1.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton1.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.sataButton1.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.sataButton1.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.sataButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton1.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.sataButton1.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.sataButton1.HoverForeColor = System.Drawing.Color.White;
             this.sataButton1.HoverImage = null;
             this.sataButton1.HoverImageTint = System.Drawing.Color.White;
@@ -262,11 +263,11 @@
             this.sataButton1.Location = new System.Drawing.Point(434, 310);
             this.sataButton1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.sataButton1.Name = "sataButton1";
-            this.sataButton1.NormalBackground = System.Drawing.Color.Crimson;
+            this.sataButton1.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.sataButton1.NormalForeColor = System.Drawing.Color.White;
             this.sataButton1.NormalOutline = System.Drawing.Color.Empty;
             this.sataButton1.OutlineThickness = 2F;
-            this.sataButton1.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(20)))), ((int)(((byte)(50)))));
+            this.sataButton1.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.sataButton1.PressedForeColor = System.Drawing.Color.White;
             this.sataButton1.PressedImageTint = System.Drawing.Color.White;
             this.sataButton1.PressedOutline = System.Drawing.Color.Empty;
@@ -280,13 +281,13 @@
             // 
             this.btnHuella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHuella.ButtonText = "Añadir Huella";
-            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.btnHuella.CheckedForeColor = System.Drawing.Color.White;
             this.btnHuella.CheckedImageTint = System.Drawing.Color.White;
-            this.btnHuella.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnHuella.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.btnHuella.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnHuella.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(83)))));
+            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
             this.btnHuella.HoverForeColor = System.Drawing.Color.White;
             this.btnHuella.HoverImage = null;
             this.btnHuella.HoverImageTint = System.Drawing.Color.White;
@@ -301,11 +302,11 @@
             this.btnHuella.Location = new System.Drawing.Point(72, 310);
             this.btnHuella.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnHuella.Name = "btnHuella";
-            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.btnHuella.NormalForeColor = System.Drawing.Color.White;
             this.btnHuella.NormalOutline = System.Drawing.Color.Empty;
             this.btnHuella.OutlineThickness = 2F;
-            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(83)))), ((int)(((byte)(9)))));
             this.btnHuella.PressedForeColor = System.Drawing.Color.White;
             this.btnHuella.PressedImageTint = System.Drawing.Color.White;
             this.btnHuella.PressedOutline = System.Drawing.Color.Empty;
@@ -341,9 +342,9 @@
             this.Controls.Add(this.txtUsuario);
             this.Name = "frmUsuario";
             this.Resizable = false;
-            this.Style = MetroFramework.MetroColorStyle.Orange;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Gestión de Usuario";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.ResumeLayout(false);
             this.PerformLayout();
 

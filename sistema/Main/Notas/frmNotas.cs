@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
@@ -169,7 +169,8 @@ namespace sistema
                     Width = CalcularAnchoTarjeta(),
                     Height = 120,
                     Margin = new Padding(8),
-                    BackColor = Color.FromArgb(30, 80, 85)  
+                    BackColor = Color.White,
+                    BorderStyle = BorderStyle.FixedSingle
                 };
 
                 var lblTipo = new Label
@@ -177,7 +178,7 @@ namespace sistema
                     Name = "lblTipo",
                     Text = n.Tipo == "Medica" ? "Médica" : "General",
                     AutoSize = true,
-                    ForeColor = Color.White,
+                    ForeColor = n.Tipo == "Medica" ? Color.FromArgb(124, 58, 237) : Color.FromArgb(0, 168, 89),
                     Font = new Font("Segoe UI", 9, FontStyle.Bold),
                     Location = new Point(12, 10)
                 };
@@ -188,7 +189,7 @@ namespace sistema
                     Text = n.Titulo,
                     AutoSize = false,
                     Height = 22,
-                    ForeColor = Color.White,
+                    ForeColor = Color.FromArgb(30, 41, 59),
                     Font = new Font("Segoe UI", 11, FontStyle.Bold),
                     Location = new Point(12, 32)
                 };
@@ -198,7 +199,7 @@ namespace sistema
                     Name = "lblPaciente",
                     Text = n.PacienteNombre != null ? $"Paciente: {n.PacienteNombre}" : "",
                     AutoSize = true,
-                    ForeColor = Color.Gainsboro,
+                    ForeColor = Color.FromArgb(71, 85, 105),
                     Font = new Font("Segoe UI", 9, FontStyle.Regular),
                     Location = new Point(12, 58)
                 };
@@ -208,7 +209,7 @@ namespace sistema
                     Name = "lblFecha",
                     Text = n.CreadoEn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
                     AutoSize = true,
-                    ForeColor = Color.LightGray,
+                    ForeColor = Color.FromArgb(148, 163, 184),
                     Location = new Point(12, 82)
                 };
 
@@ -218,7 +219,7 @@ namespace sistema
                     Text = "Editar",
                     Width = 80,
                     Height = 28,
-                    BackColor = Color.FromArgb(52, 152, 219),
+                    BackColor = Color.FromArgb(37, 99, 235),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat
                 };
@@ -231,7 +232,7 @@ namespace sistema
                     Text = "Eliminar",
                     Width = 80,
                     Height = 28,
-                    BackColor = Color.FromArgb(231, 76, 60),
+                    BackColor = Color.FromArgb(220, 53, 69),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat
                 };

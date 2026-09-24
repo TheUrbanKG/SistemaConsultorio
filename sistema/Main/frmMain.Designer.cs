@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmMain
     {
@@ -68,17 +68,18 @@
             this.panelSuperior.SuspendLayout();
             this.SuspendLayout();
             // 
+            // 
             // panelLateral
             // 
-            this.panelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.panelLateral.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.panelLateral.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.panelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.panelLateral.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.panelLateral.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius1.BottomLeft = 1;
             borderRadius1.BottomRight = 15;
             borderRadius1.TopLeft = 1;
             borderRadius1.TopRight = 1;
             this.panelLateral.BorderRadius = borderRadius1;
-            this.panelLateral.BorderThickness = 0;
+            this.panelLateral.BorderThickness = 1;
             this.panelLateral.Controls.Add(this.sataPictureBox1);
             this.panelLateral.Controls.Add(this.sataPanel1);
             this.panelLateral.Controls.Add(this.panelCuentas);
@@ -96,10 +97,10 @@
             // sataPictureBox1
             // 
             this.sataPictureBox1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.sataPictureBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(74)))));
-            this.sataPictureBox1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(74)))));
+            this.sataPictureBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.sataPictureBox1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.sataPictureBox1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.sataPictureBox1.BorderSize = 1;
+            this.sataPictureBox1.BorderSize = 2;
             this.sataPictureBox1.GradientAngle = 50F;
             this.sataPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("sataPictureBox1.Image")));
             this.sataPictureBox1.Location = new System.Drawing.Point(47, 12);
@@ -111,9 +112,9 @@
             // 
             // sataPanel1
             // 
-            this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
-            this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
-            this.sataPanel1.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.sataPanel1.BackColor2 = System.Drawing.Color.Transparent;
+            this.sataPanel1.BorderColor = System.Drawing.Color.Transparent;
             borderRadius2.BottomLeft = 1;
             borderRadius2.BottomRight = 1;
             borderRadius2.TopLeft = 1;
@@ -129,17 +130,17 @@
             // BTNInicio
             // 
             this.BTNInicio.ButtonText = "Inicio";
-            this.BTNInicio.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BTNInicio.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNInicio.CheckedForeColor = System.Drawing.Color.White;
             this.BTNInicio.CheckedImageTint = System.Drawing.Color.White;
-            this.BTNInicio.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.BTNInicio.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNInicio.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.BTNInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNInicio.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BTNInicio.HoverForeColor = System.Drawing.Color.White;
+            this.BTNInicio.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNInicio.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(248)))), ((int)(((byte)(242)))));
+            this.BTNInicio.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.BTNInicio.HoverImage = null;
-            this.BTNInicio.HoverImageTint = System.Drawing.Color.White;
-            this.BTNInicio.HoverOutline = System.Drawing.Color.Black;
+            this.BTNInicio.HoverImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.BTNInicio.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNInicio.Image = ((System.Drawing.Image)(resources.GetObject("BTNInicio.Image")));
             this.BTNInicio.ImageAutoCenter = false;
             this.BTNInicio.ImageExpand = new System.Drawing.Point(7, 7);
@@ -150,16 +151,16 @@
             this.BTNInicio.Location = new System.Drawing.Point(4, 0);
             this.BTNInicio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BTNInicio.Name = "BTNInicio";
-            this.BTNInicio.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.BTNInicio.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNInicio.NormalForeColor = System.Drawing.Color.White;
-            this.BTNInicio.NormalOutline = System.Drawing.Color.DarkSlateGray;
-            this.BTNInicio.OutlineThickness = 2F;
-            this.BTNInicio.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BTNInicio.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.BTNInicio.OutlineThickness = 1F;
+            this.BTNInicio.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(70)))));
             this.BTNInicio.PressedForeColor = System.Drawing.Color.White;
             this.BTNInicio.PressedImageTint = System.Drawing.Color.White;
             this.BTNInicio.PressedOutline = System.Drawing.Color.Empty;
-            this.BTNInicio.Rounding = new System.Windows.Forms.Padding(5);
-            this.BTNInicio.Size = new System.Drawing.Size(199, 56);
+            this.BTNInicio.Rounding = new System.Windows.Forms.Padding(6);
+            this.BTNInicio.Size = new System.Drawing.Size(196, 56);
             this.BTNInicio.TabIndex = 1;
             this.BTNInicio.TextAutoCenter = true;
             this.BTNInicio.TextOffset = new System.Drawing.Point(0, 0);
@@ -168,9 +169,9 @@
             // panelCuentas
             // 
             this.panelCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelCuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panelCuentas.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.panelCuentas.BorderColor = System.Drawing.Color.Black;
+            this.panelCuentas.BackColor = System.Drawing.Color.Transparent;
+            this.panelCuentas.BackColor2 = System.Drawing.Color.Transparent;
+            this.panelCuentas.BorderColor = System.Drawing.Color.Transparent;
             borderRadius3.BottomLeft = 1;
             borderRadius3.BottomRight = 1;
             borderRadius3.TopLeft = 1;
@@ -187,37 +188,37 @@
             // 
             this.btnCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCuentas.ButtonText = "Gestion de Cuentas";
-            this.btnCuentas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCuentas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnCuentas.CheckedForeColor = System.Drawing.Color.White;
             this.btnCuentas.CheckedImageTint = System.Drawing.Color.White;
-            this.btnCuentas.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCuentas.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnCuentas.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnCuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCuentas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCuentas.HoverForeColor = System.Drawing.Color.White;
+            this.btnCuentas.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuentas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(248)))), ((int)(((byte)(242)))));
+            this.btnCuentas.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.btnCuentas.HoverImage = null;
-            this.btnCuentas.HoverImageTint = System.Drawing.Color.White;
-            this.btnCuentas.HoverOutline = System.Drawing.Color.Empty;
+            this.btnCuentas.HoverImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.btnCuentas.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnCuentas.Image = ((System.Drawing.Image)(resources.GetObject("btnCuentas.Image")));
             this.btnCuentas.ImageAutoCenter = false;
             this.btnCuentas.ImageExpand = new System.Drawing.Point(7, 7);
             this.btnCuentas.ImageOffset = new System.Drawing.Point(15, 0);
-            this.btnCuentas.ImageTint = System.Drawing.Color.White;
+            this.btnCuentas.ImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.btnCuentas.IsToggleButton = false;
             this.btnCuentas.IsToggled = false;
             this.btnCuentas.Location = new System.Drawing.Point(3, 0);
             this.btnCuentas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCuentas.Name = "btnCuentas";
-            this.btnCuentas.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.btnCuentas.NormalForeColor = System.Drawing.Color.White;
-            this.btnCuentas.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCuentas.OutlineThickness = 2F;
-            this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.btnCuentas.NormalBackground = System.Drawing.Color.White;
+            this.btnCuentas.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnCuentas.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.btnCuentas.OutlineThickness = 1F;
+            this.btnCuentas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(70)))));
             this.btnCuentas.PressedForeColor = System.Drawing.Color.White;
             this.btnCuentas.PressedImageTint = System.Drawing.Color.White;
             this.btnCuentas.PressedOutline = System.Drawing.Color.Empty;
-            this.btnCuentas.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnCuentas.Size = new System.Drawing.Size(200, 54);
+            this.btnCuentas.Rounding = new System.Windows.Forms.Padding(6);
+            this.btnCuentas.Size = new System.Drawing.Size(196, 54);
             this.btnCuentas.TabIndex = 8;
             this.btnCuentas.TextAutoCenter = false;
             this.btnCuentas.TextOffset = new System.Drawing.Point(0, 0);
@@ -226,15 +227,15 @@
             // BTNSalir
             // 
             this.BTNSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BTNSalir.BackColor = System.Drawing.Color.Black;
+            this.BTNSalir.BackColor = System.Drawing.Color.Transparent;
             this.BTNSalir.ButtonText = "Salir";
-            this.BTNSalir.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BTNSalir.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.BTNSalir.CheckedForeColor = System.Drawing.Color.White;
             this.BTNSalir.CheckedImageTint = System.Drawing.Color.White;
-            this.BTNSalir.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.BTNSalir.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.BTNSalir.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.BTNSalir.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.BTNSalir.HoverBackground = System.Drawing.Color.DarkRed;
+            this.BTNSalir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNSalir.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
             this.BTNSalir.HoverForeColor = System.Drawing.Color.White;
             this.BTNSalir.HoverImage = null;
             this.BTNSalir.HoverImageTint = System.Drawing.Color.White;
@@ -249,15 +250,15 @@
             this.BTNSalir.Location = new System.Drawing.Point(19, 707);
             this.BTNSalir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BTNSalir.Name = "BTNSalir";
-            this.BTNSalir.NormalBackground = System.Drawing.Color.Brown;
+            this.BTNSalir.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.BTNSalir.NormalForeColor = System.Drawing.Color.White;
             this.BTNSalir.NormalOutline = System.Drawing.Color.Empty;
-            this.BTNSalir.OutlineThickness = 2F;
-            this.BTNSalir.PressedBackground = System.Drawing.Color.DarkRed;
+            this.BTNSalir.OutlineThickness = 1F;
+            this.BTNSalir.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
             this.BTNSalir.PressedForeColor = System.Drawing.Color.White;
             this.BTNSalir.PressedImageTint = System.Drawing.Color.White;
             this.BTNSalir.PressedOutline = System.Drawing.Color.Empty;
-            this.BTNSalir.Rounding = new System.Windows.Forms.Padding(5);
+            this.BTNSalir.Rounding = new System.Windows.Forms.Padding(6);
             this.BTNSalir.Size = new System.Drawing.Size(168, 52);
             this.BTNSalir.TabIndex = 6;
             this.BTNSalir.TextAutoCenter = true;
@@ -266,9 +267,9 @@
             // 
             // sataPanel2
             // 
-            this.sataPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
-            this.sataPanel2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
-            this.sataPanel2.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.sataPanel2.BackColor2 = System.Drawing.Color.Transparent;
+            this.sataPanel2.BorderColor = System.Drawing.Color.Transparent;
             borderRadius4.BottomLeft = 1;
             borderRadius4.BottomRight = 1;
             borderRadius4.TopLeft = 1;
@@ -284,37 +285,37 @@
             // BTNPacientes
             // 
             this.BTNPacientes.ButtonText = "Pacientes";
-            this.BTNPacientes.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BTNPacientes.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNPacientes.CheckedForeColor = System.Drawing.Color.White;
             this.BTNPacientes.CheckedImageTint = System.Drawing.Color.White;
-            this.BTNPacientes.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.BTNPacientes.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNPacientes.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.BTNPacientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNPacientes.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BTNPacientes.HoverForeColor = System.Drawing.Color.White;
+            this.BTNPacientes.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNPacientes.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(248)))), ((int)(((byte)(242)))));
+            this.BTNPacientes.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.BTNPacientes.HoverImage = null;
-            this.BTNPacientes.HoverImageTint = System.Drawing.Color.White;
-            this.BTNPacientes.HoverOutline = System.Drawing.Color.Empty;
+            this.BTNPacientes.HoverImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.BTNPacientes.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNPacientes.Image = ((System.Drawing.Image)(resources.GetObject("BTNPacientes.Image")));
             this.BTNPacientes.ImageAutoCenter = false;
             this.BTNPacientes.ImageExpand = new System.Drawing.Point(7, 7);
             this.BTNPacientes.ImageOffset = new System.Drawing.Point(15, 0);
-            this.BTNPacientes.ImageTint = System.Drawing.Color.White;
+            this.BTNPacientes.ImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.BTNPacientes.IsToggleButton = false;
             this.BTNPacientes.IsToggled = false;
             this.BTNPacientes.Location = new System.Drawing.Point(4, 0);
             this.BTNPacientes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BTNPacientes.Name = "BTNPacientes";
-            this.BTNPacientes.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.BTNPacientes.NormalForeColor = System.Drawing.Color.White;
-            this.BTNPacientes.NormalOutline = System.Drawing.Color.DarkSlateGray;
-            this.BTNPacientes.OutlineThickness = 2F;
-            this.BTNPacientes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BTNPacientes.NormalBackground = System.Drawing.Color.White;
+            this.BTNPacientes.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.BTNPacientes.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.BTNPacientes.OutlineThickness = 1F;
+            this.BTNPacientes.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(70)))));
             this.BTNPacientes.PressedForeColor = System.Drawing.Color.White;
             this.BTNPacientes.PressedImageTint = System.Drawing.Color.White;
             this.BTNPacientes.PressedOutline = System.Drawing.Color.Empty;
-            this.BTNPacientes.Rounding = new System.Windows.Forms.Padding(5);
-            this.BTNPacientes.Size = new System.Drawing.Size(199, 54);
+            this.BTNPacientes.Rounding = new System.Windows.Forms.Padding(6);
+            this.BTNPacientes.Size = new System.Drawing.Size(196, 54);
             this.BTNPacientes.TabIndex = 2;
             this.BTNPacientes.TextAutoCenter = true;
             this.BTNPacientes.TextOffset = new System.Drawing.Point(0, 0);
@@ -322,9 +323,9 @@
             // 
             // sataPanel4
             // 
-            this.sataPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
-            this.sataPanel4.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
-            this.sataPanel4.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.sataPanel4.BackColor2 = System.Drawing.Color.Transparent;
+            this.sataPanel4.BorderColor = System.Drawing.Color.Transparent;
             borderRadius5.BottomLeft = 1;
             borderRadius5.BottomRight = 1;
             borderRadius5.TopLeft = 1;
@@ -340,36 +341,36 @@
             // BTNAgenda
             // 
             this.BTNAgenda.ButtonText = "Agenda";
-            this.BTNAgenda.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BTNAgenda.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNAgenda.CheckedForeColor = System.Drawing.Color.White;
             this.BTNAgenda.CheckedImageTint = System.Drawing.Color.White;
-            this.BTNAgenda.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.BTNAgenda.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNAgenda.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.BTNAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNAgenda.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BTNAgenda.HoverForeColor = System.Drawing.Color.White;
+            this.BTNAgenda.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNAgenda.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(248)))), ((int)(((byte)(242)))));
+            this.BTNAgenda.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.BTNAgenda.HoverImage = null;
-            this.BTNAgenda.HoverImageTint = System.Drawing.Color.White;
-            this.BTNAgenda.HoverOutline = System.Drawing.Color.Empty;
+            this.BTNAgenda.HoverImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.BTNAgenda.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNAgenda.Image = ((System.Drawing.Image)(resources.GetObject("BTNAgenda.Image")));
             this.BTNAgenda.ImageAutoCenter = false;
             this.BTNAgenda.ImageExpand = new System.Drawing.Point(7, 7);
             this.BTNAgenda.ImageOffset = new System.Drawing.Point(15, 0);
-            this.BTNAgenda.ImageTint = System.Drawing.Color.White;
+            this.BTNAgenda.ImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.BTNAgenda.IsToggleButton = false;
             this.BTNAgenda.IsToggled = false;
             this.BTNAgenda.Location = new System.Drawing.Point(4, 0);
             this.BTNAgenda.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BTNAgenda.Name = "BTNAgenda";
-            this.BTNAgenda.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.BTNAgenda.NormalForeColor = System.Drawing.Color.White;
-            this.BTNAgenda.NormalOutline = System.Drawing.Color.DarkSlateGray;
-            this.BTNAgenda.OutlineThickness = 2F;
-            this.BTNAgenda.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BTNAgenda.NormalBackground = System.Drawing.Color.White;
+            this.BTNAgenda.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.BTNAgenda.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.BTNAgenda.OutlineThickness = 1F;
+            this.BTNAgenda.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(70)))));
             this.BTNAgenda.PressedForeColor = System.Drawing.Color.White;
             this.BTNAgenda.PressedImageTint = System.Drawing.Color.White;
             this.BTNAgenda.PressedOutline = System.Drawing.Color.Empty;
-            this.BTNAgenda.Rounding = new System.Windows.Forms.Padding(5);
+            this.BTNAgenda.Rounding = new System.Windows.Forms.Padding(6);
             this.BTNAgenda.Size = new System.Drawing.Size(196, 54);
             this.BTNAgenda.TabIndex = 3;
             this.BTNAgenda.TextAutoCenter = true;
@@ -378,9 +379,9 @@
             // 
             // sataPanel5
             // 
-            this.sataPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
-            this.sataPanel5.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
-            this.sataPanel5.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel5.BackColor = System.Drawing.Color.Transparent;
+            this.sataPanel5.BackColor2 = System.Drawing.Color.Transparent;
+            this.sataPanel5.BorderColor = System.Drawing.Color.Transparent;
             borderRadius6.BottomLeft = 1;
             borderRadius6.BottomRight = 1;
             borderRadius6.TopLeft = 1;
@@ -396,37 +397,37 @@
             // BTNNotas
             // 
             this.BTNNotas.ButtonText = "Notas";
-            this.BTNNotas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BTNNotas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNNotas.CheckedForeColor = System.Drawing.Color.White;
             this.BTNNotas.CheckedImageTint = System.Drawing.Color.White;
-            this.BTNNotas.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.BTNNotas.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNNotas.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.BTNNotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNNotas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BTNNotas.HoverForeColor = System.Drawing.Color.White;
+            this.BTNNotas.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNNotas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(248)))), ((int)(((byte)(242)))));
+            this.BTNNotas.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.BTNNotas.HoverImage = null;
-            this.BTNNotas.HoverImageTint = System.Drawing.Color.White;
-            this.BTNNotas.HoverOutline = System.Drawing.Color.Empty;
+            this.BTNNotas.HoverImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.BTNNotas.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNNotas.Image = ((System.Drawing.Image)(resources.GetObject("BTNNotas.Image")));
             this.BTNNotas.ImageAutoCenter = false;
             this.BTNNotas.ImageExpand = new System.Drawing.Point(7, 7);
             this.BTNNotas.ImageOffset = new System.Drawing.Point(15, 0);
-            this.BTNNotas.ImageTint = System.Drawing.Color.White;
+            this.BTNNotas.ImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.BTNNotas.IsToggleButton = false;
             this.BTNNotas.IsToggled = false;
             this.BTNNotas.Location = new System.Drawing.Point(3, 0);
             this.BTNNotas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BTNNotas.Name = "BTNNotas";
-            this.BTNNotas.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.BTNNotas.NormalForeColor = System.Drawing.Color.White;
-            this.BTNNotas.NormalOutline = System.Drawing.Color.DarkSlateGray;
-            this.BTNNotas.OutlineThickness = 2F;
-            this.BTNNotas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BTNNotas.NormalBackground = System.Drawing.Color.White;
+            this.BTNNotas.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.BTNNotas.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.BTNNotas.OutlineThickness = 1F;
+            this.BTNNotas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(70)))));
             this.BTNNotas.PressedForeColor = System.Drawing.Color.White;
             this.BTNNotas.PressedImageTint = System.Drawing.Color.White;
             this.BTNNotas.PressedOutline = System.Drawing.Color.Empty;
-            this.BTNNotas.Rounding = new System.Windows.Forms.Padding(5);
-            this.BTNNotas.Size = new System.Drawing.Size(200, 54);
+            this.BTNNotas.Rounding = new System.Windows.Forms.Padding(6);
+            this.BTNNotas.Size = new System.Drawing.Size(196, 54);
             this.BTNNotas.TabIndex = 5;
             this.BTNNotas.TextAutoCenter = true;
             this.BTNNotas.TextOffset = new System.Drawing.Point(0, 0);
@@ -434,9 +435,9 @@
             // 
             // sataPanel3
             // 
-            this.sataPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(157)))));
-            this.sataPanel3.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(218)))), ((int)(((byte)(255)))));
-            this.sataPanel3.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.sataPanel3.BackColor2 = System.Drawing.Color.Transparent;
+            this.sataPanel3.BorderColor = System.Drawing.Color.Transparent;
             borderRadius7.BottomLeft = 1;
             borderRadius7.BottomRight = 1;
             borderRadius7.TopLeft = 1;
@@ -452,37 +453,37 @@
             // BTNCitas
             // 
             this.BTNCitas.ButtonText = "Citas";
-            this.BTNCitas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BTNCitas.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNCitas.CheckedForeColor = System.Drawing.Color.White;
             this.BTNCitas.CheckedImageTint = System.Drawing.Color.White;
-            this.BTNCitas.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.BTNCitas.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNCitas.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.BTNCitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNCitas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BTNCitas.HoverForeColor = System.Drawing.Color.White;
+            this.BTNCitas.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCitas.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(248)))), ((int)(((byte)(242)))));
+            this.BTNCitas.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.BTNCitas.HoverImage = null;
-            this.BTNCitas.HoverImageTint = System.Drawing.Color.White;
-            this.BTNCitas.HoverOutline = System.Drawing.Color.Empty;
+            this.BTNCitas.HoverImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.BTNCitas.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.BTNCitas.Image = ((System.Drawing.Image)(resources.GetObject("BTNCitas.Image")));
             this.BTNCitas.ImageAutoCenter = false;
             this.BTNCitas.ImageExpand = new System.Drawing.Point(7, 7);
             this.BTNCitas.ImageOffset = new System.Drawing.Point(15, 0);
-            this.BTNCitas.ImageTint = System.Drawing.Color.White;
+            this.BTNCitas.ImageTint = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.BTNCitas.IsToggleButton = false;
             this.BTNCitas.IsToggled = false;
             this.BTNCitas.Location = new System.Drawing.Point(4, 0);
             this.BTNCitas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BTNCitas.Name = "BTNCitas";
-            this.BTNCitas.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.BTNCitas.NormalForeColor = System.Drawing.Color.White;
-            this.BTNCitas.NormalOutline = System.Drawing.Color.DarkSlateGray;
-            this.BTNCitas.OutlineThickness = 2F;
-            this.BTNCitas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BTNCitas.NormalBackground = System.Drawing.Color.White;
+            this.BTNCitas.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.BTNCitas.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.BTNCitas.OutlineThickness = 1F;
+            this.BTNCitas.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(70)))));
             this.BTNCitas.PressedForeColor = System.Drawing.Color.White;
             this.BTNCitas.PressedImageTint = System.Drawing.Color.White;
             this.BTNCitas.PressedOutline = System.Drawing.Color.Empty;
-            this.BTNCitas.Rounding = new System.Windows.Forms.Padding(5);
-            this.BTNCitas.Size = new System.Drawing.Size(197, 54);
+            this.BTNCitas.Rounding = new System.Windows.Forms.Padding(6);
+            this.BTNCitas.Size = new System.Drawing.Size(196, 54);
             this.BTNCitas.TabIndex = 4;
             this.BTNCitas.TextAutoCenter = true;
             this.BTNCitas.TextOffset = new System.Drawing.Point(0, 0);
@@ -490,6 +491,7 @@
             // 
             // pbTitulo
             // 
+            this.pbTitulo.BackColor = System.Drawing.Color.Transparent;
             this.pbTitulo.ErrorImage = null;
             this.pbTitulo.Image = ((System.Drawing.Image)(resources.GetObject("pbTitulo.Image")));
             this.pbTitulo.Location = new System.Drawing.Point(42, 26);
@@ -502,8 +504,9 @@
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
+            this.labelTitulo.BackColor = System.Drawing.Color.Transparent;
             this.labelTitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.labelTitulo.Location = new System.Drawing.Point(156, 49);
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(46, 23);
@@ -512,15 +515,15 @@
             // 
             // panelSuperior
             // 
-            this.panelSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.panelSuperior.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.panelSuperior.BorderColor = System.Drawing.Color.Black;
+            this.panelSuperior.BackColor = System.Drawing.Color.White;
+            this.panelSuperior.BackColor2 = System.Drawing.Color.White;
+            this.panelSuperior.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius8.BottomLeft = 1;
             borderRadius8.BottomRight = 1;
             borderRadius8.TopLeft = 1;
             borderRadius8.TopRight = 1;
             this.panelSuperior.BorderRadius = borderRadius8;
-            this.panelSuperior.BorderThickness = 0;
+            this.panelSuperior.BorderThickness = 1;
             this.panelSuperior.Controls.Add(this.pbTitulo);
             this.panelSuperior.Controls.Add(this.labelTitulo);
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
@@ -531,6 +534,7 @@
             // 
             // panelContenedor
             // 
+            this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(204, 103);
             this.panelContenedor.Name = "panelContenedor";
@@ -541,7 +545,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1249, 787);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panelSuperior);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Drawing;
@@ -174,7 +174,17 @@ namespace sistema
             }
         }
 
-        // Configura los colores de los botones de navegación para el efecto de resaltado.
+        // Configura los colores de los botones de navegación para el modo claro institucional.
+        private static readonly Color NavActiveBg = Color.FromArgb(0, 168, 89);
+        private static readonly Color NavActiveFg = Color.White;
+        private static readonly Color NavActiveTint = Color.White;
+        private static readonly Color NavActiveOutline = Color.FromArgb(0, 168, 89);
+
+        private static readonly Color NavInactiveBg = Color.White;
+        private static readonly Color NavInactiveFg = Color.FromArgb(51, 65, 85);
+        private static readonly Color NavInactiveTint = Color.FromArgb(71, 85, 105);
+        private static readonly Color NavInactiveOutline = Color.FromArgb(226, 232, 240);
+
         private void InicializarNavegacionLateral()
         {
             // Define qué botones forman parte del menú de navegación principal.
@@ -182,49 +192,48 @@ namespace sistema
 
             foreach (var sb in _navMainButtons)
             {
-                if (sb == null) continue; // Si un botón no existe en el diseñador, lo ignora.
+                if (sb == null) continue;
 
-                // Guarda el color de fondo normal del botón en su propiedad 'Tag'.
-                // Esto nos permite recordar el color original para restaurarlo después.
-                if (sb.Tag == null) sb.Tag = sb.NormalBackground;
+                sb.NormalBackground = NavInactiveBg;
+                sb.NormalForeColor = NavInactiveFg;
+                sb.ImageTint = NavInactiveTint;
+                sb.NormalOutline = NavInactiveOutline;
 
-                // Si el color para cuando el mouse pasa por encima ('Hover') no está definido,
-                // lo calcula automáticamente aclarando un poco el color normal.
-                if (sb.HoverBackground.IsEmpty)
-                {
-                    var normal = (Color)sb.Tag;
-                    sb.HoverBackground = ControlPaint.Light(normal);
-                }
+                sb.HoverBackground = Color.FromArgb(235, 248, 242);
+                sb.HoverForeColor = Color.FromArgb(0, 140, 70);
+                sb.HoverImageTint = Color.FromArgb(0, 140, 70);
+                sb.HoverOutline = Color.FromArgb(0, 168, 89);
+
+                sb.PressedBackground = Color.FromArgb(0, 135, 70);
+                sb.PressedForeColor = Color.White;
+                sb.PressedImageTint = Color.White;
+                sb.PressedOutline = Color.Empty;
             }
         }
 
-        // Cambia el color de fondo del botón activo para que parezca que está "presionado" o seleccionado.
+        // Cambia el color de fondo del botón activo para indicar visualmente la sección seleccionada.
         private void SetActiveNavButton(FrameworkTest.SATAButton active)
         {
-            if (_navMainButtons == null) return; // Si los botones no se han inicializado, no hace nada.
+            if (_navMainButtons == null) return;
 
             // Recorre todos los botones de navegación.
             foreach (var sb in _navMainButtons)
             {
                 if (sb == null) continue;
 
-                // Recupera el color normal original que guardamos en el 'Tag'.
-                var normal = (Color)(sb.Tag ?? sb.NormalBackground);
-
-                // Si el botón actual es el que queremos activar...
                 if (sb == active)
                 {
-                    // ...le asigna el color de 'Hover' como su color de fondo normal.
-                    var hover = sb.HoverBackground.IsEmpty ? ControlPaint.Light(normal) : sb.HoverBackground;
-                    sb.NormalBackground = hover;
-                    // También cambia el color del texto si hay un color de 'Hover' definido para él.
-                    if (!sb.HoverForeColor.IsEmpty)
-                        sb.NormalForeColor = sb.HoverForeColor;
+                    sb.NormalBackground = NavActiveBg;
+                    sb.NormalForeColor = NavActiveFg;
+                    sb.ImageTint = NavActiveTint;
+                    sb.NormalOutline = NavActiveOutline;
                 }
                 else
                 {
-                    // Si no es el botón activo, le restaura su color de fondo original.
-                    sb.NormalBackground = normal;
+                    sb.NormalBackground = NavInactiveBg;
+                    sb.NormalForeColor = NavInactiveFg;
+                    sb.ImageTint = NavInactiveTint;
+                    sb.NormalOutline = NavInactiveOutline;
                 }
 
                 // Invalida y refresca el botón para forzar que se redibuje con los nuevos colores.

@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmNotas
     {
@@ -69,7 +69,7 @@
             // 
             // panelTopAccent
             // 
-            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(180)))), ((int)(((byte)(80)))));
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccent.Name = "panelTopAccent";
@@ -78,7 +78,7 @@
             // 
             // panelFiltros
             // 
-            this.panelFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(67)))));
+            this.panelFiltros.BackColor = System.Drawing.Color.White;
             this.panelFiltros.Controls.Add(this.lblFiltroTipo);
             this.panelFiltros.Controls.Add(this.cboFiltroTipo);
             this.panelFiltros.Controls.Add(this.lblFiltroPaciente);
@@ -96,7 +96,7 @@
             // 
             this.lblFiltroTipo.AutoSize = true;
             this.lblFiltroTipo.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblFiltroTipo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblFiltroTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lblFiltroTipo.Location = new System.Drawing.Point(10, 16);
             this.lblFiltroTipo.Name = "lblFiltroTipo";
             this.lblFiltroTipo.Size = new System.Drawing.Size(32, 17);
@@ -105,10 +105,10 @@
             // 
             // cboFiltroTipo
             // 
-            this.cboFiltroTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.cboFiltroTipo.BackColor = System.Drawing.Color.White;
             this.cboFiltroTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltroTipo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboFiltroTipo.ForeColor = System.Drawing.Color.Black;
+            this.cboFiltroTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.cboFiltroTipo.Location = new System.Drawing.Point(48, 14);
             this.cboFiltroTipo.Name = "cboFiltroTipo";
             this.cboFiltroTipo.Size = new System.Drawing.Size(112, 21);
@@ -119,7 +119,7 @@
             this.lblFiltroPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFiltroPaciente.AutoSize = true;
             this.lblFiltroPaciente.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblFiltroPaciente.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblFiltroPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lblFiltroPaciente.Location = new System.Drawing.Point(514, 17);
             this.lblFiltroPaciente.Name = "lblFiltroPaciente";
             this.lblFiltroPaciente.Size = new System.Drawing.Size(62, 17);
@@ -129,10 +129,10 @@
             // cboFiltroPaciente
             // 
             this.cboFiltroPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboFiltroPaciente.BackColor = System.Drawing.Color.Gainsboro;
+            this.cboFiltroPaciente.BackColor = System.Drawing.Color.White;
             this.cboFiltroPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltroPaciente.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboFiltroPaciente.ForeColor = System.Drawing.Color.Black;
+            this.cboFiltroPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.cboFiltroPaciente.Location = new System.Drawing.Point(582, 14);
             this.cboFiltroPaciente.Name = "cboFiltroPaciente";
             this.cboFiltroPaciente.Size = new System.Drawing.Size(198, 21);
@@ -144,7 +144,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblBuscar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lblBuscar.Location = new System.Drawing.Point(188, 15);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(47, 17);
@@ -155,9 +155,9 @@
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBuscar.BackColor = System.Drawing.Color.White;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.txtBuscar.Location = new System.Drawing.Point(241, 13);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(257, 20);
@@ -166,11 +166,11 @@
             // btnRefrescar
             // 
             this.btnRefrescar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.btnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnRefrescar.FlatAppearance.BorderSize = 0;
             this.btnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefrescar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnRefrescar.ForeColor = System.Drawing.Color.Black;
+            this.btnRefrescar.ForeColor = System.Drawing.Color.White;
             this.btnRefrescar.Location = new System.Drawing.Point(805, 10);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(91, 26);
@@ -180,7 +180,7 @@
             // 
             // panelEditor
             // 
-            this.panelEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.panelEditor.BackColor = System.Drawing.Color.White;
             this.panelEditor.Controls.Add(this.rbGeneral);
             this.panelEditor.Controls.Add(this.rbMedica);
             this.panelEditor.Controls.Add(this.lblPaciente);
@@ -201,7 +201,7 @@
             // 
             this.rbGeneral.AutoSize = true;
             this.rbGeneral.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.rbGeneral.ForeColor = System.Drawing.Color.White;
+            this.rbGeneral.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.rbGeneral.Location = new System.Drawing.Point(86, 14);
             this.rbGeneral.Name = "rbGeneral";
             this.rbGeneral.Size = new System.Drawing.Size(74, 21);
@@ -214,7 +214,7 @@
             // 
             this.rbMedica.AutoSize = true;
             this.rbMedica.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.rbMedica.ForeColor = System.Drawing.Color.White;
+            this.rbMedica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.rbMedica.Location = new System.Drawing.Point(179, 14);
             this.rbMedica.Name = "rbMedica";
             this.rbMedica.Size = new System.Drawing.Size(72, 21);
@@ -227,7 +227,7 @@
             // 
             this.lblPaciente.AutoSize = true;
             this.lblPaciente.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblPaciente.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lblPaciente.Location = new System.Drawing.Point(14, 50);
             this.lblPaciente.Name = "lblPaciente";
             this.lblPaciente.Size = new System.Drawing.Size(178, 17);
@@ -236,11 +236,11 @@
             // 
             // cboPaciente
             // 
-            this.cboPaciente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboPaciente.BackColor = System.Drawing.Color.White;
             this.cboPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPaciente.Enabled = false;
-            this.cboPaciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboPaciente.ForeColor = System.Drawing.Color.Black;
+            this.cboPaciente.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.cboPaciente.Location = new System.Drawing.Point(13, 70);
             this.cboPaciente.Name = "cboPaciente";
             this.cboPaciente.Size = new System.Drawing.Size(292, 21);
@@ -250,7 +250,7 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblTitulo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lblTitulo.Location = new System.Drawing.Point(14, 116);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(39, 17);
@@ -259,9 +259,9 @@
             // 
             // txtTitulo
             // 
-            this.txtTitulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTitulo.BackColor = System.Drawing.Color.White;
             this.txtTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTitulo.ForeColor = System.Drawing.Color.Black;
+            this.txtTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.txtTitulo.Location = new System.Drawing.Point(14, 136);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(292, 20);
@@ -271,7 +271,7 @@
             // 
             this.lblContenido.AutoSize = true;
             this.lblContenido.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblContenido.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblContenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.lblContenido.Location = new System.Drawing.Point(14, 173);
             this.lblContenido.Name = "lblContenido";
             this.lblContenido.Size = new System.Drawing.Size(71, 17);
@@ -282,9 +282,9 @@
             // 
             this.txtContenido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtContenido.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtContenido.BackColor = System.Drawing.Color.White;
             this.txtContenido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContenido.ForeColor = System.Drawing.Color.Black;
+            this.txtContenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.txtContenido.Location = new System.Drawing.Point(17, 193);
             this.txtContenido.Name = "txtContenido";
             this.txtContenido.Size = new System.Drawing.Size(292, 243);
@@ -294,11 +294,11 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(86, 451);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(103, 29);
@@ -309,7 +309,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
@@ -324,7 +324,7 @@
             // flpNotas
             // 
             this.flpNotas.AutoScroll = true;
-            this.flpNotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.flpNotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.flpNotas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpNotas.Location = new System.Drawing.Point(326, 52);
             this.flpNotas.Name = "flpNotas";
@@ -336,7 +336,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(915, 557);
             this.Controls.Add(this.flpNotas);
             this.Controls.Add(this.panelEditor);

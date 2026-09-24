@@ -1,4 +1,4 @@
-﻿using sistema.Models;
+using sistema.Models;
 using System;
 using System.Configuration;
 using System.Data;
@@ -159,31 +159,34 @@ WHERE 1=1";
 
         private void AplicarTemaGrid()
         {
-            var fondo = Color.FromArgb(45, 48, 53);
-            var fila = Color.FromArgb(54, 57, 63);
-            var alterna = Color.FromArgb(60, 63, 70);
-            var header = Color.FromArgb(62, 62, 62);
-            var acento = Color.FromArgb(0, 167, 110);
+            var fondo = Color.White;
+            var fila = Color.White;
+            var alterna = Color.FromArgb(248, 250, 252);
+            var header = Color.FromArgb(0, 168, 89);
+            var gridBorder = Color.FromArgb(226, 232, 240);
+            var texto = Color.FromArgb(30, 41, 59);
+            var selFondo = Color.FromArgb(220, 252, 231);
+            var selTexto = Color.FromArgb(20, 83, 45);
 
             dgvPacientes.BackgroundColor = fondo;
             dgvPacientes.BorderStyle = BorderStyle.None;
-            dgvPacientes.GridColor = header;
+            dgvPacientes.GridColor = gridBorder;
 
             dgvPacientes.EnableHeadersVisualStyles = false;
-            dgvPacientes.ColumnHeadersDefaultCellStyle.BackColor = acento;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.BackColor = header;
             dgvPacientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvPacientes.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9f, FontStyle.Bold);
-            dgvPacientes.ColumnHeadersHeight = 28;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9.5f, FontStyle.Bold);
+            dgvPacientes.ColumnHeadersHeight = 32;
 
             dgvPacientes.DefaultCellStyle.BackColor = fila;
-            dgvPacientes.DefaultCellStyle.ForeColor = Color.White;
-            dgvPacientes.DefaultCellStyle.SelectionBackColor = acento;
-            dgvPacientes.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvPacientes.DefaultCellStyle.ForeColor = texto;
+            dgvPacientes.DefaultCellStyle.SelectionBackColor = selFondo;
+            dgvPacientes.DefaultCellStyle.SelectionForeColor = selTexto;
 
             dgvPacientes.AlternatingRowsDefaultCellStyle.BackColor = alterna;
-            dgvPacientes.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
-            dgvPacientes.AlternatingRowsDefaultCellStyle.SelectionBackColor = acento;
-            dgvPacientes.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.ForeColor = texto;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.SelectionBackColor = selFondo;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.SelectionForeColor = selTexto;
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)

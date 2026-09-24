@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -37,12 +37,28 @@ namespace sistema
             acciones.Insert(0, "Todas");
             cboAccion.DataSource = acciones;
 
-            dgvHistorial.DefaultCellStyle.ForeColor = Color.White;
-            dgvHistorial.DefaultCellStyle.BackColor = Color.FromArgb(54, 57, 63);
-            dgvHistorial.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 167, 110);
-            dgvHistorial.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(62, 62, 62);
-            dgvHistorial.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvHistorial.BackgroundColor = Color.White;
+            dgvHistorial.BorderStyle = BorderStyle.None;
+            dgvHistorial.GridColor = Color.FromArgb(226, 232, 240);
+            dgvHistorial.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
             dgvHistorial.EnableHeadersVisualStyles = false;
+            dgvHistorial.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 168, 89);
+            dgvHistorial.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvHistorial.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9.5f, FontStyle.Bold);
+            dgvHistorial.ColumnHeadersHeight = 32;
+
+            dgvHistorial.DefaultCellStyle.BackColor = Color.White;
+            dgvHistorial.DefaultCellStyle.ForeColor = Color.FromArgb(30, 41, 59);
+            dgvHistorial.DefaultCellStyle.Font = new Font("Century Gothic", 9f, FontStyle.Regular);
+            dgvHistorial.DefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 252, 231);
+            dgvHistorial.DefaultCellStyle.SelectionForeColor = Color.FromArgb(20, 83, 45);
+
+            dgvHistorial.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
+            dgvHistorial.AlternatingRowsDefaultCellStyle.ForeColor = Color.FromArgb(30, 41, 59);
+            dgvHistorial.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 252, 231);
+            dgvHistorial.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(20, 83, 45);
+            dgvHistorial.RowTemplate.Height = 30;
 
             Cargar();
         }

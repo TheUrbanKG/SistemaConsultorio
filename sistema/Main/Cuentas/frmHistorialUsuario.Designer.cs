@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmHistorialUsuario
     {
@@ -47,7 +47,7 @@
             // 
             // panelTopAccent
             // 
-            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccent.Name = "panelTopAccent";
@@ -56,7 +56,7 @@
             // 
             // panelFiltros
             // 
-            this.panelFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.panelFiltros.BackColor = System.Drawing.Color.White;
             this.panelFiltros.Controls.Add(this.lblUsuario);
             this.panelFiltros.Controls.Add(this.cboUsuario);
             this.panelFiltros.Controls.Add(this.lblAccion);
@@ -77,41 +77,43 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.lblUsuario.Location = new System.Drawing.Point(10, 20);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(46, 15);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario";
             // 
             // cboUsuario
             // 
-            this.cboUsuario.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboUsuario.BackColor = System.Drawing.Color.White;
             this.cboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboUsuario.ForeColor = System.Drawing.Color.Black;
-            this.cboUsuario.Location = new System.Drawing.Point(57, 16);
+            this.cboUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.cboUsuario.Location = new System.Drawing.Point(60, 16);
             this.cboUsuario.Name = "cboUsuario";
-            this.cboUsuario.Size = new System.Drawing.Size(121, 21);
+            this.cboUsuario.Size = new System.Drawing.Size(118, 21);
             this.cboUsuario.TabIndex = 1;
             // 
             // lblAccion
             // 
             this.lblAccion.AutoSize = true;
-            this.lblAccion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblAccion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.lblAccion.Location = new System.Drawing.Point(184, 20);
             this.lblAccion.Name = "lblAccion";
-            this.lblAccion.Size = new System.Drawing.Size(40, 13);
+            this.lblAccion.Size = new System.Drawing.Size(45, 15);
             this.lblAccion.TabIndex = 2;
             this.lblAccion.Text = "Acción";
             // 
             // cboAccion
             // 
-            this.cboAccion.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboAccion.BackColor = System.Drawing.Color.White;
             this.cboAccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboAccion.ForeColor = System.Drawing.Color.Black;
-            this.cboAccion.Location = new System.Drawing.Point(228, 16);
+            this.cboAccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.cboAccion.Location = new System.Drawing.Point(232, 16);
             this.cboAccion.Name = "cboAccion";
             this.cboAccion.Size = new System.Drawing.Size(121, 21);
             this.cboAccion.TabIndex = 3;
@@ -119,10 +121,11 @@
             // lblDesde
             // 
             this.lblDesde.AutoSize = true;
-            this.lblDesde.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblDesde.Location = new System.Drawing.Point(370, 20);
+            this.lblDesde.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesde.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.lblDesde.Location = new System.Drawing.Point(365, 20);
             this.lblDesde.Name = "lblDesde";
-            this.lblDesde.Size = new System.Drawing.Size(38, 13);
+            this.lblDesde.Size = new System.Drawing.Size(40, 15);
             this.lblDesde.TabIndex = 4;
             this.lblDesde.Text = "Desde";
             // 
@@ -130,7 +133,7 @@
             // 
             this.dtpDesde.Checked = false;
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(414, 16);
+            this.dtpDesde.Location = new System.Drawing.Point(408, 16);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.ShowCheckBox = true;
             this.dtpDesde.Size = new System.Drawing.Size(103, 20);
@@ -139,10 +142,11 @@
             // lblHasta
             // 
             this.lblHasta.AutoSize = true;
-            this.lblHasta.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblHasta.Location = new System.Drawing.Point(537, 19);
+            this.lblHasta.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHasta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.lblHasta.Location = new System.Drawing.Point(525, 20);
             this.lblHasta.Name = "lblHasta";
-            this.lblHasta.Size = new System.Drawing.Size(35, 13);
+            this.lblHasta.Size = new System.Drawing.Size(37, 15);
             this.lblHasta.TabIndex = 6;
             this.lblHasta.Text = "Hasta";
             // 
@@ -150,7 +154,7 @@
             // 
             this.dtpHasta.Checked = false;
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(588, 16);
+            this.dtpHasta.Location = new System.Drawing.Point(566, 16);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.ShowCheckBox = true;
             this.dtpHasta.Size = new System.Drawing.Size(103, 20);
@@ -159,35 +163,37 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblBuscar.Location = new System.Drawing.Point(722, 19);
+            this.lblBuscar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.lblBuscar.Location = new System.Drawing.Point(685, 20);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(40, 13);
+            this.lblBuscar.Size = new System.Drawing.Size(43, 15);
             this.lblBuscar.TabIndex = 8;
             this.lblBuscar.Text = "Buscar";
             // 
             // txtBuscar
             // 
-            this.txtBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBuscar.BackColor = System.Drawing.Color.White;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscar.Location = new System.Drawing.Point(768, 16);
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.txtBuscar.Location = new System.Drawing.Point(732, 16);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(124, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(150, 20);
             this.txtBuscar.TabIndex = 9;
             // 
             // btnRefrescar
             // 
             this.btnRefrescar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.btnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnRefrescar.FlatAppearance.BorderSize = 0;
             this.btnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefrescar.ForeColor = System.Drawing.Color.Black;
-            this.btnRefrescar.Location = new System.Drawing.Point(922, 14);
+            this.btnRefrescar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrescar.ForeColor = System.Drawing.Color.White;
+            this.btnRefrescar.Location = new System.Drawing.Point(905, 14);
             this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(46, 24);
+            this.btnRefrescar.Size = new System.Drawing.Size(63, 25);
             this.btnRefrescar.TabIndex = 10;
-            this.btnRefrescar.Text = "IR";
+            this.btnRefrescar.Text = "Filtrar";
             this.btnRefrescar.UseVisualStyleBackColor = false;
             // 
             // dgvHistorial
@@ -195,8 +201,10 @@
             this.dgvHistorial.AllowUserToAddRows = false;
             this.dgvHistorial.AllowUserToDeleteRows = false;
             this.dgvHistorial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHistorial.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.dgvHistorial.BackgroundColor = System.Drawing.Color.White;
             this.dgvHistorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvHistorial.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvHistorial.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.dgvHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHistorial.Location = new System.Drawing.Point(0, 58);
             this.dgvHistorial.MultiSelect = false;
@@ -211,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(978, 520);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.panelFiltros);

@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class frmPacientes
     {
@@ -52,15 +52,15 @@
             this.sataPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            this.sataPanel1.BorderColor = System.Drawing.Color.Black;
+            this.sataPanel1.BackColor = System.Drawing.Color.White;
+            this.sataPanel1.BackColor2 = System.Drawing.Color.White;
+            this.sataPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             borderRadius2.BottomLeft = 10;
             borderRadius2.BottomRight = 10;
             borderRadius2.TopLeft = 10;
             borderRadius2.TopRight = 10;
             this.sataPanel1.BorderRadius = borderRadius2;
-            this.sataPanel1.BorderThickness = 0;
+            this.sataPanel1.BorderThickness = 1;
             this.sataPanel1.Controls.Add(this.dgvPacientes);
             this.sataPanel1.Location = new System.Drawing.Point(55, 101);
             this.sataPanel1.Name = "sataPanel1";
@@ -74,24 +74,24 @@
             this.dgvPacientes.AllowUserToDeleteRows = false;
             this.dgvPacientes.AllowUserToResizeColumns = false;
             this.dgvPacientes.AllowUserToResizeRows = false;
-            this.dgvPacientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.dgvPacientes.BackgroundColor = System.Drawing.Color.White;
             this.dgvPacientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPacientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPacientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(252)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(83)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPacientes.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPacientes.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,11 +101,11 @@
             this.dgvPacientes.Name = "dgvPacientes";
             this.dgvPacientes.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(252)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(83)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPacientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPacientes.RowHeadersVisible = false;
@@ -120,13 +120,13 @@
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.ButtonText = "Editar Paciente";
-            this.btnModificar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnModificar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnModificar.CheckedForeColor = System.Drawing.Color.White;
             this.btnModificar.CheckedImageTint = System.Drawing.Color.White;
-            this.btnModificar.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnModificar.CheckedOutline = System.Drawing.Color.Empty;
             this.btnModificar.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.HoverBackground = System.Drawing.Color.RoyalBlue;
+            this.btnModificar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnModificar.HoverForeColor = System.Drawing.Color.White;
             this.btnModificar.HoverImage = null;
             this.btnModificar.HoverImageTint = System.Drawing.Color.White;
@@ -141,15 +141,15 @@
             this.btnModificar.Location = new System.Drawing.Point(907, 190);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.NormalBackground = System.Drawing.Color.CornflowerBlue;
-            this.btnModificar.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModificar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnModificar.NormalForeColor = System.Drawing.Color.White;
             this.btnModificar.NormalOutline = System.Drawing.Color.Empty;
-            this.btnModificar.OutlineThickness = 2F;
-            this.btnModificar.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnModificar.OutlineThickness = 0F;
+            this.btnModificar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
             this.btnModificar.PressedForeColor = System.Drawing.Color.White;
             this.btnModificar.PressedImageTint = System.Drawing.Color.White;
             this.btnModificar.PressedOutline = System.Drawing.Color.Empty;
-            this.btnModificar.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnModificar.Rounding = new System.Windows.Forms.Padding(12);
             this.btnModificar.Size = new System.Drawing.Size(240, 47);
             this.btnModificar.TabIndex = 42;
             this.btnModificar.TextAutoCenter = true;
@@ -160,13 +160,13 @@
             // 
             this.btnAñadir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAñadir.ButtonText = "Añadir Nuevo Paciente";
-            this.btnAñadir.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.btnAñadir.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.btnAñadir.CheckedForeColor = System.Drawing.Color.White;
             this.btnAñadir.CheckedImageTint = System.Drawing.Color.White;
-            this.btnAñadir.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnAñadir.CheckedOutline = System.Drawing.Color.Empty;
             this.btnAñadir.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAñadir.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAñadir.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(79)))));
+            this.btnAñadir.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(190)))), ((int)(((byte)(100)))));
             this.btnAñadir.HoverForeColor = System.Drawing.Color.White;
             this.btnAñadir.HoverImage = null;
             this.btnAñadir.HoverImageTint = System.Drawing.Color.White;
@@ -181,15 +181,15 @@
             this.btnAñadir.Location = new System.Drawing.Point(907, 102);
             this.btnAñadir.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.btnAñadir.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAñadir.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
+            this.btnAñadir.NormalForeColor = System.Drawing.Color.White;
             this.btnAñadir.NormalOutline = System.Drawing.Color.Empty;
-            this.btnAñadir.OutlineThickness = 2F;
-            this.btnAñadir.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnAñadir.OutlineThickness = 0F;
+            this.btnAñadir.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
             this.btnAñadir.PressedForeColor = System.Drawing.Color.White;
             this.btnAñadir.PressedImageTint = System.Drawing.Color.White;
             this.btnAñadir.PressedOutline = System.Drawing.Color.Empty;
-            this.btnAñadir.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnAñadir.Rounding = new System.Windows.Forms.Padding(12);
             this.btnAñadir.Size = new System.Drawing.Size(240, 47);
             this.btnAñadir.TabIndex = 41;
             this.btnAñadir.TextAutoCenter = true;
@@ -198,10 +198,10 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(61)))), ((int)(((byte)(68)))));
+            this.txtBuscar.BackColor = System.Drawing.Color.White;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.txtBuscar.Location = new System.Drawing.Point(60, 59);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(422, 23);
@@ -211,7 +211,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.label1.Location = new System.Drawing.Point(57, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 17);
@@ -220,7 +220,7 @@
             // 
             // panelTopAccent
             // 
-            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(167)))), ((int)(((byte)(110)))));
+            this.panelTopAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(89)))));
             this.panelTopAccent.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccent.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccent.Name = "panelTopAccent";
@@ -231,7 +231,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.label2.Location = new System.Drawing.Point(523, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 17);
@@ -240,10 +240,10 @@
             // 
             // cbTipoPaciente
             // 
-            this.cbTipoPaciente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(61)))), ((int)(((byte)(68)))));
-            this.cbTipoPaciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbTipoPaciente.BackColor = System.Drawing.Color.White;
+            this.cbTipoPaciente.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbTipoPaciente.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTipoPaciente.ForeColor = System.Drawing.SystemColors.Window;
+            this.cbTipoPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.cbTipoPaciente.FormattingEnabled = true;
             this.cbTipoPaciente.Items.AddRange(new object[] {
             "Conocido",
@@ -257,13 +257,13 @@
             // 
             this.btnHuella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHuella.ButtonText = "Filtrar por Huella";
-            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.btnHuella.CheckedForeColor = System.Drawing.Color.White;
             this.btnHuella.CheckedImageTint = System.Drawing.Color.White;
-            this.btnHuella.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
+            this.btnHuella.CheckedOutline = System.Drawing.Color.Empty;
             this.btnHuella.CustomDialogResult = System.Windows.Forms.DialogResult.None;
             this.btnHuella.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(139)))), ((int)(((byte)(73)))));
+            this.btnHuella.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
             this.btnHuella.HoverForeColor = System.Drawing.Color.White;
             this.btnHuella.HoverImage = null;
             this.btnHuella.HoverImageTint = System.Drawing.Color.White;
@@ -278,15 +278,15 @@
             this.btnHuella.Location = new System.Drawing.Point(909, 271);
             this.btnHuella.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnHuella.Name = "btnHuella";
-            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(129)))), ((int)(((byte)(63)))));
-            this.btnHuella.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHuella.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
+            this.btnHuella.NormalForeColor = System.Drawing.Color.White;
             this.btnHuella.NormalOutline = System.Drawing.Color.Empty;
-            this.btnHuella.OutlineThickness = 2F;
-            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(109)))), ((int)(((byte)(43)))));
+            this.btnHuella.OutlineThickness = 0F;
+            this.btnHuella.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(83)))), ((int)(((byte)(9)))));
             this.btnHuella.PressedForeColor = System.Drawing.Color.White;
             this.btnHuella.PressedImageTint = System.Drawing.Color.White;
             this.btnHuella.PressedOutline = System.Drawing.Color.Empty;
-            this.btnHuella.Rounding = new System.Windows.Forms.Padding(20);
+            this.btnHuella.Rounding = new System.Windows.Forms.Padding(12);
             this.btnHuella.Size = new System.Drawing.Size(240, 47);
             this.btnHuella.TabIndex = 104;
             this.btnHuella.TextAutoCenter = true;
@@ -296,7 +296,7 @@
             // frmPacientes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1163, 601);
             this.Controls.Add(this.btnHuella);
             this.Controls.Add(this.cbTipoPaciente);
