@@ -1,5 +1,6 @@
 using sistema.Expediente.ExploracionFisica;
 using sistema.Expediente.Historia;
+using sistema.Expediente.Imagenes;
 using sistema.Expediente.Recetas;
 using sistema.Expediente.Registro;
 using System;
@@ -116,7 +117,7 @@ namespace sistema.Expediente
         private void InicializarNavegacion()
         {
             // Agrupa todos los botones de navegación en un arreglo para manejarlos fácilmente.
-            _navButtons = new Control[] { btnRegistro, btnHistoria, btnFisico, btnCuadros, btnAlergias, btnRecetas };
+            _navButtons = new Control[] { btnRegistro, btnHistoria, btnFisico, btnCuadros, btnAlergias, btnRecetas, btnImagenes };
 
             foreach (var c in _navButtons)
             {
@@ -274,6 +275,13 @@ namespace sistema.Expediente
             if (PacienteID <= 0) { MessageBox.Show("No se ha recibido un ID de paciente válido"); return; }
             var fisica = new frmExploracionFisica { PacienteID = this.PacienteID };
             abrirFormHijo(fisica, btnFisico);
+        }
+
+        private void btnImagenes_Click(object sender, EventArgs e)
+        {
+            if (PacienteID <= 0) { MessageBox.Show("No se ha recibido un ID de paciente válido"); return; }
+            var imagenes = new frmImagenesPaciente { PacienteID = this.PacienteID };
+            abrirFormHijo(imagenes, btnImagenes);
         }
 
         // --- BOTONES DE ACCIÓN DE LA VENTANA ---
