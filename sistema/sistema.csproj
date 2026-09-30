@@ -427,6 +427,15 @@
     <Compile Include="VerificarHuellaForm.Designer.cs">
       <DependentUpon>VerificarHuellaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\HistorialNotificacion.cs" />
+    <Compile Include="Data\HistorialNotificacionesRepository.cs" />
+    <Compile Include="Services\Notifications\INotificationService.cs" />
+    <Compile Include="Services\Notifications\EmailNotificationService.cs" />
+    <Compile Include="Services\Notifications\TelegramNotificationService.cs" />
+    <Compile Include="Services\Notifications\TwilioNotificationService.cs" />
+    <Compile Include="Services\Notifications\NotificationStrategyFactory.cs" />
+    <Compile Include="Services\Notifications\NotificationWorker.cs" />
+    <Content Include="Scripts\16_Notificaciones.sql" />
     <EmbeddedResource Include="Main\Citas\AgendarCita.resx">
       <DependentUpon>AgendarCita.cs</DependentUpon>
     </EmbeddedResource>

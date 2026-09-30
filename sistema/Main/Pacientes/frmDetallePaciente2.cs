@@ -1,4 +1,4 @@
-﻿using sistema.Models;
+using sistema.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +20,11 @@ namespace sistema
         private byte[] _huellaTemporal;
         private Regex _regexEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private Regex _regexSoloLetras = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", RegexOptions.Compiled);
+        
+        private ComboBox cbCanalNotificacion;
+        private TextBox txtTelegramChatId;
+        private Label lblCanalNotificacion;
+        private Label lblTelegramChatId;
 
         public frmDetallePaciente2(Paciente paciente, frmPacientes formPacientes, byte[] huellaTemporal = null)
         {
@@ -47,6 +52,20 @@ namespace sistema
 
             // Configurar eventos de validación
             ConfigurarEventosValidacion();
+
+            // Instanciar controles de notificaciones
+            lblCanalNotificacion = new Label { Text = "Canal Notificación:", Location = new Point(450, 20), AutoSize = true, Font = new Font("Segoe UI", 9) };
+            cbCanalNotificacion = new ComboBox { Location = new Point(450, 40), Width = 150, DropDownStyle = ComboBoxStyle.DropDownList };
+            cbCanalNotificacion.Items.AddRange(new[] { "Ninguno", "Email", "WhatsApp", "SMS", "Telegram" });
+            
+            lblTelegramChatId = new Label { Text = "Telegram Chat ID:", Location = new Point(450, 70), AutoSize = true, Font = new Font("Segoe UI", 9) };
+            txtTelegramChatId = new TextBox { Location = new Point(450, 90), Width = 150, MaxLength = 100 };
+
+            // Añadir al formulario
+            this.Controls.Add(lblCanalNotificacion);
+            this.Controls.Add(cbCanalNotificacion);
+            this.Controls.Add(lblTelegramChatId);
+            this.Controls.Add(txtTelegramChatId);
         }
 
         private void ConfigurarEventosValidacion()
@@ -104,6 +123,8 @@ namespace sistema
                         existente.Ocupacion = ObtenerValorOpcional(txtOcupacion.Text.Trim());
                         existente.GrupoSanguineo = ObtenerValorOpcional(cbGrupoSanguineo.Text);
                         existente.Correo = ObtenerValorOpcional(txtCorreo.Text.Trim());
+                        existente.CanalNotificacionPreferido = ObtenerValorOpcional(cbCanalNotificacion.Text);
+                        existente.TelegramChatId = ObtenerValorOpcional(txtTelegramChatId.Text.Trim());
 
                         if (_huellaTemporal != null && _huellaTemporal.Length > 0)
                         {
@@ -136,6 +157,8 @@ namespace sistema
                         _paciente.Ocupacion = ObtenerValorOpcional(txtOcupacion.Text.Trim());
                         _paciente.GrupoSanguineo = ObtenerValorOpcional(cbGrupoSanguineo.Text);
                         _paciente.Correo = ObtenerValorOpcional(txtCorreo.Text.Trim());
+                        _paciente.CanalNotificacionPreferido = ObtenerValorOpcional(cbCanalNotificacion.Text) ?? "Ninguno";
+                        _paciente.TelegramChatId = ObtenerValorOpcional(txtTelegramChatId.Text.Trim());
 
                         if (_huellaTemporal != null && _huellaTemporal.Length > 0)
                         {
@@ -294,6 +317,17 @@ namespace sistema
             txtOcupacion.Text = paciente.Ocupacion ?? "";
             cbGrupoSanguineo.Text = paciente.GrupoSanguineo ?? "";
             txtCorreo.Text = paciente.Correo ?? "";
+            
+            if (!string.IsNullOrEmpty(paciente.CanalNotificacionPreferido) && cbCanalNotificacion.Items.Contains(paciente.CanalNotificacionPreferido))
+            {
+                cbCanalNotificacion.Text = paciente.CanalNotificacionPreferido;
+            }
+            else
+            {
+                cbCanalNotificacion.Text = "Ninguno";
+            }
+            
+            txtTelegramChatId.Text = paciente.TelegramChatId ?? "";
         }
     }
 }

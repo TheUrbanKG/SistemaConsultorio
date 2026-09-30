@@ -99,5 +99,29 @@ namespace sistema.Data
                 return rowsAffected > 0;
             }
         }
+
+        public DataTable ObtenerCitasParaNotificar(DateTime fechaObjetivo)
+        {
+            DataTable dtCitas = new DataTable();
+            using (SqlConnection conexion = new SqlConnection(_connectionString))
+            {
+                string query = @"
+                    SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita,
+                           p.Nombre, p.Apellido, p.Telefono, p.Correo, p.CanalNotificacionPreferido, p.TelegramChatId
+                    FROM Cita c
+                    INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
+                    WHERE c.FechaCita = @FechaCita AND c.Status = 'Pendiente'
+                      AND ISNULL(p.CanalNotificacionPreferido, 'Ninguno') <> 'Ninguno'";
+
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@FechaCita", fechaObjetivo);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dtCitas);
+                }
+            }
+            return dtCitas;
+        }
     }
 }

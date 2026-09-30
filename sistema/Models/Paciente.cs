@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -65,6 +65,13 @@ namespace sistema.Models
 
         // NUEVAS PROPIEDADES PARA HUELLA DIGITAL
         public byte[] Huella { get; set; }
+
+        // PREFERENCIAS DE NOTIFICACIONES
+        [StringLength(50)]
+        public string CanalNotificacionPreferido { get; set; } = "Ninguno";
+
+        [StringLength(100)]
+        public string TelegramChatId { get; set; }
 
     }
 
