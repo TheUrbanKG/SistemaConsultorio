@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows.Forms;
@@ -30,7 +30,7 @@ namespace sistema
 
             // 2. CONEXIÓN Y CONSULTA A LA BASE DE DATOS
             using (var conn = new SqlConnection(connectionString))
-            using (var cmd = new SqlCommand("SELECT Contraseña, Status FROM login WHERE Usuario=@u", conn))
+            using (var cmd = new SqlCommand("SELECT Contraseña, Status, Rol FROM login WHERE Usuario=@u", conn))
             {
               
                 cmd.Parameters.AddWithValue("@u", usuario);
@@ -38,6 +38,7 @@ namespace sistema
 
                 string storedHash = null; 
                 string status = null;     
+                string rol = null;
 
                 using (var rd = cmd.ExecuteReader())
                 {
@@ -51,6 +52,7 @@ namespace sistema
                     // Lee los valores de la base de datos.
                     storedHash = rd.IsDBNull(0) ? null : rd.GetString(0);
                     status = rd.IsDBNull(1) ? null : rd.GetString(1);
+                    rol = rd.IsDBNull(2) ? "Usuario" : rd.GetString(2);
 
                     // Comprueba si el usuario está activo.
                     if (!string.Equals(status, "Habilitado", StringComparison.OrdinalIgnoreCase))
@@ -91,7 +93,8 @@ namespace sistema
                     }
                 }
 
-
+                // Guardar datos en sesión
+                sistema.Infrastructure.Security.Sesion.RolActual = rol;
             } 
 
             // 6. INICIO DE SESIÓN EXITOSO
@@ -135,6 +138,7 @@ namespace sistema
                         // 4. INICIO DE SESIÓN EXITOSO
                         txtUsuario.Text = usuarioVerificado;
                         sistema.Infrastructure.Security.Sesion.UsuarioActual = usuarioVerificado;
+                        sistema.Infrastructure.Security.Sesion.RolActual = ObtenerRolUsuario(usuarioVerificado);
                         this.Hide();
                         var main = new frmMain();
                         main.FormClosed += (s, args) => this.Close();
@@ -204,6 +208,26 @@ namespace sistema
             {
                 MessageBox.Show($"Error al verificar estado del usuario: {ex.Message}");
                 return false;
+            }
+        }
+
+        /// Obtiene el rol del usuario autenticado ('Administrador', 'Usuario', 'Recepcionista').
+        private string ObtenerRolUsuario(string usuario)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = new SqlCommand("SELECT TOP (1) Rol FROM login WHERE Usuario=@u", conn))
+                {
+                    cmd.Parameters.AddWithValue("@u", usuario);
+                    conn.Open();
+                    var r = cmd.ExecuteScalar();
+                    return r != null && r != DBNull.Value ? r.ToString() : "Usuario";
+                }
+            }
+            catch
+            {
+                return "Usuario";
             }
         }
     }

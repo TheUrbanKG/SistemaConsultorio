@@ -32,18 +32,21 @@ namespace sistema
             labelTitulo.Text = "Inicio";
             this.pbTitulo.Image = Properties.Resources.hogar;
 
-            // Comprueba el rol del usuario actual y oculta o muestra el botón de 'Gestión de Cuentas'.
-            AplicarPermisosCuentasPorRol();
+            // Configura el botón de respaldo administrativo
+            ConfigurarBotonRespaldo();
+
+            // Comprueba el rol del usuario actual y aplica visibilidad y permisos en los módulos
+            AplicarPermisosPorRol();
 
             // Resalta visualmente el botón 'Inicio' para indicar que es la sección activa.
             SetActiveNavButton(BTNInicio);
-
-            ConfigurarBotonRespaldo();
         }
+
+        private Button btnRespaldo;
 
         private void ConfigurarBotonRespaldo()
         {
-            Button btnRespaldo = new Button();
+            btnRespaldo = new Button();
             btnRespaldo.Text = " Respaldos";
             btnRespaldo.Size = new Size(130, 40);
             
@@ -192,34 +195,33 @@ namespace sistema
             this.Refresh();
         }
 
-        // --- LÓGICA DE PERMISOS Y NAVEGACIÓN ---
+        // --- LÓGICA DE PERMISOS Y NAVEGACIÓN (RBAC) ---
 
-        // Revisa el rol del usuario que ha iniciado sesión para mostrar u ocultar la sección de 'Gestión de Cuentas'.
-        private void AplicarPermisosCuentasPorRol()
+        // Configura visibilidad y disponibilidad de módulos según el rol activo
+        private void AplicarPermisosPorRol()
         {
             try
             {
-                bool esAdmin = false;
-                // Obtiene el nombre del usuario actual desde la clase estática 'Sesion'.
+                string rol = sistema.Infrastructure.Security.Sesion.RolActual;
                 string usuario = sistema.Infrastructure.Security.Sesion.UsuarioActual;
 
-                // Si hay un usuario en sesión, consulta su rol en la base de datos.
-                if (!string.IsNullOrWhiteSpace(usuario))
+                // Si por alguna razón el rol no fue precargado, se consulta de la BD
+                if (string.IsNullOrWhiteSpace(rol) && !string.IsNullOrWhiteSpace(usuario))
                 {
                     using (var conn = new SqlConnection(connectionString))
                     using (var cmd = new SqlCommand("SELECT TOP (1) Rol FROM login WHERE Usuario = @Usuario", conn))
                     {
                         cmd.Parameters.AddWithValue("@Usuario", usuario);
                         conn.Open();
-                        // ExecuteScalar es eficiente para obtener un solo valor.
-                        var rol = cmd.ExecuteScalar()?.ToString();
-                        // Comprueba si el rol es 'Administrador', ignorando mayúsculas/minúsculas.
-                        esAdmin = string.Equals(rol, "Administrador", StringComparison.OrdinalIgnoreCase);
+                        rol = cmd.ExecuteScalar()?.ToString();
+                        sistema.Infrastructure.Security.Sesion.RolActual = rol;
                     }
                 }
 
-                // Aplica la visibilidad y habilitación al panel y al botón de cuentas.
-                // Solo los administradores podrán ver y usar esta sección.
+                bool esAdmin = string.Equals(rol, "Administrador", StringComparison.OrdinalIgnoreCase);
+                bool esRecepcionista = string.Equals(rol, "Recepcionista", StringComparison.OrdinalIgnoreCase);
+
+                // 1. Gestión de Cuentas: Exclusivo para Administradores
                 if (panelCuentas != null)
                 {
                     panelCuentas.Visible = esAdmin;
@@ -227,10 +229,26 @@ namespace sistema
                 }
                 if (btnCuentas != null)
                     btnCuentas.Enabled = esAdmin;
+
+                // 2. Respaldo de Base de Datos: Exclusivo para Administradores
+                if (btnRespaldo != null)
+                {
+                    btnRespaldo.Visible = esAdmin;
+                    btnRespaldo.Enabled = esAdmin;
+                }
+
+                // 3. Notas Médicas / Clínicas: Solo para personal médico (Admin y Usuario)
+                if (sataPanel5 != null)
+                {
+                    sataPanel5.Visible = !esRecepcionista;
+                    sataPanel5.Enabled = !esRecepcionista;
+                }
+                if (BTNNotas != null)
+                    BTNNotas.Enabled = !esRecepcionista;
             }
             catch
             {
-                // Si ocurre cualquier error (ej. fallo de conexión), se oculta la sección por seguridad.
+                // En caso de contingencia o error de conexión, se restringen los accesos sensibles
                 if (panelCuentas != null)
                 {
                     panelCuentas.Visible = false;
@@ -238,6 +256,8 @@ namespace sistema
                 }
                 if (btnCuentas != null)
                     btnCuentas.Enabled = false;
+                if (btnRespaldo != null)
+                    btnRespaldo.Visible = false;
             }
         }
 
