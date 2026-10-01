@@ -248,6 +248,20 @@ namespace sistema
             cmbStatus.SelectedIndexChanged += CmbStatus_SelectedIndexChanged;
             panelCita.Controls.Add(cmbStatus);
 
+            // Médico asignado
+            string doctorAsignado = reader.Table.Columns.Contains("DoctorAsignado") ? reader["DoctorAsignado"]?.ToString() : null;
+            if (!string.IsNullOrWhiteSpace(doctorAsignado))
+            {
+                Label lblDoctor = new Label();
+                lblDoctor.Text = $"Médico: {doctorAsignado}";
+                lblDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+                lblDoctor.ForeColor = Color.FromArgb(37, 99, 235); // Azul institucional
+                lblDoctor.Location = new Point(330, 89);
+                lblDoctor.Size = new Size(320, 22);
+                lblDoctor.AutoEllipsis = true;
+                panelCita.Controls.Add(lblDoctor);
+            }
+
             // Botón Eliminar
             Button btnEliminar = new Button();
             btnEliminar.Size = new Size(85, 30);

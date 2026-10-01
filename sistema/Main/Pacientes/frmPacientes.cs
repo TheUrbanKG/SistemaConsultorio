@@ -260,6 +260,14 @@ WHERE 1=1";
         {
             if (e.RowIndex < 0) return;
 
+            // Restricción de confidencialidad médica para perfil Recepcionista
+            if (!sistema.Infrastructure.Security.Sesion.PuedeVerExpediente)
+            {
+                MessageBox.Show("Acceso denegado: El perfil Recepcionista no tiene autorización para acceder a los expedientes clínicos de los pacientes.",
+                    "Acceso Restringido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 var fila = dgvPacientes.Rows[e.RowIndex];

@@ -20,7 +20,7 @@ namespace sistema.Data
             using (SqlConnection conexion = new SqlConnection(_connectionString))
             {
                 string query = @"
-                    SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status,
+                    SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status, c.DoctorAsignado,
                            p.Nombre, p.Apellido, p.Telefono
                     FROM Cita c
                     INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
@@ -48,7 +48,7 @@ namespace sistema.Data
             using (SqlConnection conexion = new SqlConnection(_connectionString))
             {
                 string query = @"
-                    SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status,
+                    SELECT c.CitaID, c.PacienteID, c.FechaCita, c.HoraCita, c.Motivo, c.Periodo, c.Status, c.DoctorAsignado,
                            p.Nombre, p.Apellido, p.Telefono
                     FROM Cita c
                     INNER JOIN Paciente p ON c.PacienteID = p.PacienteID

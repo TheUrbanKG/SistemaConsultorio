@@ -45,6 +45,15 @@ namespace sistema.Expediente
         // Este método se ejecuta cuando el formulario se carga por primera vez.
         private void frmExpediente_Load(object sender, EventArgs e)
         {
+            // Verificación de seguridad de roles (RBAC)
+            if (!sistema.Infrastructure.Security.Sesion.PuedeVerExpediente)
+            {
+                MessageBox.Show("Acceso denegado: El perfil Recepcionista no tiene autorización para acceder al expediente clínico de los pacientes.",
+                    "Acceso Restringido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+                return;
+            }
+
             // Si se ha proporcionado un ID de paciente válido, carga su información de cabecera.
             if (PacienteID > 0)
             {
