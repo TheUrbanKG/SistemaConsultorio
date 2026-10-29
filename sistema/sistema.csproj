@@ -210,6 +210,26 @@
     <Compile Include="Data\NotasRepository.cs" />
     <Compile Include="Data\CitaRepository.cs" />
     <Compile Include="Data\ImagenPacienteRepository.cs" />
+    <Compile Include="Data\OdontogramaRepository.cs" />
+    <Compile Include="Models\Odontograma.cs" />
+    <Compile Include="Models\OdontogramaDiente.cs" />
+    <Compile Include="Expediente\Odontograma\OdontogramaResourceService.cs" />
+    <Compile Include="Expediente\Odontograma\frmOdontograma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Odontograma\frmOdontograma.Designer.cs">
+      <DependentUpon>frmOdontograma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expediente\Odontograma\frmEsquemaDental.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expediente\Odontograma\frmEsquemaDental.Designer.cs">
+      <DependentUpon>frmEsquemaDental.cs</DependentUpon>
+    </Compile>
+    <Content Include="Scripts\17_Odontograma.sql" />
+    <Content Include="Resources\Odontograma\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Infrastructure\BackupService.cs" />
     <Compile Include="Expediente\Imagenes\frmImagenesPaciente.cs">
       <SubType>Form</SubType>
@@ -433,6 +453,7 @@
     <Compile Include="Services\Notifications\EmailNotificationService.cs" />
     <Compile Include="Services\Notifications\TelegramNotificationService.cs" />
     <Compile Include="Services\Notifications\TwilioNotificationService.cs" />
+    <Compile Include="Services\Notifications\SmsNotificationService.cs" />
     <Compile Include="Services\Notifications\NotificationStrategyFactory.cs" />
     <Compile Include="Services\Notifications\NotificationWorker.cs" />
     <Content Include="Scripts\16_Notificaciones.sql" />

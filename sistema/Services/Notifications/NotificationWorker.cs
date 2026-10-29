@@ -19,8 +19,8 @@ namespace sistema.Services.Notifications
             _historialRepo = new HistorialNotificacionesRepository();
             
             _timer = new Timer();
-            // Ejecutar cada 15 minutos (900,000 ms)
-            _timer.Interval = 900000; 
+            // Ejecutar cada 10 segundos para hacer pruebas rápidas (10,000 ms)
+            _timer.Interval = 10000; 
             _timer.Tick += async (s, e) => await ProcesarNotificaciones();
         }
 
@@ -70,7 +70,8 @@ namespace sistema.Services.Notifications
 
                     DateTime fechaCita = Convert.ToDateTime(row["FechaCita"]);
                     TimeSpan horaCita = (TimeSpan)row["HoraCita"];
-                    string mensaje = $"Hola {paciente.Nombre}, le recordamos su cita para el día {fechaCita:dd/MM/yyyy} a las {horaCita:hh\\:mm}. ¡Le esperamos!";
+                    DateTime citaCombinada = fechaCita.Add(horaCita);
+                    string mensaje = $"Hola {paciente.Nombre}, le recordamos su cita para el día {fechaCita:dd/MM/yyyy} a las {citaCombinada:h:mm tt}. ¡Le esperamos!";
 
                     try
                     {

@@ -110,7 +110,7 @@ namespace sistema.Data
                            p.Nombre, p.Apellido, p.Telefono, p.Correo, p.CanalNotificacionPreferido, p.TelegramChatId
                     FROM Cita c
                     INNER JOIN Paciente p ON c.PacienteID = p.PacienteID
-                    WHERE c.FechaCita = @FechaCita AND c.Status = 'Pendiente'
+                    WHERE c.FechaCita = @FechaCita AND c.Status IN ('Pendiente', 'Programada')
                       AND ISNULL(p.CanalNotificacionPreferido, 'Ninguno') <> 'Ninguno'";
 
                 SqlCommand cmd = new SqlCommand(query, conexion);

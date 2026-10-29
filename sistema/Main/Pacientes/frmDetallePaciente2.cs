@@ -54,12 +54,17 @@ namespace sistema
             ConfigurarEventosValidacion();
 
             // Instanciar controles de notificaciones
-            lblCanalNotificacion = new Label { Text = "Canal Notificación:", Location = new Point(450, 20), AutoSize = true, Font = new Font("Segoe UI", 9) };
-            cbCanalNotificacion = new ComboBox { Location = new Point(450, 40), Width = 150, DropDownStyle = ComboBoxStyle.DropDownList };
+            lblCanalNotificacion = new Label { Text = "Notificación vía:", Location = new Point(321, 302), AutoSize = true, Font = new Font("Segoe UI", 9) };
+            cbCanalNotificacion = new ComboBox { Location = new Point(449, 300), Width = 172, DropDownStyle = ComboBoxStyle.DropDownList };
             cbCanalNotificacion.Items.AddRange(new[] { "Ninguno", "Email", "WhatsApp", "SMS", "Telegram" });
             
-            lblTelegramChatId = new Label { Text = "Telegram Chat ID:", Location = new Point(450, 70), AutoSize = true, Font = new Font("Segoe UI", 9) };
-            txtTelegramChatId = new TextBox { Location = new Point(450, 90), Width = 150, MaxLength = 100 };
+            lblTelegramChatId = new Label { Text = "Telegram Chat ID:", Location = new Point(321, 332), AutoSize = true, Font = new Font("Segoe UI", 9) };
+            txtTelegramChatId = new TextBox { Location = new Point(449, 330), Width = 172, MaxLength = 100 };
+
+            // Ajustar posición de botones y tamaño del formulario para evitar amontonamiento
+            btnRegresar.Location = new Point(139, 380);
+            btnRegistro.Location = new Point(347, 380);
+            this.Height = 450; // Aumentar un poco la altura para que no queden cortados
 
             // Añadir al formulario
             this.Controls.Add(lblCanalNotificacion);

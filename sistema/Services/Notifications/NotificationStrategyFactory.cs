@@ -14,9 +14,9 @@ namespace sistema.Services.Notifications
                 case "TELEGRAM":
                     return new TelegramNotificationService();
                 case "WHATSAPP":
-                    return new TwilioNotificationService(useWhatsApp: true);
+                    return new TwilioNotificationService();
                 case "SMS":
-                    return new TwilioNotificationService(useWhatsApp: false);
+                    return new SmsNotificationService();
                 default:
                     throw new NotSupportedException($"El canal de notificación '{canalPreferido}' no está soportado o es 'Ninguno'.");
             }

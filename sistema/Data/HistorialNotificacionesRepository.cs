@@ -46,7 +46,7 @@ namespace sistema.Data
         {
             using (SqlConnection conexion = new SqlConnection(_connectionString))
             {
-                string query = "SELECT COUNT(1) FROM HistorialNotificaciones WHERE CitaID = @CitaID AND Canal = @Canal AND Estado = 'Enviado'";
+                string query = "SELECT COUNT(1) FROM HistorialNotificaciones WHERE CitaID = @CitaID AND Canal = @Canal AND (Estado = 'Enviado' OR Estado = 'Error')";
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 cmd.Parameters.AddWithValue("@CitaID", citaID);
                 cmd.Parameters.AddWithValue("@Canal", canal);

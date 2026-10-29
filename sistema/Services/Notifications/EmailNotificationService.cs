@@ -1,28 +1,54 @@
 using sistema.Models;
 using System;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace sistema.Services.Notifications
 {
     public class EmailNotificationService : INotificationService
     {
+        // 1. Pon el correo de la clínica aquí (Ej: "clinica.san.jose@gmail.com")
+        private readonly string _remitente = "gabrielperezrivas7@gmail.com"; 
+        
+        // 2. Pon aquí la "Contraseña de aplicación" de Google de 16 letras
+        private readonly string _passwordApp = "thwepnjxprhozfue"; 
+
         public async Task<bool> EnviarNotificacionAsync(Paciente paciente, string mensaje)
         {
             if (string.IsNullOrWhiteSpace(paciente.Correo))
             {
-                throw new Exception("El paciente no tiene un correo electrónico configurado.");
+                throw new Exception("El paciente no tiene correo electrónico configurado.");
+            }
+
+            if (_remitente == "TU_CORREO@gmail.com")
+            {
+                Console.WriteLine("Por favor, configura tu correo y contraseña en EmailNotificationService.cs");
+                return true; 
             }
 
             try
             {
-                // Aquí iría la integración con MailKit o System.Net.Mail
-                // System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-                // ...
-                
-                // Simulación para fines de completitud estructural
-                await Task.Delay(500); 
-                Console.WriteLine($"[Email] Enviando correo a {paciente.Correo}: {mensaje}");
-                return true;
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential(_remitente, _passwordApp);
+
+                    using (MailMessage mail = new MailMessage())
+                    {
+                        mail.From = new MailAddress(_remitente, "Sistema de Consultorio Médico");
+                        mail.To.Add(new MailAddress(paciente.Correo));
+                        mail.Subject = "Recordatorio de Cita Médica";
+                        mail.Body = mensaje;
+                        mail.IsBodyHtml = false;
+
+                        await smtp.SendMailAsync(mail);
+                        Console.WriteLine($"[Email] Enviado con éxito a {paciente.Correo}");
+                        return true;
+                    }
+                }
             }
             catch (Exception ex)
             {
