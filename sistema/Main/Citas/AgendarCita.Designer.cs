@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class AgendarCita
     {
@@ -48,6 +48,8 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txtMotivoCita = new System.Windows.Forms.RichTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabelDoctor = new MetroFramework.Controls.MetroLabel();
+            this.cbDoctor = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -184,13 +186,15 @@
             this.groupBox1.Controls.Add(this.radioPM);
             this.groupBox1.Controls.Add(this.radioAM);
             this.groupBox1.Controls.Add(this.dtpHora);
+            this.groupBox1.Controls.Add(this.metroLabelDoctor);
+            this.groupBox1.Controls.Add(this.cbDoctor);
             this.groupBox1.Controls.Add(this.metroButton1);
             this.groupBox1.Controls.Add(this.metroLabel3);
             this.groupBox1.Controls.Add(this.txtMotivoCita);
             this.groupBox1.Controls.Add(this.metroLabel2);
-            this.groupBox1.Location = new System.Drawing.Point(10, 303);
+            this.groupBox1.Location = new System.Drawing.Point(10, 295);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(429, 242);
+            this.groupBox1.Size = new System.Drawing.Size(429, 280);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -199,7 +203,7 @@
             this.radioPM.AutoSize = true;
             this.radioPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioPM.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioPM.Location = new System.Drawing.Point(357, 47);
+            this.radioPM.Location = new System.Drawing.Point(357, 36);
             this.radioPM.Name = "radioPM";
             this.radioPM.Size = new System.Drawing.Size(47, 20);
             this.radioPM.TabIndex = 7;
@@ -212,7 +216,7 @@
             this.radioAM.AutoSize = true;
             this.radioAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioAM.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioAM.Location = new System.Drawing.Point(357, 21);
+            this.radioAM.Location = new System.Drawing.Point(357, 14);
             this.radioAM.Name = "radioAM";
             this.radioAM.Size = new System.Drawing.Size(47, 20);
             this.radioAM.TabIndex = 6;
@@ -222,18 +226,37 @@
             // 
             // dtpHora
             // 
-            this.dtpHora.Location = new System.Drawing.Point(137, 30);
+            this.dtpHora.Location = new System.Drawing.Point(137, 24);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.Size = new System.Drawing.Size(200, 20);
             this.dtpHora.TabIndex = 5;
             this.dtpHora.ValueChanged += new System.EventHandler(this.dtpHora_ValueChanged);
             // 
+            // metroLabelDoctor
+            // 
+            this.metroLabelDoctor.AutoSize = true;
+            this.metroLabelDoctor.Location = new System.Drawing.Point(12, 65);
+            this.metroLabelDoctor.Name = "metroLabelDoctor";
+            this.metroLabelDoctor.Size = new System.Drawing.Size(117, 19);
+            this.metroLabelDoctor.TabIndex = 8;
+            this.metroLabelDoctor.Text = "Médico Asignado:";
+            this.metroLabelDoctor.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // cbDoctor
+            // 
+            this.cbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDoctor.FormattingEnabled = true;
+            this.cbDoctor.Location = new System.Drawing.Point(137, 65);
+            this.cbDoctor.Name = "cbDoctor";
+            this.cbDoctor.Size = new System.Drawing.Size(267, 21);
+            this.cbDoctor.TabIndex = 9;
+            // 
             // metroButton1
             // 
             this.metroButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(150)))), ((int)(((byte)(100)))));
-            this.metroButton1.Location = new System.Drawing.Point(293, 211);
+            this.metroButton1.Location = new System.Drawing.Point(293, 238);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(111, 23);
+            this.metroButton1.Size = new System.Drawing.Size(111, 28);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroButton1.TabIndex = 4;
             this.metroButton1.Text = "Guardar";
@@ -245,7 +268,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(18, 79);
+            this.metroLabel3.Location = new System.Drawing.Point(18, 105);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(113, 19);
             this.metroLabel3.TabIndex = 3;
@@ -254,16 +277,16 @@
             // 
             // txtMotivoCita
             // 
-            this.txtMotivoCita.Location = new System.Drawing.Point(137, 79);
+            this.txtMotivoCita.Location = new System.Drawing.Point(137, 105);
             this.txtMotivoCita.Name = "txtMotivoCita";
-            this.txtMotivoCita.Size = new System.Drawing.Size(267, 118);
+            this.txtMotivoCita.Size = new System.Drawing.Size(267, 115);
             this.txtMotivoCita.TabIndex = 2;
             this.txtMotivoCita.Text = "";
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(28, 31);
+            this.metroLabel2.Location = new System.Drawing.Point(28, 25);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(101, 19);
             this.metroLabel2.TabIndex = 0;
@@ -274,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 560);
+            this.ClientSize = new System.Drawing.Size(462, 595);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblFechaCita);
             this.Controls.Add(this.panel1);
@@ -315,5 +338,7 @@
         private System.Windows.Forms.RadioButton radioPM;
         private System.Windows.Forms.RadioButton radioAM;
         private System.Windows.Forms.Label label5;
+        private MetroFramework.Controls.MetroLabel metroLabelDoctor;
+        private System.Windows.Forms.ComboBox cbDoctor;
     }
 }

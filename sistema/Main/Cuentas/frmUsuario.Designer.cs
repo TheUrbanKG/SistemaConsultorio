@@ -76,7 +76,8 @@ namespace sistema
             this.cbRol.Items.AddRange(new object[] {
             "",
             "Administrador",
-            "Usuario"});
+            "Usuario",
+            "Recepcionista"});
             this.cbRol.Location = new System.Drawing.Point(443, 177);
             this.cbRol.Name = "cbRol";
             this.cbRol.Size = new System.Drawing.Size(121, 21);

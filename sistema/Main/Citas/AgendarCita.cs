@@ -1,4 +1,4 @@
-﻿using MetroFramework.Interfaces;
+using MetroFramework.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,6 +51,74 @@ namespace sistema
         private void AgendarCita_Load(object sender, EventArgs e)
         {
             lblFechaCita.Text = FechaSeleccionada.ToString("dd/MM/yyyy");
+            CargarDoctores();
+        }
+
+        private void CargarDoctores()
+        {
+            cbDoctor.Items.Clear();
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+            try
+            {
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = new SqlCommand("SELECT Usuario, Nombre, Apellido, Rol FROM login WHERE Status = 'Habilitado' AND Rol IN ('Usuario', 'Administrador') ORDER BY Nombre, Apellido", conn))
+                {
+                    conn.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string nom = reader["Nombre"]?.ToString() ?? "";
+                            string ape = reader["Apellido"]?.ToString() ?? "";
+                            string user = reader["Usuario"]?.ToString() ?? "";
+                            string rol = reader["Rol"]?.ToString() ?? "";
+
+                            string nombreMostrar = $"{nom} {ape}".Trim();
+                            if (string.IsNullOrEmpty(nombreMostrar)) nombreMostrar = user;
+
+                            cbDoctor.Items.Add(new DoctorItem
+                            {
+                                Usuario = user,
+                                NombreCompleto = nombreMostrar,
+                                Rol = rol
+                            });
+                        }
+                    }
+                }
+
+                if (cbDoctor.Items.Count > 0)
+                {
+                    string usuarioActual = sistema.Infrastructure.Security.Sesion.UsuarioActual;
+                    int indexActual = -1;
+
+                    for (int i = 0; i < cbDoctor.Items.Count; i++)
+                    {
+                        if (cbDoctor.Items[i] is DoctorItem item &&
+                            string.Equals(item.Usuario, usuarioActual, StringComparison.OrdinalIgnoreCase))
+                        {
+                            indexActual = i;
+                            break;
+                        }
+                    }
+
+                    cbDoctor.SelectedIndex = indexActual >= 0 ? indexActual : 0;
+                }
+            }
+            catch
+            {
+                // Manejo de contingencia si no se pueden cargar usuarios
+                cbDoctor.Items.Add(new DoctorItem { Usuario = "admin", NombreCompleto = "Médico General", Rol = "Administrador" });
+                cbDoctor.SelectedIndex = 0;
+            }
+        }
+
+        private class DoctorItem
+        {
+            public string Usuario { get; set; }
+            public string NombreCompleto { get; set; }
+            public string Rol { get; set; }
+            public override string ToString() => $"{NombreCompleto} ({Rol})";
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -94,6 +162,17 @@ namespace sistema
 
             TimeSpan horaCita = new TimeSpan(hora, minuto, 0);
 
+            // Obtiene el médico asignado seleccionado
+            string doctorAsignado = null;
+            if (cbDoctor.SelectedItem is DoctorItem docItem)
+            {
+                doctorAsignado = docItem.NombreCompleto;
+            }
+            else if (!string.IsNullOrWhiteSpace(cbDoctor.Text))
+            {
+                doctorAsignado = cbDoctor.Text.Trim();
+            }
+
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 try
@@ -113,9 +192,9 @@ namespace sistema
                         return;
                     }
 
-                    // INSERTAR la cita
-                    string insertQuery = @"INSERT INTO Cita (PacienteID, FechaCita, HoraCita, Motivo, Periodo) 
-                                         VALUES (@PacienteID, @FechaCita, @HoraCita, @Motivo, @Periodo)";
+                    // INSERTAR la cita con el médico seleccionado
+                    string insertQuery = @"INSERT INTO Cita (PacienteID, FechaCita, HoraCita, Motivo, Periodo, DoctorAsignado) 
+                                         VALUES (@PacienteID, @FechaCita, @HoraCita, @Motivo, @Periodo, @DoctorAsignado)";
 
                     SqlCommand cmd = new SqlCommand(insertQuery, conexion);
                     cmd.Parameters.AddWithValue("@PacienteID", pacienteID);
@@ -123,6 +202,7 @@ namespace sistema
                     cmd.Parameters.AddWithValue("@HoraCita", horaCita);
                     cmd.Parameters.AddWithValue("@Motivo", motivo);
                     cmd.Parameters.AddWithValue("@Periodo", periodo);
+                    cmd.Parameters.AddWithValue("@DoctorAsignado", string.IsNullOrWhiteSpace(doctorAsignado) ? (object)DBNull.Value : doctorAsignado);
 
                     int result = cmd.ExecuteNonQuery();
 

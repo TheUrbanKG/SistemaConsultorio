@@ -1,4 +1,4 @@
-﻿using DPFP;
+using DPFP;
 using sistema.Main.Pacientes;
 using System;
 using System.Windows.Forms;
@@ -45,10 +45,16 @@ namespace sistema
             };
 
             // Opcional: valores por defecto
-            if (cbRol.Items.Count == 0)
-                cbRol.Items.AddRange(new object[] { "Administrador", "Usuario" });
-            if (cbStatus.Items.Count == 0)
+            if (cbRol.Items.Count <= 1)
+            {
+                cbRol.Items.Clear();
+                cbRol.Items.AddRange(new object[] { "Administrador", "Usuario", "Recepcionista" });
+            }
+            if (cbStatus.Items.Count <= 1)
+            {
+                cbStatus.Items.Clear();
                 cbStatus.Items.AddRange(new object[] { "Habilitado", "Deshabilitado" });
+            }
         }
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
