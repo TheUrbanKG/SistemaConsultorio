@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
+using sistema.Services.Notifications;
 
 namespace sistema
 {
@@ -10,6 +11,8 @@ namespace sistema
     {
         // Lee la cadena de conexión desde el archivo App.config para conectar a la base de datos.
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
+
+        private NotificationWorker _notificationWorker;
 
         // Arreglo para almacenar los botones de navegación principal (del tipo SATAButton).
         // Esto nos permite gestionarlos todos juntos, por ejemplo, para cambiar sus colores.
@@ -40,6 +43,9 @@ namespace sistema
 
             // Resalta visualmente el botón 'Inicio' para indicar que es la sección activa.
             SetActiveNavButton(BTNInicio);
+            // Iniciar worker de notificaciones
+            _notificationWorker = new NotificationWorker();
+            _notificationWorker.Iniciar();
         }
 
         private Button btnRespaldo;
@@ -333,6 +339,11 @@ namespace sistema
         {
             try
             {
+                if (_notificationWorker != null)
+                {
+                    _notificationWorker.Detener();
+                }
+
                 string rutaActual = sistema.Infrastructure.BackupService.ObtenerRutaConfigurada();
                 if (!string.IsNullOrEmpty(rutaActual) && System.IO.Directory.Exists(rutaActual))
                 {
