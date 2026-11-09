@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace sistema
     public partial class AgregarCitas : MetroFramework.Forms.MetroForm
     {
         public DateTime FechaSeleccionada { get; set; }
-        private PacientePreview paciente;
         string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBContext"].ConnectionString;
         private bool formLoaded = false;
 
@@ -22,18 +22,16 @@ namespace sistema
         {
             InitializeComponent();
             FechaSeleccionada = fechaSeleccionada;
-            lblFecha.Text = fechaSeleccionada.ToString("dd/MM/yyyy");
+            lblFecha.Text = "Cita para: " + fechaSeleccionada.ToString("dd/MM/yyyy");
         }
 
         private void AgregarCitas_Load(object sender, EventArgs e)
         {
-            // Prevenir ejecución múltiple
             if (formLoaded) return;
             formLoaded = true;
 
-            lblFechaActual.ForeColor = Color.DarkSlateGray;
+            lblFechaActual.ForeColor = Color.FromArgb(100, 116, 139);
 
-            // Cargar pacientes desde la base de datos
             CargarPacientesDesdeBD();
 
             timer1.Interval = 1000;
@@ -45,132 +43,181 @@ namespace sistema
         {
             List<PacientePreview> pacientes = new List<PacientePreview>();
 
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            try
             {
-                string query = @"
-                    SELECT 
-                        PacienteID,
-                        Nombre, 
-                        Apellido,
-                        Genero, 
-                        GrupoSanguineo,
-                        TipoPaciente,
-                        FechaNacimiento,
-                        DATEDIFF(YEAR, FechaNacimiento, GETDATE()) - 
-                        CASE 
-                            WHEN DATEADD(YEAR, DATEDIFF(YEAR, FechaNacimiento, GETDATE()), FechaNacimiento) > GETDATE() 
-                            THEN 1 
-                            ELSE 0 
-                        END AS Edad
-                    FROM Paciente";
-
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                conexion.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
-                    while (reader.Read())
+                    string query = @"
+                        SELECT 
+                            PacienteID,
+                            Nombre, 
+                            Apellido,
+                            Genero, 
+                            GrupoSanguineo,
+                            TipoPaciente,
+                            FechaNacimiento,
+                            DATEDIFF(YEAR, FechaNacimiento, GETDATE()) - 
+                            CASE 
+                                WHEN DATEADD(YEAR, DATEDIFF(YEAR, FechaNacimiento, GETDATE()), FechaNacimiento) > GETDATE() 
+                                THEN 1 
+                                ELSE 0 
+                            END AS Edad
+                        FROM Paciente
+                        ORDER BY Nombre, Apellido";
+
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    conexion.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        string tipoPaciente = reader["TipoPaciente"].ToString();
-                        string nombreCompleto;
+                        while (reader.Read())
+                        {
+                            string tipoPaciente = reader["TipoPaciente"]?.ToString() ?? "Conocido";
+                            string nombreCompleto;
 
-                        // Si es Desconocido, mostrar solo el nombre
-                        if (tipoPaciente == "Desconocido")
-                        {
-                            nombreCompleto = reader["Nombre"].ToString();
-                        }
-                        else
-                        {
-                            // Si es Conocido, mostrar nombre + apellido
-                            nombreCompleto = reader["Nombre"].ToString() + " " + reader["Apellido"].ToString();
-                        }
+                            if (tipoPaciente == "Desconocido")
+                            {
+                                nombreCompleto = reader["Nombre"]?.ToString() ?? "";
+                            }
+                            else
+                            {
+                                nombreCompleto = $"{reader["Nombre"]} {reader["Apellido"]}".Trim();
+                            }
 
-                        var preview = new PacientePreview
-                        {
-                            PacienteID = Convert.ToInt32(reader["PacienteID"]),
-                            Tipo = tipoPaciente,
-                            Nombre = nombreCompleto.Trim(),
-                            Genero = reader["Genero"].ToString(),
-                            GrupoSanguineo = reader["GrupoSanguineo"]?.ToString() ?? "No especificado",
-                            Edad = reader["Edad"].ToString()
-                        };
-                        pacientes.Add(preview);
+                            var preview = new PacientePreview
+                            {
+                                PacienteID = Convert.ToInt32(reader["PacienteID"]),
+                                Tipo = tipoPaciente,
+                                Nombre = nombreCompleto,
+                                Genero = reader["Genero"]?.ToString() ?? "No especificado",
+                                GrupoSanguineo = reader["GrupoSanguineo"]?.ToString() ?? "No especificado",
+                                Edad = reader["Edad"]?.ToString() ?? "N/A"
+                            };
+                            pacientes.Add(preview);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar pacientes: " + ex.Message);
+            }
 
-            // Limpiar y agregar pacientes
+            flpPacientes.SuspendLayout();
             flpPacientes.Controls.Clear();
             foreach (var p in pacientes)
+            {
                 AgregarPacientePreview(p);
+            }
+            flpPacientes.ResumeLayout();
         }
 
         public void AgregarPacientePreview(PacientePreview paciente)
         {
-            Color colorFondo = Color.FromArgb(44, 62, 80); // Azul oscuro por defecto (Conocido)
+            bool esDesconocido = paciente.Tipo == "Desconocido";
+            Color accentColor = esDesconocido ? Color.FromArgb(245, 158, 11) : Color.FromArgb(0, 168, 89);
 
-            // Cambiar color según el tipo de paciente
-            if (paciente.Tipo == "Desconocido")
+            Panel card = new Panel
             {
-                colorFondo = Color.FromArgb(0, 128, 128); // Rojo oscuro para desconocidos
-            }
-
-            Panel panel = new Panel
-            {
-                Width = 364,
-                Height = 90,
-                Margin = new Padding(10),
+                Width = 336,
+                Height = 84,
+                Margin = new Padding(3, 4, 3, 6),
                 Tag = paciente,
-                BackColor = colorFondo,
+                BackColor = Color.White,
                 Cursor = Cursors.Hand
             };
 
-            Font labelFont = new Font("Segoe UI", 12, FontStyle.Bold);
-
-            Label lblTipo = new Label
+            card.Paint += (s, pe) =>
             {
-                Text = "Tipo: " + paciente.Tipo,
-                Location = new Point(10, 10),
-                AutoSize = true,
-                ForeColor = Color.White,
-                Font = labelFont
+                using (Pen p = new Pen(Color.FromArgb(226, 232, 240), 1))
+                {
+                    pe.Graphics.DrawRectangle(p, 0, 0, card.Width - 1, card.Height - 1);
+                }
+                using (SolidBrush b = new SolidBrush(accentColor))
+                {
+                    pe.Graphics.FillRectangle(b, 0, 0, 4, card.Height);
+                }
             };
 
+            // Nombre del paciente
             Label lblNombre = new Label
             {
-                Text = "Nombre: " + paciente.Nombre,
-                Location = new Point(10, 35),
+                Text = paciente.Nombre,
+                Location = new Point(14, 10),
                 AutoSize = true,
-                ForeColor = Color.White,
-                Font = labelFont
+                ForeColor = Color.FromArgb(15, 23, 42),
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                Cursor = Cursors.Hand
             };
 
-            Label lblGenero = new Label
+            // Insignia de tipo
+            Label lblTipoBadge = new Label
             {
-                Text = "Género: " + paciente.Genero,
-                Location = new Point(170, 10),
-                AutoSize = true,
-                ForeColor = Color.White,
-                Font = labelFont
+                Text = esDesconocido ? "DESCONOCIDO" : "CONOCIDO",
+                Location = new Point(230, 10),
+                Size = new Size(92, 18),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 7F, FontStyle.Bold),
+                BackColor = esDesconocido ? Color.FromArgb(254, 243, 199) : Color.FromArgb(220, 252, 231),
+                ForeColor = esDesconocido ? Color.FromArgb(180, 83, 9) : Color.FromArgb(0, 140, 70),
+                Cursor = Cursors.Hand
             };
 
+            // Información secundaria: Género y Sangre
+            Label lblDetalles = new Label
+            {
+                Text = $"Género: {paciente.Genero}   •   Sangre: {paciente.GrupoSanguineo}",
+                Location = new Point(14, 35),
+                AutoSize = true,
+                ForeColor = Color.FromArgb(71, 85, 105),
+                Font = new Font("Segoe UI", 8.25F, FontStyle.Regular),
+                Cursor = Cursors.Hand
+            };
+
+            // Edad
             Label lblEdad = new Label
             {
-                Text = "Edad: " + paciente.Edad,
-                Location = new Point(10, 60),
+                Text = $"Edad: {paciente.Edad} años",
+                Location = new Point(14, 56),
                 AutoSize = true,
-                ForeColor = Color.White,
-                Font = labelFont
+                ForeColor = Color.FromArgb(100, 116, 139),
+                Font = new Font("Segoe UI", 8.25F, FontStyle.Regular),
+                Cursor = Cursors.Hand
             };
 
-            panel.Controls.Add(lblTipo);
-            panel.Controls.Add(lblNombre);
-            panel.Controls.Add(lblGenero);
-            panel.Controls.Add(lblEdad);
+            card.Controls.Add(lblNombre);
+            card.Controls.Add(lblTipoBadge);
+            card.Controls.Add(lblDetalles);
+            card.Controls.Add(lblEdad);
 
-            panel.Click += PanelPaciente_Click;
+            // Manejadores de Hover y Click unificados
+            VincularEventosCard(card);
 
-            flpPacientes.Controls.Add(panel);
+            flpPacientes.Controls.Add(card);
+        }
+
+        private void VincularEventosCard(Panel card)
+        {
+            Action onEnter = () => { card.BackColor = Color.FromArgb(248, 250, 252); };
+            Action onLeave = () =>
+            {
+                Point pos = card.PointToClient(Cursor.Position);
+                if (!card.ClientRectangle.Contains(pos))
+                {
+                    card.BackColor = Color.White;
+                }
+            };
+
+            card.MouseEnter += (s, e) => onEnter();
+            card.MouseLeave += (s, e) => onLeave();
+            card.Click += PanelPaciente_Click;
+
+            foreach (Control child in card.Controls)
+            {
+                child.MouseEnter += (s, e) => onEnter();
+                child.MouseLeave += (s, e) => onLeave();
+                child.Click += (s, e) => PanelPaciente_Click(card, e);
+            }
         }
 
         private void PanelPaciente_Click(object sender, EventArgs e)
@@ -178,7 +225,6 @@ namespace sistema
             Panel panel = sender as Panel;
             if (panel != null && panel.Tag is PacientePreview pacienteSeleccionado)
             {
-                // Verificar si ya existe una instancia abierta
                 if (Application.OpenForms.OfType<AgendarCita>().Any())
                 {
                     Application.OpenForms.OfType<AgendarCita>().First().BringToFront();
@@ -188,9 +234,17 @@ namespace sistema
                 AgendarCita agendarCita = new AgendarCita();
                 agendarCita.FechaSeleccionada = FechaSeleccionada;
                 agendarCita.SetPaciente(pacienteSeleccionado);
-                this.Hide(); // Ocultar en lugar de cerrar
-                agendarCita.ShowDialog();
-                this.Show(); // Volver a mostrar cuando se cierre AgendarCita
+                this.Hide();
+
+                var resultado = agendarCita.ShowDialog();
+                if (resultado == DialogResult.OK)
+                {
+                    this.Close(); // Cierra el selector para regresar al calendario y actualizarlo
+                }
+                else
+                {
+                    this.Show();
+                }
             }
         }
 
@@ -201,7 +255,6 @@ namespace sistema
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Verificar si ya existe una instancia abierta
             if (Application.OpenForms.OfType<PacienteCita>().Any())
             {
                 Application.OpenForms.OfType<PacienteCita>().First().BringToFront();
@@ -209,10 +262,18 @@ namespace sistema
             }
 
             PacienteCita pacienteCita = new PacienteCita();
-            this.Hide(); // Ocultar en lugar de cerrar
+            this.Hide();
             pacienteCita.ShowDialog();
-            this.Show(); // Volver a mostrar cuando se cierre PacienteCita
+            this.Show();
+            CargarPacientesDesdeBD(); // Recargar pacientes por si se registró uno nuevo
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            using (Pen p = new Pen(Color.FromArgb(226, 232, 240), 1))
+            {
+                e.Graphics.DrawRectangle(p, 0, 0, panel1.Width - 1, panel1.Height - 1);
+            }
+        }
     }
 }

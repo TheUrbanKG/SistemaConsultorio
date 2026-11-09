@@ -1,4 +1,4 @@
-﻿namespace sistema
+namespace sistema
 {
     partial class UserControlBlank
     {
@@ -34,8 +34,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "UserControlBlank";
-            this.Size = new System.Drawing.Size(150, 108);
+            this.Size = new System.Drawing.Size(154, 68);
             this.Load += new System.EventHandler(this.UserControlBlank_Load);
             this.ResumeLayout(false);
 
