@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +15,23 @@ namespace sistema
         public UserControlBlank()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                           ControlStyles.AllPaintingInWmPaint |
+                           ControlStyles.UserPaint, true);
         }
 
         private void UserControlBlank_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            using (Pen p = new Pen(Color.FromArgb(241, 245, 249), 1))
+            {
+                e.Graphics.DrawRectangle(p, 0, 0, this.Width - 1, this.Height - 1);
+            }
         }
     }
 }

@@ -29,10 +29,15 @@ namespace sistema
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.FormClosing += FrmMain_FormClosing;
+
+            // Actualizar datos de usuario en la barra superior
+            ActualizarChipUsuario();
+
             // Abre el formulario de 'Inicio' por defecto dentro del panel contenedor.
             abrirFormHijo(new frmInicio(this));
             // Establece el título y el ícono en la barra superior para que coincidan con la sección 'Inicio'.
             labelTitulo.Text = "Inicio";
+            labelSubtitulo.Text = "Panel principal y métricas generales";
             this.pbTitulo.Image = Properties.Resources.hogar;
 
             // Configura el botón de respaldo administrativo
@@ -43,9 +48,30 @@ namespace sistema
 
             // Resalta visualmente el botón 'Inicio' para indicar que es la sección activa.
             SetActiveNavButton(BTNInicio);
+
             // Iniciar worker de notificaciones
             _notificationWorker = new NotificationWorker();
             _notificationWorker.Iniciar();
+        }
+
+        private void ActualizarChipUsuario()
+        {
+            try
+            {
+                string usuario = sistema.Infrastructure.Security.Sesion.UsuarioActual;
+                string rol = sistema.Infrastructure.Security.Sesion.RolActual;
+
+                if (!string.IsNullOrWhiteSpace(usuario))
+                {
+                    lblUsuarioNombre.Text = usuario;
+                    lblUsuarioRol.Text = !string.IsNullOrWhiteSpace(rol) ? rol : "Usuario";
+                }
+            }
+            catch
+            {
+                lblUsuarioNombre.Text = "Usuario";
+                lblUsuarioRol.Text = "Activo";
+            }
         }
 
         private Button btnRespaldo;
@@ -53,27 +79,33 @@ namespace sistema
         private void ConfigurarBotonRespaldo()
         {
             btnRespaldo = new Button();
-            btnRespaldo.Text = " Respaldos";
-            btnRespaldo.Size = new Size(130, 40);
+            btnRespaldo.Text = "💾 Respaldos";
+            btnRespaldo.Size = new Size(125, 42);
             
             // Lo posicionamos en la barra superior (panelSuperior) alineado a la derecha
-            btnRespaldo.Location = new Point(this.panelSuperior.Width - 150, 32); 
+            btnRespaldo.Location = new Point(this.panelSuperior.Width - 145, 19); 
             btnRespaldo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             
-            // Estilos estéticos acordes al diseño oscuro y verde/turquesa de la app
+            // Estilos estéticos acordes al diseño institucional moderno
             btnRespaldo.FlatStyle = FlatStyle.Flat;
             btnRespaldo.FlatAppearance.BorderSize = 1;
-            btnRespaldo.FlatAppearance.BorderColor = Color.FromArgb(0, 218, 157); // Color verde turquesa del menú
-            btnRespaldo.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 218, 157);
-            btnRespaldo.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 180, 130);
-            btnRespaldo.BackColor = Color.FromArgb(21, 21, 21); // Color de fondo del panel superior
-            btnRespaldo.ForeColor = Color.White;
-            btnRespaldo.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            btnRespaldo.FlatAppearance.BorderColor = Color.FromArgb(226, 232, 240);
+            btnRespaldo.FlatAppearance.MouseOverBackColor = Color.FromArgb(235, 248, 242);
+            btnRespaldo.FlatAppearance.MouseDownBackColor = Color.FromArgb(209, 240, 226);
+            btnRespaldo.BackColor = Color.White;
+            btnRespaldo.ForeColor = Color.FromArgb(51, 65, 85);
+            btnRespaldo.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
             btnRespaldo.Cursor = Cursors.Hand;
             
-            // Efecto hover para cambiar el color del texto cuando el mouse pasa por encima
-            btnRespaldo.MouseEnter += (s, e) => btnRespaldo.ForeColor = Color.Black;
-            btnRespaldo.MouseLeave += (s, e) => btnRespaldo.ForeColor = Color.White;
+            // Efecto hover interactivo
+            btnRespaldo.MouseEnter += (s, e) => {
+                btnRespaldo.ForeColor = Color.FromArgb(0, 140, 70);
+                btnRespaldo.FlatAppearance.BorderColor = Color.FromArgb(0, 168, 89);
+            };
+            btnRespaldo.MouseLeave += (s, e) => {
+                btnRespaldo.ForeColor = Color.FromArgb(51, 65, 85);
+                btnRespaldo.FlatAppearance.BorderColor = Color.FromArgb(226, 232, 240);
+            };
 
             btnRespaldo.Click += BtnRespaldo_Click;
 
@@ -138,53 +170,58 @@ namespace sistema
 
         private void BTNInicio_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmInicio(this)); // Abre el formulario de inicio.
-            labelTitulo.Text = "Inicio"; // Actualiza el título.
-            this.pbTitulo.Image = Properties.Resources.hogar; // Actualiza el ícono.
-            SetActiveNavButton(BTNInicio); // Resalta el botón de inicio.
-            this.Refresh(); // Refresca la UI.
+            abrirFormHijo(new frmInicio(this));
+            labelTitulo.Text = "Inicio";
+            labelSubtitulo.Text = "Panel principal y métricas generales";
+            this.pbTitulo.Image = Properties.Resources.hogar;
+            SetActiveNavButton(BTNInicio);
+            this.Refresh();
         }
 
         private void BTNCitas_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmCitas()); // Abre el formulario de citas.
-            labelTitulo.Text = "Citas"; // Actualiza el título.
-            this.pbTitulo.Image = Properties.Resources.calendario; // Actualiza el ícono.
-            SetActiveNavButton(BTNCitas); // Resalta el botón de citas.
+            abrirFormHijo(new frmCitas());
+            labelTitulo.Text = "Citas";
+            labelSubtitulo.Text = "Gestión y programación de citas médicas";
+            this.pbTitulo.Image = Properties.Resources.calendario;
+            SetActiveNavButton(BTNCitas);
             this.Refresh();
         }
 
         private void BTNPacientes_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmPacientes()); // Abre el formulario de pacientes.
-            labelTitulo.Text = "Pacientes"; // Actualiza el título.
-            this.pbTitulo.Image = Properties.Resources.paciente; // Actualiza el ícono.
-            SetActiveNavButton(BTNPacientes); // Resalta el botón de pacientes.
+            abrirFormHijo(new frmPacientes());
+            labelTitulo.Text = "Pacientes";
+            labelSubtitulo.Text = "Directorio y expedientes clínicos de pacientes";
+            this.pbTitulo.Image = Properties.Resources.paciente;
+            SetActiveNavButton(BTNPacientes);
             this.Refresh();
         }
 
         private void BTNAgenda_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmAgenda()); // Abre el formulario de agenda.
-            labelTitulo.Text = "Agenda"; // Actualiza el título.
-            this.pbTitulo.Image = Properties.Resources.agenda; // Actualiza el ícono.
-            SetActiveNavButton(BTNAgenda); // Resalta el botón de agenda.
+            abrirFormHijo(new frmAgenda());
+            labelTitulo.Text = "Agenda";
+            labelSubtitulo.Text = "Calendario semanal y citas programadas";
+            this.pbTitulo.Image = Properties.Resources.agenda;
+            SetActiveNavButton(BTNAgenda);
             this.Refresh();
         }
 
         private void BTNNotas_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmNotas()); // Abre el formulario de notas.
-            labelTitulo.Text = "Notas"; // Actualiza el título.
-            this.pbTitulo.Image = Properties.Resources.notas; // Actualiza el ícono.
-            SetActiveNavButton(BTNNotas); // Resalta el botón de notas.
+            abrirFormHijo(new frmNotas());
+            labelTitulo.Text = "Notas";
+            labelSubtitulo.Text = "Registro de notas médicas y observaciones";
+            this.pbTitulo.Image = Properties.Resources.notas;
+            SetActiveNavButton(BTNNotas);
             this.Refresh();
         }
 
         private void BTNSalir_Click(object sender, EventArgs e)
         {
             // Muestra un cuadro de diálogo para confirmar si el usuario realmente quiere salir.
-            DialogResult result = MessageBox.Show("Estas seguro que desea salir?", "Confirmacion de salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Está seguro que desea cerrar la sesión y salir del sistema?", "Confirmación de salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // Si el usuario hace clic en 'Sí', se cierra la aplicación completamente.
             if (result == DialogResult.Yes)
             {
@@ -194,10 +231,11 @@ namespace sistema
 
         private void btnCuentas_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmCuentas()); // Abre el formulario de gestión de cuentas.
-            labelTitulo.Text = "Gestion De Cuentas"; // Actualiza el título.
-            this.pbTitulo.Image = Properties.Resources.usuario; // Actualiza el ícono.
-            SetActiveNavButton(btnCuentas); // Resalta el botón de cuentas.
+            abrirFormHijo(new frmCuentas());
+            labelTitulo.Text = "Gestión De Cuentas";
+            labelSubtitulo.Text = "Administración de usuarios y roles del sistema";
+            this.pbTitulo.Image = Properties.Resources.usuario;
+            SetActiveNavButton(btnCuentas);
             this.Refresh();
         }
 
@@ -286,6 +324,18 @@ namespace sistema
             foreach (var sb in _navMainButtons)
             {
                 if (sb == null) continue;
+
+                sb.Cursor = Cursors.Hand;
+                if (sb == btnCuentas)
+                {
+                    sb.Font = new Font("Segoe UI Semibold", 8.75F, FontStyle.Bold);
+                }
+                else
+                {
+                    sb.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+                }
+                sb.Rounding = new Padding(8);
+                sb.OutlineThickness = 1F;
 
                 sb.NormalBackground = NavInactiveBg;
                 sb.NormalForeColor = NavInactiveFg;

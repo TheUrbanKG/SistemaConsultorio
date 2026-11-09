@@ -15,7 +15,7 @@ namespace sistema
     public partial class AgendarCita : MetroFramework.Forms.MetroForm
     {
         public DateTime FechaSeleccionada { get; set; }
-        private PacientePreview _paciente; // Campo privado
+        private PacientePreview _paciente;
 
         public AgendarCita()
         {
@@ -24,6 +24,7 @@ namespace sistema
             dtpHora.CustomFormat = "hh:mm tt";
             dtpHora.ShowUpDown = true;
             dtpHora.Value = DateTime.Today.AddHours(8);
+            radioAM.Checked = true;
         }
 
         public void SetPaciente(PacientePreview paciente)
@@ -33,7 +34,7 @@ namespace sistema
             if (_paciente != null)
             {
                 lblNombrePaciente.Text = _paciente.Nombre ?? "No disponible";
-                lblEdadPaciente.Text = _paciente.Edad ?? "No disponible";
+                lblEdadPaciente.Text = !string.IsNullOrEmpty(_paciente.Edad) ? _paciente.Edad + " años" : "No disponible";
                 lblGeneroPaciente.Text = _paciente.Genero ?? "No disponible";
                 lblTipoSangre.Text = _paciente.GrupoSanguineo ?? "No disponible";
             }
@@ -45,12 +46,12 @@ namespace sistema
 
         public void SetFechaCita(DateTime fecha)
         {
-            lblFechaCita.Text = fecha.ToString("dd/MM/yyyy");
+            lblFechaCita.Text = "Fecha de la cita: " + fecha.ToString("dd/MM/yyyy");
         }
 
         private void AgendarCita_Load(object sender, EventArgs e)
         {
-            lblFechaCita.Text = FechaSeleccionada.ToString("dd/MM/yyyy");
+            lblFechaCita.Text = "Fecha de la cita: " + FechaSeleccionada.ToString("dd/MM/yyyy");
             CargarDoctores();
         }
 
@@ -208,7 +209,8 @@ namespace sistema
 
                     if (result > 0)
                     {
-                        MessageBox.Show("Cita guardada correctamente.");
+                        MessageBox.Show("Cita guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
                 }
@@ -229,12 +231,27 @@ namespace sistema
 
         private void dtpHora_ValueChanged(object sender, EventArgs e)
         {
-            // Opcional
+            if (dtpHora.Value.Hour >= 12)
+            {
+                radioPM.Checked = true;
+            }
+            else
+            {
+                radioAM.Checked = true;
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             metroButton1_Click(sender, e);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            using (Pen p = new Pen(Color.FromArgb(226, 232, 240), 1))
+            {
+                e.Graphics.DrawRectangle(p, 0, 0, panel1.Width - 1, panel1.Height - 1);
+            }
         }
     }
 }
